@@ -1,5 +1,5 @@
 {
-	"global": {}, 
+	"global": {olsen:10}, 
 	"env:development": {}, 
 	"env:test": {}, 
 	"env:production": {}, 
