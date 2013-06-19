@@ -1,0 +1,10 @@
+eclipse.preferences.version=1
+provisioning_profiles/development/1F6F3FA4-71B1-49F6-AC19-366A298491BF/appid=*
+provisioning_profiles/development/1F6F3FA4-71B1-49F6-AC19-366A298491BF/name=iOS Team Provisioning Profile\: *
+provisioning_profiles/development/1F6F3FA4-71B1-49F6-AC19-366A298491BF/uuid=1F6F3FA4-71B1-49F6-AC19-366A298491BF
+provisioning_profiles/development/6EF0896A-2ED8-4B6E-80FA-AC5270961DF9/appid=*
+provisioning_profiles/development/6EF0896A-2ED8-4B6E-80FA-AC5270961DF9/name=iOS Team Provisioning Profile\: *
+provisioning_profiles/development/6EF0896A-2ED8-4B6E-80FA-AC5270961DF9/uuid=6EF0896A-2ED8-4B6E-80FA-AC5270961DF9
+provisioning_profiles/development/CA6E1866-77C0-473B-B6BD-2138949A8361/appid=dk.eg.thn.pushtest2
+provisioning_profiles/development/CA6E1866-77C0-473B-B6BD-2138949A8361/name=Push2
+provisioning_profiles/development/CA6E1866-77C0-473B-B6BD-2138949A8361/uuid=CA6E1866-77C0-473B-B6BD-2138949A8361

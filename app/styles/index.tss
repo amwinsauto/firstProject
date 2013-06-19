@@ -1,0 +1,24 @@
+"#index": {
+	orientationModes : [Ti.UI.PORTRAIT, Ti.UI.LANDSCAPE_LEFT, Ti.UI.LANDSCAPE_RIGHT]
+
+},
+"#label1": {
+//	width: Ti.UI.SIZE,
+//	height: Ti.UI.SIZE,
+//	color: "#000"
+	font : {
+		fontSize: 30
+	}
+},
+"#label2": {
+//	width: Ti.UI.SIZE,
+//	height: Ti.UI.SIZE,
+//	color: "#000"
+	font : {
+		fontSize: '30dp'
+	}
+},
+
+"TableViewRow": {
+//	rightImage : "/images/disclosure_64.png" //Ti.App.Android.R.drawable.disclosure_64
+}

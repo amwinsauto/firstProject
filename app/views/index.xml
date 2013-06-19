@@ -1,0 +1,49 @@
+<Alloy>
+	<TabGroup exitOnClose="true" navBarHidden="">
+		<Tab id="tab1" title="Tab 1">
+			<Window id="win1" title="Tab 1">
+				<View>
+					<TableView onClick="onClick" backgroundColor="blue">
+						<TableViewRow hasChild="true" title="Carrots">
+						</TableViewRow>
+						<TableViewRow hasChild="true" >
+							<Label id="label1" text="Bananas" ></Label>
+						</TableViewRow>
+						<TableViewRow hasChild="true" >
+							<Label id="label2" text="Bananas"></Label>
+						</TableViewRow>
+						<TableViewRow hasChild="true" >
+							<Label id="label3" text="Bananas"></Label>
+						</TableViewRow>
+						<TableViewRow title="Carrots" hasDetail="true" />
+						<TableViewRow title="Potatoes"  />
+						<TableViewRow title="Cod"/>
+						<TableViewRow title="Haddock"/>
+					</TableView>
+				</View>
+			</Window>
+		</Tab>
+		<Tab id="tab2" title="Tab 2">
+			<Window id="win2" title="Tab 2">
+				<TableView onClick="onClick">
+					<TableViewRow title="Apple"/>
+					<TableViewRow title="Bananas"/>
+					<TableViewRow title="Carrots"/>
+					<TableViewRow title="Potatoes"/>
+					<TableViewRow title="Cod"/>
+					<TableViewRow title="Haddock"/>
+				</TableView>
+			</Window>
+		</Tab>
+	</TabGroup>
+	<!--
+	<Window backgroundColor="white">
+	<TableView>
+	<TableViewRow >
+	<ImageView image="/images.jpeg" width="100%"></ImageView>
+	</TableViewRow>
+	<TableViewRow title="Bananas"/>
+	</TableView>
+	</Window>
+	-->
+</Alloy>
