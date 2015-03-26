@@ -1,0 +1,10 @@
+<Alloy>
+	<Window id="applicationWindow" class="windowBackgroundColor" onOpen="onOpen" onClose="onClose">
+		<View id="horizontalSplit" />
+	</Window>
+	<!-- Windows opened after applicationWindow is opened -->
+	<NavigationWindow id="topWindowController" class="windowBackgroundColor">
+		<Window id="topWindow" class="windowBackgroundColor barColor navTintColor" />
+	</NavigationWindow>
+	<TabGroup id="masterTabGroup" class="windowBackgroundColor tintColor barColor tabsColor"></TabGroup>
+</Alloy>

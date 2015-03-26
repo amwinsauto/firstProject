@@ -1,0 +1,18 @@
+#
+# this is your module manifest and used by Titanium
+# during compilation, packaging, distribution, etc.
+#
+version: 0.6
+apiversion: 2
+description: LineaPro4 Scanner Module 
+author: Gary Paul Smith
+license: MIT
+copyright: Copyright(c) 2013 by EG A/S
+
+
+# these should not be edited
+name: linea
+moduleid: dk.eg.crosspad.linea.scanner
+guid: 30825f9c-bddb-4775-a195-703364ff44d5
+platform: iphone
+minsdk: 3.0.2.GA

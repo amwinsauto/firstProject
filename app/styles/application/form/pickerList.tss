@@ -1,0 +1,13 @@
+"#table": {
+	top : 0,
+	allowsSelection: true
+},
+"#search[platform=ios]": {
+//	barColor: '#0d3f79',
+	hintText: L('search')
+},
+"#search[platform=android]": {
+//	barColor: '#2e2e2e',
+	height: 48,
+	hintText: L('search')
+}

@@ -1,0 +1,25 @@
+"#footerView":{
+	height: Ti.UI.SIZE,
+	bottom: 8,
+	left: 8,
+	right: 8,
+	layout: 'vertical'
+}
+"#footerTitle": {
+	left: 1,
+	right: 0,
+	height: 16,
+	font: {
+		fontSize: 12,
+		fontWeight: 'bold'
+	}
+}
+"#footer": {
+	left: 1,
+	right: 0,
+	height: 15,
+	color: 'gray',
+	font: {
+		fontSize: 10
+	}
+}

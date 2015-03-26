@@ -1,0 +1,14 @@
+"#popover": {
+	arrowDirection: Ti.UI.iPad.POPOVER_ARROW_DIRECTION_RIGHT,
+//	width: 320
+},
+"#navigationWindow": {
+	width: 320
+}
+"#doneButton": {
+	style: Ti.UI.iPhone.SystemButtonStyle.DONE,
+	titleid: "done_button"
+}
+"#cancelButton": {
+	titleid: "cancel_button"
+}

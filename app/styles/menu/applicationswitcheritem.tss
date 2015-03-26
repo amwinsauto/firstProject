@@ -1,0 +1,28 @@
+"#item": {
+	width: 78,
+	height: 112
+}
+"#button": {
+	height: Titanium.UI.FILL,
+	width: Titanium.UI.FILL,
+	backgroundImage: '/images/core/dashboard/phone_tile.png',
+	backgroundSelectedImage: '/images/core/dashboard/phone_tile_pressed.png'
+}
+"#icon":{
+	top: 2,
+	height: 72,
+	image: '/images/icons/lists/medium/network.png'
+}
+"#title":{
+	bottom: 2,
+	left: 0,
+	right: 0,
+	height: 32,
+	textAlign: 'center',
+//	verticalAlign: 'top',
+	font: {
+		fontSize: 12,
+		fontWeight: 'bold'
+	},
+	color: 'white'
+}

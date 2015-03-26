@@ -1,0 +1,11 @@
+"#title": {
+	top: 0,
+	height: 19,
+	font:{
+		fontSize: 13
+	}
+}
+"#title[platform=android]": {
+	ellipsize: true,
+	wordWrap: false
+}

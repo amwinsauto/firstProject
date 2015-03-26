@@ -1,0 +1,19 @@
+<Alloy>
+	<!--
+	<SplitWindow id="applicationWindow" class="windowBackgroundColor">
+	<TabGroup id="masterTabGroup" visible="false" onOpen="onOpen" class="windowBackgroundColor" />
+	<NavigationWindow id="detailWindowController" class="windowBackgroundColor">
+	<Window id="detailWindow" class="windowBackgroundColor barColor navTintColor" />
+	</NavigationWindow>
+	</SplitWindow>
+	-->
+	<Window id="applicationWindow" class="windowBackgroundColor" onOpen="onOpen" onClose="onClose">
+		<View id="verticalSplit" />
+	</Window>
+	<!-- Windows opened after applicationWindow is opened -->
+	<TabGroup id="masterTabGroup" class="windowBackgroundColor tintColor barColor tabsColor"></TabGroup>
+	<NavigationWindow id="detailWindowController" class="windowBackgroundColor">
+		<Window id="detailWindow" class="windowBackgroundColor navTintColor barColor" />
+	</NavigationWindow>
+
+</Alloy>

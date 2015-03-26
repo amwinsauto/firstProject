@@ -1,0 +1,12 @@
+<Alloy>
+	<Window id="busyWindow" onOpen="onOpen" platform="ios">
+		<View id="busyView">
+			<ImageView id="busyImageView" visible="false">
+				<ActivityIndicator id="busyActivityIndicator"/>
+				<Label id="busyLabel"/>
+				<ProgressBar id="busyProgressBar" />
+			</ImageView>
+		</View>
+	</Window>
+	<ProgressIndicator ns="Ti.UI.Android" id="busyActivityIndicator" platform="android"/>
+</Alloy>

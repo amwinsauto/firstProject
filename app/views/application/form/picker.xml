@@ -1,0 +1,3 @@
+<Alloy>
+	<Picker id="picker" top="0" selectionIndicator="true" useSpinner="true" format24="true" onChange="onPickerChange" visibleItems="7"/>
+</Alloy>

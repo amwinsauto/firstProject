@@ -1,0 +1,13 @@
+"#label":{
+	height: 16,
+	left: 1,
+	right: 0,
+	font: {
+		fontSize: 14, // Default footnote Size
+		// textStyle: Ti.UI.TEXT_STYLE_FOOTNOTE
+	}
+}
+"#label[platform=android]":{
+	color: 'black',
+	height: 18
+}

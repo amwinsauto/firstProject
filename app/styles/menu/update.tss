@@ -1,0 +1,96 @@
+"#updateView[formFactor=handheld]":{
+	backgroundColor: 'black',
+	layout: 'vertical',
+	top: 0,
+	left: 0,
+	bottom: 0,
+}
+"#updateView[platform=ios formFactor=handheld]":{
+	width: Titanium.UI.FILL
+}
+"#updateView[platform=ios formFactor=tablet]":{
+	width: 240
+}
+"#titleLabel":{
+	top: 40,
+	height: Ti.UI.SIZE,
+	left: 10,
+	right: 10,
+	color: 'white',
+	textAlign: 'center',
+	font:{
+		fontWeight: 'bold',
+		fontSize: 20
+	}
+},
+"#line1View":{
+	top: 20,
+	left: 10,
+	right: 10,
+	height: 0.5,
+	backgroundColor: 'white'
+}
+"#installedView":{
+	top: 20,
+	left: 10,
+	height: Ti.UI.SIZE,
+	layout: 'horizontal'
+}
+"#installedStatusView": {
+	left: 10,
+	height: 12,
+	width: 12,
+	borderRadius: 6,
+	backgroundColor: 'red'
+}
+"#installedLabel":{
+	left: 10,
+	text: 'Installed version 1.3.3',
+//	height: Ti.UI.SIZE,
+	color: 'white',
+	// textAlign: 'center',
+	// font:{
+		// fontWeight: 'bold',
+		// fontSize: 20
+	// }
+},
+"#line2View":{
+	top: 20,
+	left: 10,
+	right: 10,
+	height: 0.5,
+	backgroundColor: 'white'
+}
+"#descriptionLabel":{
+	top: 20,
+//	height: Ti.UI.SIZE,
+	left: 20,
+	right: 20,
+	color: 'gray',
+	//textAlign: 'center',
+	// font:{
+		// fontWeight: 'bold',
+		// fontSize: 20
+	// }
+}
+"#updateButton":{
+	top: 20,
+	titleid: 'go_to_app_store',
+	//bottom: 20,
+	//right: 20,
+	height: 40,
+	width: 150,
+	borderRadius: 5,
+	backgroundColor: '#007aff',
+	tintColor: 'white',
+}
+"#footerLabel":{
+	text: 'The latest version of our App can be downloaded directly from Apple\'s App Store, by clicking on the button above',
+//	bottom: 20,
+	color: 'white',
+	top: 20,
+	right: 20,
+	left: 20,
+//	height: 40,
+//	width: 150
+}

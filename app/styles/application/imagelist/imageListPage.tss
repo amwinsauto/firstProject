@@ -1,0 +1,6 @@
+"#imageListPage": {
+	backgroundColor: 'white',
+	disableBounce: true,
+	layout: 'horizontal',
+	contentWidth: Ti.UI.FILL
+}

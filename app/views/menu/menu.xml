@@ -1,0 +1,42 @@
+<Alloy>
+	<Window id="menuWindow" onOpen="onOpen">
+		<!-- semi transparent -->
+		<View id="menuWindowBackground" />
+		<View id="menuView" >
+			<View id="menuBar" bubbleParent="false" >
+				<View id="menuBarColor" />
+				<Button id="closeButton"  onClick="onCloseClick" platform="ios"/>
+				<View id="closeButton"  onClick="onCloseClick" platform="android">
+					<View id="closeButtonImage"/>
+				</View>
+				<View id="buttonsPlacer">
+					<!-- Other buttons added to buttons in code -->
+					<View id="buttons" />
+				</View>
+				<Button id="logoffButton" onClick="onLogoffClick" visible="false" platform="ios" />
+				<View id="logoffButton" onClick="onLogoffClick" visible="false" platform="android" >
+					<View id="logoffButtonImage" />
+				</View>
+			</View>
+			<View id="menuDetailView" onClick="onBackgroundClick"/>
+		</View>
+	</Window>
+	<Button id="setupButton" class="otherButton" onClick="onSetupClick" platform="ios" />
+	<View id="setupButton" class="otherButton" onClick="onSetupClick" platform="android" >
+		<View id="setupButtonImage" class="otherButtonImage" />
+	</View>
+	<Button id="editButton" class="otherButton" onClick="onEditClick" platform="ios" />
+	<View id="editButton" class="otherButton" onClick="onEditClick" platform="android" >
+		<View id="editButtonImage" class="otherButtonImage" />
+	</View>
+	<Button id="workspaceButton" class="otherButton" onClick="onWorkspaceClick" platform="ios" />
+	<Button id="switchButton" class="otherButton" onClick="onSwitchClick" platform="ios" />
+	<Button id="updateButton" class="otherButton" onClick="onUpdateClick" platform="ios" />
+	<View id="updateButton" class="otherButton" onClick="onUpdateClick" platform="android" >
+		<View id="updateButtonImage" class="otherButtonImage" />
+	</View>
+	<Button id="aboutButton" class="otherButton" onClick="onAboutClick" platform="ios" />
+	<View id="aboutButton" class="otherButton" onClick="onAboutClick" platform="android" >
+		<View id="aboutButtonImage" class="otherButtonImage" />
+	</View>
+</Alloy>

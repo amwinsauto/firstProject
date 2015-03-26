@@ -1,0 +1,42 @@
+[
+	{
+		"title": "iOS to iOS",
+		"path": "examples/ios-to-ios.js",
+		"platform": "ios"
+	},
+	{
+		"title": "iBeacons",
+		"path": "examples/ibeacon.js"
+	},
+	{
+		"title": "Estimote Beacons",
+		"path": "examples/estimote-beacons.js"
+	},
+	{
+		"title": "Heart Rate Monitor",
+		"path": "examples/heart-rate-monitor.js"
+	},
+	{
+		"title": "Standard BPM",
+		"path": "examples/blood-pressure-monitor.js"
+	},
+	{
+		"title": "Proprietary BPM",
+		"path": "examples/proprietary-blood-pressure-monitor.js",
+		"platform": "ios"
+	},
+	{
+		"title": "TI CC2541 SensorTag",
+		"path": "examples/ti-cc2541-sensortag.js"
+	},
+	{
+		"title": "Generic Central",
+		"path": "examples/generic-central.js"
+	},
+	{
+		"title": "App Launch",
+		"path": "examples/launch-app-from-module.js",
+		"platform": "android",
+		"minOSVersion": "4.3"
+	}
+]

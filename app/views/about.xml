@@ -1,0 +1,9 @@
+<Alloy>
+	<Window id="aboutWindow" class="windowBackgroundColor barColor navTintColor">
+		<ImageView id="logoImageView"/>
+		<Label id="nameLabel"/>
+		<Label id="versionLabel"/>
+		<Button id="emailButton" onClick="onEmailClick"></Button>
+		<Label id="copyrightLabel"/>
+	</Window>
+</Alloy>

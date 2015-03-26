@@ -1,0 +1,24 @@
+"#popupWindow": {
+	navBarHidden : true
+},
+"#popupWindow[platform=ios formFactor=handheld]": {
+	orientationModes: [Ti.UI.PORTRAIT, Ti.UI.LANDSCAPE_LEFT, Ti.UI.LANDSCAPE_RIGHT]
+}
+"#popupWindow[platform=ios formFactor=tablet]": {
+	orientationModes: [Ti.UI.LANDSCAPE_LEFT, Ti.UI.LANDSCAPE_RIGHT]
+}
+"#closeButton": {
+	titleid: 'close_button'
+}
+"#window[platform=android]": {
+	navBarHidden: false,
+	windowSoftInputMode : Ti.UI.Android.SOFT_INPUT_STATE_ALWAYS_HIDDEN,
+}
+"#supportMenu":{
+	title: L('support'),
+	showAsAction: Ti.Android.SHOW_AS_ACTION_NEVER
+}
+"#aboutMenu":{
+	title: L('about'),
+	showAsAction: Ti.Android.SHOW_AS_ACTION_NEVER
+}

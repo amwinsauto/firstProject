@@ -1,0 +1,14 @@
+"#row": {
+	color: 'white',
+	height: 58
+}
+"#row[platform=ios]": {
+	hasChild: true,
+	// font:{
+		// //textStyle: Ti.UI.TEXT_STYLE_BODY,
+		// textStyle: Ti.UI.TEXT_STYLE_SUBHEADLINE
+	// }
+}
+"#row[platform=android]": {
+	rightImage: '/images/core/android_arrow_right.png'
+}

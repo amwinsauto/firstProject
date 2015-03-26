@@ -1,0 +1,9 @@
+<Alloy>
+	<ScrollView id="imageListItem" onClick="onClick">
+		<ImageView id="image" />
+		<View id="markerHolder" onClick="onMarkerClick">
+			<View id="marker" />
+		</View>
+		<View id="titles" layout="vertical" />
+	</ScrollView>
+</Alloy>

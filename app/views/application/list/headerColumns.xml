@@ -1,0 +1,7 @@
+<Alloy>
+	<!-- These views are added to list.headerView -->
+	<View id="headerColumnsView">
+		<View id="columnsView"></View>
+		<View id="barView" />
+	</View>
+</Alloy>

@@ -1,0 +1,10 @@
+"#window[platform=ios formFactor=handheld]": {
+},
+"#window[platform=ios formFactor=tablet]": {
+},
+"#window[platform=android]": {
+	windowSoftInputMode : Ti.UI.Android.SOFT_INPUT_STATE_ALWAYS_HIDDEN
+	//softKeyboardOnFocus : Ti.UI.Android.SOFT_KEYBOARD_HIDE_ON_FOCUS
+	// navBarHidden: true,
+	// backgroundColor: 'white'
+}

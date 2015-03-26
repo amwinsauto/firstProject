@@ -1,0 +1,145 @@
+".navTintColor": {
+//	navTintColor: 'white',
+}
+".tintColor": {
+//	tintColor: 'white',
+}
+".barColor": {
+}
+".tabsColor": {
+}
+".windowBackgroundColor":{
+	backgroundColor: 'white'
+}
+".tableSelectedColor[platform=ios]": {
+	// Like Contacts
+	selectedBackgroundColor:'#d9d9d9',
+	// Like Settings
+	//selectedBackgroundColor: '#4ca1ff',
+}
+".tableSelectedColor[platform=android]": {
+	// Like Contacts
+	backgroundSelectedColor:'#d9d9d9',
+	// Like Settings
+	//selectedBackgroundColor: '#4ca1ff',
+}
+// Set on field value label/textfield 
+".formFieldValue": {
+	font: { fontSize: 14},
+	height: 21, // Default height from settings
+//	font: { fontSize: 17}, // Default font from settings
+	color: '#007aff', // default tint color 
+	egColorReadOnly: 'black' 
+}
+".formFieldValue[platform=android]": {
+	height: 42
+}
+".formFieldValueLabel[platform=android]": {
+	color:'black',
+	height: 20
+}
+
+// Standard EG Text Colors on forms - should be picked by Gary
+".formFieldColors": {
+	egColorRed: '#fc3d39',
+	egColorYellow: '#e9ba2a',
+	egColorGreen: '#52d568',
+	egColorBlue: '#007aff',
+	egColorGray: '#8e8e8e',
+	egColorWhite: 'white',
+	egColorBlack: 'black'
+},
+// Standard EG Text Colors on Lists - should be picked by Gary
+".listColors": {
+	egColorRed: '#fc3d39',
+	egColorYellow: '#e9ba2a',
+	egColorGreen: '#52d568',
+	egColorBlue: '#007aff',
+	egColorGray: '#8e8e8e',
+	egColorWhite: 'white',
+	egColorBlack: 'black'
+},
+".chartColors": {
+	egColorRed: '#fc3d39',
+	egColorYellow: '#e9ba2a',
+	egColorGreen: '#52d568',
+	egColorBlue: '#007aff',
+	egColorGray: '#8e8e8e',
+	egColorWhite: 'white',
+	egColorBlack: 'black'
+},
+
+/***********
+ * WINDOWS *
+ ***********/
+".windowBottomToolbar[platform=ios]": {
+}
+".windowBottomToolbar[platform=android]": {
+}
+"SearchBar[platform=ios]":{
+}
+"SearchBar[platform=android]":{
+}
+
+/********
+ * FORM *
+ ********/
+// TableViewRow behind form fields
+//".formFieldRow[formFactor=handheld]": {
+//}
+//".formFieldRow[platform=ios formFactor=tablet]": {
+//}
+".formFieldRow[platform=android]": {
+	top: 1,
+	backgroundColor: 'white',
+	egSeperatorColor: 'gray',
+	egSeperatorWidth : 1
+}
+// Left leader label on form fields
+".formFieldLeftLabel": {
+	touchEnabled: false,
+	color:'black', //'#007aff',
+	textAlign: 'left',
+	left: 15,
+	width: '44%',
+	height: 21, // Default from setings
+	ellipsize: true,
+	font: { fontSize: 14} 
+}
+".formFieldLeftLabel[platform=android]": {
+	height: 18, // Default from setings
+}
+// Top leader label on form fields (Pickers)
+".formFieldTopLabel": {
+	touchEnabled: false,
+	color:'black',
+	textAlign: 'left',
+	top: 5,
+	left: 15,
+	height: 21, // Default from setings
+	wordWrap: false,
+	ellipsize: true,
+	font: { fontSize: 14} 
+}
+".formFieldTrailer": {
+	color:'black',
+	touchEnabled: false,
+	right: 0,
+	width: 40,
+	height: 21, // Default from setings
+	textAlign : 'left',
+	font: { fontSize: 14} 
+}
+".formFieldTrailer[platform=android]": {
+}
+/********
+ * LIST *
+ ********/
+// TableViewRow on lists
+".listRow": {
+	egBackgroundColorOdd: '#f7f7f7' // Used in code for odd rows
+}
+".listRow[platform=ios formFactor=handheld]": {
+	backgroundColor: 'white',
+	borderColor : 'black',
+}

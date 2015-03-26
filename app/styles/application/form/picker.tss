@@ -1,0 +1,3 @@
+"#picker[platform=ios]": {
+	width: Titanium.UI.FILL
+}

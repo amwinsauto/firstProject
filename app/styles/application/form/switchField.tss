@@ -1,0 +1,20 @@
+"#fieldTableViewRow": {
+	height: 44
+}
+"#fieldTableViewRow[platform=ios]": {
+	selectionStyle: Ti.UI.iPhone.TableViewCellSelectionStyle.NONE
+},
+"#fieldTableViewRow[platform=android]": {
+//	height: 52
+},
+"#fieldSwitch":{
+//	height: 30,
+	right: 15
+},
+"#fieldSwitch[platform=android]":{
+//	style: Ti.UI.Android.SWITCH_STYLE_TOGGLEBUTTON
+	style: Ti.UI.Android.SWITCH_STYLE_CHECKBOX
+},
+"#trailerLabel": {
+	touchEnabled: false
+}

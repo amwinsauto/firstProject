@@ -1,0 +1,9 @@
+"#mapview": { 
+	left : 0,
+	right : 0,
+	mapType : Alloy.Globals.Map.STANDARD_TYPE,
+	animate : true,
+	//regionFit : true,
+	userLocation : false, // Will show a blue dot at your current location
+	annotations : [] // This must be defined to allow external manipulation of annotations
+}

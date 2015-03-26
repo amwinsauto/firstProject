@@ -1,0 +1,13 @@
+<Alloy>
+	<View id="applicationswitcher" bubbleParent="false">
+		<ScrollView id="scrollView">
+			<View id="contentView">
+				<!--
+				<Require type="view" src="menu/applicationswitcheritem"/>
+				<Require type="view" src="menu/applicationswitcheritem"/>
+				<Require type="view" src="menu/applicationswitcheritem"/>
+				-->
+			</View>
+		</ScrollView>
+	</View>
+</Alloy>

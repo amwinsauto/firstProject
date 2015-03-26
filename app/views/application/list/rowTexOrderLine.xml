@@ -1,0 +1,13 @@
+<Alloy>
+	<TableViewRow id="row" class="listRow">
+		<View id="view">
+			<Label id="item" />
+			<Label id="text" />
+			<View id="colorno" />
+			<Label id="color" />
+			<Label id="count" />
+			<Label id="price" />
+			<Label id="totalprice" />
+		</View>
+	</TableViewRow>
+</Alloy>

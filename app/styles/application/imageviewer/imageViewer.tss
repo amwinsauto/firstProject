@@ -1,0 +1,27 @@
+"#images": {
+//	borderWidth: 1,
+	showPagingControl: false,
+	top: 0,
+	left: 0,
+	right: 0,
+	bottom: 140
+}
+"#images[formFactor=handheld]": {
+	bottom: 110
+}
+"#thumbs": {
+//	borderWidth: 1,
+	showPagingControl: false,
+	height: 120, 
+	bottom: 20  
+}
+"#thumbs[formFactor=handheld]": {
+	height: 90 
+}
+"#thumbsFooter": {
+	bottom: 0,
+	height: 20,
+	font:{
+		fontSize: 13
+	}
+}

@@ -1,0 +1,65 @@
+"#row": {
+	left: 9,
+	right: 9,
+	height: 38,
+	egEmptyHeight: 9
+//	selectionStyle: Ti.UI.iPhone.TableViewCellSelectionStyle.NONE
+},
+"#item": {
+	height: 30,
+	left: 10,
+	width: Ti.UI.SIZE,
+//	color: '#625412', /* 655300 */
+	color: '#6d6d72',
+	// font: {
+		// fontSize: 20,
+		// fontWeight: 'bold'
+	// }
+},
+"#color": {
+	height: 30,
+	left: 325,
+	width: Ti.UI.SIZE,
+//	color: '#625412', /* 655300 */
+	color: '#6d6d72',
+	// font: {
+		// fontSize: 20,
+		// fontWeight: 'bold'
+	// }
+},
+"#count": {
+	height: 30,
+	textAlign: 'right',
+	right: 195,
+	width: Ti.UI.SIZE,
+//	color: '#625412', /* 655300 */
+	color: '#6d6d72',
+	// font: {
+		// fontSize: 20,
+		// fontWeight: 'bold'
+	// }
+},
+"#price": {
+	height: 30,
+	textAlign: 'right',
+	right: 110,
+	width: Ti.UI.SIZE,
+//	color: '#625412', /* 655300 */
+	color: '#6d6d72',
+	// font: {
+		// fontSize: 20,
+		// fontWeight: 'bold'
+	// }
+},
+"#totalprice": {
+	height: 30,
+	textAlign: 'right',
+	right: 15,
+	width: Ti.UI.SIZE,
+//	color: '#625412', /* 655300 */
+	color: '#6d6d72',
+	// font: {
+		// fontSize: 20,
+		// fontWeight: 'bold'
+	// }
+}

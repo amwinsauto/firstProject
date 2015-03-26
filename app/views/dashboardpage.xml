@@ -1,0 +1,8 @@
+<Alloy>
+	<View id="page" platform="android" >
+		<!--Label id="title" /-->
+	</View>
+	<ScrollView id="page" platform="ios" >
+		<!--Label id="title" /-->
+	</ScrollView>
+</Alloy>

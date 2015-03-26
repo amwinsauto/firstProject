@@ -1,0 +1,8 @@
+<Alloy>
+	<TableViewRow id="fieldTableViewRow" class="formFieldRow chartColors" hasChild="false" platform="ios">
+		<WebView id="webView" willHandleTouches="false" disableBounce="true"  />
+	</TableViewRow>
+	<View id="fieldTableViewRow" class="formFieldRow chartColors" platform="android">
+		<WebView id="webView" enableZoomControls="false" />
+	</View>
+</Alloy>

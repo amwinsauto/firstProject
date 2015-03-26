@@ -1,0 +1,29 @@
+<Alloy>
+	<!-- used for lists -->
+	<NavigationWindow id="pickerWindow" platform="ios">
+		<Window id="pickerViewHolder" class="windowBackgroundColor barColor navTintColor">
+			<LeftNavButton platform="ios">
+				<Button id="closeButton" onClick="onCloseButtonClick" />
+			</LeftNavButton>
+		</Window>
+	</NavigationWindow>
+
+	<Window id="pickerWindow" platform="android" />
+	<!-- used for pickers -->
+	<View id="pickerFullView" onClick="onPickerFullViewClick">
+		<View id="pickerSlideView">
+			<Toolbar id="toolbar" class="barColor" platform="ios">
+				<Items>
+					<Button id="cancelButton" onClick="onCancelButtonClick"/>
+					<FlexSpace/>
+					<Button id="doneButton" onClick="onDoneButtonClick"/>
+				</Items>
+			</Toolbar>
+			<View id="toolbar" platform="android">
+				<Button id ="cancelButton" onClick="onCancelButtonClick"/>
+				<Button id="doneButton" onClick="onDoneButtonClick"/>
+			</View>
+			<!-- Picker is inserted here-->
+		</View>
+	</View>
+</Alloy>

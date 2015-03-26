@@ -1,0 +1,14 @@
+<Alloy>
+	<!-- IOS -->
+	<TableView id="section" platform="ios">
+		<HeaderView>
+			<View id="topSeparator"/>
+		</HeaderView>
+	</TableView>
+	<View id="bottomSeparator" platform="ios"/>
+<!--	<View id="bottomSeparator" platform="android" formFactor="handheld"/> -->
+	<!-- Android -->
+	<View id="section" platform="android">
+	</View>
+	
+</Alloy>

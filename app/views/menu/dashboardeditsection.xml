@@ -1,0 +1,9 @@
+<Alloy>
+	<TableViewSection id="tableViewSection">
+		<HeaderView>
+			<View id="headerView" onClick="onClick">
+				<Label id="headerLabel" />
+			</View>
+		</HeaderView>
+	</TableViewSection>
+</Alloy>

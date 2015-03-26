@@ -1,0 +1,21 @@
+Android:
+
+Dist to Google Play 
+	Certificate: docs/certificates/android/eg_googleplay_keystore
+
+Dist to developers
+	Certificate: docs/certificates/android/eg_googleplay_keystore
+	
+
+Issues
+	Maps only works when:
+		1. Namespace: dk.eg.mobile.crosspad.aspect4
+		2. Certificate: docs/certificates/android/eg_googleplay_keystore
+
+
+IOS:
+
+Dist to AppStore
+	Certificate:
+	
+Issues

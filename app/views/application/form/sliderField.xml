@@ -1,0 +1,17 @@
+<Alloy>
+	<!-- IOS -->
+	<TableViewRow id="fieldTableViewRow" class="formFieldRow formFieldColors" hasChild="false" platform="ios">
+		<Label id="leaderLabel" class="formFieldTopLabel" />
+		<Label id="valueLabel" class="formFieldValue"/>
+		<Slider id="fieldSlider" onChange="onFieldSliderChange"/>
+		<Label id="trailerLabel" class="formFieldTrailer formFieldValue" visible="false"/>
+	</TableViewRow>
+	<!-- Android -->
+	<View id="fieldTableViewRow" class="formFieldRow formFieldColors" platform="android" >
+		<!-- Common -->
+		<Label id="leaderLabel" class="formFieldTopLabel" />
+		<Label id="valueLabel" class="formFieldValue"/>
+		<Slider id="fieldSlider" onChange="onFieldSliderChange"/>
+		<Label id="trailerLabel" class="formFieldTrailer" visible="false"/>
+	</View>
+</Alloy>

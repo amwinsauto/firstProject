@@ -1,0 +1,27 @@
+<Alloy>
+	<!-- IOS -->
+	<TableViewRow id="fieldTableViewRow" class="formFieldRow tableSelectedColor" hasChild="false" platform="ios">
+		<View id="fieldView">
+			<Label id="item" />
+			<Label id="text" />
+			<View id="colorno" />
+			<Label id="color" />
+			<Label id="count" />
+			<Label id="price" />
+			<Label id="totalprice" />
+		</View>
+	</TableViewRow>
+	<!-- Android -->
+	<View id="fieldTableViewRow" class="formFieldRow" platform="android" >
+		<View id="fieldView">
+			<Label id="item" />
+			<Label id="text" />
+			<View id="colorno" />
+			<Label id="color" />
+			<Label id="count" />
+			<Label id="price" />
+			<Label id="totalprice" />
+		</View>
+		<ImageView id="clickImageView" visible="false"/>
+	</View>
+</Alloy>

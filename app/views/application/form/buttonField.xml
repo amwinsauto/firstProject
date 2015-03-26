@@ -1,0 +1,11 @@
+<Alloy>
+	<!-- IOS -->
+	<TableViewRow id="fieldTableViewRow" class="formFieldRow" hasChild="false" platform="ios">
+<!--		<Label id="titleLabel" /> -->
+		<Button id="titleLabel" />
+	</TableViewRow>
+	<!-- Android -->
+	<View id="fieldTableViewRow" class="formFieldRow" platform="android">
+		<Button id="titleLabel"/>
+	</View>
+</Alloy>

@@ -1,0 +1,73 @@
+"#busyWindow": {
+	navBarHidden: true
+}
+"#busyView": {}
+"#busyImageView[formFactor=handheld]": {
+	width: 110,
+	height: 94,
+	image: '/images/core/dashboard/busy_tile_sm.png'
+}
+"#busyImageView[formFactor=tablet]": {
+	width: 285,
+	height: 175,
+	image: '/images/core/dashboard/busy_tile.png'
+}
+"#busyActivityIndicator[platform=ios]": {
+	style: Ti.UI.iPhone.ActivityIndicatorStyle.BIG,
+	bottom: 60
+}
+"#busyActivityIndicator[platform=ios formFactor=handheld]": {
+	style: Ti.UI.iPhone.ActivityIndicatorStyle.BIG,
+	bottom: 12
+}
+"#busyActivityIndicator[platform=android]": {
+	messageid: 'busy_loading_label',
+	location: Ti.UI.Android.PROGRESS_INDICATOR_DIALOG,
+	type: Ti.UI.Android.PROGRESS_INDICATOR_INDETERMINANT,
+	cancelable: false
+}
+"#busyLabel[formFactor=handheld]": {
+	textid: 'busy_loading_label',
+	color: 'white',
+	top: 10,
+	height: 20,
+	width: 100,
+	textAlign: 'center',
+	minimumFontSize: 10,
+	font: {
+		fontSize: 16,
+		fontWeight: 'bold'
+	}
+}
+"#busyLabel[formFactor=tablet]": {
+	textid: 'busy_loading_label',
+	color: 'white',
+	top: 5,
+	height: 40,
+	left: 0,
+	right: 0,
+	textAlign: 'center',
+	font: {
+		fontSize: 16,
+		fontWeight: 'bold'
+	}
+}
+"#busyProgressBar": {
+	tintColor: 'white',
+	bottom: 40,
+	width: 250,
+	height: 'auto',
+	min: 0,
+	max: 100,
+	value: 0,
+	style: Ti.UI.iPhone.ProgressBarStyle.PLAIN
+}
+"#busyProgressBar[formFactor=handheld]": {
+	bottom: 10,
+	width: 100,
+	height: 'auto',
+	min: 0,
+	max: 100,
+	value: 0,
+	style: Ti.UI.iPhone.ProgressBarStyle.PLAIN
+}

@@ -1,0 +1,9 @@
+"#columnsView" : {
+	top: 0,
+	height: 40,
+	backgroundColor: 'white'
+},
+"#barView" : {
+	height: 3,
+	backgroundColor: '#6d6d6d'
+}

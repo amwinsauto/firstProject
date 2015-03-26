@@ -1,0 +1,35 @@
+<Alloy>
+	<View id="view" >
+		<View id="headerView">
+			<!-- Header inserted here-->
+		</View>
+		<!-- Searchbar is removed or put on table if not search-->
+		<SearchBar id="search" class="barColor"/>
+		<TableView id="table" hideSearchOnSelection="false">
+			<!-- Rows are inserted here Dough :)-->
+		</TableView>
+	</View>
+	<SearchView id="searchView" ns="Ti.UI.Android" platform="android"/>
+	<!-- editButton/cancelButton is added to top toolbar if enabled on list-->
+	<Button id="editButton" />
+	<!--
+	<Button id="cancelButton" />
+	-->
+	<!-- IOS - added to bottom of screen when editButton is pressed -->
+	<Toolbar id="deleteToolbar" platform="ios" >
+		<Items>
+			<Button id="deleteSelectedButton" enabled="false"/>
+		</Items>
+	</Toolbar>
+	<!--
+	<ButtonBar id="deleteSelectedButton" platform="ios" >
+		<Labels>
+			<Label id="deleteButtonLabel" enabled="false"/>
+		</Labels>
+	</ButtonBar>
+	-->
+	<!-- Android - added to bottom of screen when editButton is pressed-->
+	<View id="deleteToolbar" platform="android">
+		<Button id="deleteSelectedButton" />
+	</View>
+</Alloy>

@@ -1,0 +1,26 @@
+<Alloy>
+	<!-- IOS -->
+<!--	<TableViewRow id="row" editable="false" touchEnabled="false" focusable="false" hasChild="false" platform="ios">
+		<Label id="item" />
+		<Label id="color" />
+		<Label id="count" />
+		<Label id="price" />
+		<Label id="totalprice" />
+	</TableViewRow>
+-->
+	<View id="row" editable="false" touchEnabled="false" focusable="false" hasChild="false" platform="ios">
+		<Label id="item" />
+		<Label id="color" />
+		<Label id="count" />
+		<Label id="price" />
+		<Label id="totalprice" />
+	</View>
+	<!-- Android -->
+	<View id="row" editable="false" touchEnabled="false" focusable="false" platform="android">
+		<Label id="item" />
+		<Label id="color" />
+		<Label id="count" />
+		<Label id="price" />
+		<Label id="totalprice" />
+	</View>
+</Alloy>

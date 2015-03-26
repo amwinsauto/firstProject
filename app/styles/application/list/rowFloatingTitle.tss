@@ -1,0 +1,16 @@
+"#titleView": {
+	left: 8,
+	right: 0,
+	layout: 'vertical',
+	height: Ti.UI.SIZE,
+//	width: Ti.UI.FILL
+}
+"#title": {
+	left: 1,
+	right: 0,
+	height: 20,
+	font: {
+		fontSize: 14,
+		fontWeight: "bold"
+	}
+}

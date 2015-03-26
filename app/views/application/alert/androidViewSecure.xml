@@ -1,0 +1,5 @@
+<Alloy>
+	<View id="androidView">
+		<TextField id="text" />
+	</View>
+</Alloy>

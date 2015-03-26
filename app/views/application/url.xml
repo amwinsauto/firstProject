@@ -1,0 +1,5 @@
+<Alloy>
+	<WebView id="urlWebView" onLoad="onUrlWebViewLoad" />
+	<Button id="backButton" onClick="onBackButtonClick" />
+	<Button id="forwardButton" onClick="onForwardButtonClick" />
+</Alloy>

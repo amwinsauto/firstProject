@@ -1,0 +1,18 @@
+"#bottomToolbar[platform=ios]": {
+	borderColor: '#b2b2b2',
+	borderWidth: 0.5,
+	borderTop: true,
+	borderBottom: false,
+	bottom : 0,
+	left: 0,
+	right: 0
+},
+"#bottomToolbar[platform=android]": {
+//	backgroundColor: '#2e2e2e',
+	backgroundColor: '#dddddd',
+	layout: 'horizontal',
+	bottom: 0,
+	left: 0,
+	right: 0,
+	height: 46
+}

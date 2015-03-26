@@ -1,0 +1,22 @@
+{
+	"global": {
+		"theme": "inhouse",
+		"https": true,
+		"server": "demo.aspect4.com",
+		"webApplication": "crosspad",
+		"appendSlashToWebApplication": true, 
+		"timeOut": 30000,
+		"iosAppId": 501296128,
+		"serversetupEnabled": true,
+		"logonRequired": true,
+		"linearScanner": false,
+		"supportUrl": "http://www.aspect4.com/crosspad/%s/support.php",
+		"serverType": "ASPECT4"
+	},
+	"env:development": {},
+	"env:test": {},
+	"env:production": {},
+	"os:ios": {},
+	"os:android": {},
+	"dependencies": {}
+}

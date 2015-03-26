@@ -1,0 +1,21 @@
+"#row": {
+	horizontalWrap: false
+}
+"#row[platform=ios]": {
+//	layout: 'horizontal'
+}
+"#deleteView":{
+	visible: false,
+	left: 15,
+	height: 22,
+	width: 22
+}
+"#contentView":{
+	left: 0,
+	right: 0
+//	touchEnabled: false
+}
+"#view":{
+	left: 8, /* Also used for top and bottom padding on each row*/
+	right: 8
+}

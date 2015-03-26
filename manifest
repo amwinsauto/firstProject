@@ -1,9 +1,9 @@
-#appname:HoloTest
-#appid:dk.holotest
+#appname:Crosspad
+#appid:dk.eg.mobile.crosspad.aspect4.inhouse
 #type:mobile
-#guid:a68bbf76-a972-4071-a160-d9571177a8c4
+#guid:8e4218f2-6f8f-47e4-902f-6b471b63bb7e
 #version:1.0
-#publisher:neerup
-#url:http://
+#publisher:EG
+#url:http://www.eg.dk
 #image:appicon.png
-#desc:not specified1
+#desc:not specified

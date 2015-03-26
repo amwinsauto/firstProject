@@ -1,0 +1,51 @@
+"#logsetupWindow": {
+	titleid: 'logging_setup',
+	backgroundImage:"/images/bgabout.jpg",
+	orientationModes : [Ti.UI.PORTRAIT]
+}
+"#logsetupWindow[platform=ios formFactor=tablet]":{
+	orientationModes: [Ti.UI.LANDSCAPE_LEFT, Ti.UI.LANDSCAPE_RIGHT]
+}
+"#logsetupView": {
+}
+"#enableLoggingLabel": {
+	top: 10,
+	left: 15,
+	right: 55,
+	height: 40,
+	textid: 'enable_logging',
+	color: 'white'
+}
+"#enableLoggingLabel[platform=ios]": {
+	font: {textStyle: Ti.UI.TEXT_STYLE_BODY},
+	color: 'black'
+}
+"#enableLoggingSwitch": {
+	top: 20,
+	right: 15,
+	height: 40
+}
+"#enableLoggingSwitch[platform=android]": {
+	top: 10,
+	style: Ti.UI.Android.SWITCH_STYLE_CHECKBOX
+}
+"#emailButton": {
+	titleid:"email_log",
+	top:60,
+	right:15,
+	width:90,
+	height:44,
+	borderRadius:1,
+	selectedColor:'#000000',
+	backgroundImage:"/images/core/pillbutton.png",
+	backgroundFocusedImage:"/images/core/pillbutton_pressed.png",
+	backgroundSelectedImage:"/images/core/pillbutton_pressed.png", 
+	font: { fontSize: 14, fontFamily: 'Arial'}
+}
+"#emailButton[platform=android]": {
+	color:'#ffffff',
+	backgroundImage: '/images/core/android_pillbutton.png',
+	backgroundSelectedImage: '/images/core/android_pillbutton_pressed.png',
+	backgroundDisabledImage: '/images/core/android_pillbutton_pressed.png'
+}
+

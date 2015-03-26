@@ -1,0 +1,10 @@
+<Alloy>
+	<TabGroup id="masterTabGroup" class="windowBackgroundColor tintColor barColor tabsColor">
+		<!--<Menu id="menu" platform="android">-->
+			<!-- Cannot specify node text.  Use attributes only. -->
+			<!--<MenuItem id="supportMenu" onClick="onSupportClick" />-->
+			<!--<MenuItem id="aboutMenu" onClick="onAboutClick" />-->
+		<!--</Menu>-->
+
+	</TabGroup>
+</Alloy>

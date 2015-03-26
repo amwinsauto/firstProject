@@ -1,0 +1,21 @@
+<Alloy>
+	<Toolbar id="keyboardToolbar" platform="ios" >
+		<Items>
+			<Button id="previous" onClick="onPreviousClick"/>
+			<Button systemButton="Ti.UI.iPhone.SystemButtonStyle.FIXED_SPACE" />
+			<Button id="next" onClick="onNextClick"/>
+			<FlexSpace/>
+			<Button id="ok" onClick="onOkClick"/>
+		</Items>
+	</Toolbar>
+	<!--
+	<ButtonBar id="navigationButtonBar" platform="ios" onClick="onNavigationButtonBarClick">
+	<Labels>
+	<Label id="previousButtonLabel" enabled="false"/>
+	<Label id="nextButtonLabel" enabled="false"/>
+	</Labels>
+	</ButtonBar>
+	<Button id="okOkButton" onClick="onOkClick"/>
+	-->
+
+</Alloy>

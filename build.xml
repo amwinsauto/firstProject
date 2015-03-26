@@ -1,0 +1,375 @@
+<project name="Crosspad" default="doNothing">
+	<target name="doNothing">
+		<echo message="Run As -> Ant Build..." />
+	</target>
+	
+	<target name="PatchInhouse">
+		<antcall target="_patch_project">
+			<param name="config" value="dev" />
+			<param name="appNamespace" value="dk.eg.mobile.crosspad.aspect4.inhouse" />
+			<param name="appName" value="Crosspaddev" />
+			<param name="appTitle" value="ASPECT4 Dev" />
+			<param name="appScheme" value="aspect4crosspadinhouse" />
+			<param name="acsKeyProd" value="Y4QZPhPTMjyQjt1z8ckm1N9hs46rx1mQ" />
+			<param name="acsKeyDev" value="4XgJjA31J3rtmoeY0TuNuDOR7oSWGb7M" />
+		</antcall>
+	</target>
+	
+	<target name="PatchProd">
+		<antcall target="_patch_project">
+			<param name="config" value="prod" />
+			<param name="appNamespace" value="dk.eg.mobile.crosspad.aspect4" />
+			<param name="appName" value="Crosspad" />
+			<param name="appTitle" value="ASPECT4" />
+			<param name="appScheme" value="aspect4crosspad" />
+			<param name="acsKeyProd" value="1LnaxTFGrOzYfNFKRWpQ19XuTSg0dWF5" />
+			<param name="acsKeyDev" value="NSXEznksMPhUTSO8vh5I2H9iyFqN5p2E" />
+		</antcall>
+	</target>
+
+	<target name="PatchASPECT4_Day">
+		<antcall target="_patch_project">
+			<param name="config" value="a4day" />
+			<param name="appNamespace" value="dk.eg.mobile.crosspad.aspect4day.production" />
+			<param name="appName" value="Aspect4day" />
+			<param name="appTitle" value="ASPECT4 Day" />
+			<param name="appScheme" value="aspect4day" />
+			<param name="acsKeyProd" value="5JFRpJaxPUVRyGl2f7fgpXEiIQ7lEGYq" />
+			<param name="acsKeyDev" value="t3Fkc6wIUKMZmBQeoT8jBQ9B9NrroXhL" />
+		</antcall>
+	</target>
+
+	<target name="PatchEGCrosspad">
+		<antcall target="_patch_project">
+			<param name="config" value="egcrosspad" />
+			<param name="appNamespace" value="dk.eg.mobile.crosspad" />
+			<param name="appName" value="Egcrosspad" />
+			<param name="appTitle" value="EG Crosspad" />
+			<param name="appScheme" value="egcrosspad" />
+			<param name="acsKeyProd" value="1LnaxTFGrOzYfNFKRWpQ19XuTSg0dWF5" />
+			<param name="acsKeyDev" value="NSXEznksMPhUTSO8vh5I2H9iyFqN5p2E" />
+		</antcall>
+	</target>
+
+	<target name="PatchAdvoProDev">
+		<antcall target="_remove_linea" />
+		<antcall target="_patch_project">
+			<param name="config" value="advopro" />
+			<param name="appNamespace" value="dk.eg.mobile.crosspad.advopro.dev" />
+			<param name="appName" value="Advopro" />
+			<param name="appTitle" value="AdvoPro" />
+			<param name="appScheme" value="advoprocrosspaddev" />
+			<param name="acsKeyProd" value="1LnaxTFGrOzYfNFKRWpQ19XuTSg0dWF5" />
+			<param name="acsKeyDev" value="NSXEznksMPhUTSO8vh5I2H9iyFqN5p2E" />
+		</antcall>
+	</target>
+	<target name="PatchAdvoPro">
+		<antcall target="_remove_linea" />
+		<antcall target="_patch_project">
+			<param name="config" value="advopro" />
+			<param name="appNamespace" value="dk.eg.mobile.crosspad.advopro" />
+			<param name="appName" value="Advopro" />
+			<param name="appTitle" value="AdvoPro" />
+			<param name="appScheme" value="advoprocrosspad" />
+			<param name="acsKeyProd" value="1LnaxTFGrOzYfNFKRWpQ19XuTSg0dWF5" />
+			<param name="acsKeyDev" value="NSXEznksMPhUTSO8vh5I2H9iyFqN5p2E" />
+		</antcall>
+	</target>
+	
+	<target name="PatchEGRetailDev">
+		<antcall target="_remove_linea" />
+		<antcall target="_patch_project">
+			<param name="config" value="egretail" />
+			<param name="appNamespace" value="dk.eg.mobile.crosspad.egretail.dev" />
+			<param name="appName" value="Egretaildev" />
+			<param name="appTitle" value="EG Retail Dev" />
+			<param name="appScheme" value="egretailcrosspaddev" />
+			<param name="acsKeyProd" value="1LnaxTFGrOzYfNFKRWpQ19XuTSg0dWF5" />
+			<param name="acsKeyDev" value="NSXEznksMPhUTSO8vh5I2H9iyFqN5p2E" />
+		</antcall>
+	</target>
+
+	<target name="PatchEGRetail">
+		<antcall target="_remove_linea" />
+		<antcall target="_patch_project">
+			<param name="config" value="egretail" />
+			<param name="appNamespace" value="dk.eg.mobile.crosspad.egretail" />
+			<param name="appName" value="Egretail" />
+			<param name="appTitle" value="EG Retail" />
+			<param name="appScheme" value="egretailcrosspad" />
+			<param name="acsKeyProd" value="1LnaxTFGrOzYfNFKRWpQ19XuTSg0dWF5" />
+			<param name="acsKeyDev" value="NSXEznksMPhUTSO8vh5I2H9iyFqN5p2E" />
+		</antcall>
+	</target>
+	
+	<target name="PatchPaiiDev">
+		<antcall target="_remove_linea" />
+		<antcall target="_patch_project">
+			<param name="config" value="paii" />
+			<param name="appNamespace" value="dk.eg.mobile.crosspad.egretail.paii.dev" />
+			<param name="appName" value="Paiidev" />
+			<param name="appTitle" value="Paii Dev" />
+			<param name="appScheme" value="paiicrosspaddev" />
+			<param name="acsKeyProd" value="1LnaxTFGrOzYfNFKRWpQ19XuTSg0dWF5" />
+			<param name="acsKeyDev" value="NSXEznksMPhUTSO8vh5I2H9iyFqN5p2E" />
+		</antcall>
+	</target>
+
+	<target name="PatchPaii">
+		<antcall target="_remove_linea" />
+		<antcall target="_patch_project">
+			<param name="config" value="paii" />
+			<param name="appNamespace" value="dk.eg.mobile.crosspad.egretail.paii" />
+			<param name="appName" value="Paii" />
+			<param name="appTitle" value="Paii" />
+			<param name="appScheme" value="paiicrosspad" />
+			<param name="acsKeyProd" value="1LnaxTFGrOzYfNFKRWpQ19XuTSg0dWF5" />
+			<param name="acsKeyDev" value="NSXEznksMPhUTSO8vh5I2H9iyFqN5p2E" />
+		</antcall>
+	</target>
+	
+	<target name="PatchAXDev">
+		<antcall target="_patch_project">
+			<param name="config" value="ax" />
+			<param name="appNamespace" value="dk.eg.mobile.crosspad.ax.dev" />
+			<param name="appName" value="Axdev" />
+			<param name="appTitle" value="AX Dev" />
+			<param name="appScheme" value="axcrosspaddev" />
+			<param name="acsKeyProd" value="1LnaxTFGrOzYfNFKRWpQ19XuTSg0dWF5" />
+			<param name="acsKeyDev" value="NSXEznksMPhUTSO8vh5I2H9iyFqN5p2E" />
+		</antcall>
+	</target>
+	<target name="PatchAX">
+		<antcall target="_patch_project">
+			<param name="config" value="ax" />
+			<param name="appNamespace" value="dk.eg.mobile.crosspad.ax" />
+			<param name="appName" value="Ax" />
+			<param name="appTitle" value="AX" />
+			<param name="appScheme" value="axcrosspad" />
+			<param name="acsKeyProd" value="1LnaxTFGrOzYfNFKRWpQ19XuTSg0dWF5" />
+			<param name="acsKeyDev" value="NSXEznksMPhUTSO8vh5I2H9iyFqN5p2E" />
+		</antcall>
+	</target>
+	
+	<target name="_patch_project" >
+		<!-- ${config} dev.json -->
+		<!-- ${appNamespace} dk.eg.mobile.crosspad.aspect4 -->
+		<!-- ${appName} Crosspad -->
+		<!-- ${appTitle} ASPECT4 Dev -->
+		<!-- ${appScheme} crosspad -->
+
+<!--		<copy tofile="app/config.json" file="app/${config}.json" overwrite="true"/> -->
+		<copy tofile="app/config.json" file="app/themes/${config}/config.json" overwrite="true" failonerror="false"/>
+
+		<antcall target="_patch_tiapp">
+			<param name="appNamespace" value="${appNamespace}" />
+			<param name="appName" value="${appName}" />
+			<param name="appScheme" value="${appScheme}" />
+			<param name="acsKeyProd" value="${acsKeyProd}" />
+			<param name="acsKeyDev" value="${acsKeyDev}" />
+		</antcall>
+		
+		<antcall target="_patch_appName">
+			<param name="appName" value="${appTitle}" />
+		</antcall>
+		
+		<delete file="platform/android/res/drawable-hdpi/appicon.png" />
+		<copy tofile="platform/android/res/drawable-hdpi/appicon.png" file="app/themes/${config}/platform/android/res/drawable-hdpi/appicon.png" overwrite="true" failonerror="false"/>
+		<delete file="platform/android/res/drawable-mdpi/appicon.png" />
+		<copy tofile="platform/android/res/drawable-mdpi/appicon.png" file="app/themes/${config}/platform/android/res/drawable-mdpi/appicon.png" overwrite="true" failonerror="false"/>
+		<delete file="platform/android/res/drawable-xhdpi/appicon.png" />
+		<copy tofile="platform/android/res/drawable-xhdpi/appicon.png" file="app/themes/${config}/platform/android/res/drawable-xhdpi/appicon.png" overwrite="true" failonerror="false"/>
+		<delete file="platform/android/res/drawable-xxhdpi/appicon.png" />
+		<copy tofile="platform/android/res/drawable-xxhdpi/appicon.png" file="app/themes/${config}/platform/android/res/drawable-xxhdpi/appicon.png" overwrite="true" failonerror="false"/>
+		
+		<antcall target="_rebuild_project" />
+		
+	</target>
+	
+	<target name="_patch_tiapp" >
+		<!-- Replace <id>${appNamespace}</id>	in tiapp.xml-->
+		<replaceregexp match="&lt;id&gt;.*&lt;/id&gt;" replace="&lt;id&gt;${appNamespace}&lt;/id&gt;" byline="true"	file="tiapp.xml" />
+		<!-- Replace <name>${appName}</name> in tiapp.xml-->
+		<replaceregexp match="&lt;name&gt;.*&lt;/name&gt;" replace="&lt;name&gt;${appName}&lt;/name&gt;" byline="true" file="tiapp.xml" />
+		<!-- Replace android:name="${appName}Application" in tiapp.xml-->
+		<replaceregexp match="android:name=&quot;.*Application&quot;" replace="android:name=&quot;${appName}Application&quot;" byline="true" file="tiapp.xml" />
+		<!-- Replace android:name=".${appName}Activity" in tiapp.xml-->
+		<replaceregexp match="android:name=&quot;\..*Activity&quot;" replace="android:name=&quot;.${appName}Activity&quot;" byline="true" file="tiapp.xml" />
+		<!-- Replace android:scheme="${appScheme}" in tiapp.xml-->
+		<replaceregexp match="android:scheme=&quot;.*&quot;" replace="android:scheme=&quot;${appScheme}&quot;" byline="true" file="tiapp.xml" />
+		
+		<!-- Replace <string replacename="appNamespace">${appNamespace}</string> -->
+		<replaceregexp 
+			match="&lt;string replacename=&quot;appNamespace&quot;&gt;.*&lt;/string&gt;"
+			replace="&lt;string replacename=&quot;appNamespace&quot;&gt;${appNamespace}&lt;/string&gt;" 
+			byline="true"
+			file="tiapp.xml" >
+		</replaceregexp>
+		<!-- Replace <string replacename="appScheme">${appScheme}</string> -->
+		<replaceregexp 
+			match="&lt;string replacename=&quot;appScheme&quot;&gt;.*&lt;/string&gt;"
+			replace="&lt;string replacename=&quot;appScheme&quot;&gt;${appScheme}&lt;/string&gt;" 
+			byline="true"
+			file="tiapp.xml" >
+		</replaceregexp>
+		
+		<!-- Replace <property name="acs-api-key-production" type="string">${acsKeyProd}</property> -->
+		<replaceregexp 
+			match="&lt;property name=&quot;acs-api-key-production&quot; type=&quot;string&quot;&gt;.*&lt;/property&gt;"
+			replace="&lt;property name=&quot;acs-api-key-production&quot; type=&quot;string&quot;&gt;${acsKeyProd}&lt;/property&gt;" 
+			byline="true"
+			file="tiapp.xml" >
+		</replaceregexp>
+		<!-- Replace <property name="acs-api-key-development" type="string">${acsKeyDev}</property> -->
+		<replaceregexp 
+			match="&lt;property name=&quot;acs-api-key-development&quot; type=&quot;string&quot;&gt;.*&lt;/property&gt;"
+			replace="&lt;property name=&quot;acs-api-key-development&quot; type=&quot;string&quot;&gt;${acsKeyDev}&lt;/property&gt;" 
+			byline="true"
+			file="tiapp.xml" >
+		</replaceregexp>
+
+		
+	</target>
+	
+	<target name="_patch_appName">
+		
+		<!-- strings.xml default language (android)-->
+		<!-- Replace <string name="appname">${appName}</string> in platform/android/res/values/strings.xml-->
+		<replaceregexp match="&lt;string name=&quot;appname&quot;&gt;.*&lt;/string&gt;" replace="&lt;string name=&quot;appname&quot;&gt;${appName}&lt;/string&gt;" byline="true" file="platform/android/res/values/strings.xml" />
+
+		
+		<antcall target="_patch_appName_language">
+			<param name="appLanguage" value="da" />
+			<param name="appName" value="${appName}" />
+		</antcall>
+		<antcall target="_patch_appName_language">
+			<param name="appLanguage" value="de" />
+			<param name="appName" value="${appName}" />
+		</antcall>
+		<antcall target="_patch_appName_language">
+			<param name="appLanguage" value="en" />
+			<param name="appName" value="${appName}" />
+		</antcall>
+		<antcall target="_patch_appName_language">
+			<param name="appLanguage" value="nb" />
+			<param name="appName" value="${appName}" />
+		</antcall>
+		<antcall target="_patch_appName_language">
+			<param name="appLanguage" value="sv" />
+			<param name="appName" value="${appName}" />
+		</antcall>
+	</target>
+
+	<target name="_patch_appName_language">
+		<!-- app.xml -->
+		<!-- Replace <string name="appname">${appName}</string> in i18n/${appLanguage}/app.xml-->
+		<replaceregexp match="&lt;string name=&quot;appname&quot;&gt;.*&lt;/string&gt;" replace="&lt;string name=&quot;appname&quot;&gt;${appName}&lt;/string&gt;" byline="true" file="i18n/${appLanguage}/app.xml" />
+		<!-- strings.xml -->
+		<!-- Replace <string name="appname">${appName}</string> in i18n/${appLanguage}/strings.xml-->
+		<replaceregexp match="&lt;string name=&quot;appname&quot;&gt;.*&lt;/string&gt;" replace="&lt;string name=&quot;appname&quot;&gt;${appName}&lt;/string&gt;" byline="true" file="i18n/${appLanguage}/strings.xml" />
+		<!-- Replace <string name="application_name">ASPECT4</string> in i18n/${appLanguage}/strings.xml-->
+		<replaceregexp match="&lt;string name=&quot;application_name&quot;&gt;.*&lt;/string&gt;" replace="&lt;string name=&quot;application_name&quot;&gt;${appName}&lt;/string&gt;" byline="true" file="i18n/${appLanguage}/strings.xml" />
+		<!-- strings.xml (android)-->
+		<!-- Replace <string name="appname">${appName}</string> in platform/android/res/values-${appLanguage}/strings.xml-->
+		<replaceregexp match="&lt;string name=&quot;appname&quot;&gt;.*&lt;/string&gt;" replace="&lt;string name=&quot;appname&quot;&gt;${appName}&lt;/string&gt;" byline="true" file="platform/android/res/values-${appLanguage}/strings.xml" />
+	</target>
+
+	<target name="_rebuild_project" >
+		<!-- Refresh and build project -->
+		<path id="basedir.path">
+			<pathelement path="${basedir}" />
+		</path>
+		<pathconvert property="project.folder" refid="basedir.path">
+			<chainedmapper>
+				<mapper type="flatten"/>
+				<flattenmapper/>
+			</chainedmapper>
+		</pathconvert>
+		<echo message="${project.folder}" />
+
+		<eclipse.refreshLocal resource="${project.folder}" depth="infinite" />
+		<eclipse.incrementalBuild project="${project.folder}" kind="clean" />
+		<eclipse.incrementalBuild project="${project.folder}" kind="full" />
+	</target>
+	
+	<target name="_remove_linea" >
+		<!-- Remove  <module platform="iphone" version="0.6">dk.eg.crosspad.linea.scanner</module> -->
+		<replaceregexp 
+			match="&lt;module platform=&quot;iphone&quot; version=&quot;0.6&quot;&gt;dk.eg.crosspad.linea.scanner&lt;/module&gt;"
+			replace="" 
+			flags="g" byline="true"	file="tiapp.xml" />
+	</target>
+
+	<target name="update" depends="prepareResourcesFolder">
+		<property name="module1" value="Crosspad" />
+		<property name="cvs.username" value="hersasp02\bsautotest" />
+		<property name="cvs.password" value="klient41" />
+		<property name="cvs.root" value=":pserver:${cvs.username}:${cvs.password}@hersasp02:/Crosspad" />
+		<property name="cvs.packageroot" value="Crosspad" />
+		<property name="cvs.stream" value="HEAD" />
+		<cvs command="update -r ${cvs.stream} -d ${module1}"
+		package="${cvs.packageroot}" dest=".." cvsroot="${cvs.root}" cvsrsh="ssh" quiet="true" />
+	</target>
+	
+	<target name="prepareResourcesFolder">
+		<delete dir="Resources" />
+		<delete dir="build" />
+		<delete file="build.log" />
+	</target>
+	
+	<target name="CopyToAndroidFolders">
+		<delete dir="temp" />
+		<!-- <copy todir="temp/hires" includeEmptyDirs="false" preservelastmodified="true">
+		<fileset dir="app/assets/iphone/images" includes="core/**/*.png" /> <fileset
+		dir="app/assets/iphone/images" includes="icons/**/*.png" /> </copy> <delete
+		dir="temp/hires" includes="**/*@2x.png" /> -->
+
+		<copy todir="temp/res-xhdpi" includeEmptyDirs="false"
+		preservelastmodified="true" overwrite="true">
+			<fileset dir="app/assets/iphone/images" includes="core/**/*@3x.png" />
+			<fileset dir="app/assets/iphone/images" includes="icons/**/*@3x.png" />
+			<globmapper from="*@3x.png" to="*.png" />
+		</copy>
+		<copy todir="temp/res-hdpi" includeEmptyDirs="false"
+		preservelastmodified="true" overwrite="true">
+			<fileset dir="app/assets/iphone/images" includes="core/**/*@2x.png" />
+			<fileset dir="app/assets/iphone/images" includes="icons/**/*@2x.png" />
+			<globmapper from="*@2x.png" to="*.png" />
+		</copy>
+		<copy todir="temp/res-mdpi" includeEmptyDirs="false"
+		preservelastmodified="true">
+			<fileset dir="app/assets/iphone/images" includes="core/**/*.png" />
+			<fileset dir="app/assets/iphone/images" includes="icons/**/*.png" />
+		</copy>
+		<delete dir="temp/res-mdpi" includes="**/*@2x.png" />
+		<delete dir="temp/res-mdpi" includes="**/*@3x.png" />
+		<!--
+		<antcall target="_copyToRes">
+			<param name="from" value="lowres" />
+			<param name="to" value="res-ldpi" />
+		</antcall>
+		-->
+		<antcall target="_copyToRes">
+			<param name="from" value="res-mdpi" />
+			<param name="to" value="res-mdpi" />
+		</antcall>
+		<antcall target="_copyToRes">
+			<param name="from" value="res-hdpi" />
+			<param name="to" value="res-hdpi" />
+		</antcall>
+		<delete dir="temp" />
+		<eclipse.refreshLocal resource="Crosspad" depth="infinite" />
+		<eclipse.incrementalBuild project="Crosspad"
+		kind="incremental" />
+	</target>
+
+
+	<target name="_copyToRes">
+		<delete dir="app/assets/android/images/${to}/core" includes="**/*.png" quiet="true" />
+		<delete dir="app/assets/android/images/${to}/icons" includes="**/*.png" quiet="true" />
+		<copy todir="app/assets/android/images/${to}" includeEmptyDirs="false" preservelastmodified="true">
+			<fileset dir="temp/${from}" />
+		</copy>
+	</target>
+
+</project>

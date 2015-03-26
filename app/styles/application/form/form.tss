@@ -1,0 +1,12 @@
+"#formView": {
+	// Like Search field
+	//backgroundColor: '#c9c9ce'
+	// Like Settings background
+	backgroundColor: '#efeff4'
+}
+"#formView[platform=android]": {
+//	backgroundColor: '#dddddd'
+}
+"#contentScrollView[platform=android]": {
+	scrollType: 'vertical'
+}

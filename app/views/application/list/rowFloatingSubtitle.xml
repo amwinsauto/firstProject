@@ -1,0 +1,4 @@
+<Alloy>
+	<View id="subtitleView"/>
+	<Label id="subtitle"/>
+</Alloy>

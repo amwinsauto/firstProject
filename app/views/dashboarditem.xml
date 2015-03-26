@@ -1,0 +1,26 @@
+<Alloy>
+	<View id="tile" platform="ios">
+		<Button id="button" platform="ios" onClick="onClick">
+			<ImageView id="icon" touchEnabled="false"/>
+			<ImageView id="overlay" visible="false" touchEnabled="false"/>
+			<View id="badgeView" visible="false" touchEnabled="false">
+				<View id="badgeViewStart" touchEnabled="false" />
+				<View id="badgeViewEnd" touchEnabled="false" />
+				<Label id="badgeLabel" touchEnabled="false" />
+			</View>
+			<Label id="label" touchEnabled="false"/>
+		</Button>
+	</View>
+	<View id="tile" platform="android" >
+		<View id="button" platform="android" onClick="onClick">
+			<ImageView id="icon" />
+			<ImageView id="overlay" />
+			<View id="badgeView" >
+				<View id="badgeViewStart" />
+				<View id="badgeViewEnd" />
+				<Label id="badgeLabel" />
+			</View>
+			<Label id="label" />
+		</View>
+	</View>
+</Alloy>

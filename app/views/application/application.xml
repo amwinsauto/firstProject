@@ -1,0 +1,11 @@
+<Alloy>
+	<!--
+	mainAppView is defined in the application/layout/app*.xml files
+	because there is different layouts for applications
+	<Window id="mainAppView" />
+	-->
+	<!-- closeButton/logoutButton is set on the right window in code
+	<Button id="closeButton" platform="ios" onClick="onCloseClick" />
+	<Button id="logoutButton" platform="ios" onClick="onCloseClick" />
+	-->
+</Alloy>

@@ -1,0 +1,16 @@
+<Alloy>
+	<Window id="logonWindow" onOpen="onWindowOpen" exitOnClose="false" onFocus="onWindowFocus" onClick="onClick" onAndroidback="onAndroidBack">
+		<ActionBar id="actionbar" onHomeIconItemSelected="onAndroidHomeClick" platform="android" />
+		<Button id="menuButton" onClick="onMenuButtonClick" platform="ios"/>
+		<ImageView id="titleImageView" platform="ios" />
+		<Label id="titleLabel" platform="ios" formFactor="tablet" />
+		<View id="contentView">
+			<View id="logonView">
+				<TextField id="usernameTextField" onReturn="onUsernameTextFieldReturn" onChange="onUserPasswordChange" onFocus="onFocus" bubbleParent="false" />
+				<TextField id="passwordTextField" onReturn="onPasswordTextFieldReturn" onChange="onUserPasswordChange" onFocus="onFocus" bubbleParent="false" />
+				<Button id="logonButton" onClick="onLogonButtonClick" />
+				<Label id="errorLabel" />
+			</View>
+		</View>
+	</Window>
+</Alloy>

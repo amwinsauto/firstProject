@@ -1,0 +1,152 @@
+"#logonWindow":{
+	backgroundImage: '/images/bglogin_phone.jpg',
+}
+"#logonWindow[platform=ios]":{
+	statusBarStyle: Ti.UI.iPhone.StatusBar.LIGHT_CONTENT
+}
+"#logonWindow[platform=ios formFactor=tablet]":{
+	backgroundImage: '/images/bglogin_tablet.jpg',
+}
+"#logonWindow[platform=android]":{
+	titleid: "login_title",
+	navBarHidden: false,
+	// PNG for android but jpg for IOS ????
+	backgroundImage: "/images/bglogin_phone.jpg"
+}
+"#actionbar": {
+	homeButtonEnabled : true,
+	icon: '/images/core/menubutton.png'
+}
+"#menuButton[platform=ios]": {
+	backgroundImage: "",
+	image: "/images/core/menubutton.png",
+	top: 15,
+	left: 15,
+	width: 44,
+	height: 44
+}
+"#titleImageView[platform=ios]": {
+	top: 25,
+	image: '/images/core/logonheader.png',
+}
+"#titleLabel[platform=ios formFactor=tablet]": {
+	top: 50,
+//	height: 30,
+	color: "#ffffff",
+	textAlign: "center",
+	textid: "login_title",
+	font: {
+		fontSize: 20,
+		fontWeight: 'bold'
+	}
+}
+"#contentView": {
+	top: 75,
+	bottom: 220,
+	left: 0,
+	right: 0
+}
+"#contentView[platform=ios formFactor=tablet]": {
+	bottom: 350
+	
+}
+"#contentView[platform=android]": {
+	top: 0
+}
+"#logonView": {
+	width: 310,
+	height:Titanium.UI.SIZE
+}
+"#logonView[formFactor=tablet]": {
+	width: 510
+}
+"#usernameTextField": {
+	hintText: L( 'username'),
+	top: 0,
+	width: 300,
+	height: 40,
+	backgroundColor: 'white',
+	color: "#007aff",
+	autocorrect: false,
+	paddingLeft: 20,
+	borderRadius: 20,
+	autocapitalization: Ti.UI.TEXT_AUTOCAPITALIZATION_NONE,
+	keyboardType: Ti.UI.KEYBOARD_DEFAULT,
+	returnKeyType: Ti.UI.RETURNKEY_NEXT,
+	borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED
+}
+"#usernameTextField[platform=ios]":{
+	 font: {
+		fontSize: 18, // Default body Size
+		// textStyle: Ti.UI.TEXT_STYLE_BODY
+	 },
+	clearButtonMode: Ti.UI.INPUT_BUTTONMODE_ONFOCUS,
+	borderStyle: Ti.UI.INPUT_BORDERSTYLE_PLAIN
+}
+"#usernameTextField[formFactor=handheld]": {
+	width: 270
+}
+
+"#passwordTextField": {
+	hintText: L( 'password'),
+	top: 75,
+	// 	left:5,
+	width: 300,
+	height: 40,
+	backgroundColor: 'white',
+	color: "#007aff",
+	paddingLeft: 20,
+	borderRadius: 20,
+	autocorrect: false,
+	passwordMask: true,
+	autocapitalization: Ti.UI.TEXT_AUTOCAPITALIZATION_NONE,
+	keyboardType: Ti.UI.KEYBOARD_DEFAULT,
+	returnKeyType: Ti.UI.RETURNKEY_DONE,
+	borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED
+}
+"#passwordTextField[platform=ios]":{
+	font: {
+		fontSize: 18, // Default body Size
+		// textStyle: Ti.UI.TEXT_STYLE_BODY
+	},
+	clearButtonMode: Ti.UI.INPUT_BUTTONMODE_ONFOCUS,
+	borderStyle: Ti.UI.INPUT_BORDERSTYLE_PLAIN
+}
+"#passwordTextField[formFactor=handheld]": {
+	width: 270
+}
+"#passwordTextField[if=Alloy.Globals.iPhoneShort]": {
+	top: 55
+}
+
+"#logonButton": {
+	backgroundColor: 'white',
+	width: 66,
+	height: 66,
+	borderRadius: 33,
+	borderRadius: 33
+}
+"#logonButton[platform=ios]": {
+	image: "/images/core/login_button.png"
+}
+"#logonButton[platform=android]": {
+	backgroundImage: "/images/core/login_button.png",
+	backgroundColor: '#007aff'
+}
+"#logonButton[formFactor=handheld]": {
+	top: 134
+}
+"#logonButton[if=Alloy.Globals.iPhoneShort]": {
+	top: 104
+}
+"#logonButton[formFactor=tablet]": {
+	right: 0
+}
+"#errorLabel":{
+	right: 0,
+	width: 185,
+	bottom: 0,
+	height: 42,
+	color: 'red',
+	visible: false
+}

@@ -1,0 +1,14 @@
+<Alloy>
+	<View id="updateView">
+		<Label id="titleLabel" />
+		<View id="line1View" />
+		<View id="installedView">
+			<View id ="installedStatusView" />
+			<Label id="installedLabel" />
+		</View>
+		<View id="line2View" />
+		<Label id="descriptionLabel" />
+		<Button id="updateButton" onClick="onUpdateButtonClick"/>
+		<Label id="footerLabel" />
+	</View>
+</Alloy>

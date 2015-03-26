@@ -1,0 +1,14 @@
+"#label":{
+	height: 20,
+	right: 0,
+	width: Ti.UI.SIZE,
+	textAlign: 'right',
+	color: '#8e8e8e',
+	font: {
+		fontSize: 15, // Default subheadline Size
+		// textStyle: Ti.UI.TEXT_STYLE_SUBHEADLINE
+	}
+}
+"#label[platform=android]":{
+//	color: 'black',
+}

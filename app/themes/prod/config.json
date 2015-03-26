@@ -1,0 +1,18 @@
+{
+	"global": {
+		"theme": "prod",
+		"https": true,
+		"server": "demo.aspect4.com",
+		"webApplication": "crosspad",
+		"appendSlashToWebApplication": true, 
+		"iosAppId": 501296128,
+		"supportUrl": "http://www.aspect4.com/crosspad/%s/support.php",
+		"serverType": "ASPECT4"
+	},
+	"env:development": {},
+	"env:test": {},
+	"env:production": {},
+	"os:ios": {},
+	"os:android": {},
+	"dependencies": {}
+}

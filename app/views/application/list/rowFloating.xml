@@ -1,0 +1,10 @@
+<Alloy>
+	<TableViewRow id="row" class="listRow tableSelectedColor">
+		<View id="floatingView">
+			<View id="headerView"/>
+			<View id="bodyView">
+				<Label id="body"/>
+			</View>
+		</View>
+	</TableViewRow>
+</Alloy>

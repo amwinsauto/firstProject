@@ -1,0 +1,25 @@
+"#fieldTableViewRow[platform=android]": {
+	height: Ti.UI.SIZE
+}
+"#fieldView": {
+	height: Ti.UI.SIZE
+},
+"#fieldImageView":{
+	// Must be devideable by 11 which is a quater of 44 (Default field height)
+	egHeightSmall: 99,
+	egHeightMedium: 198,
+	egHeightLarge: 297,
+	left: '55%',
+	right: 0
+},
+"#trailerLabel": {
+	touchEnabled: false
+},
+"#clickImageView": {
+	image: '/images/core/android_arrow_right.png',
+	width: 12,
+	height: 12,
+	right: 10
+}
+
+

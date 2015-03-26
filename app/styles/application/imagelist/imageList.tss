@@ -1,0 +1,14 @@
+"#images": {
+	egImageTop: 2, // Adjust space between images in %
+	egImageLeft: 2, // Adjust space between images in %
+	showPagingControl: false, 
+	bottom: 20  
+}
+"#footer": {
+	bottom: 0,
+	height: 20,
+	font:{
+		fontSize: 13
+	}
+
+}

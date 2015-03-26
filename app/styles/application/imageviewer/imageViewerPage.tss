@@ -1,0 +1,4 @@
+"#imageListPage": {
+	backgroundColor: 'white',
+	layout: 'horizontal'
+}

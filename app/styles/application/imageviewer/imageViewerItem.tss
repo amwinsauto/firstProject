@@ -1,0 +1,36 @@
+"#imageListItem": {
+	disableBounce: true,
+	maxZoomScale: 10.0, 
+//	backgroundColor: 'green',
+}
+"#image": {
+	top: 0,
+	bottom: 0,
+	left: 0,
+	right: 0	
+}
+"#markerHolder": {
+//	backgroundColor: 'green',
+	visible: false,
+	bubbleParent: false,
+	top: 0,
+	right: 0,
+	width: 52,
+	height: 52,
+}
+
+"#marker": {
+//	backgroundColor: 'green',
+	visible: false,
+//	bubbleParent: false,
+	top: 10,
+	right: 10,
+	width: 32,
+	height: 32,
+	egCheckedBackgroundImage: '/images/core/checkbox_checked.png',
+	egUnCheckedBackgroundImage: '/images/core/checkbox_unchecked.png'
+}
+"#titles": {
+	bottom: 0,
+	height: 0
+}

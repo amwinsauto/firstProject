@@ -1,0 +1,16 @@
+"#subtitleView": {
+	layout: 'horizontal',
+	left: 0,
+	right: 0,
+	height: 20,
+//	height: Ti.UI.SIZE,
+//	width: Ti.UI.FILL
+},
+"#subtitle": {
+	left: 1,
+	color: 'gray',
+	height: 16,
+	font: {
+		fontSize: 12
+	}
+}

@@ -1,0 +1,11 @@
+<Alloy>
+	<!-- IOS -->
+	<TableViewRow id="fieldTableViewRow" class="formFieldRow tableSelectedColor formFieldColors" hasChild="false" platform="ios">
+		<View id="fieldView" />
+	</TableViewRow>
+	<!-- Android -->
+	<View id="fieldTableViewRow" class="formFieldRow formFieldColors" platform="android">
+		<View id="fieldView" />
+		<ImageView id="clickImageView" visible="false"/>
+	</View>
+</Alloy>

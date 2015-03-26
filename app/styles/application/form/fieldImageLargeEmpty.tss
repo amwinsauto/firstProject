@@ -1,0 +1,14 @@
+"#image[platform=ios]": {
+//	left: 15,
+	left: 10,
+	width: 80,
+	height: 80,
+	touchEnabled : false
+},
+"#image[platform=android]": {
+//	left: 15,
+	left: 10,
+	width: 75,
+	height: 75,
+	touchEnabled : false
+}

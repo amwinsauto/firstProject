@@ -1,0 +1,32 @@
+"#row": {
+	horizontalWrap: false
+},
+"#row[platform=ios]": {
+//	layout: 'horizontal'
+},
+"#deleteView":{
+	visible: false,
+	left: 15,
+	height: 22,
+	width: 22
+},
+"#contentView":{
+	left: 0,
+	right: 0,
+	height: 44 // Min height, calculated in code
+//	touchEnabled: false
+},
+"#contentView[platform=android]":{
+	touchEnabled: false
+},
+"#view":{
+	left: 15, 
+	right: 15,
+	egPadding : 8 /* Also used for top and bottom padding on each row*/
+//	touchEnabled: false
+}
+"#view[platform=android]":{
+	touchEnabled: false
+}
+
+

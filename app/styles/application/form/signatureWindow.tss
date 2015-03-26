@@ -1,0 +1,123 @@
+"#fieldEditorView[formFactor=handheld]": {
+	width : Ti.UI.SIZE,
+	height : Ti.UI.SIZE
+},
+"#fieldEditorView[platform=ios formFactor=tablet]": {
+	height : 400,
+	width : 700,
+	borderWidth : 1,
+	backgroundColor : 'white'
+},
+"#fieldEditorView[platform=android formFactor=tablet]": {
+	navBarHidden : false,
+	height : 400,
+	width : Ti.UI.SIZE,
+	borderWidth : 1,
+	backgroundColor : 'white'
+},
+
+"#fieldEditorTitleLabel": {
+//	left : 25,
+	left : 15,
+	top : 20,
+	color : '#333',
+	font : {
+		fontSize : 36
+	}
+},
+"#fieldEditorTextLabel": {
+	left : 15,
+	top : 60,
+	color : '#777',
+	font : {
+		fontSize : 12
+	}
+},
+"#fieldEditorClearButton[platform=android]": {
+	backgroundImage : '/images/core/clear.png',
+	width : 24,
+	height : 24,
+	right : 20,
+	top : 10,
+	borderWidth : 0
+},
+"#fieldEditorClearButton[platform=ios]": {
+	title: L('clear_button'),
+	right : 20,
+	top : 20,
+},
+"#fieldEditorLineView": {
+	left: 15,
+	right: 15,
+	height : 2,
+	backgroundColor : '#aaa',
+	bottom : 85
+},
+"#fieldEditorSignerLabel": {
+	textAlign : 'center',
+	font : {
+		fontWeight : 'bold',
+		fontSize : 18
+	},
+	color : '#999',
+	bottom : 55
+},
+"#fieldEditorXLabel": {
+	text : 'X',
+	textAlign : 'center',
+	font : {
+		fontSize : 24
+	},
+	color : '#aaa',
+	bottom : 90,
+	left : 25
+},
+"#fieldEditorFillWindow[formFactor=tablet]": {
+	backgroundColor : 'black',
+	opacity : 0.5
+},
+"#fieldEditorCancelButton[platform=android]":{
+	title : L('close_button'),
+	color : 'black',
+	width : 90,
+	height : 35,
+	left : 12,
+	bottom : 10,
+	font : {
+		fontFamily : 'Arial',
+		fontWeight : 'bold',
+		fontSize : 14
+	},
+	borderWidth : 0,
+	borderRadius : 0
+},
+"#fieldEditorCancelButton[platform=ios]":{
+	title : L('close_button'),
+	left : 15,
+	bottom : 10
+},
+"#fieldEditorDoneButton[platform=android]": {
+	title : L('done_button'),
+	color : 'black',
+	width : 90,
+	height : 35,
+	right : 12,
+	bottom : 10,
+	font : {
+		fontFamily : 'Arial',
+		fontWeight : 'bold',
+		fontSize : 14
+	},
+	opacity : 0,
+	borderWidth : 0,
+	borderRadius : 0
+}
+"#fieldEditorDoneButton[platform=ios]": {
+	title : L('done_button'),
+	right : 15,
+	bottom : 10,
+	font : {
+		fontWeight : 'bold'
+	},
+	opacity : 0
+}

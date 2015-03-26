@@ -1,0 +1,7 @@
+<Alloy>
+	<View id="optionView">
+		<ImageView id="image" touchEnabled="false"/>
+		<Label id="title" touchEnabled="false"/>
+		<!--		<Label id="titleSelected" touchEnabled="false" visible="false"/> -->
+	</View>
+</Alloy>

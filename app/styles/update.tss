@@ -1,0 +1,47 @@
+"#updateView[formFactor=handheld]":{
+	top: 80,
+	left: 10,
+	right: 10, 
+	bottom: 50,
+	backgroundImage: '/images/core/error_message.png'
+},
+"#updateView[platform=ios formFactor=tablet]":{
+	top: 140,
+	left: 252, 
+	width: 520,
+	height: 400,
+	backgroundImage: '/images/core/error_message.png'
+},
+
+
+"#titleLabel":{
+	top: 40,
+	height: Ti.UI.SIZE,
+	left: 10,
+	right: 10,
+	color: 'white',
+	textAlign: 'center',
+	font:{
+		fontWeight: 'bold',
+		fontSize: 20
+	}
+},
+"#descriptionLabel":{
+	top: 100,
+	height: Ti.UI.SIZE,
+	left: 10,
+	right: 10,
+	color: 'white',
+	textAlign: 'center',
+	font:{
+		fontWeight: 'bold',
+		fontSize: 20
+	}
+},
+"#updateButton":{
+	titleid: 'go_to_app_store',
+	bottom: 20,
+	right: 20,
+	height: 40,
+	width: 150
+}

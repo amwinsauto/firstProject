@@ -1,0 +1,6 @@
+<Alloy>
+	<View id="thumbItem" onClick="onClick">
+		<ImageView id="image" />
+		<View id="colorView" />
+	</View>
+</Alloy>

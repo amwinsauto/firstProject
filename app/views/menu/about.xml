@@ -1,0 +1,35 @@
+<Alloy>
+	<View id="about" bubbleParent="false">
+		<View id="aboutView">
+			<ImageView id="logoImageView"/>
+			<Label id="nameLabel"/>
+			<View id="line1View" />
+			<Label id="versionLabel"/>
+			<View id="line2View" />
+			<Label id="descriptionLabel"/>
+			<View id="bottomView">
+				<View id="buttonsView">
+					<View id="supportView" platform="ios" formFactor="handheld" >
+						<Button id="supportButton" onClick="onSupportClick" />
+						<Label id="supportLabel"/>
+					</View>
+					<View id="supportView" platform="android">
+						<Button id="supportButton" onClick="onSupportClick" />
+						<Label id="supportLabel"/>
+					</View>
+					<View id="emailView">
+						<Button id="emailButton" onClick="onEmailClick" />
+						<Label id="emailLabel" />
+					</View>
+				</View>
+				<Label id="copyrightLabel"/>
+			</View>
+		</View>
+		<View id="supportSectionView" formFactor="tablet" platform="ios">
+			<View id="supportHeaderView">
+				<Label id="supportHeaderLabel" />
+			</View>
+			<WebView id="supportWebView" />
+		</View>
+	</View>
+</Alloy>

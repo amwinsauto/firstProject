@@ -1,0 +1,6 @@
+<Alloy>
+	<View id="view">
+		<ScrollableView id="images" onScrollend="onScrollend" />
+		<Label id="footer" />
+	</View>
+</Alloy>

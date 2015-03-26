@@ -1,0 +1,9 @@
+<Alloy>
+	<View id="steppingstoneView" bubbleParent="false">
+		<View id="toolbarView">
+			<Label id="titleLabel" />
+			<View id="seperatorLine" />
+		</View>
+		<TableView id="tableView" onClick="onTableClick" visible="false"/>
+	</View>
+</Alloy>

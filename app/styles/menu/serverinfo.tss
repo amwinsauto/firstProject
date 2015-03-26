@@ -1,0 +1,110 @@
+"#serversetupView": {
+	backgroundColor: 'black',
+	layout: 'vertical',
+	top: 0,
+	left: 0,
+	width: Titanium.UI.FILL,
+	bottom: 0
+}
+"#serversetupView[platform=ios formFactor=tablet]":{
+	width: 700
+}
+"#serverLabel":{
+	top: 20,
+	font: {
+		fontSize: 17,
+		fontWeight: 'bold'
+//		textStyle: Ti.UI.TEXT_STYLE_HEADLINE
+	},
+	textid: 'label_enter_location',
+	color: 'white',
+}
+"#line1View":{
+	top: 20,
+	left: 10,
+	right: 10,
+	height: 0.5,
+	backgroundColor: 'white'
+}
+"#serverImageView": {
+	width: Titanium.UI.SIZE,
+	height: Titanium.UI.SIZE,
+	top: 30,
+	image: '/images/core/serversettings_server.png'
+}
+"#serverImageView[formFactor=handheld]": {
+	height: 110,
+}
+"#serverView": {
+	top: 10,
+	layout: 'horizontal',
+	height: Titanium.UI.SIZE,
+	width: Titanium.UI.SIZE
+}
+"#serverStatusView": {
+	height: 12,
+	width: 12,
+	borderRadius: 6,
+	backgroundColor: 'red',
+	egBackgroundColorOk: 'green',
+	egBackgroundColorError: 'red'
+}
+"#serverNameLabel":{
+	left: 10,
+	font: {
+		fontSize: 15,
+		// textStyle: Ti.UI.TEXT_STYLE_SUBHEADLINE
+	},
+	color: 'white',
+}
+"#line2View":{
+	top: 20,
+	left: 10,
+	right: 10,
+	height: 0.5,
+	backgroundColor: 'white'
+}
+"#connectorView": {
+	width: 2,
+	top: 20,
+	height: 100,
+	//	left: 15,
+	backgroundColor: '#808080'
+}
+"#connectorImageView[formFactor=handheld]": {
+	height: 50,
+}
+"#deviceImageView": {
+	width: Titanium.UI.SIZE,
+	height: Titanium.UI.SIZE,
+	top: 20,
+	//	left: 15,
+	image: '/images/core/serversettings_device.png'
+}
+"#deviceImageView[formFactor=handheld]": {
+	height: 70,
+}
+"#deviceView": {
+	top: 10,
+	layout: 'horizontal',
+	height: Titanium.UI.SIZE,
+	width: Titanium.UI.SIZE
+}
+"#deviceStatusView": {
+	height: 12,
+	width: 12,
+	borderRadius: 6,
+	backgroundColor: 'red',
+	egBackgroundColorOk: 'green',
+	egBackgroundColorError: 'red'
+}
+"#deviceLabel":{
+	font: {
+		fontSize: 17,
+		fontWeight: 'bold'
+		// textStyle: Ti.UI.TEXT_STYLE_HEADLINE
+	},
+	left: 10,
+	textid: 'application_name',
+	color: 'white',
+}

@@ -1,0 +1,40 @@
+"#fieldTableViewRow": {
+	bubbleParent: false,
+	height: 88,
+}
+"#fieldTableViewRow[platform=ios]": {
+	selectionStyle: Ti.UI.iPhone.TableViewCellSelectionStyle.NONE
+}
+"#titleLabel": {
+	bubbleParent: false,
+	egTintColorDestructive: '#fc3d39',
+	textAlign: 'center',
+	color: 'white',
+	left: 80,
+	right: 9,
+	egColorReadOnly: '#c9c9c9',
+}
+"#titleLabel[platform=android]": {
+	touchEnabled: false,
+}
+"#slider": {
+	bubbleParent: false,
+	backgroundImage: '/images/core/slidetoAcceptBg.png',
+//	backgroundColor: '#767f8c', // Same as image
+//	borderColor: 'black',
+//	borderRadius: 38, // Same as image
+//	left: 15,
+//  right: 15,
+	height: 76,
+	width: 268
+}
+"#button": {
+	bubbleParent: false,
+	backgroundImage: '/images/core/slidetoAcceptBtn.png',
+	left: 4,
+	height: 65,
+	top: 6,
+	width: 65,
+	//backgroundColor: 'red',
+	//borderRadius: 4
+}

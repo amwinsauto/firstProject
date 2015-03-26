@@ -1,0 +1,6 @@
+<Alloy>
+	<TableViewRow id="row" class="listRow tableSelectedColor listColors">
+		<Label id="titleLabel" />
+		<Label id="title1Label" />
+	</TableViewRow>
+</Alloy>

@@ -1,0 +1,18 @@
+{
+	"global": {
+		"theme": "egretail",
+		"https": true,
+		"server": "app.retail.eg.dk",
+		"webApplication": "ZzzZz/?cn=cR0nusdK",
+		"appendSlashToWebApplication": true, 
+		"iosAppId": 501296128,
+		"linearScanner": false,
+		"supportUrl": "http://www.aspect4.com/crosspad/%s/support.phpid=egretail"
+	},
+	"env:development": {},
+	"env:test": {},
+	"env:production": {},
+	"os:ios": {},
+	"os:android": {},
+	"dependencies": {}
+}

@@ -1,0 +1,54 @@
+"#settingsNavigationWindow":{
+	orientationModes: [Ti.UI.PORTRAIT]
+}
+"#settingsNavigationWindow[formFactor=tablet]":{
+	orientationModes: [Ti.UI.LANDSCAPE_LEFT, Ti.UI.LANDSCAPE_RIGHT],
+	width: 320,
+	height: 336
+}
+"#settingsTableWindow": {
+	titleid: 'settings_title',
+	orientationModes: [Ti.UI.PORTRAIT]
+}
+"#settingsTableWindow[platform=ios formFactor=tablet]": {
+	orientationModes: [Ti.UI.LANDSCAPE_LEFT, Ti.UI.LANDSCAPE_RIGHT]
+}
+"#closeButton": {
+	titleid: 'close_button'
+}
+"#settingsPopover": {
+	width: 320,
+	height: 296,
+	arrowDirection: Ti.UI.iPad.POPOVER_ARROW_DIRECTION_UP,
+	navBarHidden: true
+}
+"#settingsTable": {
+	style: Ti.UI.iPhone.TableViewStyle.GROUPED,
+	rowHeight: 44
+}
+"#settingsTable[platform=ios formFactor=tablet]": {
+	// Seperator color needed when table is shown in popover!!!
+	separatorColor: '#d8d8e0',
+	backgroundColor: '#efeff4'
+}
+"#setupTableViewRow": {
+	hasChild: true,
+	title: L( 'server_setup')
+}
+"#supportTableViewRow": {
+	title: L( 'support')
+}
+"#aboutTableViewRow": {
+	title: L( 'about'),
+	hasChild: true
+}
+"#logTableViewRow": {
+	title: L( 'logging'),
+	hasChild: true
+}
+".tableViewRows[platform=ios]": {
+	font: {
+		textStyle: Ti.UI.TEXT_STYLE_BODY
+	},
+	backgroundColor: 'white'
+}

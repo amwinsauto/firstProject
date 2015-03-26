@@ -1,0 +1,7 @@
+<Alloy>
+	<View id="formView">
+		<ScrollView  id="contentScrollView" showVerticalScrollIndicator="true" contentHeight="auto" layout="vertical" onLongpress="onLongPress">
+			<!-- Sections inserted here -->
+		</ScrollView>
+	</View>
+</Alloy>

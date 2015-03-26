@@ -1,0 +1,148 @@
+"#menuWindow[platform=ios]": {
+	fullscreen: true,
+}
+"#menuWindow[platform=android]": {
+	theme: 'CrosspadMenu',
+	backgroundColor: 'transparent'	
+}
+
+"#menuWindowBackground": {
+	top: 0,
+	left: 0,
+	right: 0,
+	bottom: 0,
+	opacity: 0.0, // Animates to 0.5 in code
+	backgroundColor: 'black'
+}
+"#menuView": {
+	top: 0,
+	left: 0,
+	right: 0,
+	bottom: 0,
+	layout: 'horizontal'
+	
+}
+"#menuDetailView": {
+	left: 8,
+	height: Ti.UI.FILL,
+	width: Ti.UI.FILL,
+}
+"#menuBar": {
+	top: 0,
+	bottom: 0,
+	left: -72, // Start off screen
+	width: 72
+}
+"#menuBarColor": {
+	top: 0,
+	left: 0,
+	right: 0,
+	bottom: 0,
+	opacity: 0.75,
+	backgroundColor: '#6d9fb8'
+}
+"#closeButton": {
+	tintColor: 'black',
+	top: 18,
+	width: 36,
+	height: 36,
+	borderRadius: 18,
+	//backgroundColor: '#c1c1c1',
+	backgroundColor: '#6d9fb8'
+}
+"#closeButton[platform=ios]": {
+	image: '/images/icons/navigator/sm_close.png'
+}
+"#closeButtonImage[platform=android]": {
+	top: 10,
+	left: 10,
+	height: 16,
+	width: 16,
+	backgroundImage: '/images/icons/navigator/sm_close.png'
+}
+"#buttonsPlacer": {
+	left: 0,
+	right: 0,
+	top: 60,
+	bottom: 76
+}
+"#setupButton[platform=ios]":{
+	image: '/images/icons/navigator/radio.png'
+}
+"#setupButtonImage[platform=android]": {
+	backgroundImage: '/images/icons/navigator/radio.png'
+}
+"#editButton[platform=ios]":{
+	image: '/images/icons/navigator/swap_position.png'
+}
+"#editButtonImage[platform=android]": {
+	backgroundImage: '/images/icons/navigator/swap_position.png'
+}
+"#workspaceButton[platform=ios]": {
+	image: '/images/icons/navigator/dashboard.png'
+}
+"#workspaceButton[platform=android]": {
+	backgroundImage: '/images/icons/navigator/dashboard.png'
+}
+"#switchButton[platform=ios]":{
+	image: '/images/icons/navigator/carousel.png'
+}
+"#switchButton[platform=android]": {
+	backgroundImage: '/images/icons/navigator/carousel.png'
+}	
+"#updateButton[platform=ios]":{
+	image: '/images/icons/navigator/update.png'
+}
+"#updateButtonImage[platform=android]": {
+	backgroundImage: '/images/icons/navigator/update.png'
+}
+// "#steppingStoneButton":{
+	// image: '/images/icons/lists/medium/notification.png'
+// }
+"#aboutButton[platform=ios]":{
+	image: '/images/icons/navigator/info.png'
+}
+"#aboutButtonImage[platform=android]":{
+	backgroundImage: '/images/icons/navigator/info.png'
+}
+"#buttons": {
+	tintColor: 'black',
+	left: 0,
+	right: 0,
+	layout: 'vertical',
+	height: Titanium.UI.SIZE
+}
+"#logoffButton": {
+	tintColor: 'black',
+	bottom: 18,
+	width: 36,
+	height: 36,
+	borderRadius: 18,
+	backgroundColor: '#6d9fb8'
+}
+"#logoffButton[platform=ios]": {
+	image: '/images/icons/navigator/sm_lock_open.png',
+}
+"#logoffButtonImage[platform=android]": {
+	top: 10,
+	left: 10,
+	height: 16,
+	width: 16,
+	backgroundImage: '/images/icons/navigator/sm_lock_open.png',
+}
+".otherButton": {
+	tintColor: 'black',
+	top: 20,
+	width: 50,
+	height: 50,
+	borderRadius: 25,
+	backgroundColor: '#6d9fb8',
+	egBackgroundColorSelected: 'white',
+//	backgroundColor: '#c1c1c1'
+}
+".otherButtonImage": {
+	left: 10,
+	top: 10,
+	width: 30,
+	height: 30,
+}

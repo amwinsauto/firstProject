@@ -1,0 +1,16 @@
+<Alloy>
+	<!-- IOS -->
+	<NavigationWindow platform="ios" class="windowBackgroundColor" modal="true">
+		<Window id="supportWindow" class="windowBackgroundColor navTintColor barColor">
+			<LeftNavButton platform="ios">
+				<Button id="closeButton" onClick="onCloseClick" />
+			</LeftNavButton>
+			<WebView id="supportWebView" />
+		</Window>
+	</NavigationWindow>
+
+	<!-- ANDROID -->
+	<Window id="supportWindow"  platform="android">
+		<WebView id="supportWebView" />
+	</Window>
+</Alloy>

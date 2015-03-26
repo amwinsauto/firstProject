@@ -1,0 +1,7 @@
+"#androidView": {
+	layout: 'vertical'
+},
+"#text": {
+	left: 15,
+	right: 15
+}

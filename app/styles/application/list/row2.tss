@@ -1,0 +1,29 @@
+"#row": {
+	className: 'RowLayout2',
+	height: 40
+}
+"#titleLabel": {
+	top: 5,
+	left: 15,
+	height: 30,
+	font: {
+		fontSize: 20,
+		fontWeight: 'bold'
+	}
+}
+"#titleLabel[platform=ios formFactor=tablet]": {
+	highlightedColor: 'white'
+}
+"#title1Label": {
+	top: 5,
+	height: 30,
+	right: 15,
+	textAlign: 'right',
+	font: {
+		fontSize: 20,
+		fontWeight: 'bold'
+	}
+}
+"#title1Label[platform=ios formFactor=tablet]": {
+	highlightedColor: 'white'
+}

@@ -1,0 +1,32 @@
+"#optionsContainerView": {
+	height: 41,
+	layout: 'vertical'
+}
+"#optionsVerticalSplitter": {
+	backgroundColor: '#bbbbbb',
+	height: 1,
+	left : 0,
+	right : 0
+}
+"#optionsView": {
+	height: 40,
+	left: 0,
+	right: 0,
+	layout: 'horizontal',
+	horizontalWrap: false
+}
+"#optionsView[platform=ios]": {
+	backgroundGradient : {
+		type : 'linear',
+		colors : [{
+			color : '#f7f8f9',
+			position : 0.0
+		// }, {
+			// color : '#fcfcfc',
+			// position : 0.50
+		}, {
+			color : '#edf0f2',
+			position : 1.0
+		}]
+	},
+}

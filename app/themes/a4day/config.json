@@ -1,0 +1,22 @@
+{
+	"global": {
+		"theme": "a4day",
+		"https": true,
+		"server": "demo.aspect4.com",
+		"webApplication": "a4day2015_crosspad",
+		"appendSlashToWebApplication": true, 
+		"timeOut": 30000,
+		"iosAppId": 621282143,
+		"serversetupEnabled": false,
+		"logonRequired": false,
+		"linearScanner": false,
+		"supportUrl": "http://www.aspect4.com/crosspad/%s/event.php",
+		"serverType": "ASPECT4"
+	},
+	"env:development": {},
+	"env:test": {},
+	"env:production": {},
+	"os:ios": {},
+	"os:android": {},
+	"dependencies": {}
+}

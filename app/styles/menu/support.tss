@@ -1,0 +1,16 @@
+"#supportWindow": {
+	navBarHidden :false,
+	titleid: 'support',
+	orientationModes : [Ti.UI.PORTRAIT]
+}
+"#supportWindow[platform=ios]":{
+	modal: true
+}
+"#supportWindow[platform=ios formFactor=tablet]":{
+	orientationModes : [Ti.UI.LANDSCAPE_LEFT, Ti.UI.LANDSCAPE_RIGHT]
+}
+"#supportWebView": {
+}
+"#closeButton": {
+	titleid: 'close_button'
+}

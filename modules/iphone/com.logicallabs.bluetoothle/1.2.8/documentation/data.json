@@ -1,0 +1,3848 @@
+{
+    "project": {
+        "name": "Logical Labs Bluetooth Low Energy Module for iOS",
+        "description": "The Logical Labs Bluetooth Low Energy Module provides Titanium developers with access to the Bluetooth Low Energy framework in iOS.",
+        "version": "1.2.8",
+        "url": "http://www.logicallabs.com/"
+    },
+    "files": {
+        "Classes/BeaconProxy.m": {
+            "name": "Classes/BeaconProxy.m",
+            "modules": {},
+            "classes": {
+                "Beacon": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "Classes/BeaconRegionProxy.m": {
+            "name": "Classes/BeaconRegionProxy.m",
+            "modules": {},
+            "classes": {
+                "BeaconRegion": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "Classes/CentralProxy.m": {
+            "name": "Classes/CentralProxy.m",
+            "modules": {},
+            "classes": {
+                "Central": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "Classes/CharacteristicProxy.m": {
+            "name": "Classes/CharacteristicProxy.m",
+            "modules": {},
+            "classes": {
+                "Characteristic": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "Classes/ComLogicallabsBluetoothleModule.m": {
+            "name": "Classes/ComLogicallabsBluetoothleModule.m",
+            "modules": {
+                "Readme": 1
+            },
+            "classes": {
+                "BluetoothLEModule": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "Classes/DescriptorProxy.m": {
+            "name": "Classes/DescriptorProxy.m",
+            "modules": {},
+            "classes": {
+                "Descriptor": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "Classes/PeripheralProxy.m": {
+            "name": "Classes/PeripheralProxy.m",
+            "modules": {},
+            "classes": {
+                "Peripheral": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "Classes/RequestProxy.m": {
+            "name": "Classes/RequestProxy.m",
+            "modules": {},
+            "classes": {
+                "Request": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "Classes/ServiceProxy.m": {
+            "name": "Classes/ServiceProxy.m",
+            "modules": {},
+            "classes": {
+                "Service": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        }
+    },
+    "modules": {
+        "Readme": {
+            "name": "Readme",
+            "submodules": {},
+            "classes": {
+                "Beacon": 1,
+                "BeaconRegion": 1,
+                "Central": 1,
+                "Characteristic": 1,
+                "BluetoothLEModule": 1,
+                "Descriptor": 1,
+                "Peripheral": 1,
+                "Request": 1,
+                "Service": 1
+            },
+            "fors": {},
+            "namespaces": {},
+            "tag": "module",
+            "file": "Classes/ServiceProxy.m",
+            "line": 1,
+            "description": "This module makes the iOS Core Bluetooth framework available to Titanium developers.\n\nTo access this module from JavaScript, you would do the following:\n\n\tvar BluetoothLE = require(\"com.logicallabs.bluetoothle\");\n\nThe BluetoothLE variable is a reference to the Module object.\n\nThe iOS Core Bluetooth framework defines numerous object classes. The module\nexposes most of these in the form of Titanium proxy objects. Specifically:\n\n* Characteristic: wrapper for CBCharacteristic and CBMutableCharacteristic\n* Descriptor: wrapper for CBDescriptor and CBMutableDescriptor\n* Peripheral: wrapper for CBPeripheral\n* Request: wrapper for CBATTRequest\n* Central: wrapper for CBCentral\n* Service: wrapper for CBService and CBMutableService\n\nYou do not need to (and in fact: can't) create any of these objects explicitly.\nYou will, however, receive instances of these (proxy) classes as event\nparameters. With a few exceptions, the properties available on these JavaScript objects\ncorrespond to the properties of their counterpart(s) in the Core Bluetooth framework.\n\nThe module also maintaines, internally, one instance of CBPeripheralManager\nand CBCentralManager. You do not have direct access to these objects. You\ncan access them through methods attached to the module object. Delegate methods\nare represented by events fired by the module object. The properties of\nthe event object correspond to the parameters of the given delegate method.\n\n## Usage\n\nThe following code segments are not complete; they only demonstrate the\nessentials of using the module. The module includes a complete example app\nthat demonstrates many different use cases, including iOS-to-iOS communication,\ncommunicating with a heart rate monitor, and monitoring iBeacons. You will\nfind this in the standard <code>example</code> directory.\n\nBasic steps of discovering and connecting to a peripheral from the central:\n\n\tvar BluetoothLE = require('com.logicallabs.bluetoothle'),\n\n\tBluetoothLE.addEventListener('centralManagerStateChange', function(e) {\n\t    if (e.state === BluetoothLE.CENTRAL_MANAGER_STATE_POWERED_ON) {\n\t        BluetoothLE.startScan();\n\t    }\n\t});\n\t\n\tBluetoothLE.addEventListener('discoveredPeripheral', function(e) {\n\t    BluetoothLE.stopScan();\n\t    BluetoothLE.connectPeripheral({\n\t        peripheral: e.peripheral\n\t    });\n\t});\n\n\tBluetoothLE.initCentralManager();\n\nBasic steps of defining a service and starting advertisement as a peripheral:\n\n\tBluetoothLE.addEventListener('peripheralManagerStateChange', function(e) {\n\t    if (e.state === BluetoothLE.PERIPHERAL_MANAGER_STATE_POWERED_ON) {\n\t        BluetoothLE.addService({\n\t            uuid: CUSTOM_SERVICE_UUID,\n\t            primary: true,\n\t            characteristics: [\n\t                {\n\t                    uuid: NOTIF_CHAR_UUID,\n\t                    properties: BluetoothLE.CHAR_PROP_NOTIFY,\n\t                    permissions: BluetoothLE.CHAR_PERM_NONE\n\t                },\n\t                {\n\t                    uuid: READ_CHAR_UUID,\n\t                    properties: BluetoothLE.CHAR_PROP_READ,\n\t                    permissions: BluetoothLE.CHAR_PERM_READABLE\n\t                 },\n\t                 {\n\t                     uuid: WRITE_CHAR_UUID,\n\t                     properties: BluetoothLE.CHAR_PROP_WRITE_WITHOUT_RESPONSE,\n\t                     permissions: BluetoothLE.CHAR_PERM_READABLE + BluetoothLE.CHAR_PERM_WRITEABLE\n\t                 }\n\t            ]\n\t        });\n\n\t        advertParams = {};\n\t        advertParams[BluetoothLE.ADVERT_DATA_KEY_SERVICE_UUIDS] = [ CUSTOM_SERVICE_UUID ];\n\t        advertParams[BluetoothLE.ADVERT_DATA_KEY_LOCAL_NAME] = Ti.Platform.username;\n\t        BluetoothLE.startAdvertising(advertParams);\n\t    }\n\t});\n\t\n\tBluetoothLE.initPeripheralManager();\n\nBasic steps for querying the value of a characteristic:\n\n\tperipheral.addEventListener('updatedValueForCharacteristics', function(e) {\n\t    Ti.API.info('Received new value for characteristic ' + e.characteristic.UUID);\n\t    Ti.API.info('Value as string: ' + e.value)\n\t    Ti.API.info('First byte of value: ' + e.value[0]);\n\t});\n\n\tperipheral.readValueForCharacteristic(readChar);\n\nBasic steps to respond to a read request (on the central):\n\n\tBluetoothLE.addEventListener('receivedReadRequest', function(e) {\n\t    var buffer;\n\t\n\t    Ti.API.info('Received read request for characteristic: ' + e.request.characteristic.UUID);\n\t    buffer = Ti.createBuffer({ length: 3 });\n\t    buffer[0] = 1;\n\t    buffer[1] = 2;\n\t    buffer[2] = 3;\n\n\t    e.request.value = buffer;\n\n\t    BluetoothLE.respondToRequest({\n\t        request: e.request,\n\t        result: BluetoothLE.ATT_SUCCESS\n\t    });\n\t});\n\nNote that the last two examples demonstrate how to access and construct the\nvalue of a characteristic as an array of bytes. This is a built-in (although\nundocumented) capability of the TiBuffer objects that are used to represent\nthese values.\n\n## Beacons\n\nUse the\n{{#crossLink \"BluetoothLEModule/createBeaconRegion:method\"}}{{/crossLink}}\nfunction to create beacon region objects:\n\n\tvar beaconRegion = BluetoothLE.createBeaconRegion({\n\t\tUUID: uuid,\n\t\tidentifier: '#' + idCounter\n\t});\n\nThis object then can be passed to the\n{{#crossLink \"BluetoothLEModule/startRegionMonitoring:method\"}}{{/crossLink}}\nfunction to start monitoring:\n\n\tBluetoothLE.startRegionMonitoring({\n\t\tbeaconRegion: region\n\t});\n\nThis will result in\n{{#crossLink \"BluetoothLEModule/enteredRegion:event\"}}{{/crossLink}},\n{{#crossLink \"BluetoothLEModule/exitedRegion:event\"}}{{/crossLink}}, and\n{{#crossLink \"BluetoothLEModule/regionStateUpdated:event\"}}{{/crossLink}} events.\n\nYou will typically want to call the\n{{#crossLink \"BluetoothLEModule/requestRegionState:method\"}}{{/crossLink}}\nfunction right after you call\n{{#crossLink \"BluetoothLEModule/startRegionMonitoring:method\"}}{{/crossLink}}\nto get an update of the current region state immediately. Otherwise you might\nonly receive the first update when the state of a region changes. This can\nbe a problem if the user is in the region you are interested in at the time\nthe app starts.\n\nOnce the user enters a region, the\n{{#crossLink \"BluetoothLEModule/startRangingBeacons:method\"}}{{/crossLink}}\nfunction can be used to get periodic updates about the beacons in range:\n\n\tBluetoothLE.addEventListener('regionStateUpdated', function(e) {\n\t\tswitch(e.state) {\n\t\t\tcase BluetoothLE.REGION_STATE_INSIDE:\n\t\t\t\tBluetoothLE.startRangingBeacons({\n\t\t\t\t\tbeaconRegion: e.region\n\t\t\t\t});\n\t\t\t\tbreak;\n\t\t\tcase BluetoothLE.REGION_STATE_OUTSIDE:\n\t\t\t\tBluetoothLE.stopRangingBeacons({\n\t\t\t\t\tbeaconRegion: e.region\n\t\t\t\t});\n\t\t\t\tbreak;\n\t\t}\n\t});\n\nThis will result in\n{{#crossLink \"BluetoothLEModule/rangedBeacons:event\"}}{{/crossLink}} events.\n\nUse the\n{{#crossLink \"BluetoothLEModule/stopRangingBeacons:method\"}}{{/crossLink}} and\n{{#crossLink \"BluetoothLEModule/stopRegionMonitoring:method\"}}{{/crossLink}}\nfunctions to stop ranging and monitoring, respectively.\n\n## Background operations\n\nIf the app started beacon region monitoring, it will receive\n{{#crossLink \"BluetoothLEModule/enteredRegion:event\"}}{{/crossLink}},\n{{#crossLink \"BluetoothLEModule/exitedRegion:event\"}}{{/crossLink}}, and\n{{#crossLink \"BluetoothLEModule/regionStateUpdated:event\"}}{{/crossLink}} events\nwhile in the background. The <code>iBeacons</code> example demonstrates how\nto display a local notification to the user when this happens.\n\nThe app will also receive generic Bluetooth LE related events while in the\nbackground if you declare the appropriate background modes in the Info.plist\nfile. For Titanium apps, this can be done in the tiapp.xml file as follows:\n\n\t<ios>\n       <plist>\n           <dict>\n               <key>UIBackgroundModes</key>\n               <array>\n\t                <string>bluetooth-central</string>\n\t                <string>bluetooth-peripheral</string>\n               </array>\n           </dict>\n       </plist>\n\t</ios>\n\n## Restarting into the background\n\nStarting with iOS 7, BLE and beacon related events can trigger the app\nto be restarted into (!) the background after it was stopped (removed from\nmemory) by iOS to free up resources. Starting with iOS7.1, beacon related\nevents can restart the app into the background even if the user explicitly\nremoved the app from the active app list.\n\nIn order to take advantage of this feature, specify a <code>restoreIdentifier</code>\nparameter of the\n{{#crossLink \"BluetoothLEModule/initCentralManager:method\"}}\n{{/crossLink}} and\n{{#crossLink \"BluetoothLEModule/initPeripheralManager:method\"}}\n{{/crossLink}} functions, or simply start monitoring a beacon region.\n\nWhen the app starts, the\n{{#crossLink \"BluetoothLEModule/restoredCentralManagerIdentifiers:property\"}}{{/crossLink}}\nand\n{{#crossLink \"BluetoothLEModule/restoredPeripheralManagerIdentifiers:property\"}}{{/crossLink}}\nproperties will hold the restoraiton identifiers of the central and\nperipheral managers, respectively, that can be restored. Restoration is\ninitiated by calling the\n{{#crossLink \"BluetoothLEModule/initCentralManager:method\"}}\n{{/crossLink}} and\n{{#crossLink \"BluetoothLEModule/initPeripheralManager:method\"}}\n{{/crossLink}} functions with the previously used\n<code>restoreIdentifier</code>. Thereafter the\n{{#crossLink \"BluetoothLEModule/peripheralWillRestoreState:event\"}}\n{{/crossLink}} and\n{{#crossLink \"BluetoothLEModule/centralWillRestoreState:event\"}}\n{{/crossLink}} will be fired to complete the restoration.\n\nIf the restart was triggered by a beacon related event, the\n{{#crossLink \"BluetoothLEModule/wasLocationLaunch:property\"}}{{/crossLink}}\nproperty will be <code>true</code>. Use the\n{{#crossLink \"BluetoothLEModule/retrieveMonitoredRegions:method\"}}{{/crossLink}}\nfunction to retrieve the beacon regions that are already being monitored.\n\n## Beacon Usage Permissions\n\nStarting with iOS 8, the authorization model related to location services,\nand thus beacons, has changed. If the app wants to use beacon related\nfunctionality, it now needs to explicitly call either the\n{{#crossLink \"BluetoothLEModule/requestWhenInUseAuthorization:method\"}}\n{{/crossLink}} or the\n{{#crossLink \"BluetoothLEModule/requestAlwaysAuthorization:method\"}}\n{{/crossLink}} function, and specify either the\n<code>NSLocationAlwaysUsageDescription</code> or the\n<code>NSLocationWhenInUseUsageDescription</code>\nInfo.plist entry in tiapp.xml:\n\n\t<ios>\n       <plist>\n           <dict>\n               <key>NSLocationAlwaysUsageDescription</key>\n               <string>\n\t\t\t\t\tPlease allow access to enable beacon monitoring!\n\t\t\t\t</string>\n               <key>NSLocationWhenInUseUsageDescription</key>\n               <string>\n\t\t\t\t\tPlease allow access to enable beacon ranging!\n\t\t\t\t</string>\n           </dict>\n       </plist>\n\t</ios>\n\nWhen the app calls the\n{{#crossLink \"BluetoothLEModule/requestWhenInUseAuthorization:method\"}}\n{{/crossLink}} or the\n{{#crossLink \"BluetoothLEModule/requestAlwaysAuthorization:method\"}}\n{{/crossLink}} function, the user is presented with a dialog that requests\npermission. The string you associated with the\n<code>NSLocationAlwaysUsageDescription</code> or the\n<code>NSLocationWhenInUseUsageDescription</code>\nkey will be displayed to the user in this dialog.\n\nThe difference between \"when-in-use\" and \"always\" authorization is significant:\n\"when-in-use\" means that the app can only access these services while it's\nrunning in the foreground, and it cannot request region monitoring even then.\nTherefore many apps that use beacons will need \"always\" authorization.\n\nHowever, Apple discourages the use of \"always\" authorization. To quote:\n\"Requesting “Always” authorization is discouraged because of the potential\nnegative impacts to user privacy. You should request this level of\nauthorization only when doing so offers a genuine benefit to the user.\"\n\n## Issues and Limitations\n\nWhen using an iOS device as peripheral, the advertisement packets may only\ncontain the ADVERT\\_DAT\\_KEY\\_SERVICE\\_UUIDS and/or ADVERT\\_DATA\\_KEY\\_LOCAL\\_NAME\nfields. This is a limitation of the Core Bluetooth framework.\n\nWhile testing Core Bluetooth framework (without Titanium), we experienced\nsome unexplained problems that were eventually resolved by resetting the devices.\n\n## Change Log\n\n### Version 1.0.1\n\n* Added RSSI example to sample app.\n* Added TiBuffer-as-array example to sample app.\n* Bug fixes in sample app.\n* Fixed typos in documentation.\n* Added more examples to documentation.\n\n### Version 1.0.2\n* Improved examples and documentation.\n* Fixed defect in discoverCharacteristics function of Peripheral.\n* Added writeValueForDescriptor method to Peripheral object.\n* Fixed defect in retrievePeripherals function of the module object.\n\n### Version 1.0.3\n* Changed sample app styling.\n* Tested with iOS7.\n* Added ability to include module in apps built for older iOS versions without\n  Bluetooth Low Energy capability.\n\n### Version 1.0.4\n* Improved background functionality.\n* Documentation updates.\n\n### Version 1.1.0\n* Introduced {{#crossLink \"Peripheral/state:property\"}}{{/crossLink}} property on {{#crossLink \"Peripheral\"}}{{/crossLink}}\nobjects and related constants.\n* Added support for {{#crossLink \"Beacon\"}}{{/crossLink}}s and {{#crossLink \"BeaconRegion\"}}{{/crossLink}}s.\n* Introduced {{#crossLink \"Central/maximumUpdateValueLength:property\"}}{{/crossLink}} property on {{#crossLink \"Central\"}}{{/crossLink}}\nobjects.\n* Introduced\n{{#crossLink \"Characteristic/subscribedCentrals:property\"}}{{/crossLink}} property and\n{{#crossLink \"Characteristic/equals:method\"}}{{/crossLink}} function\non {{#crossLink \"Characteristic\"}}{{/crossLink}}\nobjects.\n* Introduced {{#crossLink \"BluetoothLEModule/backgroundDataAuthorizationStatus:property\"}}\n{{/crossLink}} property on the {{#crossLink \"BluetoothLEModule\"}}{{/crossLink}}\nobject and related constants.\n* Added the\n{{#crossLink \"BluetoothLEModule/retrievePeripheralsWithIdentifiers:method\"}}\n{{/crossLink}}, and\n{{#crossLink \"BluetoothLEModule/retrieveConnectedPeripheralsWithServices:method\"}}\n{{/crossLink}} functions.\n* Added\n{{#crossLink \"BluetoothLEModule/ADVERT\\_DATA\\_KEY\\_IS\\_CONNECTABLE:attribute\"}}\n{{/crossLink}}, and\n{{#crossLink \"BluetoothLEModule/ADVERT\\_DATA\\_KEY\\_SOLICITED\\_SERVICE_UUIDS:attribute\"}}\n{{/crossLink}} constants.\n* Sample app improvements.\n* Documentation fixes.\n\n### Version 1.1.1\n* Extended iBeacon example with multiple regions.\n* Added {{#crossLink \"BeaconRegion/identifier:property\"}}{{/crossLink}}\nproperty to {{#crossLink \"BeaconRegion\"}}{{/crossLink}} class.\n* Added Estimote Beacons to example app.\n\n### Version 1.1.2\n* Added {{#crossLink \"BluetoothLEModule/proximityChange:event\"}}{{/crossLink}} event.\n* Added {{#crossLink \"BluetoothLEModule/rangedRegions:property\"}}{{/crossLink}} property.\n* Added option to turn off ranging for all regions at once.\n* Added {{#crossLink \"BluetoothLEModule/filterDuplicateBeacons:property\"}}{{/crossLink}} property.\n* Added {{#crossLink \"BluetoothLEModule/locationManagerAuthorizationStatus:property\"}}{{/crossLink}}\nproperty, {{#crossLink \"BluetoothLEModule/locationManagerAuthorizationChanged:event\"}}{{/crossLink}}\nevent, and related constants.\n\n### Version 1.1.3\n* Improved iBeacon and Estimote Beacon examples.\n\n### Version 1.2.0\n* Improved documentation and sample app\n* Introduced the\n{{#crossLink \"BluetoothLEModule/moduleReady:event\"}}{{/crossLink}} event.\n\n### Version 1.2.2\n\n* Improved the\n{{#crossLink \"Peripheral/updatedValueForCharacteristic:event\"}}{{/crossLink}}\nevent.\n* Documentation improvements.\n* Added BPM V125 example.\n\n### Version 1.2.3\n\n* Added example for Texas Instruments CC2541 Sensor Tag.\n\n### Version 1.2.4\n\n* Documentation improvements\n* Sample app improvements\n* Added\n{{#crossLink \"BluetoothLEModule/requestRegionState:method\"}}{{/crossLink}}\nfunction.\n\n### Version 1.2.5\n\n* Added\n{{#crossLink \"BluetoothLEModule/restoredCentralManagerIdentifiers:property\"}}{{/crossLink}}\nand\n{{#crossLink \"BluetoothLEModule/restoredPeripheralManagerIdentifiers:property\"}}{{/crossLink}}\nproperties.\n* Added\n{{#crossLink \"BluetoothLEModule/retrieveMonitoredRegions:method\"}}{{/crossLink}}\nfunction and\n{{#crossLink \"BluetoothLEModule/retrievedMonitoredRegions:event\"}}{{/crossLink}}\nevent.\n* Added\n{{#crossLink \"BluetoothLEModule/wasLocationLaunch:property\"}}{{/crossLink}}\nproperty.\n\n### Version 1.2.6\n\n* Fixed bug related to service data in\n{{#crossLink \"BluetoothLEModule/discoveredPeripheral:event\"}}{{/crossLink}} event.\n\n### Version 1.2.7\n\n* Introduced the\n{{#crossLink \"BluetoothLEModule/requestWhenInUseAuthorization:method\"}}\n{{/crossLink}} and\n{{#crossLink \"BluetoothLEModule/requestAlwaysAuthorization:method\"}}\n{{/crossLink}} functions.\n* Updated Readme with Beacon Usage Permissions section.\n* Updated sample app.\n\n### Version 1.2.8\n\n* Added 64-bit support.\n* Updated license.\n\n## Author\n\nZsombor Papp, Logical Labs\n\ntitanium@logicallabs.com\n\n## License\n\nSee LICENSE file included with the module for all terms and conditions specific to this module.\n\nGeneral terms and conditions for all Logical Labs Titanium Modules can be found here: http://www.logicallabs.com/logical-labs-titanium-module-terms-conditions\n\n## Copyright\n\nCopyright (c) 2012-2014 by Logical Labs, LLC"
+        }
+    },
+    "classes": {
+        "Beacon": {
+            "name": "Beacon",
+            "shortname": "Beacon",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Readme",
+            "file": "Classes/BeaconProxy.m",
+            "line": 1,
+            "description": "Represents a beacon that was encountered during region monitoring. You do \nnot create instances of this class directly. They will be delivered via\nthe\n{{#crossLink \"BluetoothLEModule/rangedBeacons:event\"}}{{/crossLink}}\nevent."
+        },
+        "BeaconRegion": {
+            "name": "BeaconRegion",
+            "shortname": "BeaconRegion",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Readme",
+            "file": "Classes/BeaconRegionProxy.m",
+            "line": 1,
+            "description": "Represents an iBeacon region."
+        },
+        "Central": {
+            "name": "Central",
+            "shortname": "Central",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Readme",
+            "file": "Classes/CentralProxy.m",
+            "line": 1,
+            "description": "Representation of a remote central."
+        },
+        "Characteristic": {
+            "name": "Characteristic",
+            "shortname": "Characteristic",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Readme",
+            "file": "Classes/CharacteristicProxy.m",
+            "line": 1,
+            "description": "Represents a local or remote service's characteristic."
+        },
+        "BluetoothLEModule": {
+            "name": "BluetoothLEModule",
+            "shortname": "BluetoothLEModule",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Readme",
+            "namespace": "",
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 458
+        },
+        "Descriptor": {
+            "name": "Descriptor",
+            "shortname": "Descriptor",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Readme",
+            "namespace": "",
+            "file": "Classes/DescriptorProxy.m",
+            "line": 1,
+            "description": "Represents a characteristic's descriptor."
+        },
+        "Peripheral": {
+            "name": "Peripheral",
+            "shortname": "Peripheral",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Readme",
+            "namespace": "",
+            "file": "Classes/PeripheralProxy.m",
+            "line": 1,
+            "description": "Representation of a remote peripheral.\n\nYou can't directly create <code>Peripheral</code> objects. Knowing the name\nand/or UUID of a peripheral is not sufficient to create a connection,\nespecially because the UUID is a locally assigned artificial identifier,\nnot something that globally identifies a peripheral (like for example a\nMAC address would).\n\nYou can use the\n{{#crossLink \"BluetoothLEModule/retrievePeripheralsWithIdentifiers:method\"}}{{/crossLink}}\nfunction to retrieve <code>Peripheral</code> objects that were previously\ncreated on the device. It is important to understand, however, that this\nfunction really just retrieves already existing objects, doesn't create new\nones. So, for example, if you execute this function right after you reboot the\nphone then chances are you won't get anything back."
+        },
+        "Request": {
+            "name": "Request",
+            "shortname": "Request",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Readme",
+            "namespace": "",
+            "file": "Classes/RequestProxy.m",
+            "line": 1,
+            "description": "Represents a read or write request from a central."
+        },
+        "Service": {
+            "name": "Service",
+            "shortname": "Service",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Readme",
+            "namespace": "",
+            "file": "Classes/ServiceProxy.m",
+            "line": 1,
+            "description": "Represents a peripheral's service or a service's included service."
+        }
+    },
+    "classitems": [
+        {
+            "file": "Classes/BeaconProxy.m",
+            "line": 25,
+            "description": "The value identifying a group of beacons.",
+            "itemtype": "property",
+            "name": "major",
+            "type": "{Number}",
+            "final": 1,
+            "since": "1.1.0",
+            "class": "Beacon"
+        },
+        {
+            "file": "Classes/BeaconProxy.m",
+            "line": 37,
+            "description": "The value identifying a specific beacon within a group.",
+            "itemtype": "property",
+            "name": "minor",
+            "type": "{Number}",
+            "final": 1,
+            "since": "1.1.0",
+            "class": "Beacon"
+        },
+        {
+            "file": "Classes/BeaconProxy.m",
+            "line": 50,
+            "description": "The unique ID of the beacons being targeted.",
+            "itemtype": "property",
+            "name": "UUID",
+            "type": "{String}",
+            "final": 1,
+            "since": "1.1.0",
+            "class": "Beacon"
+        },
+        {
+            "file": "Classes/BeaconProxy.m",
+            "line": 66,
+            "description": "The relative distance to the beacon.",
+            "itemtype": "property",
+            "name": "proximity",
+            "type": "{Number}",
+            "final": 1,
+            "since": "1.1.0",
+            "class": "Beacon"
+        },
+        {
+            "file": "Classes/BeaconProxy.m",
+            "line": 79,
+            "description": "The received signal strength of the beacon, measured in decibels.",
+            "itemtype": "property",
+            "name": "RSSI",
+            "type": "{Number}",
+            "final": 1,
+            "since": "1.1.0",
+            "class": "Beacon"
+        },
+        {
+            "file": "Classes/BeaconProxy.m",
+            "line": 92,
+            "description": "Indicates the one sigma horizontal accuracy in meters. Use this property to \ndifferentiate between beacons with the same proximity value. Do not use it\nto identify a precise location for the beacon. Accuracy values may fluctuate\ndue to RF interference.\n\nA negative value in this property signifies that the actual accuracy could\nnot be determined.",
+            "itemtype": "property",
+            "name": "accuracy",
+            "type": "{Number}",
+            "final": 1,
+            "since": "1.1.0",
+            "class": "Beacon"
+        },
+        {
+            "file": "Classes/BeaconRegionProxy.m",
+            "line": 33,
+            "description": "This is a value that you specify and can use to identify this region inside\nyour application.",
+            "itemtype": "property",
+            "name": "identifier",
+            "type": "{String}",
+            "final": 1,
+            "since": "1.1.1",
+            "class": "BeaconRegion"
+        },
+        {
+            "file": "Classes/BeaconRegionProxy.m",
+            "line": 50,
+            "description": "The value identifying a group of beacons.",
+            "itemtype": "property",
+            "name": "major",
+            "type": "{Number}",
+            "final": 1,
+            "since": "1.1.0",
+            "class": "BeaconRegion"
+        },
+        {
+            "file": "Classes/BeaconRegionProxy.m",
+            "line": 62,
+            "description": "The value identifying a specific beacon within a group.",
+            "itemtype": "property",
+            "name": "minor",
+            "type": "{Number}",
+            "final": 1,
+            "since": "1.1.0",
+            "class": "BeaconRegion"
+        },
+        {
+            "file": "Classes/BeaconRegionProxy.m",
+            "line": 75,
+            "description": "The unique ID of the beacons being targeted.",
+            "itemtype": "property",
+            "name": "UUID",
+            "type": "{String}",
+            "final": 1,
+            "since": "1.1.0",
+            "class": "BeaconRegion"
+        },
+        {
+            "file": "Classes/BeaconRegionProxy.m",
+            "line": 91,
+            "description": "A Boolean indicating whether beacon notifications are sent when the device’s\ndisplay is on.\n\nWhen set to <code>true</code>, the location manager sends beacon\nnotifications when the user turns on the display and the device is already\ninside the region. These notifications are sent even if your app is not\nrunning. In that situation, the system launches your app into the background\nso that it can handle the notifications. In both situations, the app\nwill receive a\n{{#crossLink \"BluetoothLEModule/determinedStateForRegion:event\"}}\n{{/crossLink}} event.\n\nThe default value for this property is <code>false</code>.",
+            "itemtype": "property",
+            "name": "notifyEntryStateOnDisplay",
+            "type": "{Boolean}",
+            "since": "1.1.0",
+            "class": "BeaconRegion"
+        },
+        {
+            "file": "Classes/CentralProxy.m",
+            "line": 22,
+            "description": "The UUID of the central.",
+            "itemtype": "property",
+            "name": "UUID",
+            "type": "{String}",
+            "final": 1,
+            "since": "1.0.0",
+            "class": "Central"
+        },
+        {
+            "file": "Classes/CentralProxy.m",
+            "line": 44,
+            "description": "The maximum amount of data, in bytes, that can be received by the central in\na single notification or indication.",
+            "itemtype": "property",
+            "name": "maximumUpdateValueLength",
+            "type": "{Number}",
+            "final": 1,
+            "since": "1.1.0",
+            "class": "Central"
+        },
+        {
+            "file": "Classes/CharacteristicProxy.m",
+            "line": 24,
+            "description": "Indicates whether this characteristic is mutable.",
+            "itemtype": "property",
+            "name": "isMutable",
+            "type": "{Boolean}",
+            "final": 1,
+            "since": "1.0.0",
+            "class": "Characteristic"
+        },
+        {
+            "file": "Classes/CharacteristicProxy.m",
+            "line": 37,
+            "description": "The service this characteristic belongs to.",
+            "itemtype": "property",
+            "name": "service",
+            "type": "{Service}",
+            "final": 1,
+            "since": "1.0.0",
+            "class": "Characteristic"
+        },
+        {
+            "file": "Classes/CharacteristicProxy.m",
+            "line": 54,
+            "description": "The UUID of the characteristic.",
+            "itemtype": "property",
+            "name": "UUID",
+            "type": "{String}",
+            "since": "1.0.0",
+            "class": "Characteristic"
+        },
+        {
+            "file": "Classes/CharacteristicProxy.m",
+            "line": 73,
+            "description": "The properties of the characteristic as a bitfield. See also the CHAR\\_PROP\\_*\nconstants attached to the module object.",
+            "itemtype": "property",
+            "name": "properties",
+            "type": "{Number}",
+            "since": "1.0.0",
+            "class": "Characteristic"
+        },
+        {
+            "file": "Classes/CharacteristicProxy.m",
+            "line": 93,
+            "description": "The value of the characteristic.",
+            "itemtype": "property",
+            "name": "value",
+            "type": "{TiBuffer}",
+            "since": "1.0.0",
+            "class": "Characteristic"
+        },
+        {
+            "file": "Classes/CharacteristicProxy.m",
+            "line": 115,
+            "description": "A list of the\n{{#crossLink \"Descriptor\"}}{{/crossLink}}\nobjects that have so far been discovered in this\ncharacteristic. It is writeable if this JavaScript object represents a\nmutable characteristic.",
+            "itemtype": "property",
+            "name": "descriptors",
+            "type": "{Array of Descriptor objects}",
+            "since": "1.0.0",
+            "class": "Characteristic"
+        },
+        {
+            "file": "Classes/CharacteristicProxy.m",
+            "line": 149,
+            "description": "Whether the characteristic is currently broadcasted or not.",
+            "itemtype": "property",
+            "name": "isBroadcasted",
+            "type": "{Boolean}",
+            "final": 1,
+            "since": "1.0.0",
+            "class": "Characteristic"
+        },
+        {
+            "file": "Classes/CharacteristicProxy.m",
+            "line": 162,
+            "description": "Whether the characteristic is currently notifying or not.",
+            "itemtype": "property",
+            "name": "isNotifying",
+            "type": "{Boolean}",
+            "final": 1,
+            "since": "1.0.0",
+            "class": "Characteristic"
+        },
+        {
+            "file": "Classes/CharacteristicProxy.m",
+            "line": 175,
+            "description": "The permissions of the characteristic value. It is only present\nif this JavaScript object represents a mutable characteristic.",
+            "itemtype": "property",
+            "name": "permissions",
+            "type": "{Number}",
+            "since": "1.0.0",
+            "class": "Characteristic"
+        },
+        {
+            "file": "Classes/CharacteristicProxy.m",
+            "line": 200,
+            "description": "For notifying characteristics, the set of currently subscribed centrals.",
+            "itemtype": "property",
+            "name": "subscribedCentrals",
+            "type": "{Array of Central objects}",
+            "since": "1.1.0",
+            "class": "Characteristic"
+        },
+        {
+            "file": "Classes/CharacteristicProxy.m",
+            "line": 228,
+            "description": "Tests whether two Characteristic objects refer to the same entity.",
+            "itemtype": "method",
+            "name": "equals",
+            "type": "{Boolean}",
+            "since": "1.1.0",
+            "class": "Characteristic"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 471,
+            "description": "Determines whether the beacons included with the\n{{#crossLink \"BluetoothLEModule/rangedBeacons:event\"}}{{/crossLink}}\nevent will be filtered for duplicates. Defaults to <code>false</code>.\nA beacon is considered a duplicate of another if their UUID, major, and\nminor numbers are all the same.",
+            "itemtype": "property",
+            "name": "filterDuplicateBeacons",
+            "type": "{Boolean}",
+            "since": "1.1.2",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 636,
+            "description": "This event is fired when the module is ready. On iOS, this is a formality;\nOn Android, you need to wait for this event before calling any methods\non the module.",
+            "itemtype": "event",
+            "name": "moduleReady",
+            "since": "1.2.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 665,
+            "description": "One of the possible values of the\n{{#crossLink \"BluetoothLEModule/locationManagerAuthorizationStatus:property\"}}\n{{/crossLink}} property. The user has not yet made a choice regarding whether\nthis application can use location services.",
+            "itemtype": "attribute",
+            "name": "LOCATION_MANAGER_AUTHORIZATION_STATUS_NOT_DETERMINED",
+            "type": "{Number}",
+            "since": "1.1.2",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 675,
+            "description": "One of the possible values of the\n{{#crossLink \"BluetoothLEModule/locationManagerAuthorizationStatus:property\"}}\n{{/crossLink}} property. The user cannot change this application’s status, \npossibly due to active restrictions such as parental controls being in place.",
+            "itemtype": "attribute",
+            "name": "LOCATION_MANAGER_AUTHORIZATION_STATUS_RESTRICTED",
+            "type": "{Number}",
+            "since": "1.1.2",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 685,
+            "description": "One of the possible values of the\n{{#crossLink \"BluetoothLEModule/locationManagerAuthorizationStatus:property\"}}\n{{/crossLink}} property. The user explicitly denied the use of location\nservices for this application or location services are currently disabled in\nSettings.",
+            "itemtype": "attribute",
+            "name": "LOCATION_MANAGER_AUTHORIZATION_STATUS_DENIED",
+            "type": "{Number}",
+            "since": "1.1.2",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 696,
+            "description": "One of the possible values of the\n{{#crossLink \"BluetoothLEModule/locationManagerAuthorizationStatus:property\"}}\n{{/crossLink}} property. User has authorized this application to share data\nwhile backgrounded.",
+            "itemtype": "attribute",
+            "name": "LOCATION_MANAGER_AUTHORIZATION_STATUS_AUTHORIZED",
+            "type": "{Number}",
+            "since": "1.1.2",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 711,
+            "description": "This state is reported when the peripheral manager object maintained by the\nmodule does not (yet) exist, i.e. before \n{{#crossLink \"BluetoothLEModule/initPeripheralManager:method\"}}\n{{/crossLink}}\nis called or after \n{{#crossLink \"BluetoothLEModule/releasePeripheralManager:method\"}}\n{{/crossLink}}\nis called.",
+            "itemtype": "attribute",
+            "name": "PERIPHERAL_MANAGER_STATE_UNINITIALIZED",
+            "type": "{Number}",
+            "since": "1.0.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 725,
+            "description": "State unknown, update imminent.",
+            "itemtype": "attribute",
+            "name": "PERIPHERAL_MANAGER_STATE_UNKNOWN",
+            "type": "{Number}",
+            "since": "1.0.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 732,
+            "description": "The connection with the system service was momentarily lost, update imminent.",
+            "itemtype": "attribute",
+            "name": "PERIPHERAL_MANAGER_STATE_RESETTING",
+            "type": "{Number}",
+            "since": "1.0.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 739,
+            "description": "The platform doesn't support the Bluetooth Low Energy Peripheral role.",
+            "itemtype": "attribute",
+            "name": "PERIPHERAL_MANAGER_STATE_UNSUPPORTED",
+            "type": "{Number}",
+            "since": "1.0.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 746,
+            "description": "The application is not authorized to use the Bluetooth Low Energy Peripheral\nrole.",
+            "itemtype": "attribute",
+            "name": "PERIPHERAL_MANAGER_STATE_UNAUTHORIZED",
+            "type": "{Number}",
+            "since": "1.0.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 754,
+            "description": "Bluetooth is currently powered off.",
+            "itemtype": "attribute",
+            "name": "PERIPHERAL_MANAGER_STATE_POWERED_OFF",
+            "type": "{Number}",
+            "since": "1.0.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 761,
+            "description": "Bluetooth is currently powered on and available to use.",
+            "itemtype": "attribute",
+            "name": "PERIPHERAL_MANAGER_STATE_POWERED_ON",
+            "type": "{Number}",
+            "since": "1.0.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 768,
+            "description": "This state is reported when the central manager object maintained by the\nmodule does not (yet) exist, i.e. before\n{{#crossLink \"BluetoothLEModule/initCentralManager:method\"}}\n{{/crossLink}}\nis called or after\n{{#crossLink \"BluetoothLEModule/releaseCentralManager:method\"}}\n{{/crossLink}}\nis called.",
+            "itemtype": "attribute",
+            "name": "CENTRAL_MANAGER_STATE_UNINITIALIZED",
+            "type": "{Number}",
+            "since": "1.0.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 782,
+            "description": "State unknown, update imminent.",
+            "itemtype": "attribute",
+            "name": "CENTRAL_MANAGER_STATE_UNKNOWN",
+            "type": "{Number}",
+            "since": "1.0.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 789,
+            "description": "The connection with the system service was momentarily lost, update imminent.",
+            "itemtype": "attribute",
+            "name": "CENTRAL_MANAGER_STATE_RESETTING",
+            "type": "{Number}",
+            "since": "1.0.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 796,
+            "description": "The platform doesn't support the Bluetooth Low Energy Central role.",
+            "itemtype": "attribute",
+            "name": "CENTRAL_MANAGER_STATE_UNSUPPORTED",
+            "type": "{Number}",
+            "since": "1.0.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 803,
+            "description": "The application is not authorized to use the Bluetooth Low Energy Central role.",
+            "itemtype": "attribute",
+            "name": "CENTRAL_MANAGER_STATE_UNAUTHORIZED",
+            "type": "{Number}",
+            "since": "1.0.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 810,
+            "description": "Bluetooth is currently powered off.",
+            "itemtype": "attribute",
+            "name": "CENTRAL_MANAGER_STATE_POWERED_OFF",
+            "type": "{Number}",
+            "since": "1.0.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 817,
+            "description": "Bluetooth is currently powered on and available to use.",
+            "itemtype": "attribute",
+            "name": "CENTRAL_MANAGER_STATE_POWERED_ON",
+            "type": "{Number}",
+            "since": "1.0.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 824,
+            "description": "Prioritizes rapid communication over battery life.",
+            "itemtype": "attribute",
+            "name": "PERIPHERAL_MANAGER_CONNECTION_LATENCY_LOW",
+            "type": "{Number}",
+            "since": "1.0.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 831,
+            "description": "A balance between communication frequency and battery life.",
+            "itemtype": "attribute",
+            "name": "PERIPHERAL_MANAGER_CONNECTION_LATENCY_MEDIUM",
+            "type": "{Number}",
+            "since": "1.0.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 838,
+            "description": "Prioritizes extending battery life over rapid communication.",
+            "itemtype": "attribute",
+            "name": "PERIPHERAL_MANAGER_CONNECTION_LATENCY_HIGH",
+            "type": "{Number}",
+            "since": "1.0.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 845,
+            "description": "Permits broadcasts of the characteristic value using a characteristic\nconfiguration descriptor. Not allowed for local characteristics.",
+            "itemtype": "attribute",
+            "name": "CHAR_PROP_BROADCAST",
+            "type": "{Number}",
+            "since": "1.0.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 853,
+            "description": "Permits reads of the characteristic value.",
+            "itemtype": "attribute",
+            "name": "CHAR_PROP_READ",
+            "type": "{Number}",
+            "since": "1.0.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 860,
+            "description": "Permits writes of the characteristic value, without a response.",
+            "itemtype": "attribute",
+            "name": "CHAR_PROP_WRITE_WITHOUT_RESPONSE",
+            "type": "{Number}",
+            "since": "1.0.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 867,
+            "description": "Permits writes of the characteristic value.",
+            "itemtype": "attribute",
+            "name": "CHAR_PROP_WRITE",
+            "type": "{Number}",
+            "since": "1.0.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 874,
+            "description": "Permits notifications of the characteristic value, without a response.",
+            "itemtype": "attribute",
+            "name": "CHAR_PROP_NOTIFY",
+            "type": "{Number}",
+            "since": "1.0.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 881,
+            "description": "Permits indications of the characteristic value.",
+            "itemtype": "attribute",
+            "name": "CHAR_PROP_INDICATE",
+            "type": "{Number}",
+            "since": "1.0.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 888,
+            "description": "Permits signed writes of the characteristic value.",
+            "itemtype": "attribute",
+            "name": "CHAR_PROP_SIGNED_WRITES",
+            "type": "{Number}",
+            "since": "1.0.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 895,
+            "description": "If set, additional characteristic properties are defined in the\ncharacteristic extended properties descriptor. Not allowed for local\ncharacteristics",
+            "itemtype": "attribute",
+            "name": "CHAR_PROP_EXTENDED_PROPERTIES",
+            "type": "{Number}",
+            "since": "1.0.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 904,
+            "description": "If set, only trusted devices can enable notifications of the characteristic\nvalue.",
+            "itemtype": "attribute",
+            "name": "CHAR_PROP_NOTIFY_ENCRYPTION_REQUIRED",
+            "type": "{Number}",
+            "since": "1.0.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 912,
+            "description": "If set, only trusted devices can enable indications of the characteristic\nvalue.",
+            "itemtype": "attribute",
+            "name": "CHAR_PROP_INDICATE_ENCRYPTION_REQUIRED",
+            "type": "{Number}",
+            "since": "1.0.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 920,
+            "description": "Characteristic has no permissions.",
+            "itemtype": "attribute",
+            "name": "CHAR_PERM_NONE",
+            "type": "{Number}",
+            "since": "1.0.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 927,
+            "description": "Characteristic is readable.",
+            "itemtype": "attribute",
+            "name": "CHAR_PERM_READABLE",
+            "type": "{Number}",
+            "since": "1.0.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 934,
+            "description": "Characteristic is writeable.",
+            "itemtype": "attribute",
+            "name": "CHAR_PERM_WRITEABLE",
+            "type": "{Number}",
+            "since": "1.0.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 941,
+            "description": "Characteristic is readable by trusted devices.",
+            "itemtype": "attribute",
+            "name": "CHAR_PERM_READ_ENCRYPTED",
+            "type": "{Number}",
+            "since": "1.0.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 948,
+            "description": "Characteristic is writeable by trusted devices.",
+            "itemtype": "attribute",
+            "name": "CHAR_PERM_WRITE_ENCRYPTED",
+            "type": "{Number}",
+            "since": "1.0.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 955,
+            "description": "The Bluetooth Low Energy specification defines several fields that may\nbe present in the advertisement data. The ADVERT\\_DATA\\_* constants can be\nused as keys to define the value of these fields when advertising\nusing the {{#crossLink \"BluetoothLEModule/startAdvertising:method\"}}\n{{/crossLink}} method, or to access the values when advertising data is\nreceived in the\n{{#crossLink \"BluetoothLEModule/discoveredPeripheral:event\"}}{{/crossLink}}\nevent.\n\nThe value associated with this particular key is an array of strings\nrepresenting service UUIDs.\n\nNote that iOS version 7.0 only supports the ADVERT\\_DATA\\_KEY\\_SERVICE\\_UUIDS\nand ADVERT\\_DATA\\_KEY\\_LOCAL\\_NAME fields as parameters to the\n{{#crossLink \"BluetoothLEModule/startAdvertising:method\"}}\n{{/crossLink}} method.",
+            "itemtype": "attribute",
+            "name": "ADVERT_DATA_KEY_SERVICE_UUIDS",
+            "type": "{String}",
+            "since": "1.0.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 977,
+            "description": "The Bluetooth Low Energy specification defines several fields that may\nbe present in the advertisement data. The ADVERT\\_DATA\\_* constants can be\nused as keys to define the value of these fields when advertising\nusing the {{#crossLink \"BluetoothLEModule/startAdvertising:method\"}}\n{{/crossLink}} method, or to access the values when advertising data is\nreceived in the\n{{#crossLink \"BluetoothLEModule/discoveredPeripheral:event\"}}{{/crossLink}}\nevent.\n\nThe value associated with this particular key is an array of strings representing\nservice UUIDs that were found in the \"overflow\" area of the advertising data.\nDue to the nature of the data stored in this area,\nUUIDs listed here are \"best effort\" and may not always be accurate.\n\nNote that iOS version 7.0 only supports the ADVERT\\_DATA\\_KEY\\_SERVICE\\_UUIDS\nand ADVERT\\_DATA\\_KEY\\_LOCAL\\_NAME fields as parameters to the\n{{#crossLink \"BluetoothLEModule/startAdvertising:method\"}}\n{{/crossLink}} method.",
+            "itemtype": "attribute",
+            "name": "ADVERT_DATA_KEY_OVERFLOW_SERVICE_UUIDS",
+            "type": "{String}",
+            "since": "1.0.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 1001,
+            "description": "The Bluetooth Low Energy specification defines several fields that may\nbe present in the advertisement data. The ADVERT\\_DATA\\_* constants can be\nused as keys to define the value of these fields when advertising\nusing the {{#crossLink \"BluetoothLEModule/startAdvertising:method\"}}\n{{/crossLink}} method, or to access the values when advertising data is\nreceived in the\n{{#crossLink \"BluetoothLEModule/discoveredPeripheral:event\"}}{{/crossLink}}\nevent.\n\nThe value associated with this particular key is a string, representing the local name\nof a peripheral.\n\nNote that iOS version 7.0 only supports the ADVERT\\_DATA\\_KEY\\_SERVICE\\_UUIDS\nand ADVERT\\_DATA\\_KEY\\_LOCAL\\_NAME fields as parameters to the\n{{#crossLink \"BluetoothLEModule/startAdvertising:method\"}}\n{{/crossLink}} method.",
+            "itemtype": "attribute",
+            "name": "ADVERT_DATA_KEY_LOCAL_NAME",
+            "type": "{String}",
+            "since": "1.0.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 1023,
+            "description": "The Bluetooth Low Energy specification defines several fields that may\nbe present in the advertisement data. The ADVERT\\_DATA\\_* constants can be\nused as keys to define the value of these fields when advertising\nusing the {{#crossLink \"BluetoothLEModule/startAdvertising:method\"}}\n{{/crossLink}} method, or to access the values when advertising data is\nreceived in the\n{{#crossLink \"BluetoothLEModule/discoveredPeripheral:event\"}}{{/crossLink}}\nevent.\n\nThe value associated with this particular key is a number, representing the transmit\npower of a peripheral.\n\nNote that iOS version 7.0 only supports the ADVERT\\_DATA\\_KEY\\_SERVICE\\_UUIDS\nand ADVERT\\_DATA\\_KEY\\_LOCAL\\_NAME fields as parameters to the\n{{#crossLink \"BluetoothLEModule/startAdvertising:method\"}}\n{{/crossLink}} method.",
+            "itemtype": "attribute",
+            "name": "ADVERT_DATA_KEY_TX_POWER_LEVEL",
+            "type": "{String}",
+            "since": "1.0.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 1045,
+            "description": "The Bluetooth Low Energy specification defines several fields that may\nbe present in the advertisement data. The ADVERT\\_DATA\\_* constants can be\nused as keys to define the value of these fields when advertising\nusing the {{#crossLink \"BluetoothLEModule/startAdvertising:method\"}}\n{{/crossLink}} method, or to access the values when advertising data is\nreceived in the\n{{#crossLink \"BluetoothLEModule/discoveredPeripheral:event\"}}{{/crossLink}}\nevent.\n\nThe value associated with this particular key is a TiBuffer, representing the\nmanufacturing data of the peripheral.\n\nNote that iOS version 7.0 only supports the ADVERT\\_DATA\\_KEY\\_SERVICE\\_UUIDS\nand ADVERT\\_DATA\\_KEY\\_LOCAL\\_NAME fields as parameters to the\n{{#crossLink \"BluetoothLEModule/startAdvertising:method\"}}\n{{/crossLink}} method.",
+            "itemtype": "attribute",
+            "name": "ADVERT_DATA_KEY_MANUFACTURER_DATA",
+            "type": "{String}",
+            "since": "1.0.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 1067,
+            "description": "The Bluetooth Low Energy specification defines several fields that may\nbe present in the advertisement data. The ADVERT\\_DATA\\_* constants can be\nused as keys to define the value of these fields when advertising\nusing the {{#crossLink \"BluetoothLEModule/startAdvertising:method\"}}\n{{/crossLink}} method, or to access the values when advertising data is\nreceived in the\n{{#crossLink \"BluetoothLEModule/discoveredPeripheral:event\"}}{{/crossLink}}\nevent.\n\nThe value associated with this particular key is an object containing\nservice specific advertisement data. The property names of the object are\nservice UUIDs, and the values of the properties are TiBuffer objects.\n\nNote that iOS version 7.0 only supports the ADVERT\\_DATA\\_KEY\\_SERVICE\\_UUIDS\nand ADVERT\\_DATA\\_KEY\\_LOCAL\\_NAME fields as parameters to the\n{{#crossLink \"BluetoothLEModule/startAdvertising:method\"}}\n{{/crossLink}} method.",
+            "itemtype": "attribute",
+            "name": "ADVERT_DATA_KEY_SERVICE_DATA",
+            "type": "{String}",
+            "since": "1.0.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 1090,
+            "description": "The Bluetooth Low Energy specification defines several fields that may\nbe present in the advertisement data. The ADVERT\\_DATA\\_* constants can be\nused as keys to define the value of these fields when advertising\nusing the {{#crossLink \"BluetoothLEModule/startAdvertising:method\"}}\n{{/crossLink}} method, or to access the values when advertising data is\nreceived in the\n{{#crossLink \"BluetoothLEModule/discoveredPeripheral:event\"}}{{/crossLink}}\nevent.\n\nThe value associated with this particular key is a Boolean indicating\nwhether or not the advertising event type was connectable. This can be used\nto determine whether or not a peripheral is connectable in that instant.\n\nNote that iOS version 7.0 only supports the ADVERT\\_DATA\\_KEY\\_SERVICE\\_UUIDS\nand ADVERT\\_DATA\\_KEY\\_LOCAL\\_NAME fields as parameters to the\n{{#crossLink \"BluetoothLEModule/startAdvertising:method\"}}\n{{/crossLink}} method.",
+            "itemtype": "attribute",
+            "name": "ADVERT_DATA_KEY_IS_CONNECTABLE",
+            "type": "{String}",
+            "since": "1.1.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 1113,
+            "description": "The Bluetooth Low Energy specification defines several fields that may\nbe present in the advertisement data. The ADVERT\\_DATA\\_* constants can be\nused as keys to define the value of these fields when advertising\nusing the {{#crossLink \"BluetoothLEModule/startAdvertising:method\"}}\n{{/crossLink}} method, or to access the values when advertising data is\nreceived in the\n{{#crossLink \"BluetoothLEModule/discoveredPeripheral:event\"}}{{/crossLink}}\nevent.\n\nThe value associated with this particular key is a list of one or more\n<code>String</code>s, representing service UUIDs.\n\nNote that iOS version 7.0 only supports the ADVERT\\_DATA\\_KEY\\_SERVICE\\_UUIDS\nand ADVERT\\_DATA\\_KEY\\_LOCAL\\_NAME fields as parameters to the\n{{#crossLink \"BluetoothLEModule/startAdvertising:method\"}}\n{{/crossLink}} method.",
+            "itemtype": "attribute",
+            "name": "ADVERT_DATA_KEY_SOLICITED_SERVICE_UUIDS",
+            "type": "{String}",
+            "since": "1.1.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 1136,
+            "description": "Use this constant for the <code>type</code> parameter of the\n{{#crossLink \"Peripheral/writeValueForCharacteristic:method\"}}\n{{/crossLink}} method. It specifies that the write to be performed requires\na response.",
+            "itemtype": "attribute",
+            "name": "CHARACTERISTIC_TYPE_WRITE_WITH_RESPONSE",
+            "type": "{Number}",
+            "since": "1.0.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 1146,
+            "description": "Use this constant for the <code>type</code> parameter of the\n{{#crossLink \"Peripheral/writeValueForCharacteristic:method\"}}\n{{/crossLink}} method. It specifies that the write to be performed does not\nrequire a response.",
+            "itemtype": "attribute",
+            "name": "CHARACTERISTIC_TYPE_WRITE_WITHOUT_RESPONSE",
+            "type": "{Number}",
+            "since": "1.0.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 1156,
+            "description": "Use this constant as a key in the <code>options</code> parameter of the\n{{#crossLink \"BluetoothLEModule/startScan:method\"}}\n{{/crossLink}}. The value associated with this key is a number,\nindicating whether the scan should run without duplicate filtering. By\ndefault, multiple discoveries of the same peripheral are coalesced into a\nsingle discovery event. Disabling this filtering can have an adverse effect\non battery life and should only be used if necessary.",
+            "itemtype": "attribute",
+            "name": "CENTRAL_MANAGER_SCAN_OPTION_KEY_ALLOW_DUPLICATES",
+            "type": "{String}",
+            "since": "1.0.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 1221,
+            "description": "One of the possible values of the <code>errorDomain</code> property of\nan event in case an error occurs.",
+            "itemtype": "attribute",
+            "name": "ERROR_DOMAIN",
+            "type": "{String}",
+            "since": "1.0.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 1229,
+            "description": "One of the possible values of the <code>errorCode</code> property of\nan event in case an error occurs.",
+            "itemtype": "attribute",
+            "name": "UNKNOWN_ERROR",
+            "type": "{Number}",
+            "since": "1.0.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 1237,
+            "description": "One of the possible values of the <code>errorCode</code> property of\nan event in case an error occurs.",
+            "itemtype": "attribute",
+            "name": "INVALID_PARAMETERS_ERROR",
+            "type": "{Number}",
+            "since": "1.0.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 1245,
+            "description": "One of the possible values of the <code>errorCode</code> property of\nan event in case an error occurs.",
+            "itemtype": "attribute",
+            "name": "INVALID_HANDLE_ERROR",
+            "type": "{Number}",
+            "since": "1.0.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 1253,
+            "description": "One of the possible values of the <code>errorCode</code> property of\nan event in case an error occurs.",
+            "itemtype": "attribute",
+            "name": "NOT_CONNECTED_ERROR",
+            "type": "{Number}",
+            "since": "1.0.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 1261,
+            "description": "One of the possible values of the <code>errorCode</code> property of\nan event in case an error occurs.",
+            "itemtype": "attribute",
+            "name": "OUT_OF_SPACE_ERROR",
+            "type": "{Number}",
+            "since": "1.0.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 1269,
+            "description": "One of the possible values of the <code>errorCode</code> property of\nan event in case an error occurs.",
+            "itemtype": "attribute",
+            "name": "OPERATION_CANCELLED_ERROR",
+            "type": "{Number}",
+            "since": "1.0.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 1277,
+            "description": "One of the possible values of the <code>errorCode</code> property of\nan event in case an error occurs.",
+            "itemtype": "attribute",
+            "name": "CONNECTION_TIMEOUT_ERROR",
+            "type": "{Number}",
+            "since": "1.0.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 1285,
+            "description": "One of the possible values of the <code>errorCode</code> property of\nan event in case an error occurs.",
+            "itemtype": "attribute",
+            "name": "PERIPHERAL_DISCONNECTED_ERROR",
+            "type": "{Number}",
+            "since": "1.0.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 1293,
+            "description": "One of the possible values of the <code>errorCode</code> property of\nan event in case an error occurs.",
+            "itemtype": "attribute",
+            "name": "UUID_NOT_ALLOWED_ERROR",
+            "type": "{Number}",
+            "since": "1.0.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 1301,
+            "description": "One of the possible values of the <code>errorCode</code> property of\nan event in case an error occurs.",
+            "itemtype": "attribute",
+            "name": "ALREADY_ADVERTISING_ERROR",
+            "type": "{Number}",
+            "since": "1.0.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 1309,
+            "description": "One of the possible values of the <code>errorDomain</code> property of\nan event in case an error occurs.",
+            "itemtype": "attribute",
+            "name": "ATT_ERROR_DOMAIN",
+            "type": "{String}",
+            "since": "1.0.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 1317,
+            "description": "Constants to be used for the <code>result</code> parameter of the\n{{#crossLink \"BluetoothLEModule/respondToRequest:method\"}}\n{{/crossLink}} to indicate success.",
+            "itemtype": "attribute",
+            "name": "ATT_SUCCESS",
+            "type": "{Number}",
+            "since": "1.0.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 1326,
+            "description": "One of the possible values of the <code>errorCode</code> property of\nan event in case an error occurs.",
+            "itemtype": "attribute",
+            "name": "ATT_INVALID_HANDLE_ERROR",
+            "type": "{Number}",
+            "since": "1.0.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 1334,
+            "description": "One of the possible values of the <code>errorCode</code> property of\nan event in case an error occurs.",
+            "itemtype": "attribute",
+            "name": "ATT_READ_NOT_PERMITTED_ERROR",
+            "type": "{Number}",
+            "since": "1.0.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 1342,
+            "description": "One of the possible values of the <code>errorCode</code> property of\nan event in case an error occurs.",
+            "itemtype": "attribute",
+            "name": "ATT_WRITE_NOT_PERMITTED_ERROR",
+            "type": "{Number}",
+            "since": "1.0.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 1350,
+            "description": "One of the possible values of the <code>errorCode</code> property of\nan event in case an error occurs.",
+            "itemtype": "attribute",
+            "name": "ATT_INVALID_PDU_ERROR",
+            "type": "{Number}",
+            "since": "1.0.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 1358,
+            "description": "One of the possible values of the <code>errorCode</code> property of\nan event in case an error occurs.",
+            "itemtype": "attribute",
+            "name": "ATT_INSUFFICIENT_AUTHENTICATION_ERROR",
+            "type": "{Number}",
+            "since": "1.0.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 1366,
+            "description": "One of the possible values of the <code>errorCode</code> property of\nan event in case an error occurs.",
+            "itemtype": "attribute",
+            "name": "ATT_REQUEST_NOT_SUPPORTED_ERROR",
+            "type": "{Number}",
+            "since": "1.0.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 1374,
+            "description": "One of the possible values of the <code>errorCode</code> property of\nan event in case an error occurs.",
+            "itemtype": "attribute",
+            "name": "ATT_INVALID_OFFSET_ERROR",
+            "type": "{Number}",
+            "since": "1.0.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 1382,
+            "description": "One of the possible values of the <code>errorCode</code> property of\nan event in case an error occurs.",
+            "itemtype": "attribute",
+            "name": "ATT_INSUFFICIENT_AUTHORIZATION_ERROR",
+            "type": "{Number}",
+            "since": "1.0.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 1390,
+            "description": "One of the possible values of the <code>errorCode</code> property of\nan event in case an error occurs.",
+            "itemtype": "attribute",
+            "name": "ATT_PREPARE_QUEUE_FULL_ERROR",
+            "type": "{Number}",
+            "since": "1.0.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 1398,
+            "description": "One of the possible values of the <code>errorCode</code> property of\nan event in case an error occurs.",
+            "itemtype": "attribute",
+            "name": "ATT_ATTRIBUTE_NOT_FOUND_ERROR",
+            "type": "{Number}",
+            "since": "1.0.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 1406,
+            "description": "One of the possible values of the <code>errorCode</code> property of\nan event in case an error occurs.",
+            "itemtype": "attribute",
+            "name": "ATT_ATTRIBUTE_NOT_LONG_ERROR",
+            "type": "{Number}",
+            "since": "1.0.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 1414,
+            "description": "One of the possible values of the <code>errorCode</code> property of\nan event in case an error occurs.",
+            "itemtype": "attribute",
+            "name": "ATT_INSUFFICIENT_ENCRYPTION_KEY_SIZE_ERROR",
+            "type": "{Number}",
+            "since": "1.0.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 1422,
+            "description": "One of the possible values of the <code>errorCode</code> property of\nan event in case an error occurs.",
+            "itemtype": "attribute",
+            "name": "ATT_INVALID_ATTRIBUTE_VALUE_LENGTH_ERROR",
+            "type": "{Number}",
+            "since": "1.0.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 1430,
+            "description": "One of the possible values of the <code>errorCode</code> property of\nan event in case an error occurs.",
+            "itemtype": "attribute",
+            "name": "ATT_UNLIKELY_ERROR",
+            "type": "{Number}",
+            "since": "1.0.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 1438,
+            "description": "One of the possible values of the <code>errorCode</code> property of\nan event in case an error occurs.",
+            "itemtype": "attribute",
+            "name": "ATT_INSUFFICIENT_ENCRYPTION_ERROR",
+            "type": "{Number}",
+            "since": "1.0.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 1446,
+            "description": "One of the possible values of the <code>errorCode</code> property of\nan event in case an error occurs.",
+            "itemtype": "attribute",
+            "name": "ATT_UNSUPPORTED_GROUP_TYPE_ERROR",
+            "type": "{Number}",
+            "since": "1.0.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 1454,
+            "description": "One of the possible values of the <code>errorCode</code> property of\nan event in case an error occurs.",
+            "itemtype": "attribute",
+            "name": "ATT_INSUFFICIENT_RESOURCES_ERROR",
+            "type": "{Number}",
+            "since": "1.0.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 1562,
+            "description": "One of the possible values of the <code>state</code> property of\na peripheral object.",
+            "itemtype": "attribute",
+            "name": "PERIPHERAL_STATE_DISCONNECTED",
+            "type": "{Number}",
+            "since": "1.1.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 1570,
+            "description": "One of the possible values of the <code>state</code> property of\na peripheral object.",
+            "itemtype": "attribute",
+            "name": "PERIPHERAL_STATE_CONNECTING",
+            "type": "{Number}",
+            "since": "1.1.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 1578,
+            "description": "One of the possible values of the <code>state</code> property of\na peripheral object.",
+            "itemtype": "attribute",
+            "name": "PERIPHERAL_STATE_CONNECTED",
+            "type": "{Number}",
+            "since": "1.1.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 1591,
+            "description": "One of the possible values of the\n{{#crossLink \"BluetoothLEModule/backgroundDataAuthorizationStatus:property\"}}\n{{/crossLink}} property. User has not yet made a choice with regards to this\napplication.",
+            "itemtype": "attribute",
+            "name": "BACKGROUND_DATA_AUTHORIZATION_STATUS_NOT_DETERMINED",
+            "type": "{Number}",
+            "since": "1.1.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 1601,
+            "description": "One of the possible values of the\n{{#crossLink \"BluetoothLEModule/backgroundDataAuthorizationStatus:property\"}}\n{{/crossLink}} property. This application is not authorized to share data\nwhile backgrounded. The user cannot change this application’s status,\npossibly due to active restrictions such as parental controls being in place.",
+            "itemtype": "attribute",
+            "name": "BACKGROUND_DATA_AUTHORIZATION_STATUS_RESTRICTED",
+            "type": "{Number}",
+            "since": "1.1.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 1612,
+            "description": "One of the possible values of the\n{{#crossLink \"BluetoothLEModule/backgroundDataAuthorizationStatus:property\"}}\n{{/crossLink}} property. User has explicitly denied this application from\nsharing data while backgrounded.",
+            "itemtype": "attribute",
+            "name": "BACKGROUND_DATA_AUTHORIZATION_STATUS_DENIED",
+            "type": "{Number}",
+            "since": "1.1.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 1622,
+            "description": "One of the possible values of the\n{{#crossLink \"BluetoothLEModule/backgroundDataAuthorizationStatus:property\"}}\n{{/crossLink}} property. User has authorized this application to share data\nwhile backgrounded.",
+            "itemtype": "attribute",
+            "name": "BACKGROUND_DATA_AUTHORIZATION_STATUS_AUTHORIZED",
+            "type": "{Number}",
+            "since": "1.1.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 1637,
+            "description": "One of the possible values of the\n{{#crossLink \"Beacon/proximity:property\"}}\n{{/crossLink}} property.",
+            "itemtype": "attribute",
+            "name": "BEACON_PROXIMITY_UNKNOWN",
+            "type": "{Number}",
+            "since": "1.1.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 1646,
+            "description": "One of the possible values of the\n{{#crossLink \"Beacon/proximity:property\"}}\n{{/crossLink}} property.",
+            "itemtype": "attribute",
+            "name": "BEACON_PROXIMITY_IMMEDIATE",
+            "type": "{Number}",
+            "since": "1.1.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 1655,
+            "description": "One of the possible values of the\n{{#crossLink \"Beacon/proximity:property\"}}\n{{/crossLink}} property.",
+            "itemtype": "attribute",
+            "name": "BEACON_PROXIMITY_NEAR",
+            "type": "{Number}",
+            "since": "1.1.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 1664,
+            "description": "One of the possible values of the\n{{#crossLink \"Beacon/proximity:property\"}}\n{{/crossLink}} property.",
+            "itemtype": "attribute",
+            "name": "BEACON_PROXIMITY_FAR",
+            "type": "{Number}",
+            "since": "1.1.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 1678,
+            "description": "One of the possible values of the <code>state</code> property of the\n{{#crossLink \"BluetoothLEModule/regionStateUpdated:event\"}}\n{{/crossLink}} event.",
+            "itemtype": "attribute",
+            "name": "REGION_STATE_UNKOWN",
+            "type": "{Number}",
+            "since": "1.1.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 1687,
+            "description": "One of the possible values of the <code>state</code> property of the\n{{#crossLink \"BluetoothLEModule/regionStateUpdated:event\"}}\n{{/crossLink}} event.",
+            "itemtype": "attribute",
+            "name": "REGION_STATE_INSIDE",
+            "type": "{Number}",
+            "since": "1.1.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 1696,
+            "description": "One of the possible values of the <code>state</code> property of the\n{{#crossLink \"BluetoothLEModule/regionStateUpdated:event\"}}\n{{/crossLink}} event.",
+            "itemtype": "attribute",
+            "name": "REGION_STATE_OUTSIDE",
+            "type": "{Number}",
+            "since": "1.1.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 1713,
+            "description": "Each string in the array represents the restoration identifier for a\nperipheral manager object. This is the same string you assigned to the\n<code>restoreIdentifier</code> parameter of the\n{{#crossLink \"BluetoothLEModule/initPeripheralManager:method}}{{/crossLink}}\nfunction.",
+            "itemtype": "property",
+            "name": "restoredPeripheralManagerIdentifiers",
+            "type": "{Array of Strings}",
+            "final": 1,
+            "since": "1.2.5",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 1730,
+            "description": "Initializes the module's internal peripheral manager object. This function\nmust be called in an app that acts as a peripheral before\nany other function can be used.",
+            "itemtype": "method",
+            "name": "initPeripheralManager",
+            "params": [
+                {
+                    "name": "params",
+                    "description": "An object with the following properties:",
+                    "type": "Object",
+                    "optional": true,
+                    "props": [
+                        {
+                            "name": "showPowerAlert",
+                            "description": "Boolean indicating that the system\nshould, if Bluetooth is powered off when the peripheral is instantialized,\ndisplay a warning dialog to the user. This parameter was introduced in\nversion 1.1.0 of the module.",
+                            "type": "Boolean",
+                            "optional": true,
+                            "optdefault": "true"
+                        },
+                        {
+                            "name": "restoreIdentifier",
+                            "description": "A string containing a unique\nidentifier for the peripheral manager that is being instantiated. This\nidentifier is used by the system to identify a specific peripheral manager\ninstance for restoration and, therefore, must remain the same for\nsubsequent application executions in order for the manager to be restored.\nSee also the\n{{#crossLink \"BluetoothLEModule/peripheralWillRestoreState:event\"}}\n{{/crossLink}} event.\nThis parameter was introduced in version 1.1.0 of the module.",
+                            "type": "String",
+                            "optional": true
+                        }
+                    ]
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Void"
+            },
+            "since": "1.0.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 1784,
+            "description": "Releases the module's internal peripheral manager\nobject. This frees up the related resources, and effectively (after a time-out)\ntears down the connection on the central side as well.",
+            "itemtype": "method",
+            "name": "releasePeripheralManager",
+            "return": {
+                "description": "",
+                "type": "Void"
+            },
+            "since": "1.0.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 1798,
+            "description": "State of the module's internal peripheral manager.\nIts value is one of the PERIPHERAL\\_MANAGER\\_STATE\\_*\nconstants.",
+            "itemtype": "property",
+            "name": "peripheralManagerState",
+            "type": "{Number}",
+            "final": 1,
+            "since": "1.0.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 1817,
+            "description": "Whether or not the the module's internal peripheral manager is currently\nadvertising data.",
+            "itemtype": "property",
+            "name": "isAdvertising",
+            "type": "{Boolean}",
+            "final": 1,
+            "since": "1.0.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 1835,
+            "description": "Instructs the module's internal peripheral manager to start advertising.\n\n**Important**: You must call the\n{{#crossLink \"BluetoothLEModule/initPeripheralManager:method\"}}\n{{/crossLink}} function first!\n\n**Note**: In the <code>Beacons</code> module, this function can only be used\nto advertise beacon regions.\n\nSupported advertising data types are\nADVERT\\_DATA\\_KEY\\_LOCAL\\_NAME and ADVERT\\_DATA\\_KEY\\_SERVICE\\_UUIDS.\nWhen in the foreground, an application can utilize up to 28\nbytes of space in the initial advertisement data for any combination of the\nsupported advertising data types. If this space is used up, there are an\nadditional 10 bytes of space in the scan response that can be used only \nfor the local name. Note that these sizes do not include the 2 bytes\nof header information that are required for each new data type. Any service\nUUIDs that do not fit in the allotted space will be added to a special\n\"overflow\" area, and can only be discovered by an iOS device that is\nexplicitly scanning for them. While an application is in the background, the\nlocal name will not be used and all service UUIDs will be placed in the\n\"overflow\" area.",
+            "itemtype": "method",
+            "name": "startAdvertising",
+            "params": [
+                {
+                    "name": "params",
+                    "description": "Object containing the data to be advertised.",
+                    "type": "Object",
+                    "optional": true,
+                    "props": [
+                        {
+                            "name": "ADVERT_DATA_KEY_LOCAL_NAME",
+                            "description": "Local name. Note that\nADVERT\\_DATA\\_KEY\\_LOCAL\\_NAME is the constant whose value (!) is to be\nused as the key, like so:\n<code>params[BluetoothLE.ADVERT\\_DATA\\_KEY\\_LOCAL\\_NAME] = ...</code>",
+                            "type": "String"
+                        },
+                        {
+                            "name": "ADVERT_DATA_KEY_SERVICE_UUIDS",
+                            "description": "Service UUIDs.\nNote that ADVERT\\_DATA\\_KEY\\_SERVICE\\_UUIDS is the constant whose value (!)\nis to be used as the key, like so:\n<code>params[BluetoothLE.ADVERT\\_DATA\\_KEY\\_SERVICE\\_UUIDS] = ...</code>",
+                            "type": "Array of Strings"
+                        },
+                        {
+                            "name": "beaconRegion",
+                            "description": "An object created using the\n{{#crossLink \"BluetoothLEModule/createBeaconRegion:method\"}}\n{{/crossLink}} method. If this parameter is present, other parameters\nexcept <code>measuredPower</code> are ignored.",
+                            "type": "BeaconRegion"
+                        },
+                        {
+                            "name": "measuredPower",
+                            "description": "The received signal strength indicator\n(RSSI) value (measured in decibels) for the device. This value represents the\nmeasured strength of the beacon from one meter away and is used during\nranging. If not specified, the default value for the device will be used.",
+                            "type": "Number",
+                            "optional": true
+                        }
+                    ]
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Void"
+            },
+            "since": "1.0.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 1929,
+            "description": "Instructs the module's internal peripheral manager to stop advertising.",
+            "itemtype": "method",
+            "name": "stopAdvertising",
+            "return": {
+                "description": "",
+                "type": "Void"
+            },
+            "since": "1.0.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 1999,
+            "description": "Sets the desired connection latency for an existing connection on the\nmodule's internal peripheral manager. Connection latency changes are not\nguaranteed, so the resultant latency may vary. If a desired latency is not\nset, the latency chosen by the central at the time of connection establishment\nwill be used. Typically, it is not necessary to change the latency.",
+            "itemtype": "method",
+            "name": "setDesiredConnectionLatency",
+            "params": [
+                {
+                    "name": "params",
+                    "description": "An object with the following properties:",
+                    "type": "Object",
+                    "props": [
+                        {
+                            "name": "latency",
+                            "description": "The desired connection latency.",
+                            "type": "Number"
+                        },
+                        {
+                            "name": "central",
+                            "description": "A connected central",
+                            "type": "Central"
+                        }
+                    ]
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Void"
+            },
+            "since": "1.0.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 2040,
+            "description": "Publishes a service and its associated characteristic(s) to the local\ndatabase. If the service contains included services, they must be published\nfirst.",
+            "itemtype": "method",
+            "name": "addService",
+            "params": [
+                {
+                    "name": "params",
+                    "description": "An object with the following properties:",
+                    "type": "Object",
+                    "props": [
+                        {
+                            "name": "primary",
+                            "description": "Defines whether the service is primary.",
+                            "type": "Boolean"
+                        },
+                        {
+                            "name": "characteristics",
+                            "description": "An array of objects\ndescribing the characteristics of the service using the following properties:",
+                            "type": "Array of Objects",
+                            "props": [
+                                {
+                                    "name": "uuid",
+                                    "description": "String representing the\ncharacteristic's UUID.",
+                                    "type": "String"
+                                },
+                                {
+                                    "name": "properties",
+                                    "description": "Integer representing the\ncharacteristic's properties; see the CHAR\\_PROP\\_* constants.",
+                                    "type": "Number"
+                                },
+                                {
+                                    "name": "permissions",
+                                    "description": "Integer representing the\ncharacteristic's permissions; see the CHAR\\_PERM\\_* constants.",
+                                    "type": "Number"
+                                },
+                                {
+                                    "name": "data",
+                                    "description": "A TiBuffer object, holding\nthe value of the characteristic. Optional.",
+                                    "type": "TiBuffer",
+                                    "optional": true
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Void"
+            },
+            "since": "1.0.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 2118,
+            "description": "Removes a published service from the local database. If the service is\nincluded by other service(s), they must be removed first.",
+            "itemtype": "method",
+            "name": "removeService",
+            "params": [
+                {
+                    "name": "service",
+                    "description": "",
+                    "type": "Service"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Void"
+            },
+            "since": "1.0.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 2145,
+            "description": "Removes all published services from the local database.",
+            "itemtype": "method",
+            "name": "removeAllServices",
+            "return": {
+                "description": "",
+                "type": "Void"
+            },
+            "since": "1.0.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 2165,
+            "description": "Used to respond to request(s) received via the\n{{#crossLink \"BluetoothLEModule/receivedReadRequest:event\"}}\n{{/crossLink}} or\n{{#crossLink \"BluetoothLEModule/receivedWriteRequests:event\"}}\n{{/crossLink}} event.",
+            "itemtype": "method",
+            "name": "respondToRequest",
+            "params": [
+                {
+                    "name": "params",
+                    "description": "An object with the following properties:",
+                    "type": "Object",
+                    "props": [
+                        {
+                            "name": "request",
+                            "description": "The request to which the peripheral is\nresponding.",
+                            "type": "Request"
+                        },
+                        {
+                            "name": "result",
+                            "description": "The result code; see the ATT\\_* constants.",
+                            "type": "Number"
+                        }
+                    ]
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Void"
+            },
+            "since": "1.0.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 2202,
+            "description": "Instructs the module's internal peripheral manager to send an updated\ncharacteristic value to one or more centrals, via a notification or\nindication.",
+            "itemtype": "method",
+            "name": "updateValue",
+            "params": [
+                {
+                    "name": "params",
+                    "description": "An object with the following properties:",
+                    "type": "Object",
+                    "props": [
+                        {
+                            "name": "characteristic",
+                            "description": "",
+                            "type": "Characteristic"
+                        },
+                        {
+                            "name": "data",
+                            "description": "The value of the characteristic.",
+                            "type": "TiBuffer"
+                        },
+                        {
+                            "name": "centrals",
+                            "description": "The list of centrals that\nneed to be updated. If not specified, all subscribed centrals will be updated.",
+                            "type": "Array of Central objects",
+                            "optional": true
+                        }
+                    ]
+                }
+            ],
+            "return": {
+                "description": "*True* if the update could be sent, or *false* if the\nunderlying transmit queue is full. If *false* was returned, the\nreadyToUpdateSubscribers event will be fired once space has become\navailable, and the update should be re-sent if so desired.",
+                "type": "Boolean"
+            },
+            "since": "1.0.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 2259,
+            "description": "Fired whenever the state of the module's internal peripheral manager changes.",
+            "itemtype": "event",
+            "name": "peripheralManagerStateChange",
+            "params": [
+                {
+                    "name": "state",
+                    "description": "An integer describing the state of the module's\ninternal peripheral manager. See the PERIPHERAL\\_MANAGER\\_STATE\\_* constants.",
+                    "type": "Number"
+                }
+            ],
+            "since": "1.0.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 2275,
+            "description": "This event returns the result of a\n{{#crossLink \"BluetoothLEModule/startAdvertising:method\"}}\n{{/crossLink}} call. If advertisement could not be started, the cause will be\ndetailed in the <code>errorCode</code>, <code>errorDomain</code>, and\n<code>errorDescription</code> properties.",
+            "itemtype": "event",
+            "name": "startedAdvertising",
+            "params": [
+                {
+                    "name": "errorCode",
+                    "description": "The error code; only present if an error occurred.",
+                    "type": "Number"
+                },
+                {
+                    "name": "errorDomain",
+                    "description": "The error domain; only present if an error occurred.",
+                    "type": "String"
+                },
+                {
+                    "name": "errorDescription",
+                    "description": "The error description; only peresent if an",
+                    "type": "String"
+                }
+            ],
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 2299,
+            "description": "This event returns the result of a\n{{#crossLink \"BluetoothLEModule/addService:method\"}}\n{{/crossLink}} call. If advertisement could not be started, the cause will be\ndetailed in the <code>errorCode</code>, <code>errorDomain</code>, and\n<code>errorDescription</code> properties.",
+            "itemtype": "event",
+            "name": "addedService",
+            "params": [
+                {
+                    "name": "service",
+                    "description": "An object representing the service that was added.",
+                    "type": "Service"
+                },
+                {
+                    "name": "errorCode",
+                    "description": "The error code; only present if an error occurred.",
+                    "type": "Number"
+                },
+                {
+                    "name": "errorDomain",
+                    "description": "The error domain; only present if an error occurred.",
+                    "type": "String"
+                },
+                {
+                    "name": "errorDescription",
+                    "description": "The error description; only peresent if an",
+                    "type": "String"
+                }
+            ],
+            "since": "1.0.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 2332,
+            "description": "This event is fired when a central configures a characteristic to notify or\nindicate. It should be used as a cue to start sending updates as the\ncharacteristic value changes.",
+            "itemtype": "event",
+            "name": "centralSubscribed",
+            "params": [
+                {
+                    "name": "central",
+                    "description": "An object representing the central that subscribed.",
+                    "type": "Central"
+                },
+                {
+                    "name": "characteristic",
+                    "description": "An object representintg the\ncharacteristic to which the central subscribed.",
+                    "type": "Characteristic"
+                }
+            ],
+            "since": "1.0.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 2358,
+            "description": "This event is fired when a central removes notifications/indications from a\ncharacteristic.",
+            "itemtype": "event",
+            "name": "centralUnsubscribed",
+            "params": [
+                {
+                    "name": "central",
+                    "description": "An object representing the central that unsubscribed.",
+                    "type": "Central"
+                },
+                {
+                    "name": "characteristic",
+                    "description": "An object representintg the\ncharacteristic from which the central unsubscribed.",
+                    "type": "Characteristic"
+                }
+            ],
+            "since": "1.0.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 2383,
+            "description": "This event is fired when the module's internal peripheral manager receives\na read request.",
+            "itemtype": "event",
+            "name": "receivedReadRequest",
+            "params": [
+                {
+                    "name": "request",
+                    "description": "An object representing the request.",
+                    "type": "Request"
+                }
+            ],
+            "since": "1.0.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 2404,
+            "description": "This event is fired when the module's internal peripheral manager receives\na write request for one or more characteristics. For every invocation of this\nmethod,\n{{#crossLink \"BluetoothLEModule/respondToRequest:method\"}}\n{{/crossLink}} should be called exactly once. If the <code>requests</code>\nparameter contains multiple requests, they must be treated as an atomic unit.\nIf the execution of one of the requests would cause a failure, the request\nand error reason should be provided and none of the requests should be\nexecuted.",
+            "itemtype": "event",
+            "name": "receivedWriteRequests",
+            "params": [
+                {
+                    "name": "requests",
+                    "description": "{{#crossLink \"Request\"}}\n{{/crossLink}} objects describing the incoming write requests.",
+                    "type": "Array of Request objects"
+                }
+            ],
+            "since": "1.0.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 2437,
+            "description": "This event is fired after a failed call to \n{{#crossLink \"BluetoothLEModule/updateValue:method\"}}\n{{/crossLink}}, when the module's internal peripheral manager is again\nready to send characteristic value updates.",
+            "itemtype": "event",
+            "name": "readyToUpdateSubscribers",
+            "since": "1.0.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 2455,
+            "description": "**Note**: This event is currently not being fired, due to a limitation\nin Titanium. See the \"iOS to iOS\" sample app for a potential workaround.\n\nFired when iOS relaunches the app into the background (after iOS terminated\nit to free up resources) to complete some\nBluetooth-related task. Use this event to synchronize your app's state with\nthe state of the Bluetooth system.\n\nSee also the <code>restoreIdentifier</code> parameter of the\n{{#crossLink \"BluetoothLEModule/initPeripheralManager:method\"}}\n{{/crossLink}} method.",
+            "itemtype": "event",
+            "name": "peripheralWillRestoreState",
+            "params": [
+                {
+                    "name": "services",
+                    "description": "An array of\n{{#crossLink \"Service\"}}{{/crossLink}} objects containing all services\nthat were published to the local database at the time the application was\nterminated by the system. All the information about a service is restored,\nincluding any included services, characteristics, characteristic descriptors,\nand subscribed centrals.",
+                    "type": "Array of Services"
+                },
+                {
+                    "name": "advertisementData",
+                    "description": "An object (dictionary) containing the data\nbeing advertised at the time the application was terminated by the system.\nSee the\n{{#crossLink \"BluetoothLEModule/startAdvertising:method\"}}\n{{/crossLink}} method for more detail.",
+                    "type": "Object"
+                }
+            ],
+            "since": "1.1.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 2526,
+            "description": "Creates a \n{{#crossLink \"BeaconRegion\"}}\n{{/crossLink}}\nobject that can be used\nto start advertising an iBeacon.",
+            "itemtype": "method",
+            "name": "createBeaconRegion",
+            "params": [
+                {
+                    "name": "params",
+                    "description": "An object with the following properties (see the\nproperties of the\n{{#crossLink \"BeaconRegion\"}}\n{{/crossLink}} class for details):",
+                    "type": "Object",
+                    "props": [
+                        {
+                            "name": "identifier",
+                            "description": "A unique identifier to associate with the\nreturned region object. You use this identifier to differentiate regions\nwithin your application.",
+                            "type": "String"
+                        },
+                        {
+                            "name": "UUID",
+                            "description": "The UUID of the beacon.",
+                            "type": "String"
+                        },
+                        {
+                            "name": "major",
+                            "description": "The major number of the beacon.\nIf not specified, the major and minor numbers of the beacon are ignored.",
+                            "type": "Number",
+                            "optional": true
+                        },
+                        {
+                            "name": "minor",
+                            "description": "The minor number of the beacon.\nIf not specified, the minor number of the beacon is ignored.",
+                            "type": "Number",
+                            "optional": true
+                        },
+                        {
+                            "name": "notifyEntryStateOnDisplay",
+                            "description": "When set to\n<code>true</code>, the beacon notifications will be sent only when the user\nturns on the display and the device is already inside the region.",
+                            "type": "Boolean",
+                            "optional": true,
+                            "optdefault": "false"
+                        }
+                    ]
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Void"
+            },
+            "since": "1.1.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 2573,
+            "description": "Each string in the array represents the restoration identifier for a central\nmanager object. This is the same string you assigned to the\n<code>restoreIdentifier</code> parameter of the\n{{#crossLink \"BluetoothLEModule/initCentralManager:method}}{{/crossLink}}\nfunction.",
+            "itemtype": "property",
+            "name": "restoredCentralManagerIdentifiers",
+            "type": "{Array of Strings}",
+            "final": 1,
+            "since": "1.2.5",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 2590,
+            "description": "Initializes the module's internal central manager. This function must\nbe called in an app that acts as a central before\nany other function can be used.",
+            "itemtype": "method",
+            "name": "initCentralManager",
+            "params": [
+                {
+                    "name": "params",
+                    "description": "An object with the following properties:",
+                    "type": "Object",
+                    "optional": true,
+                    "props": [
+                        {
+                            "name": "showPowerAlert",
+                            "description": "Boolean indicating that the system\nshould, if Bluetooth is powered off when the central is instantialized,\ndisplay a warning dialog to the user. This parameter was introduced in\nversion 1.1.0 of the module.",
+                            "type": "Boolean",
+                            "optional": true,
+                            "optdefault": "true"
+                        },
+                        {
+                            "name": "restoreIdentifier",
+                            "description": "A string containing a unique\nidentifier for the central manager that is being instantiated. This\nidentifier is used by the system to identify a specific central manager\ninstance for restoration and, therefore, must remain the same for\nsubsequent application executions in order for the manager to be restored.\nSee also the\n{{#crossLink \"BluetoothLEModule/centralWillRestoreState:event\"}}\n{{/crossLink}} event.\nThis parameter was introduced in version 1.1.0 of the module.",
+                            "type": "String",
+                            "optional": true
+                        }
+                    ]
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Void"
+            },
+            "since": "1.0.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 2647,
+            "description": "State of the module's internal central manager.\nIts value is one of the CENTRAL\\_MANAGER\\_STATE\\_*\nconstants.",
+            "itemtype": "property",
+            "name": "centralManagerState",
+            "type": "{Number}",
+            "final": 1,
+            "since": "1.0.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 2670,
+            "description": "Releases the module's internal central manager.\nThis frees up the related resources, and effectively (after a time-out)\ntears down the connection on the peripheral side as well.",
+            "itemtype": "method",
+            "name": "releaseCentralManager",
+            "return": {
+                "description": "",
+                "type": "Void"
+            },
+            "since": "1.0.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 2690,
+            "description": "Attempts to retrieve the <code>Peripheral</code> object(s) that correspond\nto the specified <code>UUIDs</code>.\n\nThe result of this operation is returned via the\n{{#crossLink \"BluetoothLEModule/retrievedPeripherals:event\"}}\n{{/crossLink}} event.",
+            "itemtype": "method",
+            "name": "retrievePeripherals",
+            "params": [
+                {
+                    "name": "params",
+                    "description": "An object with the following properties:",
+                    "type": "Object",
+                    "props": [
+                        {
+                            "name": "UUIDs",
+                            "description": "UUIDs of peripherals to retrieve.",
+                            "type": "Array of Strings"
+                        }
+                    ]
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Void"
+            },
+            "since": "1.0.0",
+            "deprecated": true,
+            "deprecationMessage": "Use retrievePeripheralsWithIdentifiers instead.",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 2738,
+            "description": "Attempts to retrieve the <code>Peripheral</code> object(s) that correspond\nto the specified <code>UUIDs</code>.",
+            "itemtype": "method",
+            "name": "retrievePeripheralsWithIdentifiers",
+            "params": [
+                {
+                    "name": "params",
+                    "description": "An object with the following properties:",
+                    "type": "Object",
+                    "props": [
+                        {
+                            "name": "UUIDs",
+                            "description": "UUIDs of peripherals to retrieve.",
+                            "type": "Array of Strings"
+                        }
+                    ]
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Array of Peripherals"
+            },
+            "since": "1.1.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 2790,
+            "description": "Retrieves all peripherals that are connected to the system. Note that this\nset can include peripherals which were connected by other applications,\nwhich will need to be connected locally via\n{{#crossLink \"BluetoothLEModule/connectPeripheral:method\"}}\n{{/crossLink}} method.\n\nThe result of this operation is returned via the\n{{#crossLink \"BluetoothLEModule/retrievedConnectedPeripherals:event\"}}\n{{/crossLink}} event.",
+            "itemtype": "method",
+            "name": "retrieveConnectedPeripherals",
+            "return": {
+                "description": "",
+                "type": "Void"
+            },
+            "since": "1.0.0",
+            "deprecated": true,
+            "deprecationMessage": "Use {{#crossLink \"BluetoothLEModule/retrieveConnectedPeripheralsWithServices:method\"}}\n{{/crossLink}} instead.",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 2821,
+            "description": "Retrieves all peripherals that are connected to the system and implement any\nof the services listed in <code>serviceUUIDs</code>. Note that this\nset can include peripherals which were connected by other applications,\nwhich will need to be connected locally via\n{{#crossLink \"BluetoothLEModule/connectPeripheral:method\"}}\n{{/crossLink}} method.\n\nThe result of this operation is returned via the\n{{#crossLink \"BluetoothLEModule/retrievedConnectedPeripherals:event\"}}\n{{/crossLink}} event.",
+            "itemtype": "method",
+            "name": "retrieveConnectedPeripheralsWithServices",
+            "params": [
+                {
+                    "name": "params",
+                    "description": "",
+                    "type": "Object",
+                    "props": [
+                        {
+                            "name": "serviceUUIDs",
+                            "description": "",
+                            "type": "Array of Strings"
+                        }
+                    ]
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Void"
+            },
+            "since": "1.1.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 2880,
+            "description": "Starts scanning for peripherals. If the <code>UUIDs</code> parameter is not\nspecified, all discovered peripherals will be returned, regardless of their\nsupported services (not recommended). If the central is already scanning with\ndifferent service UUIDs or options, the provided parameters will replace\nthem.\n\nThe result of this operation is returned via the\n{{#crossLink \"BluetoothLEModule/discoveredPeripheral:event\"}}\n{{/crossLink}} event.\n\nApplications are allowed to scan while backgrounded, with two caveats:\nthe scan must specify one or more service UUIDs, and the\n{{#crossLink \"BluetoothLEModule/CENTRAL\\_MANAGER\\_SCAN_OPTION\\_KEY\\_ALLOW\\_DUPLICATES:attribute\"}}\n{{/crossLink}} scan option will be ignored.",
+            "itemtype": "method",
+            "name": "startScan",
+            "params": [
+                {
+                    "name": "params",
+                    "description": "An object with the following properties:",
+                    "type": "Object",
+                    "props": [
+                        {
+                            "name": "UUIDs",
+                            "description": "The UUIDs of services.",
+                            "type": "Array of Strings",
+                            "optional": true
+                        },
+                        {
+                            "name": "options",
+                            "description": "Key/value pairs specifying options for the\nscan. Currently the only valid option is\n{{#crossLink \"BluetoothLEModule/CENTRAL\\_MANAGER\\_SCAN_OPTION\\_KEY\\_ALLOW\\_DUPLICATES:attribute\"}}\n{{/crossLink}}.",
+                            "type": "Object",
+                            "optional": true
+                        }
+                    ]
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Void"
+            },
+            "since": "1.0.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 2951,
+            "description": "Stops scanning for peripherals.",
+            "itemtype": "method",
+            "name": "stopScan",
+            "return": {
+                "description": "",
+                "type": "Void"
+            },
+            "since": "1.0.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 2974,
+            "description": "Initiates a connection to the specified peripheral. Connection attempts\nnever time out and, depending on the outcome, will result in a\n{{#crossLink \"BluetoothLEModule/connectedPeripheral:event\"}}\n{{/crossLink}} or\n{{#crossLink \"BluetoothLEModule/failedToConnectPeripheral:event\"}}\n{{/crossLink}} event.\n\nPending attempts are cancelled automatically upon deallocation of the\nperipheral, and explicitly via the\n{{#crossLink \"BluetoothLEModule/cancelPeripheralConnection:method\"}}\n{{/crossLink}} method.",
+            "itemtype": "method",
+            "name": "connectPeripheral",
+            "params": [
+                {
+                    "name": "params",
+                    "description": "An object with the following properties:",
+                    "type": "Object",
+                    "props": [
+                        {
+                            "name": "peripheral:",
+                            "description": "The object representing the peripheral.",
+                            "type": "Peripheral"
+                        }
+                    ]
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Void"
+            },
+            "since": "1.0.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 3021,
+            "description": "Cancels an active or pending connection to the specified peripheral. This\ncommand is non-blocking, and any commands that are still pending to the\nperipheral may or may not complete.\n\nIt extremely important to note that canceling a connection does not\nguarantee the immediate disconnection of the underlying physical\nlink. This can be caused by a variety of different factors, including other\napplication(s) that hold an outstanding connection to the peripheral.\nHowever, in this situation, you will still immediately receive a\n{{#crossLink \"BluetoothLEModule/disconnectedPeripheral:event\"}}\n{{/crossLink}} event.",
+            "itemtype": "method",
+            "name": "cancelPeripheralConnection",
+            "params": [
+                {
+                    "name": "peripheral:",
+                    "description": "A Peripheral object.",
+                    "type": "Peripheral"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Void"
+            },
+            "since": "1.0.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 3056,
+            "description": "The current authorization status for sharing data while backgrounded.\nYou can use it to detect restricted access and hide UI instead of\nprompting for access.\nPossible values are the BACKGROUND\\_DATA\\_AUTHORIZATION\\_STATUS\\_\\*\nconstants.",
+            "itemtype": "property",
+            "name": "backgroundDataAuthorizationStatus",
+            "type": "{Number}",
+            "final": 1,
+            "since": "1.1.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 3079,
+            "description": "Fired whenever the state of the module's internal central manager changes.",
+            "itemtype": "event",
+            "name": "centralManagerStateChange",
+            "params": [
+                {
+                    "name": "state",
+                    "description": "An integer describing the state of the module's\ninternal central manager. See the CENTRAL\\_MANAGER\\_STATE\\_* constants.",
+                    "type": "Number"
+                }
+            ],
+            "since": "1.0.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 3101,
+            "description": "This event returns the result of the \n{{#crossLink \"BluetoothLEModule/retrievePeripherals:method\"}}\n{{/crossLink}} method.",
+            "itemtype": "event",
+            "name": "retrievedPeripherals",
+            "params": [
+                {
+                    "name": "peripherals",
+                    "description": "",
+                    "type": "Array of Peripheral objects"
+                }
+            ],
+            "since": "1.0.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 3126,
+            "description": "This event returns the result of the\n{{#crossLink \"BluetoothLEModule/retrieveConnectedPeripherals:method\"}}\n{{/crossLink}} method.",
+            "itemtype": "event",
+            "name": "retrievedConnectedPeripherals",
+            "params": [
+                {
+                    "name": "service",
+                    "description": "A Service object representing the service that was added.",
+                    "type": "Service"
+                },
+                {
+                    "name": "errorCode",
+                    "description": "The error code; only present if an error occurred.",
+                    "type": "Number"
+                },
+                {
+                    "name": "errorDomain",
+                    "description": "The error domain; only present if an error occurred.",
+                    "type": "String"
+                },
+                {
+                    "name": "errorDescription",
+                    "description": "The error description; only peresent if an",
+                    "type": "String"
+                }
+            ],
+            "since": "1.0.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 3154,
+            "description": "Fired when a peripheral is discovered.",
+            "itemtype": "event",
+            "name": "discoveredPeripheral",
+            "params": [
+                {
+                    "name": "peripheral",
+                    "description": "An object representing the peripheral that\nwas discovered by the local central manager.",
+                    "type": "Peripheral"
+                },
+                {
+                    "name": "RSSI",
+                    "description": "The current RSSI of the peripheral, in dBm. A value of\n<code>127</code> is reserved and indicates the RSSI was not available.",
+                    "type": "Number"
+                },
+                {
+                    "name": "advertisementData",
+                    "description": "An object holding the advertisement data\n(see the ADVERT\\_DATA\\_KEY\\_* constants).",
+                    "type": "Object"
+                }
+            ],
+            "since": "1.0.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 3246,
+            "description": "This event is fired when a connection initiated by the\n{{#crossLink \"BluetoothLEModule/connectPeripheral:method\"}}\n{{/crossLink}} method has succeeded.",
+            "itemtype": "event",
+            "name": "connectedPeripheral",
+            "params": [
+                {
+                    "name": "peripheral",
+                    "description": "An object representing the peripheral that\nconnected to the local central manager.",
+                    "type": "Peripheral"
+                }
+            ],
+            "since": "1.0.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 3266,
+            "description": "This event is fired when a connection initiated by the\n{{#crossLink \"BluetoothLEModule/connectPeripheral:method\"}}\n{{/crossLink}} method fails.",
+            "itemtype": "event",
+            "name": "failedToConnectPeripheral",
+            "params": [
+                {
+                    "name": "peripheral",
+                    "description": "An object representing the peripheral that failed to connect.",
+                    "type": "Peripheral"
+                },
+                {
+                    "name": "errorCode",
+                    "description": "The error code; only present if an error occurred.",
+                    "type": "Number"
+                },
+                {
+                    "name": "errorDomain",
+                    "description": "The error domain; only present if an error occurred.",
+                    "type": "String"
+                },
+                {
+                    "name": "errorDescription",
+                    "description": "The error description; only peresent if an",
+                    "type": "String"
+                }
+            ],
+            "since": "1.0.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 3299,
+            "description": "Fired when a peripheral disconnects from the local central manager.",
+            "itemtype": "event",
+            "name": "disconnectedPeripheral",
+            "params": [
+                {
+                    "name": "peripheral",
+                    "description": "An object representing the peripheral that disconnected.",
+                    "type": "Peripheral"
+                },
+                {
+                    "name": "errorCode",
+                    "description": "The error code; only present if an error occurred.",
+                    "type": "Number"
+                },
+                {
+                    "name": "errorDomain",
+                    "description": "The error domain; only present if an error occurred.",
+                    "type": "String"
+                },
+                {
+                    "name": "errorDescription",
+                    "description": "The error description; only peresent if an",
+                    "type": "String"
+                }
+            ],
+            "since": "1.0.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 3328,
+            "description": "**Note**: This event is currently not being fired, due to a limitation\nin Titanium. See the \"iOS to iOS\" sample app for a potential workaround.\n\nFired when iOS relaunches the app into the background (after iOS terminated\nit to free up resources) to complete some\nBluetooth-related task. Use this event to synchronize your app's state with\nthe state of the Bluetooth system.\n\nSee also the <code>restoreIdentifier</code> parameter of the\n{{#crossLink \"BluetoothLEModule/initCentralManager:method\"}}\n{{/crossLink}} method.",
+            "itemtype": "event",
+            "name": "centralWillRestoreState",
+            "params": [
+                {
+                    "name": "peripherals",
+                    "description": "An array of\n{{#crossLink \"Peripheral\"}}{{/crossLink}} objects containing all peripherals\nthat were connected or pending connection at the time the application was\nterminated by the system. When possible, all known information for each\nperipheral will be restored, including any discovered services,\ncharacteristics and descriptors, as well as characteristic notification\nstates.",
+                    "type": "Array of Peripherals"
+                },
+                {
+                    "name": "serviceUUIDs",
+                    "description": "An array of strings holding the UUIDs\nof the service(s) being scanned for at the time the application was\nterminated by the system.",
+                    "type": "Array of Strings"
+                },
+                {
+                    "name": "scanOptions",
+                    "description": "An object (dictionary) containing the scan \noptions at the time the application was terminated by the system.",
+                    "type": "Object"
+                }
+            ],
+            "since": "1.1.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 3387,
+            "description": "When the current authorization status is\nLOCATION\\_MANAGER\\_AUTHORIZATION\\_STATUS\\_NOT\\_DETERMINED, this method runs\nasynchronously and prompts the user to grant permission to the app to use\nlocation services. The user prompt contains the text from the\nNSLocationWhenInUseUsageDescription key in your app’s Info.plist file.\nThe presence of that key is required when calling this method.\n\nAfter the status is determined, the app will receive an\n{{#crossLink \"BluetoothLEModule/locationManagerAuthorizationChanged:event\"}}\n{{/crossLink}} event.\n\nIf the current authorization status is anything other than\nLOCATION\\_MANAGER\\_AUTHORIZATION\\_STATUS\\_NOT\\_DETERMINED, this function does\nnothing.\n\n**Important**: You must call this function or the\n{{#crossLink \"BluetoothLEModule/requestAlwaysAuthorization:method\"}}\n{{/crossLink}} function prior to using beacon services.\n\nIf the user grants “when-in-use” authorization to your app, your app can\nrange beacons but not monitor beacon regions.",
+            "itemtype": "method",
+            "name": "requestWhenInUseAuthorization",
+            "return": {
+                "description": "",
+                "type": "Void"
+            },
+            "since": "1.2.7",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 3425,
+            "description": "When the current authorization status is\nLOCATION\\_MANAGER\\_AUTHORIZATION\\_STATUS\\_NOT\\_DETERMINED, this method runs\nasynchronously and prompts the user to grant permission to the app to use\nlocation services. The user prompt contains the text from the\nNSLocationAlwaysUsageDescription key in your app’s Info.plist file.\nThe presence of that key is required when calling this method.\n\nAfter the status is determined, the app will receive an\n{{#crossLink \"BluetoothLEModule/locationManagerAuthorizationChanged:event\"}}\n{{/crossLink}} event.\n\nIf the current authorization status is anything other than\nLOCATION\\_MANAGER\\_AUTHORIZATION\\_STATUS\\_NOT\\_DETERMINED, this function does\nnothing.\n\n**Important**: You must call this function or the\n{{#crossLink \"BluetoothLEModule/requestWhenInUseAuthorization:method\"}}\n{{/crossLink}} function prior to using beacon services.\n\nRequesting “Always” authorization is discouraged by Apple because of the potential\nnegative impacts to user privacy. You should request this level of\nauthorization only when doing so offers a genuine benefit to the user.",
+            "itemtype": "method",
+            "name": "requestAlwaysAuthorization",
+            "return": {
+                "description": "",
+                "type": "Void"
+            },
+            "since": "1.2.7",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 3472,
+            "description": "Authorization status of the Location Manager for this app.\nIts value is one of the LOCATION\\_MANAGER\\_AUTHORIZATION\\_STATUS\\_*\nconstants.",
+            "itemtype": "property",
+            "name": "locationManagerAuthorizationStatus",
+            "type": "{Number}",
+            "final": 1,
+            "since": "1.1.2",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 3487,
+            "description": "Starts the delivery of notifications for beacons in the specified region.",
+            "itemtype": "method",
+            "name": "startRangingBeacons",
+            "params": [
+                {
+                    "name": "params",
+                    "description": "An object with the following properties:",
+                    "type": "Object",
+                    "props": [
+                        {
+                            "name": "beaconRegion",
+                            "description": "The region of interest.",
+                            "type": "BeaconRegion"
+                        }
+                    ]
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Void"
+            },
+            "since": "1.1.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 3522,
+            "description": "Stops the delivery of notifications for beacons in the specified region.\nIf no beacon region is specified, then it stops ranging for all regions.",
+            "itemtype": "method",
+            "name": "stopRangingBeacons",
+            "params": [
+                {
+                    "name": "params",
+                    "description": "An object with the following properties:",
+                    "type": "Object",
+                    "optional": true,
+                    "props": [
+                        {
+                            "name": "beaconRegion",
+                            "description": "The region of interest.",
+                            "type": "BeaconRegion"
+                        }
+                    ]
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Void"
+            },
+            "since": "1.1.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 3568,
+            "description": "Retrieves the currently monitored beacon regions. **Note** that this function\nwill initialize the location manager if it's not already initialized. Thus\nthis function, unlike the\n{{#crossLink \"BluetoothLEModule/monitoredRegions:property\"}}{{/crossLink}}\nproperty, is guaranteed to return the correct result in every case.\nIn particular, this function is a key component of the restoration process\nthat needs to take place when the app is restarted into the background\nin response to a beacon related event.\n\n**Important**: Call this function after you\nattached the appropriate event handlers for the\n{{#crossLink \"BluetoothLEModule/enteredRegion:event\"}}{{/crossLink}},\n{{#crossLink \"BluetoothLEModule/exitedRegion:event\"}}{{/crossLink}}, and\n{{#crossLink \"BluetoothLEModule/regionStateUpdated:event\"}}{{/crossLink}}\nevents. If the app was restarted due to a beacon related event, that event\nwill be fired immediately after this function is called.\n\nAsync function; returns the results in a\n{{#crossLink \"BluetoothLEModule/retrievedMonitoredRegions:event\"}}{{/crossLink}}\nevent.",
+            "itemtype": "method",
+            "name": "retrieveMonitoredRegions",
+            "return": {
+                "description": "",
+                "type": "Void"
+            },
+            "since": "1.2.5",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 3615,
+            "description": "Returns the result of the\n{{#crossLink \"BluetoothLEModule/retrieveMonitoredRegions:method\"}}{{/crossLink}}\nfunction.",
+            "itemtype": "event",
+            "name": "retrievedMonitoredRegions",
+            "params": [
+                {
+                    "name": "beaconRegions",
+                    "description": "An array of\n{{#crossLink \"BeaconRegion\"}}{{/crossLink}} objects, representing the\ncurrently monitored beacon regions.",
+                    "type": "Array of BeaconRegions"
+                }
+            ],
+            "since": "1.2.5",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 3630,
+            "description": "The beacon regions monitored by all location manager objects.\n**Note** that this property will be undefined when the app is\nrestarted into the background. Use the\n{{#crossLink \"BluetoothLEModule/retrieveMonitoredRegions:method\"}}{{/crossLink}}\nfunction to retrieve the list of monitored regions in that case.",
+            "itemtype": "property",
+            "name": "monitoredRegions",
+            "type": "{Array of BeaconRegions}",
+            "final": 1,
+            "since": "1.1.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 3657,
+            "description": "The regions currently being tracked using ranging.",
+            "itemtype": "property",
+            "name": "rangedRegions",
+            "type": "{Array of BeaconRegions}",
+            "final": 1,
+            "since": "1.1.2",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 3680,
+            "description": "Starts monitoring the specified region.\n\nYou must call this method once for each region you want to monitor. If an\nexisting region with the same identifier is already being monitored by the\napplication, the old region is replaced by the new one. Note that\n\"identifier\" literally means the\n{{#crossLink \"BeaconRegion/identifier:property\"}}{{/crossLink}}\nproperty, not the UUID!\nThe regions you add\nusing this method are stored in the\n{{#crossLink \"BluetoothLEModule/monitoredRegions:property\"}}{{/crossLink}} \nproperty.",
+            "itemtype": "method",
+            "name": "startRegionMonitoring",
+            "params": [
+                {
+                    "name": "params",
+                    "description": "An object with the following properties:",
+                    "type": "Object",
+                    "props": [
+                        {
+                            "name": "beaconRegion",
+                            "description": "The region of interest.",
+                            "type": "BeaconRegion"
+                        }
+                    ]
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Void"
+            },
+            "since": "1.1.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 3726,
+            "description": "Stops the delivery of notifications for beacons in the specified region.\nIf no beacon region is specified, then it stops ranging for all regions.",
+            "itemtype": "method",
+            "name": "stopRegionMonitoring",
+            "params": [
+                {
+                    "name": "params",
+                    "description": "An object with the following properties:",
+                    "type": "Object",
+                    "optional": true,
+                    "props": [
+                        {
+                            "name": "beaconRegion",
+                            "description": "The region of interest.",
+                            "type": "BeaconRegion"
+                        }
+                    ]
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Void"
+            },
+            "since": "1.1.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 3767,
+            "description": "Retrieves the state of a region asynchronously.",
+            "itemtype": "method",
+            "name": "requestRegionState",
+            "params": [
+                {
+                    "name": "params",
+                    "description": "An object with the following properties:",
+                    "type": "Object",
+                    "props": [
+                        {
+                            "name": "beaconRegion",
+                            "description": "The region of interest.",
+                            "type": "BeaconRegion"
+                        }
+                    ]
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Void"
+            },
+            "since": "1.2.4",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 3801,
+            "description": "Use this event to determine which beacons are in range.\n\nSee also the\n{{#crossLink \"BluetoothLEModule/filterDuplicateBeacons:property\"}}{{/crossLink}}\nproperty.",
+            "itemtype": "event",
+            "name": "rangedBeacons",
+            "params": [
+                {
+                    "name": "beacons",
+                    "description": "An array of\n{{#crossLink \"Beacon\"}}{{/crossLink}} objects representing the beacons\ncurrently in range. You can use the information in these objects to determine\nthe range of each beacon and its identifying information.",
+                    "type": "Array of Beacons"
+                },
+                {
+                    "name": "region",
+                    "description": "The region object containing the parameters that\nwere used to locate the beacons.",
+                    "type": "BeaconRegion"
+                }
+            ],
+            "since": "1.1.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 3849,
+            "description": "Use this event to determine which beacons have changed their proximity\nsince the last update. This event is fired whenever the\n{{#crossLink \"BluetoothLEModule/rangedBeacons:event\"}}{{/crossLink}}\nevent is fired, provided that the proximity of any of the ranged beacons\nhas changed since the last\n{{#crossLink \"BluetoothLEModule/rangedBeacons:event\"}}{{/crossLink}}\nevent.",
+            "itemtype": "event",
+            "name": "proximityChange",
+            "params": [
+                {
+                    "name": "beacons",
+                    "description": "An array of\n{{#crossLink \"Beacon\"}}{{/crossLink}} objects representing the beacons\nthat changed their proximity since the last update.",
+                    "type": "Array of Beacons"
+                }
+            ],
+            "since": "1.1.2",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 3906,
+            "description": "This event is fired when the authorization status of the Location Manager\nchanges.",
+            "itemtype": "event",
+            "name": "locationManagerAuthorizationChanged",
+            "params": [
+                {
+                    "name": "status",
+                    "description": "The status code; one of the\nLOCATION\\_MANAGER\\_AUTHORIZATION\\_STATUS\\_* constants.",
+                    "type": "Number"
+                }
+            ],
+            "since": "1.1.2",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 3926,
+            "description": "This event is fired when the state of a monitored region is updated.",
+            "itemtype": "event",
+            "name": "regionStateUpdated",
+            "params": [
+                {
+                    "name": "region",
+                    "description": "The region object containing the parameters that\nwere used to locate the beacons.",
+                    "type": "BeaconRegion"
+                },
+                {
+                    "name": "state",
+                    "description": "One of the REGION\\_STATE\\_* constants.",
+                    "type": "Number"
+                }
+            ],
+            "since": "1.1.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 3954,
+            "description": "This event is fired when the user enters a monitored region.\n\n**Note**: In our testing we found this event to be unreliable. This seems\nto be a problem with the native SDK. We recommend to use the\n{{#crossLink \"BluetoothLEModule/regionStateUpdated:event\"}}{{/crossLink}}\nevent instead.",
+            "itemtype": "event",
+            "name": "enteredRegion",
+            "params": [
+                {
+                    "name": "region",
+                    "description": "The region in question.",
+                    "type": "BeaconRegion"
+                }
+            ],
+            "since": "1.1.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 3983,
+            "description": "This event is fired when the user exits a monitored region.\n\n**Note**: In our testing we found this event to be unreliable. This seems\nto be a problem with the native SDK. We recommend to use the\n{{#crossLink \"BluetoothLEModule/regionStateUpdated:event\"}}{{/crossLink}}\nevent instead.",
+            "itemtype": "event",
+            "name": "exitedRegion",
+            "params": [
+                {
+                    "name": "region",
+                    "description": "The region in question.",
+                    "type": "BeaconRegion"
+                }
+            ],
+            "since": "1.1.0",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ComLogicallabsBluetoothleModule.m",
+            "line": 4012,
+            "description": "<code>True</code> if the application was launched due to a location event.\nIn the context of this module, a \"location event\" is an event related to\nbeacons. Note however that other type of location events might also trigger\nthe app to be launched.",
+            "itemtype": "property",
+            "name": "wasLocationLaunch",
+            "type": "{Boolean}",
+            "final": 1,
+            "since": "1.2.5",
+            "class": "BluetoothLEModule",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/DescriptorProxy.m",
+            "line": 22,
+            "description": "A back-pointer to the characteristic this descriptor belongs to.",
+            "itemtype": "property",
+            "name": "characteristic",
+            "type": "{Characteristic}",
+            "final": 1,
+            "since": "1.0.0",
+            "class": "Descriptor",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/DescriptorProxy.m",
+            "line": 39,
+            "description": "The Bluetooth UUID of the descriptor.",
+            "itemtype": "property",
+            "name": "UUID",
+            "type": "{String}",
+            "final": 1,
+            "since": "1.0.0",
+            "class": "Descriptor",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/DescriptorProxy.m",
+            "line": 52,
+            "description": "The value of the descriptor.",
+            "itemtype": "property",
+            "name": "value",
+            "type": "{Number, String, or TiBuffer}",
+            "final": 1,
+            "since": "1.0.0",
+            "class": "Descriptor",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/PeripheralProxy.m",
+            "line": 54,
+            "description": "Once a peripheral has been connected at least once by the system, it is\nassigned a UUID. This UUID can be stored and later provided to the\n{{#crossLink \"BluetoothLEModule/retrievePeripherals:method\"}}\n{{/crossLink}} method.",
+            "itemtype": "property",
+            "name": "UUID",
+            "type": "{String}",
+            "final": 1,
+            "since": "1.0.0",
+            "class": "Peripheral",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/PeripheralProxy.m",
+            "line": 79,
+            "description": "The name of the peripheral.",
+            "itemtype": "property",
+            "name": "name",
+            "type": "{String}",
+            "final": 1,
+            "since": "1.0.0",
+            "class": "Peripheral",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/PeripheralProxy.m",
+            "line": 92,
+            "description": "The most recently read RSSI, in decibels. Note that you need to call\nthe {{#crossLink \"Peripheral/readRSSI:method\"}}\n{{/crossLink}} method to update this value, and the result of that operation\nis returned via the {{#crossLink \"Peripheral/updatedRSSI:event\"}}\n{{/crossLink}} event.",
+            "itemtype": "property",
+            "name": "RSSI",
+            "type": "{Number}",
+            "final": 1,
+            "since": "1.0.0",
+            "class": "Peripheral",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/PeripheralProxy.m",
+            "line": 109,
+            "description": "Whether or not the peripheral is currently connected.",
+            "itemtype": "property",
+            "name": "isConnected",
+            "type": "{Boolean}",
+            "final": 1,
+            "since": "1.0.0",
+            "class": "Peripheral",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/PeripheralProxy.m",
+            "line": 126,
+            "description": "The current connection state of the peripheral. Possible values are\n{{#crossLink \"BluetoothLEModule/PERIPHERAL\\_STATE\\_DISCONNECTED:attribute\"}}\n{{/crossLink}},\n{{#crossLink \"BluetoothLEModule/PERIPHERAL\\_STATE\\_CONNECTING:attribute\"}}\n{{/crossLink}}, and\n{{#crossLink \"BluetoothLEModule/PERIPHERAL\\_STATE\\_CONNECTED:attribute\"}}\n{{/crossLink}}.",
+            "itemtype": "property",
+            "name": "state",
+            "type": "{Number}",
+            "final": 1,
+            "since": "1.1.0",
+            "class": "Peripheral",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/PeripheralProxy.m",
+            "line": 150,
+            "description": "A list of {{#crossLink \"Service\"}}{{/crossLink}} objects that have been\ndiscovered on the peripheral.",
+            "itemtype": "property",
+            "name": "services",
+            "type": "{Array of Service objects}",
+            "final": 1,
+            "since": "1.0.0",
+            "class": "Peripheral",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/PeripheralProxy.m",
+            "line": 168,
+            "description": "Retrieves the current RSSI of the link.\n\nThe result of this operation is returned via the\n{{#crossLink \"Peripheral/updatedRSSI:event\"}}\n{{/crossLink}} event.",
+            "itemtype": "method",
+            "name": "readRSSI",
+            "return": {
+                "description": "",
+                "type": "Void"
+            },
+            "since": "1.0.0",
+            "class": "Peripheral",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/PeripheralProxy.m",
+            "line": 184,
+            "description": "Discovers available service(s) on the peripheral.\n\nThe result of this operation is returned via the\n{{#crossLink \"Peripheral/discoveredServices:event\"}}\n{{/crossLink}} event.",
+            "itemtype": "method",
+            "name": "discoverServices",
+            "params": [
+                {
+                    "name": "serviceUUIDStrings",
+                    "description": "",
+                    "type": "Array of Strings"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Void"
+            },
+            "since": "1.0.0",
+            "class": "Peripheral",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/PeripheralProxy.m",
+            "line": 213,
+            "description": "Discovers the specified included service(s) of a service.\n\nThe result of this operation is returned via the\n{{#crossLink \"Peripheral/discoveredIncludedServices:event\"}}\n{{/crossLink}} event.",
+            "itemtype": "method",
+            "name": "discoverIncludedServices",
+            "params": [
+                {
+                    "name": "params",
+                    "description": "An object with the following properties:",
+                    "type": "Object",
+                    "props": [
+                        {
+                            "name": "service",
+                            "description": "A GATT service.",
+                            "type": "Service"
+                        },
+                        {
+                            "name": "serviceUUIDs",
+                            "description": "An array of UUID strings,\nrepresenting the included service types to be discovered. If not specified,\nall included services will be discovered, which is considerably slower and\nnot recommended.",
+                            "type": "Array of Strings",
+                            "optional": true
+                        }
+                    ]
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Void"
+            },
+            "since": "1.0.0",
+            "class": "Peripheral",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/PeripheralProxy.m",
+            "line": 251,
+            "description": "Discovers the specified characteristic(s) of a service.\n\nThe result of this operation is returned via the\n{{#crossLink \"Peripheral/discoveredCharacteristics:event\"}}\n{{/crossLink}} event.",
+            "itemtype": "method",
+            "name": "discoverCharacteristics",
+            "params": [
+                {
+                    "name": "params",
+                    "description": "An object with the following properties:",
+                    "type": "Object",
+                    "props": [
+                        {
+                            "name": "service",
+                            "description": "",
+                            "type": "Service"
+                        }
+                    ]
+                },
+                {
+                    "name": "param.UUIDs",
+                    "description": "An array of UUID strings,\nrepresenting the characteristic types to be discovered. If not specified\nall characteristics of the service will be discovered, which is considerably\nslower and not recommended.",
+                    "type": "Array of Strings",
+                    "optional": true
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Void"
+            },
+            "since": "1.0.0",
+            "class": "Peripheral",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/PeripheralProxy.m",
+            "line": 288,
+            "description": "Reads the value of a characteristic.\n\nThe result of this operation is returned via the\n{{#crossLink \"Peripheral/updatedValueForCharacteristic:event\"}}\n{{/crossLink}} event.",
+            "itemtype": "method",
+            "name": "readValueForCharacteristic",
+            "params": [
+                {
+                    "name": "characteristic",
+                    "description": "",
+                    "type": "Characteristic"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Void"
+            },
+            "since": "1.0.0",
+            "class": "Peripheral",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/PeripheralProxy.m",
+            "line": 306,
+            "description": "Writes a value to a characteristic.",
+            "itemtype": "method",
+            "name": "writeValueForCharacteristic",
+            "params": [
+                {
+                    "name": "params",
+                    "description": "An object with the following properties:",
+                    "type": "Object",
+                    "props": [
+                        {
+                            "name": "characteristic",
+                            "description": "The characteristic to change.",
+                            "type": "Characteristic"
+                        },
+                        {
+                            "name": "data",
+                            "description": "The new value of the characteristic.",
+                            "type": "TiBuffer"
+                        },
+                        {
+                            "name": "type",
+                            "description": "The type of write to be executed. See\n{{#crossLink \"BluetoothLEModule/CHARACTERISTIC\\_TYPE\\_WRITE\\_WITH\\_RESPONSE:attribute\"}}\n{{/crossLink}} and\n{{#crossLink \"BluetoothLEModule/CHARACTERISTIC\\_TYPE\\_WRITE\\_WITHOUT\\_RESPONSE:attribute\"}}\n{{/crossLink}}.",
+                            "type": "Number",
+                            "optional": true,
+                            "optdefault": "CHARACTERISTIC_TYPE_WRITE_WITH_RESPONSE"
+                        }
+                    ]
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Void"
+            },
+            "since": "1.0.0",
+            "class": "Peripheral",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/PeripheralProxy.m",
+            "line": 343,
+            "description": "Enables notifications/indications for a characteristic. If the characteristic\nallows both, notifications will be used.",
+            "itemtype": "method",
+            "name": "subscribeToCharacteristic",
+            "params": [
+                {
+                    "name": "characteristic",
+                    "description": "",
+                    "type": "Characteristic"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Void"
+            },
+            "since": "1.0.0",
+            "class": "Peripheral",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/PeripheralProxy.m",
+            "line": 360,
+            "description": "Disables notifications/indications for a characteristic.",
+            "itemtype": "method",
+            "name": "unsubscribeFromCharacteristic",
+            "params": [
+                {
+                    "name": "characteristic",
+                    "description": "",
+                    "type": "Characteristic"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Void"
+            },
+            "since": "1.0.0",
+            "class": "Peripheral",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/PeripheralProxy.m",
+            "line": 374,
+            "description": "Discovers the descriptor(s) of a characteristic.\n\nThe result of this operation is returned via the\n{{#crossLink \"Peripheral/discoveredDescriptorsForCharacteristics:event\"}}\n{{/crossLink}} event.",
+            "itemtype": "method",
+            "name": "discoverDescriptorsForCharacteristic",
+            "params": [
+                {
+                    "name": "characteristic",
+                    "description": "",
+                    "type": "Characteristic"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Void"
+            },
+            "since": "1.0.0",
+            "class": "Peripheral",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/PeripheralProxy.m",
+            "line": 392,
+            "description": "Reads the value of a descriptor.\n\nThe result of this operation is returned via the\n{{#crossLink \"Peripheral/updatedValueForDescriptor:event\"}}\n{{/crossLink}} event.",
+            "itemtype": "method",
+            "name": "readValueForDescriptor",
+            "params": [
+                {
+                    "name": "descriptor",
+                    "description": "",
+                    "type": "Descriptor"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Void"
+            },
+            "since": "1.0.0",
+            "class": "Peripheral",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/PeripheralProxy.m",
+            "line": 410,
+            "description": "Writes the value of a descriptor.\n\nThe result of this operation is returned via the\n{{#crossLink \"Peripheral/wroteValueForCharacteristic:event\"}}\n{{/crossLink}} event.",
+            "itemtype": "method",
+            "name": "writeValueForDescriptor",
+            "params": [
+                {
+                    "name": "params",
+                    "description": "",
+                    "type": "Object",
+                    "props": [
+                        {
+                            "name": "descriptor",
+                            "description": "",
+                            "type": "Descriptor"
+                        },
+                        {
+                            "name": "data",
+                            "description": "",
+                            "type": "TiBuffer"
+                        }
+                    ]
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Void"
+            },
+            "since": "1.0.2",
+            "class": "Peripheral",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/PeripheralProxy.m",
+            "line": 440,
+            "description": "This event is fired when the name of the peripheral changes.",
+            "itemtype": "event",
+            "name": "updatedName",
+            "params": [
+                {
+                    "name": "source",
+                    "description": "The peripheral sending the event.",
+                    "type": "Peripheral"
+                }
+            ],
+            "since": "1.0.0",
+            "class": "Peripheral",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/PeripheralProxy.m",
+            "line": 456,
+            "description": "This event is fired when the services of the peripheral change.",
+            "itemtype": "event",
+            "name": "invalidatedServices",
+            "params": [
+                {
+                    "name": "source",
+                    "description": "The peripheral sending the event.",
+                    "type": "Peripheral"
+                },
+                {
+                    "name": "services",
+                    "description": "The services that have\nbeen invalidated.",
+                    "type": "Array of Service objects"
+                }
+            ],
+            "since": "1.0.0",
+            "class": "Peripheral",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/PeripheralProxy.m",
+            "line": 496,
+            "description": "This event returns the result of a call to the\n{{#crossLink \"Peripheral/readRSSI:method\"}}\n{{/crossLink}} method. The event handler function for this event can\nquery the {{#crossLink \"Peripheral/RSSI:property\"}}\n{{/crossLink}} property of the peripheral object provided in the\n<code>source</code> property of the event object.",
+            "itemtype": "event",
+            "name": "updatedRSSI",
+            "params": [
+                {
+                    "name": "source",
+                    "description": "The peripheral sending the event.",
+                    "type": "Peripheral"
+                },
+                {
+                    "name": "errorCode",
+                    "description": "The error code; only present if an error occurred.",
+                    "type": "Number"
+                },
+                {
+                    "name": "errorDomain",
+                    "description": "The error domain; only present if an error occurred.",
+                    "type": "String"
+                },
+                {
+                    "name": "errorDescription",
+                    "description": "The error description; only present if an\nerror occurred.",
+                    "type": "String"
+                }
+            ],
+            "since": "1.0.0",
+            "class": "Peripheral",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/PeripheralProxy.m",
+            "line": 526,
+            "description": "This event returns the result of a call to the\n{{#crossLink \"Peripheral/discoverServices:method\"}}\n{{/crossLink}} method.",
+            "itemtype": "event",
+            "name": "discoveredServices",
+            "params": [
+                {
+                    "name": "source",
+                    "description": "The peripheral sending the event.",
+                    "type": "Peripheral"
+                },
+                {
+                    "name": "errorCode",
+                    "description": "The error code; only present if an error occurred.",
+                    "type": "Number"
+                },
+                {
+                    "name": "errorDomain",
+                    "description": "The error domain; only present if an error occurred.",
+                    "type": "String"
+                },
+                {
+                    "name": "errorDescription",
+                    "description": "The error description; only present if an\nerror occurred.",
+                    "type": "String"
+                }
+            ],
+            "since": "1.0.0",
+            "class": "Peripheral",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/PeripheralProxy.m",
+            "line": 555,
+            "description": "This event returns the result of a call to the\n{{#crossLink \"Peripheral/discoverIncludedServices:method\"}}\n{{/crossLink}} method.",
+            "itemtype": "event",
+            "name": "discoveredIncludedServices",
+            "params": [
+                {
+                    "name": "source",
+                    "description": "The peripheral sending the event.",
+                    "type": "Peripheral"
+                },
+                {
+                    "name": "errorCode",
+                    "description": "The error code; only present if an error occurred.",
+                    "type": "Number"
+                },
+                {
+                    "name": "errorDomain",
+                    "description": "The error domain; only present if an error occurred.",
+                    "type": "String"
+                },
+                {
+                    "name": "errorDescription",
+                    "description": "The error description; only present if an\nerror occurred.",
+                    "type": "String"
+                }
+            ],
+            "since": "1.0.0",
+            "class": "Peripheral",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/PeripheralProxy.m",
+            "line": 584,
+            "description": "This event returns the result of a call to the\n{{#crossLink \"Peripheral/discoverCharacteristics:method\"}}\n{{/crossLink}} method. If the characteristic(s) were read successfully,\nthey can be retrieved via the <code>service</code> property's\n<code>characteristics</code> property.",
+            "itemtype": "event",
+            "name": "discoveredCharacteristics",
+            "params": [
+                {
+                    "name": "source",
+                    "description": "The peripheral sending the event.",
+                    "type": "Peripheral"
+                },
+                {
+                    "name": "service",
+                    "description": "The service for which the characteristics were discovered.",
+                    "type": "Service"
+                },
+                {
+                    "name": "errorCode",
+                    "description": "The error code; only present if an error occurred.",
+                    "type": "Number"
+                },
+                {
+                    "name": "errorDomain",
+                    "description": "The error domain; only present if an error occurred.",
+                    "type": "String"
+                },
+                {
+                    "name": "errorDescription",
+                    "description": "The error description; only present if an\nerror occurred.",
+                    "type": "String"
+                }
+            ],
+            "since": "1.0.0",
+            "class": "Peripheral",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/PeripheralProxy.m",
+            "line": 619,
+            "description": "This event is fired after a call to the\n{{#crossLink \"Peripheral/readValueForCharacteristic:method\"}}\n{{/crossLink}} method, or upon receipt of a notification/indication.",
+            "itemtype": "event",
+            "name": "updatedValueForCharacteristic",
+            "params": [
+                {
+                    "name": "source",
+                    "description": "The peripheral sending the event.",
+                    "type": "Peripheral"
+                },
+                {
+                    "name": "characteristic",
+                    "description": "",
+                    "type": "Characteristic"
+                },
+                {
+                    "name": "value",
+                    "description": "The characteristic's value at the time\nthe update was received. Note that due to the asynchronous nature\nof the Titanium messaging facility, the value of the\ncharacteristic may have been already updated again by the time\nthe JavaScript code receives this event and consequently\n<code>value</code> and <code>characteristic.value</code> may be\ndifferent!",
+                    "type": "TiBuffer"
+                },
+                {
+                    "name": "errorCode",
+                    "description": "The error code; only present if an error occurred.",
+                    "type": "Number"
+                },
+                {
+                    "name": "errorDomain",
+                    "description": "The error domain; only present if an error occurred.",
+                    "type": "String"
+                },
+                {
+                    "name": "errorDescription",
+                    "description": "The error description; only present if an\nerror occurred.",
+                    "type": "String"
+                }
+            ],
+            "since": "1.0.0",
+            "class": "Peripheral",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/PeripheralProxy.m",
+            "line": 670,
+            "description": "This event returns the result of a call to the\n{{#crossLink \"Peripheral/writeValueForCharacteristic:method\"}}\n{{/crossLink}} method.",
+            "itemtype": "event",
+            "name": "wroteValueForCharacteristic",
+            "params": [
+                {
+                    "name": "source",
+                    "description": "The peripheral sending the event.",
+                    "type": "Peripheral"
+                },
+                {
+                    "name": "characteristic",
+                    "description": "",
+                    "type": "Characteristic"
+                },
+                {
+                    "name": "errorCode",
+                    "description": "The error code; only present if an error occurred.",
+                    "type": "Number"
+                },
+                {
+                    "name": "errorDomain",
+                    "description": "The error domain; only present if an error occurred.",
+                    "type": "String"
+                },
+                {
+                    "name": "errorDescription",
+                    "description": "The error description; only present if an\nerror occurred.",
+                    "type": "String"
+                }
+            ],
+            "since": "1.0.0",
+            "class": "Peripheral",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/PeripheralProxy.m",
+            "line": 703,
+            "description": "This event returns the result of a call to the\n{{#crossLink \"Peripheral/subscribeToCharacteristic:method\"}}\n{{/crossLink}} or\n{{#crossLink \"Peripheral/unsubscribeFromCharacteristic:method\"}}\n{{/crossLink}} method.",
+            "itemtype": "event",
+            "name": "updatedNotificationStateForCharacteristics",
+            "params": [
+                {
+                    "name": "source",
+                    "description": "The peripheral sending the event.",
+                    "type": "Peripheral"
+                },
+                {
+                    "name": "characteristic",
+                    "description": "",
+                    "type": "Characteristic"
+                },
+                {
+                    "name": "errorCode",
+                    "description": "The error code; only present if an error occurred.",
+                    "type": "Number"
+                },
+                {
+                    "name": "errorDomain",
+                    "description": "The error domain; only present if an error occurred.",
+                    "type": "String"
+                },
+                {
+                    "name": "errorDescription",
+                    "description": "The error description; only present if an\nerror occurred.",
+                    "type": "String"
+                }
+            ],
+            "since": "1.0.0",
+            "class": "Peripheral",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/PeripheralProxy.m",
+            "line": 736,
+            "description": "This event returns the result of a call to the\n{{#crossLink \"Peripheral/discoverDescriptorsForCharacteristic:method\"}}\n{{/crossLink}} method.",
+            "itemtype": "event",
+            "name": "discoveredDescriptionForCharacteristics",
+            "params": [
+                {
+                    "name": "source",
+                    "description": "The peripheral sending the event.",
+                    "type": "Peripheral"
+                },
+                {
+                    "name": "characteristic",
+                    "description": "",
+                    "type": "Characteristic"
+                },
+                {
+                    "name": "errorCode",
+                    "description": "The error code; only present if an error occurred.",
+                    "type": "Number"
+                },
+                {
+                    "name": "errorDomain",
+                    "description": "The error domain; only present if an error occurred.",
+                    "type": "String"
+                },
+                {
+                    "name": "errorDescription",
+                    "description": "The error description; only present if an\nerror occurred.",
+                    "type": "String"
+                }
+            ],
+            "since": "1.0.0",
+            "class": "Peripheral",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/PeripheralProxy.m",
+            "line": 773,
+            "description": "This event returns the result of a call to the\n{{#crossLink \"Peripheral/readValueForDescriptor:method\"}}\n{{/crossLink}} method.",
+            "itemtype": "event",
+            "name": "updatedValueForDescriptor",
+            "params": [
+                {
+                    "name": "source",
+                    "description": "The peripheral sending the event.",
+                    "type": "Peripheral"
+                },
+                {
+                    "name": "descriptor",
+                    "description": "The Descriptor object corresponding to the\n_descriptor_ parameter of the delegate method.",
+                    "type": "Descriptor"
+                },
+                {
+                    "name": "errorCode",
+                    "description": "The error code; only present if an error occurred.",
+                    "type": "Number"
+                },
+                {
+                    "name": "errorDomain",
+                    "description": "The error domain; only present if an error occurred.",
+                    "type": "String"
+                },
+                {
+                    "name": "errorDescription",
+                    "description": "The error description; only present if an\nerror occurred.",
+                    "type": "String"
+                }
+            ],
+            "since": "1.0.0",
+            "class": "Peripheral",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/PeripheralProxy.m",
+            "line": 805,
+            "description": "This event returns the result of a call to the\n{{#crossLink \"Peripheral/writeValueForDescriptor:method\"}}\n{{/crossLink}} method.",
+            "itemtype": "event",
+            "name": "wroteValueForDescriptor",
+            "params": [
+                {
+                    "name": "source",
+                    "description": "The peripheral sending the event.",
+                    "type": "Peripheral"
+                },
+                {
+                    "name": "descriptor",
+                    "description": "The object representing the descriptor\nthat was changed.",
+                    "type": "Descriptor"
+                },
+                {
+                    "name": "errorCode",
+                    "description": "The error code; only present if an error occurred.",
+                    "type": "Number"
+                },
+                {
+                    "name": "errorDomain",
+                    "description": "The error domain; only present if an error occurred.",
+                    "type": "String"
+                },
+                {
+                    "name": "errorDescription",
+                    "description": "The error description; only present if an\nerror occurred.",
+                    "type": "String"
+                }
+            ],
+            "since": "1.0.0",
+            "class": "Peripheral",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/RequestProxy.m",
+            "line": 20,
+            "description": "The central that originated the request.",
+            "itemtype": "property",
+            "name": "central",
+            "type": "{Central}",
+            "final": 1,
+            "since": "1.0.0",
+            "class": "Request",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/RequestProxy.m",
+            "line": 37,
+            "description": "The characteristic whose value will be read or written.",
+            "itemtype": "property",
+            "name": "characteristic",
+            "type": "{Characteristic}",
+            "final": 1,
+            "since": "1.0.0",
+            "class": "Request",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/RequestProxy.m",
+            "line": 54,
+            "description": "The zero-based index of the first byte for the read or write.",
+            "itemtype": "property",
+            "name": "offset",
+            "type": "{Number}",
+            "final": 1,
+            "since": "1.0.0",
+            "class": "Request",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/RequestProxy.m",
+            "line": 67,
+            "description": "The data being read or written.\n\nFor read requests, will be null and should be set before responding via the\n{{#crossLink \"BluetoothLEModule/respondToRequest:method\"}}\n{{/crossLink}} method.\n\nFor write requests, value will contain the data to be written.",
+            "itemtype": "property",
+            "name": "value",
+            "type": "{TiBuffer}",
+            "since": "1.0.0",
+            "class": "Request",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ServiceProxy.m",
+            "line": 20,
+            "description": "A back-pointer to the peripheral this service belongs to. *",
+            "itemtype": "property",
+            "name": "peripheral",
+            "type": "{Peripheral}",
+            "final": 1,
+            "since": "1.0.0",
+            "class": "Service",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ServiceProxy.m",
+            "line": 34,
+            "description": "The Bluetooth UUID of the service.",
+            "itemtype": "property",
+            "name": "UUID",
+            "type": "{String}",
+            "final": 1,
+            "since": "1.0.0",
+            "class": "Service",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ServiceProxy.m",
+            "line": 47,
+            "description": "The type of the service (primary or secondary).",
+            "itemtype": "property",
+            "name": "isPrimary",
+            "type": "{Boolean}",
+            "final": 1,
+            "since": "1.0.0",
+            "class": "Service",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ServiceProxy.m",
+            "line": 60,
+            "description": "A list of included services that have so far been discovered in this service.",
+            "itemtype": "property",
+            "name": "includedServices",
+            "type": "{Array of Service objects}",
+            "final": 1,
+            "since": "1.0.0",
+            "class": "Service",
+            "module": "Readme"
+        },
+        {
+            "file": "Classes/ServiceProxy.m",
+            "line": 77,
+            "description": "A list of characteristics that have so far been discovered in this service.",
+            "itemtype": "property",
+            "name": "characteristics",
+            "type": "{Array of Characteristic objects}",
+            "final": 1,
+            "since": "1.0.0",
+            "class": "Service",
+            "module": "Readme"
+        }
+    ],
+    "warnings": [
+        {
+            "message": "replacing incorrect tag: params with param",
+            "line": " Classes/ComLogicallabsBluetoothleModule.m:3615"
+        }
+    ]
+}

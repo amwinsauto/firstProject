@@ -1,0 +1,40 @@
+<Alloy>
+	<Window id="serversetupWindow" class="settingsBackgroundColor barColor navTintColor" platform="android" onAndroidback="onAndroidBack">
+		<View id="serversetupView">
+			<Label id="serverLabel" />
+			<TextField id="serverTextField" onChange="onServerTextFieldChange"/>
+			<View id="httpsSwitchView">
+				<Label id="httpsLabel" />
+				<Switch id="httpsSwitch" onChange="onHttpsSwitchChange"/>
+			</View>
+			<Label id="webAppLabel" />
+			<TextField id="webAppTextField" onChange="onWebAppTextFieldChange" />
+			<Label id="serverDescriptionLabel" />
+		</View>
+	</Window>
+	<Window id="serversetupWindow" class="windowBackgroundColor barColor navTintColor" platform="ios">
+		<TableView id="serversetupTable" >
+			<TableViewSection id="serverSection">
+				<TableViewRow class="row" >
+					<!-- <Label id="serverLabel" /> -->
+					<TextField id="serverTextField" onChange="onServerTextFieldChange"/>
+				</TableViewRow>
+				<TableViewRow class="row" >
+					<Label id="httpsLabel" />
+					<Switch id="httpsSwitch" onChange="onHttpsSwitchChange"/>
+				</TableViewRow>
+			</TableViewSection>
+			<TableViewSection id="serverAppSection" >
+				<FooterView>
+					<View id="serverDescriptionView">
+						<Label id="serverDescriptionLabel"></Label>
+					</View>
+				</FooterView>
+				<TableViewRow class="row" >
+					<!--<Label id="webAppLabel" /> -->
+					<TextField id="webAppTextField" onChange="onWebAppTextFieldChange" />
+				</TableViewRow>
+			</TableViewSection>
+		</TableView>
+	</Window>
+</Alloy>

@@ -1,0 +1,18 @@
+<Alloy>
+	<!-- IOS -->
+	<TableViewRow id="fieldTableViewRow" class="formFieldRow tableSelectedColor formFieldColors" hasChild="false" platform="ios">
+		<Label id="leaderLabel" class="formFieldLeftLabel" />
+		<TextArea id="fieldTextArea" class="formFieldValue"/>
+		<Label id="trailerLabel" class="formFieldTrailer" visible="false"/>
+	</TableViewRow>
+
+	<!-- Android -->
+	<View id="fieldTableViewRow" class="formFieldRow formFieldColors" platform="android">
+		<View id="fieldView" >
+			<Label id="leaderLabel" class="formFieldLeftLabel" />
+			<TextArea id="fieldTextArea" class="formFieldValue"/>
+			<Label id="trailerLabel" class="formFieldTrailer" visible="false"/>
+		</View>
+		<ImageView id="clickImageView" visible="false"/>
+	</View>
+</Alloy>

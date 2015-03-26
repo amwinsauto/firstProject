@@ -1,0 +1,3 @@
+<Alloy>
+	<Window id="window" class="windowBackgroundColor barColor navTintColor" onOpen="onOpen" onClose="onClose" />
+</Alloy>

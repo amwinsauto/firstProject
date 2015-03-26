@@ -1,0 +1,12 @@
+"#tableViewSection":{}
+"#headerView": {
+	height: 20,
+	backgroundColor: "#c7c7cc"
+}
+"#headerView[platform=android]": {
+	height: 30
+}
+"#headerLabel": {
+	left: 10,
+//	text: 'Header'
+}

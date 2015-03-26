@@ -1,0 +1,12 @@
+<Alloy>
+	<Window id="dashboardWindow" onAndroidback="onAndroidBack" onOpen="onOpen" onLongpress="onLongPress">
+		<ActionBar id="actionbar" onHomeIconItemSelected="onAndroidHomeClick" platform="android"/>
+		<Button id="menuButton" onClick="onMenuButtonClick" platform="ios"/>
+		<Label id="title" platform="ios"/>
+		<!--<Button id="close" onClick="onCloseClick" platform="ios"/>-->
+		<!--<Button id="refresh" onClick="onRefreshClick" platform="ios" visible="false"/>-->
+		<ScrollableView id="dashboardPages" onScrollEnd="onScrollEnd">
+			<!-- Holds all dashboard pages -->
+		</ScrollableView>
+	</Window>
+</Alloy>

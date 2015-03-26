@@ -1,0 +1,17 @@
+//"#topToolbar[platform=ios]": {
+//},
+//"#topToolbar[platform=android]": {
+//	backgroundColor: '#dddddd',
+//	top: 0,
+//	left: 0,
+//	right: 0,
+//	height: 46
+//},
+//"#titleLabel[platform=android]": {
+//	wordWrap: false,
+//	ellipsize: true,
+//	left: 8,
+//	right: 8,
+//	color: 'black',
+//	font: { fontSize: 18} 
+//}

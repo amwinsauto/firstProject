@@ -1,0 +1,19 @@
+"#masterTab":{
+}
+"#masterWindow": { 
+	navBarHidden :true
+}
+"#masterWindow[platform=ios formFactor=handheld]": {
+	orientationModes : [Ti.UI.PORTRAIT, Ti.UI.LANDSCAPE_LEFT, Ti.UI.LANDSCAPE_RIGHT]
+}
+"#masterWindow[platform=ios formFactor=tablet]": {
+	orientationModes : [Ti.UI.LANDSCAPE_LEFT, Ti.UI.LANDSCAPE_RIGHT]
+}
+"#supportMenu":{
+	title: L('support'),
+	showAsAction: Ti.Android.SHOW_AS_ACTION_NEVER
+}
+"#aboutMenu":{
+	title: L('about'),
+	showAsAction: Ti.Android.SHOW_AS_ACTION_NEVER
+}

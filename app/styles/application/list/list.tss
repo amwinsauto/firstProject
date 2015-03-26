@@ -1,0 +1,66 @@
+"#view": { 
+	layout: 'vertical'
+}
+"#view[platform=android]": {
+}
+"#headerView": { 
+	height: Ti.UI.SIZE,
+	layout: 'vertical'
+}
+"#table": {
+	separatorColor: '#d6d6d6', // GPS Spc
+}
+"#table[platform=android]": {
+	// searchAsChild : Alloy.Globals.searchAsChild
+	searchAsChild : false
+}
+"#search[platform=ios]": {
+}
+"#search[platform=android]": {
+	hinttextid: 'search',
+	height: 48
+}
+"#editButton[platform=ios]": {
+	titleid: 'edit_button',
+//	systemButton: Ti.UI.iPhone.SystemButton.EDIT
+}
+"#editButton[platform=android]": {
+	top: 3,
+	height: 42,
+	color: 'black',
+	titleid: 'edit_button',
+}
+// "#cancelButton[platform=ios]": {
+	// titleid: 'cancel_button',
+	// systemButton: Ti.UI.iPhone.SystemButton.CANCEL
+// }
+// "#cancelButton[platform=android]": {
+	// top: 3, 
+	// height: 42,
+	// color: 'black',
+	// titleid: 'cancel_button',
+	// selectedColor: '#ffffff',
+// }
+"#deleteToolbar[platform=ios]": {
+	bottom: 0,
+}
+"#deleteToolbar[platform=android]": {
+	/* View */
+	backgroundColor: '#dddddd',
+	layout: 'horizontal',
+	bottom: 0,
+	left: 0,
+	right: 0,
+	height: 46
+}
+"#deleteSelectedButton[platform=ios]": {
+	titleid: 'delete_button',
+}
+"#deleteSelectedButton[platform=android]": {
+	titleid: 'delete_button',
+	top: 3, 
+	height: 42,
+	width: 84,
+	color: 'black',
+	selectedColor: '#ffffff',
+}

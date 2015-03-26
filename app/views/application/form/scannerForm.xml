@@ -1,0 +1,12 @@
+<Alloy>
+	<View id="formView" layout="vertical">
+		<ScrollView  id="contentScrollView"  layout="vertical">
+			<!-- Sections inserted here -->
+		</ScrollView>
+		<View id="itemHeader" >
+			<Label id="itemsHeaderTitle"/>
+			<Button id="clearButton" onClick="onClearButtonClick"/>
+		</View>
+		<TableView id="items" onDelete="onItemDelete"></TableView>
+	</View>
+</Alloy>

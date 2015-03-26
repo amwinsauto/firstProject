@@ -1,0 +1,18 @@
+"#label":{
+	textAlign: 'right',
+	height: 20,
+	width: Ti.UI.SIZE,
+	right: 0,
+	color: '#8e8e8e',
+	font: {
+		fontSize: 15,
+		//textStyle: Ti.UI.TEXT_STYLE_SUBHEADLINE
+	}
+},
+"#label[platform=ios]":{
+//	color: '#293f75'
+//	color: '#8e8e8e'
+},
+"#label[platform=android]":{
+//	color: '#adadad'
+}

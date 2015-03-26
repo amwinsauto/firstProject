@@ -1,0 +1,40 @@
+"#row": {
+	horizontalWrap: false,
+	backgroundColor: '#dddddd'
+}
+"#row[platform=ios]": {
+	selectionStyle: Ti.UI.iPhone.TableViewCellSelectionStyle.NONE
+}
+"#floatingView":{
+	layout: 'vertical',
+	top: 10,
+	left: 10,
+	right: 10,
+	height: Ti.UI.SIZE,
+	backgroundColor: '#ffffff',
+	egBackgroundColorComment: '#eaeaea'
+}
+"#headerView":{
+	left: 0,
+	right: 0,
+	top: 8,
+	height: Ti.UI.SIZE,
+	layout: 'horizontal',
+	horizontalWrap: false
+}
+"#bodyView":{
+	height: Ti.UI.SIZE,
+	top: 8,
+	bottom: 8,
+	left: 8,
+	right: 8
+}
+"#body": {
+	left: 1,
+	right: 0,
+	height: Ti.UI.SIZE,
+	color: 'gray',
+	font: {
+		fontSize: 14
+	}
+}

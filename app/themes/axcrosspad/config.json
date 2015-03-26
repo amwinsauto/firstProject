@@ -1,0 +1,19 @@
+{
+	"global": {
+		"theme": "axcrosspad",
+		"https": false,
+		"server": "87.51.6.172:1337",
+		"webApplication": "crosspad",
+		"iosAppId": 501296128,
+		"serversetupEnabled": true,
+		"linearScanner": true,
+		"logonRequired": false,
+		"supportUrl": "http://www.aspect4.com/crosspad/%s/support.php?id=ax"
+	},
+	"env:development": {},
+	"env:test": {},
+	"env:production": {},
+	"os:ios": {},
+	"os:android": {},
+	"dependencies": {}
+}

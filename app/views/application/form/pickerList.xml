@@ -1,0 +1,4 @@
+<Alloy>
+	<TableView id="table" onClick="onTableClick" class="tableSelectedColor"/>
+	<SearchBar id="search" class="barColor" onReturn="onSearchReturn" onCancel="onSearchCancel"/>
+</Alloy>

@@ -1,0 +1,14 @@
+"#label":{
+	height: 22, // Default headline height
+	left: 1,
+	right: 0,
+	font: {
+		fontSize: 17, // Default headline Size
+		fontWeight: 'bold', // Default headline Weight
+		//textStyle: Ti.UI.TEXT_STYLE_HEADLINE
+	}
+},
+"#label[platform=android]":{
+	color: 'black',
+	height: 25
+}

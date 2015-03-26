@@ -1,0 +1,19 @@
+{
+	"global": {
+		"theme": "paii",
+		"https": true,
+		"server": "eg.paiibutik.dk",
+		"webApplication": "PaiiStore",
+		"appendSlashToWebApplication": true, 
+		"iosAppId": 906282170,
+		"serversetupEnabled": false,
+		"linearScanner": false,
+		"supportUrl": "http://www.aspect4.com/crosspad/%s/support.php?id=paii"
+	},
+	"env:development": {},
+	"env:test": {},
+	"env:production": {},
+	"os:ios": {},
+	"os:android": {},
+	"dependencies": {}
+}

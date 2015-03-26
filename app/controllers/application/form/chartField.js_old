@@ -1,0 +1,777 @@
+exports.baseController = "application/form/baseField";
+
+var args = arguments[0] || {};
+var form = args.form;
+var data = args.data;
+var sectionData = args.sectionData;
+
+// Ensure that the charts module is loaded
+var Charts = require('ti.charts');
+
+/* Styling start */
+var styleChartFillColor = 'gray';
+var styleChartFillOpacity = 0;
+
+// Plot
+var stylePlotBackgroundColor = 'white';
+var stylePlotBackgroundOpacity = 0;
+var styleChartPadding = 4;
+
+// Chart
+var styleWidthSmall = '100%';
+var styleHeightSmall = 150;
+var styleRadiusSmall = 40;
+var styleRadiusLabelsSmall = 25;
+
+var styleWidthMedium = '100%';
+var styleHeightMedium = 180;
+var styleRadiusMedium = 60;
+var styleRadiusLabelsMedium = 40;
+
+var styleWidthLarge = '100%';
+var styleHeightLarge = 300;
+var styleRadiusLarge = 110;
+var styleRadiusLabelsLarge = 100;
+
+var styleWidthExtraLarge = '100%';
+var styleHeightExtraLarge = 600;
+var styleRadiusExtraLarge = 200;
+var styleRadiusLabelsExtraLarge = 190;
+
+// Title
+var styleTitleColor = 'black';
+//var styleTitleColorTransparent = 'white';
+var styleTitleColorTransparent = 'black';
+
+var styleTitleFontSizeOneLine = 24;
+var styleTitleOffSetOneLine = 15;
+var styleTitleExtraPaddingOneLine = 30;
+
+var styleTitleFontSizeTwoLines = 18;
+var styleTitleOffSetTwoLines = 22;
+var styleTitleExtraPaddingTwoLines = 45;
+
+// Center Label on barchart
+var styleLabelColor = 'black';
+var styleLabelFontSizeSmall = 22;
+var styleLabelFontSizeMedium = 32;
+var styleLabelFontSizeLarge = 52;
+var styleLabelFontSizeExtraLarge = 52;
+
+// Axis
+var styleXAxisPadding = 60;
+var styleYAxisPadding = 60;
+
+// Plot
+
+// Default bar/line color, can be customized by server
+var stylePlotColor = 'blue';
+// Default bar width, can be customized by server
+var stylePlotBarWidth = 0.75;
+// Defualt line width, can be customized by server
+var stylePlotLineWidth = 2;
+
+var stylePlotPieDirection = Charts.DIRECTION_CLOCKWISE;
+var stylePlotPieExtraPaddingLabels = 20;
+
+/* Styling end */
+
+var height = styleHeightMedium;
+var width = styleWidthMedium;
+var radius = styleRadiusMedium;
+var extraPaddingForTopTitle = 0;
+var extraPaddingForBottomTitle = 0;
+var titleColor = styleTitleColor;
+var titleFontSize = styleTitleFontSizeOneLine;
+var titleOffSet = styleTitleOffSetOneLine;
+var titleLocation = Charts.LOCATION_TOP;
+var labelFontSize = styleLabelFontSizeMedium;
+
+if (sectionData.layout === 'transparent') {
+	titleColor = styleTitleColorTransparent;
+}
+
+if (data.size === 'small') {
+	height = styleHeightSmall;
+	width = styleWidthSmall;
+	radius = styleRadiusSmall;
+	labelFontSize = styleLabelFontSizeSmall;
+} else if (data.size === 'medium') {
+	height = styleHeightMedium;
+	width = styleWidthMedium;
+	radius = styleRadiusMedium;
+	labelFontSize = styleLabelFontSizeMedium;
+} else if (data.size === 'large') {
+	height = styleHeightLarge;
+	width = styleWidthLarge;
+	radius = styleRadiusLarge;
+	labelFontSize = styleLabelFontSizeLarge;
+} else if (data.size === 'extralarge') {
+	height = styleHeightExtraLarge;
+	width = styleWidthExtraLarge;
+	radius = styleRadiusExtraLarge;
+	labelFontSize = styleLabelFontSizeExtraLarge;
+	styleXAxisPadding = 90;
+	styleYAxisPadding = 80;
+
+}
+
+var title = null;
+var labelTitle = null;
+var xAxis = null;
+//	var xPadding = 15;
+var xPadding = 0;
+var yAxis = null;
+//	var yPadding = 5;
+var yPadding = 0;
+
+var barChart = false;
+var lineChart = false;
+var pieChart = false;
+
+var plots = [];
+
+var xLength = 0;
+var yLength = 0;
+
+var xLengthMin = 0;
+var xLengthMax = 0;
+var yLengthMin = 0;
+var yLengthMax = 0;
+
+if (data.title) {
+	title = data.title.toString();
+}
+if (title) {
+	var topBottomPadding = styleTitleExtraPaddingOneLine;
+	//extraPaddingForTitle = styleTitleExtraPaddingOneLine;
+	if (title.search('\n') > -1) {
+		titleFontSize = styleTitleFontSizeTwoLines;
+		titleOffSet = styleTitleOffSetTwoLines;
+		topBottomPadding = styleTitleExtraPaddingTwoLines;
+	}
+	if (data.titleposition === 'bottom') {
+		extraPaddingForBottomTitle = topBottomPadding;
+		titleOffSet *= -1;
+		titleLocation = Charts.LOCATION_BOTTOM;
+	} else {
+		extraPaddingForTopTitle = topBottomPadding;
+	}
+}
+
+if (data.plots) {
+	for (var i = 0, j = data.plots.length; i < j; i++) {
+		var dataPlot = data.plots[i];
+
+		var plot = {
+			type : dataPlot.type ? dataPlot.type.toString() : 'line',
+			name : dataPlot.name ? dataPlot.name.toString() : 'plot' + i.toString(),
+			color : dataPlot.color ? dataPlot.color.toString() : stylePlotColor,
+			showLabels : dataPlot.showlabels ? true : false,
+			data : []
+		};
+
+		if (plot.type === 'bar' || plot.type == 'line') {
+			if (plot.type === 'bar') {
+				barChart = true;
+				plot.barWidth = stylePlotBarWidth;
+				if (dataPlot.barwidth) {
+					plot.barWidth = parseFloat(dataPlot.barwidth);
+				}
+			} else {
+				lineChart = true;
+				plot.lineWidth = stylePlotLineWidth;
+				if (dataPlot.linewidth) {
+					plot.lineWidth = parseFloat(dataPlot.linewidth);
+				}
+			}
+			if (dataPlot.data) {
+				for (var x = 0, y = dataPlot.data.length; x < y; x++) {
+					var dataValue = {
+						x : dataPlot.data[x].x,
+						y : dataPlot.data[x].y
+					};
+					plot.data.push(dataValue);
+					if (dataValue.x > xLengthMax) {
+						xLengthMax = dataValue.x;
+					}
+					if (dataValue.x < xLengthMin) {
+						xLengthMin = dataValue.x;
+					}
+					if (dataValue.y > yLengthMax) {
+						yLengthMax = dataValue.y;
+					}
+					if (dataValue.y < yLengthMin) {
+						yLengthMin = dataValue.y;
+					}
+				}
+			}
+		} else if (plot.type === 'pie') {
+			pieChart = true;
+			if (data.size === 'small') {
+				if (plot.showLabels) {
+					radius = styleRadiusLabelsSmall;
+				} else {
+					radius = styleRadiusSmall;
+				}
+			} else if (data.size === 'medium') {
+				if (plot.showLabels) {
+					radius = styleRadiusLabelsMedium;
+				} else {
+					radius = styleRadiusMedium;
+				}
+			} else if (data.size === 'large') {
+				if (plot.showLabels) {
+					radius = styleRadiusLabelsLarge;
+				} else {
+					radius = styleRadiusLarge;
+				}
+			} else if (data.size === 'extralarge') {
+				if (plot.showLabels) {
+					radius = styleRadiusLabelsExtraLarge;
+				} else {
+					radius = styleRadiusExtraLarge;
+				}
+			}
+
+			if (plot.data) {
+				for (var x = 0, y = dataPlot.data.length; x < y; x++) {
+					plot.data.push(dataPlot.data[x].y);
+				}
+			}
+		}
+		plots.push(plot);
+	}
+
+}
+
+// Build x axis data
+if (data.xaxis) {
+	// Set padding for
+	xPadding = styleXAxisPadding;
+
+	xAxis = {};
+	xAxis.showGrid = data.xaxis.showlines ? true : false;
+
+	if (data.xaxis.title) {
+		xAxis.title = data.xaxis.title;
+	}
+	if (data.xaxis.interval) {
+		xAxis.interval = parseFloat(data.xaxis.interval);
+	}
+	if (data.xaxis.locations) {
+		xAxis.locations = [];
+		for (var i = 0, j = data.xaxis.locations.length; i < j; i++) {
+			var location = {
+				value : parseFloat(data.xaxis.locations[i].value),
+				text : data.xaxis.locations[i].title.toString()
+			};
+			xAxis.locations.push(location);
+			if (location.value > xLengthMax) {
+				xLengthMax = location.value;
+			}
+			if (location.value < xLengthMin) {
+				xLengthMin = location.value;
+			}
+		}
+	}
+}
+// Build y axis data
+if (data.yaxis) {
+	yAxis = {};
+	yAxis.showGrid = data.yaxis.showlines ? true : false;
+
+	yPadding = styleYAxisPadding;
+	if (data.yaxis.title != null && data.yaxis.title != undefined) {
+		yAxis.title = data.yaxis.title.toString();
+	}
+	if (data.yaxis.interval) {
+		yAxis.interval = parseFloat(data.yaxis.interval);
+	}
+	if (data.yaxis.locations) {
+		yAxis.locations = [];
+		for (var i = 0, j = data.yaxis.locations.length; i < j; i++) {
+			var location = {
+				value : data.yaxis.locations[i].value,
+				text : data.yaxis.locations[i].title.toString()
+			};
+			yAxis.locations.push(location);
+			if (location.value > yLengthMax) {
+				yLengthMax = location.value;
+			}
+			if (location.value > yLengthMin) {
+				yLengthMin = location.value;
+			}
+		}
+	}
+}
+
+xLength = (xLengthMin * -1) + xLengthMax;
+
+yLength = (yLengthMin * -1) + yLengthMax;
+var yFactor = yLength * 0.2;
+yLength = yLength + yFactor;
+
+if (yLengthMin < 0) {
+	yLengthMin = yLengthMin - (yFactor / 2);
+}
+
+// yLengthMin = yLengthMin * 1.2;
+// yLengthMax = yLengthMax * 1.2;
+// yLength = (yLengthMin *-1) + yLengthMax;
+
+if (barChart) {
+	xLength++;
+}
+//yLength = yLength * 1.2;
+
+// Create a chart view to contain the plot
+var chart = Charts.createChart({
+	top : 0,
+	left : 0,
+	width : width,
+	height : height,
+	orientationModes : [Ti.UI.PORTRAIT, Ti.UI.UPSIDE_PORTRAIT, Ti.UI.LANDSCAPE_LEFT, Ti.UI.LANDSCAPE_RIGHT],
+
+	// Configure the title for the chart
+	title : title ? {
+		text : title, // From data.title
+		color : titleColor,
+		font : {
+			fontSize : titleFontSize,
+			//	fontFamily : 'Times New Roman',
+			//	fontWeight : 'bold',
+			//	fontStyle : 'italic'
+		},
+		//			location : Charts.LOCATION_TOP,
+		location : titleLocation,
+		offset : {
+			x : 0.0,
+			y : titleOffSet
+		}
+	} : undefined,
+
+	// Configure the external padding -- the area between the view edge and the plot area frame
+	padding : {
+		top : styleChartPadding + extraPaddingForTopTitle,
+		left : styleChartPadding,
+		right : styleChartPadding,
+		bottom : styleChartPadding + extraPaddingForBottomTitle
+	},
+
+	fillColor : styleChartFillColor,
+	fillGradient : undefined, //{
+	//	startColor : '#00F',
+	//	endColor : '#004',
+	//	angle : -45.0
+	//},
+	fillOpacity : styleChartFillOpacity,
+
+	// Configure the plot area -- the area where the chart is drawn
+	plotArea : {
+		borderRadius : 0.0,
+		borderColor : undefined,
+		borderWidth : 0.0,
+		borderOpacity : undefined,
+		// Configure the inner padding -- the area between the plot area frame and the actual plot area
+		padding : {
+			top : 0.0,
+			left : yPadding,
+			right : 5.0,
+			bottom : xPadding
+		},
+		backgroundColor : stylePlotBackgroundColor,
+		backgroundGradient : undefined, //{
+		// startColor : '#00F',
+		// endColor : '#004',
+		// angle : -45.0
+		// }
+		backgroundOpacity : stylePlotBackgroundOpacity,
+		fillColor : undefined,
+		fillGradient : undefined, //{
+		//  startColor : '#00F',
+		//  endColor : '#004',
+		//  angle : -45.0
+		//}
+		fillOpacity : undefined,
+	},
+	// theme : Charts.THEME_WHITE, //Charts.THEME_DARK_GRADIENT/Charts.THEME_WHITE//Charts.THEME_BLACK//Charts.THEME_SLATE//Charts.THEME_STOCKS
+	theme : Charts.THEME_WHITE,
+	// Enable user interaction -- defaults to true
+	userInteraction : false,
+	plotSpace : !pieChart ? {
+		scaleToFit : false,
+		expandRangeByFactor : undefined,
+		xRange : {
+			//			location : 0,
+			//			length : xLength
+			location : xLengthMin,
+			length : xLength
+		},
+		yRange : {
+			//			location : 0,
+			//			length : yLength
+			location : yLengthMin,
+			length : yLength
+		}
+
+	} : undefined,
+
+	// Configure the xAxis
+	xAxis : xAxis ? {
+		// origin defines where it intercepts the orthogonal axis (the y-axis)
+		origin : 0,
+		align : Charts.ALIGNMENT_CENTER,
+		alignOffset : undefined,
+		lineColor : undefined, //'yellow',
+		lineWidth : undefined, //1.0,
+		lineOpacity : undefined,
+		title : xAxis.title ? {
+			text : xAxis.title,
+			offset : 18.0,
+			color : undefined, //'#0f0',
+			font : undefined
+			//{
+			//	fontFamily : 'Helvetica',
+			//	fontSize : 14
+			//}
+		} : undefined,
+		tickDirection : undefined, // Charts.SIGN_NEGATIVE / Charts.SIGN_POSITIVE
+		visibleRange : undefined, //{
+		// location : 0.0,
+		// length : 100.0
+		// }
+		majorTicks : {
+			// Small line from axis to label
+			color : undefined, //'red',
+			width : 1.0,
+			length : 5.0,
+			opacity : undefined,
+			// Internval 2 = 2 4 6 etc
+			interval : xAxis.interval ? xAxis.interval : undefined,
+			gridLines : xAxis.showGrid ? {
+				width : 1.0,
+				color : undefined, //'blue',
+				opacity : undefined, // 0.5,
+				range : undefined
+				//{
+				//	location : 0.0,
+				//	length : yLength
+				//}
+			} : undefined,
+			labels : {
+				offset : undefined, //0.0,
+				angle : 45, //undefined, //0.0,
+				color : undefined, //'white',
+				font : undefined,
+				//{
+				//	fontFamily : 'Helvetica',
+				//	fontSize : 12
+				//},
+				textAlign : Charts.ALIGNMENT_CENTER,
+				numberFormat : undefined, //[string]: the formatting string for numeric values (e.g. "###0.00"). See Number Format Patterns for details.
+				numberPrefix : undefined, //[string]: the prefix string for the formatted numeric value (overrides any prefix specified in the format)
+				numberSuffix : undefined, //[string]; the suffix string for the formatted numeric value (overrides any suffix specified in the format)
+				numberFormatPositive : undefined, //[string]: the formatting string for positive numeric values (e.g. "###0.00") (overrides 'numberFormat' property value for positive numeric values)
+				numberPrefixPositive : undefined, //[string]: the prefix string for the formatted positive numeric values (overrides 'numberPrefix' property value for positive numeric values)
+				numberSuffixPositive : undefined, //[string]; the suffix string for the formatted positive numeric values (overrides 'numberSuffix' property value for positive numeric values)
+				numberFormatNegative : undefined, //[string]: the formatting string for negative numeric values (e.g. "###0.00") (overrides 'numberFormat' property value for negative numeric values)
+				numberPrefixNegative : undefined, //[string]: the prefix string for the formatted negative numeric values (overrides 'numberPrefix' property value for negative numeric values)
+				numberSuffixNegative : undefined //[string]; the suffix string for the formatted negative numeric values (overrides 'numberSuffix' property value for negative numeric values)
+			},
+			locations : xAxis.locations ? xAxis.locations : undefined
+		},
+		minorTicks : undefined, //{
+		// color : 'purple',
+		// width : 1.0,
+		// length : 3.0,
+		// opaity : 3.0,
+		// count : 5,
+		// gridLines : {
+		// width : 1.0,
+		// color : 'white',
+		// opacity : 0.1
+		// }
+		// },
+	} : undefined,
+	// Configure the yAxis
+	yAxis : yAxis ? {
+		// origin defines where it intercepts the orthogonal axis (the x-axis)
+		origin : 0,
+		align : Charts.ALIGNMENT_CENTER,
+		alignOffset : undefined,
+		lineColor : undefined, //'yellow',
+		lineWidth : undefined, //1.0,
+		lineOpacity : undefined,
+		title : yAxis.title ? {
+			text : yAxis.title,
+			offset : 38.0,
+			color : undefined, //'#0f0',
+			font : undefined
+			//{
+			//	fontFamily : 'Helvetica',
+			//	fontSize : 14
+			//}
+		} : undefined,
+		tickDirection : undefined, // Charts.SIGN_NEGATIVE / Charts.SIGN_POSITIVE
+		visibleRange : undefined, //{
+		// location : 0.0,
+		// length : 100.0
+		// }
+		majorTicks : {
+			// Small line from axis to label
+			color : undefined, //'white',
+			width : 1.0,
+			length : 5.0,
+			opacity : undefined,
+			interval : yAxis.interval ? yAxis.interval : undefined,
+			gridLines : yAxis.showGrid ? {
+				width : 1.0, // Needed
+				color : undefined, //'white',
+				opacity : undefined, //0.2,
+				range : undefined
+				//{
+				//	location : 0.0,
+				//	length : xLength
+				//}
+			} : undefined,
+			labels : {
+				offset : undefined, //0.0,
+				angle : 45.0,
+				color : undefined, //'white',
+				font : undefined,
+				//{
+				//	fontFamily : 'Helvetica',
+				//	fontSize : 12
+				//},
+				textAlign : Charts.ALIGNMENT_MIDDLE,
+				numberFormat : undefined, //[string]: the formatting string for numeric values (e.g. "###0.00"). See Number Format Patterns for details.
+				numberPrefix : undefined, //[string]: the prefix string for the formatted numeric value (overrides any prefix specified in the format)
+				numberSuffix : undefined, //[string]; the suffix string for the formatted numeric value (overrides any suffix specified in the format)
+				numberFormatPositive : undefined, //[string]: the formatting string for positive numeric values (e.g. "###0.00") (overrides 'numberFormat' property value for positive numeric values)
+				numberPrefixPositive : undefined, //[string]: the prefix string for the formatted positive numeric values (overrides 'numberPrefix' property value for positive numeric values)
+				numberSuffixPositive : undefined, //[string]; the suffix string for the formatted positive numeric values (overrides 'numberSuffix' property value for positive numeric values)
+				numberFormatNegative : undefined, //[string]: the formatting string for negative numeric values (e.g. "###0.00") (overrides 'numberFormat' property value for negative numeric values)
+				numberPrefixNegative : undefined, //[string]: the prefix string for the formatted negative numeric values (overrides 'numberPrefix' property value for negative numeric values)
+				numberSuffixNegative : undefined //[string]; the suffix string for the formatted negative numeric values (overrides 'numberSuffix' property value for negative numeric values)
+			},
+			locations : yAxis.locations ? yAxis.locations : undefined
+		},
+		minorTicks : undefined,
+		//{
+		// color : 'purple',
+		// width : 1.0,
+		// length : 3.0,
+		// count : 5,
+		// gridLines : {
+		// width : 1.0,
+		// color : 'white',
+		// opacity : 0.1
+		// }
+		// },
+		// visibleRange : {
+		// location : 0.0,
+		// length : 100.0
+		// }
+	} : undefined,
+
+});
+
+if (plots) {
+	for (var i = 0, j = plots.length; i < j; i++) {
+		var plot = plots[i];
+		if (plot.type === 'bar') {
+			// Create the bar plot
+			var barPlot = chart.createBarPlot({
+				name : plot.name,
+				lineColor : undefined, //plot.color,
+				lineWidth : undefined, //1.0,
+				lineOpacity : undefined,
+				fillColor : plot.color,
+				fillGradient : undefined,
+				//{
+				// startColor : '#F00',
+				// endColor : '#FF0',
+				// angle : -45.0
+				// },
+				fillOpacity : undefined, //1.0,
+				barDirection : undefined, //Charts.DIRECTION_VERTICAL,
+				barWidth : plot.barWidth,
+				barOffset : undefined, //0.0,
+				barCornerRadius : undefined, //2.0,
+				labels : plot.showLabels ? {
+					offset : 1.0,
+					angle : undefined, //0.0,
+					color : 'black', //plot.color,
+					font : {
+						fontFamily : 'Helvetica',
+						fontSize : 12
+					}
+				} : undefined,
+				data : plot.data
+			});
+			// barPlot.addEventListener('dataClicked', function(e) {
+			// Ti.API.info('line: ' + e.name + ' clicked: index: ' + e.index + ' value: ' + e.value);
+			// Ti.API.info('x position: ' + e.x + ' y position: ' + e.y);
+			// });
+
+		} else if (plot.type === 'line') {
+			// Create the line plot
+			var linePlot = chart.createLinePlot({
+				name : plot.name,
+				lineColor : plot.color,
+				lineWidth : plot.lineWidth,
+				lineOpacity : undefined,
+				fillColor : undefined,
+				fillGradient : undefined,
+				//{
+				//	startColor : '#F00',
+				//	endColor : '#0F0',
+				//	angle : 90.0
+				//},
+				fillOpacity : undefined, //0.5,
+				// base for area fill: optional, but required if fill specified
+				fillBase : undefined, //0.0,
+				labels : plot.showLabels ? {
+					offset : undefined, //1.0,
+					angle : undefined, //0.0,
+					color : 'black', //plot.color,
+					font : {
+						fontFamily : 'Helvetica',
+						fontSize : 12
+					}
+				} : undefined,
+				// Displayed above the points along the line
+				symbol : undefined,
+				//{
+				//type : Charts.SYMBOL_DIAMOND,
+				//width : 10.0,
+				//height : 10.0,
+				//lineColor : 'red',
+				//lineWidth : 1.0,
+				//lineOpacity : 1.0,
+				//fillColor : 'green'
+				//fillOpacity : 1.0,
+				//},
+				symbolHighlight : undefined,
+				data : plot.data,
+				dataClickMargin : undefined, //5.0,
+				scatterAlgorithm : undefined // Charts.SCATTER_LINEAR / Charts.SCATTER_STEPPED / Charts.SCATTER_HISTOGRAM
+			});
+			// linePlot.addEventListener('dataClicked', function(e) {
+			// Ti.API.info('line: ' + e.name + ' clicked: index: ' + e.index + ' value: ' + e.value);
+			// Ti.API.info('x position: ' + e.x + ' y position: ' + e.y);
+			// });
+		} else if (plot.type === 'pie') {
+			var direction = stylePlotPieDirection;
+
+			if (data.label) {
+				labelTitle = data.label.toString();
+			}
+
+			// Create the pie plot
+			var piePlot = chart.createPiePlot({
+				name : plot.name,
+				lineColor : '#939595', // GPS: undefined ,'#333',
+				lineWidth : undefined, //1.0,
+				lineOpacity : undefined, //0.4,
+				startAngle : 90.0,
+				direction : direction,
+				radius : radius,
+				explodeOffset : 0.0,
+				labels : plot.showLabels ? {
+					offset : undefined, //0.0,
+					angle : undefined, // 0.0,
+					color : 'black',
+					font : {
+						fontFamily : 'Helvetica',
+						fontSize : 10
+					}
+				} : undefined,
+				data : plot.data
+			});
+		}
+	}
+}
+//Ti.API.info(xLength + "/" + yLength);
+
+var dataArray = [];
+dataArray.push(['Task', 'Hours per Day']);
+dataArray.push(['Work', 11]);
+dataArray.push(['Eat', 2]);
+dataArray.push(['Sleep', 11]);
+var dataStr = JSON.stringify(dataArray);
+
+// var htmlStr =
+// '<html>' +
+// '<head>' +
+// '<script type="text/javascript" src="https://www.google.com/jsapi"></script>' +
+// '<script type="text/javascript">' +
+// 'google.load("visualization", "1", {packages:["corechart"]});' +
+// 'google.setOnLoadCallback(drawChart);' +
+// 'function drawChart() {' +
+// 'var data = google.visualization.arrayToDataTable(' + dataStr + ');' +
+// // 'var options = {' +
+// // 'title: \'My Daily Activities\', is3D: true, height: 300, width: 300, ' +
+// // 'tooltip: {text:\'both\'}, pieSliceText: \'percentage\', pieSliceTextStyle:{fontSize:9}, colors:["#2C5C7A","#4C7C9A","#8CACDA"], legend:{position: \'right\', textStyle: {color: \'blue\', fontName:\'Verdana\'}}' +
+// // '};' +
+// 'var chart = new google.visualization.PieChart(document.getElementById(\'chart_div\'));' +
+// 'chart.draw(data, {chartArea:{height: ' + height + ', width: ' + height + ', top: 0}, height: ' + height + ', tooltip: {text:\'both\'}, legend:{position:\'none\'}});' +
+// '}' +
+// '</script>' +
+// '</head>' +
+// '<body>' +
+// '<div id="chart_div" style="-webkit-tap-highlight-color: rgba(0,0,0,0);"></div>' +
+// '</body>' +
+// '</html>';
+// chart = Ti.UI.createWebView({html: htmlStr});
+
+var view = Ti.UI.createView({
+	top : 0,
+	left : 0,
+	width : width,
+	height : height
+	// height : height + 20
+});
+view.add(chart);
+
+if (labelTitle) {
+	var labelTop = height / 2;
+	if (title === null) {
+		labelTop -= (titleOffSet + 10);
+	} else {
+		labelTop += (titleOffSet - 23);
+	}
+
+	var label = Ti.UI.createLabel({
+		text : labelTitle,
+		top : labelTop,
+		height : 45, // GPS: Do not modify
+		font : {
+			fontSize : labelFontSize
+			//	fontFamily : 'Times New Roman',
+			//	fontWeight : 'bold',
+			//	fontStyle : 'italic'
+		},
+	});
+
+	view.add(label);
+}
+
+$.fieldTableViewRow.height = height;
+$.fieldTableViewRow.add(view);
+
+if ($.fieldTableViewRow.egBackgroundColorReadOnly) {
+	$.fieldTableViewRow.backgroundColor = $.fieldTableViewRow.egBackgroundColorReadOnly;
+}
+
+// exports.getRow = function() {
+// return $.fieldTableViewRow;
+// }
+exports.getLabel = function() {
+	return null;
+};
+// exports.getValue = function() {
+// return null;
+// }
+

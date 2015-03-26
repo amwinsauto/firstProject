@@ -1,0 +1,22 @@
+<Alloy>
+	<Popover id="popover" ns="Ti.UI.iPad">
+		<!-->		<LeftNavButton>
+		<Button id="cancelButton" onClick="onCancelButtonClick" />
+		</LeftNavButton>
+		<RightNavButton>
+		<Button id="doneButton" onClick="onDoneButtonClick" />
+		</RightNavButton>-->
+		<ContentView>
+			<NavigationWindow id="navigationWindow">
+				<Window id="window">
+					<LeftNavButton>
+						<Button id="cancelButton" onClick="onCancelButtonClick" />
+					</LeftNavButton>
+					<RightNavButton>
+						<Button id="doneButton" onClick="onDoneButtonClick" />
+					</RightNavButton>
+				</Window>
+			</NavigationWindow>
+		</ContentView>
+	</Popover>
+</Alloy>

@@ -1,0 +1,9 @@
+<Alloy>
+	<!-- IOS -->
+	<TableView id="section" platform="ios" />
+	<View id="bottomSeparator" platform="ios"/>
+	<!-- Android -->
+	<View id="section" platform="android">
+	</View>
+	
+</Alloy>

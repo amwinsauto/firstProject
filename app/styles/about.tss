@@ -1,0 +1,62 @@
+"#aboutWindow": {
+	titleid: 'about',
+	orientationModes : [Ti.UI.PORTRAIT],
+	backgroundImage: '/images/bgabout.jpg'
+}
+"#aboutWindow[platform=ios formFactor=tablet]":{
+	orientationModes: [Ti.UI.LANDSCAPE_LEFT, Ti.UI.LANDSCAPE_RIGHT]
+}
+"#aboutWindow[platform=android]": {
+	backgroundImage: '/images/bglogin_phone.png',
+	navBarHidden: false
+}
+"#logoImageView": { 
+	width: 50,
+	height: 50,
+	top: 15,
+	left: 15,
+	image: '/appicon.png'
+}
+"#nameLabel": {
+	font: {textStyle: Ti.UI.TEXT_STYLE_BODY},
+	textid: 'application_name',
+	top: 15,
+	left: 80,
+	right: 15,
+	height: 30
+}
+"#versionLabel": {
+	font: {textStyle: Ti.UI.TEXT_STYLE_BODY},
+	left: 80,
+	top: 40,
+	right: 15,
+	height: 30
+}
+"#emailButton": {
+	titleid: 'email_about',
+	top: 15,
+	right: 15,
+	width: 90,
+	height: 44,
+	borderRadius: 1,
+	selectedColor: '#000000',
+	backgroundImage: '/images/core/pillbutton.png',
+	backgroundFocusedImage: '/images/core/pillbutton_pressed.png',
+	backgroundSelectedImage: '/images/core/pillbutton_pressed.png', 
+	font: { fontSize: 14, fontFamily: 'Arial'}
+}
+"#emailButton[platform=android]": {
+	color: '#ffffff',
+	backgroundImage: '/images/core/android_pillbutton.png',
+	backgroundSelectedImage: '/images/core/android_pillbutton_pressed.png',
+	backgroundDisabledImage: '/images/core/android_pillbutton_pressed.png',
+}
+"#copyrightLabel": { 
+	font: {textStyle: Ti.UI.TEXT_STYLE_BODY},
+	verticalAlign: Ti.UI.TEXT_VERTICAL_ALIGNMENT_TOP,
+	wordWrap: true,
+ 	left: 15,
+ 	right: 15,
+ 	top: 80,
+ 	height: 200
+}

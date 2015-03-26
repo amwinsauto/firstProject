@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+	<!-- Splash activity -->
+	<style name="CrosspadActivity" parent="@style/Theme.AppCompat.Light">
+		<item name="android:windowBackground">@drawable/background</item>
+		<item name="android:windowNoTitle">true</item>
+		<item name="android:windowActionBar">false</item>
+		<item name="windowActionBar">false</item>
+	</style>
+	<!-- end -->
+
+	<!-- All Windows -->
+	<style name="Crosspad" parent="@style/Theme.AppCompat.Light">
+		<item name="actionBarStyle">@style/ActionBar.Crosspad</item>
+	</style>
+	<style name="ActionBar.Crosspad" parent="@style/Widget.AppCompat.Light.ActionBar.Solid">
+		<item name="background">@drawable/ab_solid_crosspadactionbar</item>
+		<item name="backgroundStacked">@drawable/ab_stacked_solid_crosspadactionbar</item>
+		<item name="backgroundSplit">@drawable/ab_bottom_solid_crosspadactionbar</item>
+	</style>
+	<!-- end -->
+
+	<!-- Menu Window -->
+	<style name="CrosspadMenu" parent="@style/Theme.AppCompat.Light">
+		<item name="android:windowIsTranslucent">true</item>
+		<item name="android:windowBackground">@android:color/transparent</item>
+		<item name="android:windowContentOverlay">@null</item>
+		<item name="android:windowNoTitle">true</item>
+		<item name="android:windowActionBar">false</item>
+		<item name="android:backgroundDimEnabled">false</item>
+		<item name="windowActionBar">false</item>
+	</style>
+	<!-- end -->
+
+	<!-- info
+	<style name="LightDarkBar" parent="Theme.AppCompat.Light.DarkActionBar"/>
+	<style name="Light" parent="Theme.AppCompat.Light"/>
+	<style name="Dark" parent="Theme.AppCompat"/>
+	-->
+</resources>

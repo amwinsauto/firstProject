@@ -1,24 +1,16 @@
-"#index": {
-	orientationModes : [Ti.UI.PORTRAIT, Ti.UI.LANDSCAPE_LEFT, Ti.UI.LANDSCAPE_RIGHT]
-
-},
-"#label1": {
-//	width: Ti.UI.SIZE,
-//	height: Ti.UI.SIZE,
-//	color: "#000"
-	font : {
-		fontSize: 30
-	}
-},
-"#label2": {
-//	width: Ti.UI.SIZE,
-//	height: Ti.UI.SIZE,
-//	color: "#000"
-	font : {
-		fontSize: '30dp'
-	}
-},
-
-"TableViewRow": {
-//	rightImage : "/images/disclosure_64.png" //Ti.App.Android.R.drawable.disclosure_64
+"#mainWindow": {
+	backgroundImage: '/Default.png'
+}
+"#mainWindow[platform=ios]": {
+	statusBarStyle: Ti.UI.iPhone.StatusBar.LIGHT_CONTENT
+}
+"#mainWindow[platform=ios formFactor=handheld if=Alloy.Globals.iPhone6Plus]": {
+	backgroundImage: '/Default-Portrait.png'
+}
+"#mainWindow[platform=ios formFactor=tablet]": {
+	backgroundImage: '/Default-Portrait.png'
+}
+"#mainWindow[platform=android]":{
+	theme: 'CrosspadMenu',
+	backgroundColor: 'transparent'
 }

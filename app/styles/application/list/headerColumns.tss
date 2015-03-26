@@ -1,0 +1,18 @@
+"#headerColumnsView": {
+	height: Ti.UI.SIZE,
+	layout: 'vertical'
+}
+"#headerColumnsView[platform=ios]": {
+	backgroundColor: 'white'
+}
+"#columnsView": {
+	left: 8,
+//	right: 20,
+	right: 8,
+	height: 40,
+	layout: 'horizontal'
+}
+"#barView": {
+	height: 3,
+	backgroundColor: '#6d6d6d'
+}

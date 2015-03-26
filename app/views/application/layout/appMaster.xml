@@ -1,0 +1,13 @@
+<Alloy>
+	<NavigationWindow id="masterWindowController" class="windowBackgroundColor" platform="ios">
+		<Window id="masterWindow" class="windowBackgroundColor barColor navTintColor" />
+	</NavigationWindow>
+	<Window id="masterWindow" class="windowBackgroundColor barColor navTintColor" platform="android">
+		<!--<Menu id="menu" platform="android">-->
+			<!-- Cannot specify node text.  Use attributes only. -->
+			<!--<MenuItem id="supportMenu" onClick="onSupportClick" />-->
+			<!--<MenuItem id="aboutMenu" onClick="onAboutClick" />-->
+		<!--</Menu>-->
+
+	</Window>
+</Alloy>

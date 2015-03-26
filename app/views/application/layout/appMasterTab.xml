@@ -1,0 +1,11 @@
+<Alloy>
+	<Tab id="masterTab">
+		<Window id="masterWindow" class="windowBackgroundColor barColor navTintColor" >
+			<!--<Menu id="menu" platform="android">-->
+				<!-- Cannot specify node text.  Use attributes only. -->
+				<!--<MenuItem id="supportMenu" onClick="onSupportClick" />-->
+				<!--<MenuItem id="aboutMenu" onClick="onAboutClick" />-->
+			<!--</Menu>-->
+		</Window>
+	</Tab>
+</Alloy>

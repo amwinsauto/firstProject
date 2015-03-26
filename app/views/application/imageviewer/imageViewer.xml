@@ -1,0 +1,9 @@
+<Alloy>
+	<View id="view">
+		<ScrollableView id="images" onScrollend="onImagesScrollend" />
+		<!--<ImageView id="imageView" /> -->
+		<!-- <View id="detail" /> -->
+		<ScrollableView id="thumbs" onScrollend="onThumbsScrollend" />
+		<Label id="thumbsFooter" />
+	</View>
+</Alloy>

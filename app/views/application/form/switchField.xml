@@ -1,0 +1,12 @@
+<Alloy>
+	<!-- IOS -->
+	<TableViewRow id="fieldTableViewRow" class="formFieldRow formFieldColors" hasChild="false" platform="ios">
+		<Label id="leaderLabel" class="formFieldLeftLabel"/>
+		<Switch id="fieldSwitch" onChange="onFieldSwitchChange"/>
+	</TableViewRow>
+	<!-- Android -->
+	<View id="fieldTableViewRow" class="formFieldRow formFieldColors" platform="android">
+		<Label id="leaderLabel" class="formFieldLeftLabel"/>
+		<Switch id="fieldSwitch" onChange="onFieldSwitchChange"/>
+	</View>
+</Alloy>

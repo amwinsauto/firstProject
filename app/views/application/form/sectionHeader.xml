@@ -1,0 +1,16 @@
+<Alloy>
+	<!-- IOS -->
+	<!--	<TableViewRow id="row" editable="false" touchEnabled="false" focusable="false" hasChild="false" platform="ios">
+	<Label id="titleLabel" />
+	</TableViewRow>
+	-->
+	<View id="row" platform="ios">
+		<Label id="titleLabel" />
+		<!--<View id="bottomSeparator"/> -->
+	</View>
+	<!-- Android -->
+	<View id="row" platform="android">
+		<Label id="titleLabel" />
+		<View id="bottomSeparator"/>
+	</View>
+</Alloy>

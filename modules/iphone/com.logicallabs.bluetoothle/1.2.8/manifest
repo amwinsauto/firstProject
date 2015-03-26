@@ -1,0 +1,19 @@
+#
+# this is your module manifest and used by Titanium
+# during compilation, packaging, distribution, etc.
+#
+version: 1.2.8
+apiversion: 2
+architectures: armv7 i386 x86_64 arm64
+description: Bluetooth Low Energy Module
+author: Zsombor Papp, Logical Labs
+license: Logical Labs Commercial License
+copyright: Copyright (c) 2012-2014 by Logical Labs, LLC
+
+
+# these should not be edited
+name: bluetoothle
+moduleid: com.logicallabs.bluetoothle
+guid: 20692cec-437d-450e-b9dd-624d387e36bc
+platform: iphone
+minsdk: 2.1.2.GA

@@ -1,0 +1,30 @@
+"#fieldTableViewRow[platform=android]": {
+	height: Ti.UI.SIZE,
+	//width: Ti.UI.FILL,
+	right: 0,
+	left: 0
+}
+"#fieldView": {
+	height: Ti.UI.SIZE
+},
+"#fieldWebView":{
+	// Must be devideable by 11 which is a quarter of 44 (Default field height)
+	egHeightSmall: 99,
+	egHeightMedium: 198,
+	egHeightLarge: 297,
+	height : Ti.UI.FILL,
+	width : Ti.UI.FIlL,
+	scalesPageToFit: false,
+	enableZoomControls: false,
+//	backgroundColor: 'green'
+	left: '55%',
+	right: 0
+},
+"#clickImageView": {
+	image: '/images/core/android_arrow_right.png',
+	width: 12,
+	height: 12,
+	right: 10
+}
+
+

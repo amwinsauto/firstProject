@@ -1,0 +1,16 @@
+<Alloy>
+	<Window id="applicationWindow" class="windowBackgroundColor" onOpen="onOpen" onClose="onClose">
+		<View id="horizontalSplit" />
+		<View id="verticalSplit" />
+	</Window>
+	<!-- Windows opened after applicationWindow is opened -->
+	<NavigationWindow id="topWindowController" class="windowBackgroundColor">
+		<Window id="topWindow" class="windowBackgroundColor barColor navTintColor" />
+	</NavigationWindow>
+	<NavigationWindow id="masterWindowController" class="windowBackgroundColor">
+		<Window id="masterWindow" class="windowBackgroundColor barColor navTintColor" />
+	</NavigationWindow>
+	<NavigationWindow id="detailWindowController" class="windowBackgroundColor">
+		<Window id="detailWindow" class="windowBackgroundColor barColor navTintColor" />
+	</NavigationWindow>
+</Alloy>

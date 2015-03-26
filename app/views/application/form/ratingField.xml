@@ -1,0 +1,48 @@
+<Alloy>
+	<!-- IOS -->
+	<TableViewRow id="fieldTableViewRow" class="formFieldRow formFieldColors" hasChild="false" platform="ios">
+		<View id="field" layout="vertical">
+			<View id="spacer" layout="horizontal">
+				<View id="star1" class="stars" onClick="onStarClick">
+					<View id="starImage1" class="starImages" touchEnabled="false" />
+				</View>
+				<View id="star2" class="stars" onClick="onStarClick">
+					<View id="starImage2" class="starImages" touchEnabled="false" />
+				</View>
+				<View id="star3" class="stars" onClick="onStarClick">
+					<View id="starImage3" class="starImages" touchEnabled="false" />
+				</View>
+				<View id="star4" class="stars" onClick="onStarClick">
+					<View id="starImage4" class="starImages" touchEnabled="false" />
+				</View>
+				<View id="star5" class="stars" onClick="onStarClick">
+					<View id="starImage5" class="starImages" touchEnabled="false" />
+				</View>
+			</View>
+			<Label id="title" />
+		</View>
+	</TableViewRow>
+	<!-- Android -->
+	<View id="fieldTableViewRow" class="formFieldRow formFieldColors" platform="android" >
+		<View id="field" layout="vertical">
+			<View id="spacer" layout="horizontal">
+				<View id="star1" class="stars" onClick="onStarClick">
+					<View id="starImage1" class="starImages" touchEnabled="false" />
+				</View>
+				<View id="star2" class="stars" onClick="onStarClick">
+					<View id="starImage2" class="starImages" touchEnabled="false" />
+				</View>
+				<View id="star3" class="stars" onClick="onStarClick">
+					<View id="starImage3" class="starImages" touchEnabled="false" />
+				</View>
+				<View id="star4" class="stars" onClick="onStarClick">
+					<View id="starImage4" class="starImages" touchEnabled="false" />
+				</View>
+				<View id="star5" class="stars" onClick="onStarClick">
+					<View id="starImage5" class="starImages" touchEnabled="false" />
+				</View>
+			</View>
+			<Label id="title" />
+		</View>
+	</View>
+</Alloy>

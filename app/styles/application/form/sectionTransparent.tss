@@ -1,0 +1,15 @@
+"#section": {
+	left: 16,
+	right: 16,
+	backgroundColor: 'transparent',
+	separatorColor: 'transparent',
+	borderWidth: 0,
+	height: Ti.UI.SIZE
+},
+"#section[platform=android]": {
+	layout: "vertical"
+},
+"#section[platform=ios]": {
+	scrollable : false
+}
+

@@ -1,0 +1,19 @@
+{
+	"global": {
+		"theme": "advopro",
+		"https": true,
+		"server": "appdemo.advopro.dk",
+		"webApplication": "apMobil",
+		"appendSlashToWebApplication": true, 
+		"iosAppId": 738989417,
+		"linearScanner": false,
+		"logonRequired": false,
+		"supportUrl": "http://www.aspect4.com/crosspad/%s/support.php?id=advopro"
+	},
+	"env:development": {},
+	"env:test": {},
+	"env:production": {},
+	"os:ios": {},
+	"os:android": {},
+	"dependencies": {}
+}

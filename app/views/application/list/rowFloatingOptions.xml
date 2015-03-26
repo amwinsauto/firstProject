@@ -1,0 +1,21 @@
+<Alloy>
+	<View id="optionsContainerView">
+		<View id="optionsVerticalSplitter"/>
+		<View id="optionsView">
+			<!--
+			<View id="leftOptionView">
+			-->
+			<!-- First option added here -->
+			<!--
+			</View>
+
+			<View id="middleOptionView">
+			-->
+			<!-- Second option added here -->
+			<!--</View>
+			<View id="rightOptionView"> -->
+			<!-- Third option added here -->
+			<!-- </View> -->
+		</View>
+	</View>
+</Alloy>

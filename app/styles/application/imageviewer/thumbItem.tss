@@ -1,0 +1,21 @@
+"#thumbItem": {
+//	backgroundColor: 'green',
+}
+"#image": {
+	top: 0,
+	bottom: 0,
+	left: 0,
+	right: 0,
+//	backgroundColor: 'red'
+}
+"#colorView": {
+	visible: false,
+	height: 50,
+	width: 50,
+	borderRadius: 25
+	// top: 0,
+	// bottom: 0
+}
+"#colorView[platform=android]": {
+	borderRadius: 50
+}

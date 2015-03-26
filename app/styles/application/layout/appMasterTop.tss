@@ -1,0 +1,23 @@
+"#applicationWindow": {
+	navBarHidden : true,
+	orientationModes: [Ti.UI.LANDSCAPE_LEFT, Ti.UI.LANDSCAPE_RIGHT]
+}
+"#horizontalSplit": {
+	top: 245,
+	height: 2,
+	left: 0,
+	right: 0,
+	backgroundColor : '#8e8e93'
+}
+"#topWindowController":{
+	top: 0,
+	left : 0,
+	right : 0,
+	height : 245
+}
+"#masterWindowController": {
+	top : 247,
+	left: 0,
+	right : 0,
+	bottom : 0
+}

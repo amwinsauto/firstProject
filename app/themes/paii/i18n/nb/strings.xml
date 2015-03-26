@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <!-- Fix for Android, allows you to change program's title -->
+    <string name="appname">Paii</string>
+    
+    <!-- Connection -->
+    <string name="error_contacting_server">Failed to connect to server.</string>
+    <string name="check_server_settings">Please try again.\n\nIf you still experience problems please contact support:\nPaii ApS\nLyngbyvej 20, 3. sal\n2100 København Ø\nTelefon: 7030 1450\nE-mail: retailsupport@paii.dk</string>
+
+</resources>

@@ -1,0 +1,12 @@
+"#row": {
+	backgroundColor: 'transparent'
+},
+"#titleLabel": {
+	textid: 'show_more_rows',
+	height: 60,
+	color: 'gray',
+	font: {
+		fontSize: 18,
+		//textStyle: Ti.UI.TEXT_STYLE_BODY
+	}
+}

@@ -1,0 +1,9 @@
+"#titleLabel": {
+	textid: 'search_no_rows',
+	height: 60,
+	color: 'gray',
+	font: {
+		fontSize: 18,
+		//textStyle: Ti.UI.TEXT_STYLE_BODY
+	}
+}

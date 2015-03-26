@@ -1,0 +1,30 @@
+"#fieldTableViewRow[platform=ios]": {
+	height: 66,
+	selectionStyle: Ti.UI.iPhone.TableViewCellSelectionStyle.NONE
+},
+"#fieldTableViewRow[platform=android]": {
+	height: 66
+},
+"#leaderLabel": {
+//	top: 0
+}
+"#valueLabel": {
+	top: 5,
+	textAlign: 'right',
+	right: 15,
+	height: 18,
+	left: '50%',
+	touchEnabled: false
+},
+"#fieldSlider":{
+	top: 30,
+	height: 30,
+//	left: '50%',
+	left: 15,
+	right: 15
+},
+"#trailerLabel": {
+	top: 5,
+	height: 18,
+//	touchEnabled: false
+}

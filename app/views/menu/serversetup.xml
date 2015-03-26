@@ -1,0 +1,126 @@
+<Alloy>
+	<Window id="serversetupWindow" class="settingsBackgroundColor barColor navTintColor" platform="android" onAndroidback="onAndroidBack">
+		<Menu id="menu" platform="android">
+			<MenuItem id="okMenu" onClick="onOkClick"/>
+			<!--<MenuItem id="cancelMenu" onClick="onCancelClick" />-->
+		</Menu>
+		<View id="serversetupView">
+			<Label id="serverLabel" />
+			<TextField id="serverTextField" onChange="onServerTextFieldChange"/>
+			<View id="httpsSwitchView">
+				<Label id="httpsLabel" />
+				<Switch id="httpsSwitch" onChange="onHttpsSwitchChange"/>
+			</View>
+			<Label id="webAppLabel" />
+			<TextField id="webAppTextField" onChange="onWebAppTextFieldChange" />
+			<Label id="serverDescriptionLabel" />
+		</View>
+	</Window>
+	<NavigationWindow id="serversetup" platform="ios" formFactor="handheld">
+		<Window id="serversetupWindow" class="windowBackgroundColor barColor navTintColor">
+			<LeftNavButton id="cancelButton" onClick="onCancelClick" />
+			<RightNavButton id="okButton" onClick="onOkClick" />
+			<TableView id="serversetupTable" >
+				<HeaderView>
+					<View height="18"/>
+				</HeaderView>
+				<TableViewSection id="serverSection">
+					<TableViewRow class="row" >
+						<!-- <Label id="serverLabel" /> -->
+						<TextField id="serverTextField" onChange="onServerTextFieldChange"/>
+					</TableViewRow>
+					<TableViewRow class="row" >
+						<Label id="httpsLabel" />
+						<Switch id="httpsSwitch" onChange="onHttpsSwitchChange"/>
+					</TableViewRow>
+				</TableViewSection>
+				<TableViewSection id="serverAppSection" >
+					<FooterView>
+						<View id="serverDescriptionView">
+							<Label id="serverDescriptionLabel"></Label>
+						</View>
+					</FooterView>
+					<TableViewRow class="row" >
+						<!--<Label id="webAppLabel" /> -->
+						<TextField id="webAppTextField" onChange="onWebAppTextFieldChange" />
+					</TableViewRow>
+				</TableViewSection>
+				<TableViewSection id="touchIdSection" if="Alloy.Globals.canUseTouchId">
+					<TableViewRow class="row" >
+						<Label id="touchIdSwitchLabel" />
+						<Switch id="touchIdSwitch" onChange="onTouchIdSwitchChange"/>
+					</TableViewRow>
+					<TableViewRow class="row" >
+						<!-- <Label id="serverLabel" /> -->
+						<TextField id="touchIdTextField" enabled="false" onChange="onTouchIdTextFieldChange"/>
+					</TableViewRow>
+				</TableViewSection>
+				<TableViewSection id="logSection" if="Alloy.Globals.showLogging" >
+					<TableViewRow class="row" >
+						<Label id="logLabel" />
+						<Switch id="logSwitch" onChange="onLogSwitchChange"/>
+					</TableViewRow>
+					<TableViewRow class="row" >
+						<Button id="logSendButton" onClick="onSendLogButtonClick"/>
+					</TableViewRow>
+				</TableViewSection>
+			</TableView>
+		</Window>
+	</NavigationWindow>
+	<Popover id="serversetup" platform="ios" formFactor="tablet">
+		<ContentView>
+			<NavigationWindow id="serversetupNavigationWindow">
+				<Window id="serversetupWindow" class="windowBackgroundColor barColor navTintColor">
+					<LeftNavButton id="cancelButton" onClick="onCancelClick" />
+					<RightNavButton id="okButton" onClick="onOkClick" />
+					<TableView id="serversetupTable" >
+						<HeaderView>
+							<View height="18"/>
+						</HeaderView>
+						<TableViewSection id="serverSection">
+							<TableViewRow class="row" >
+								<!-- <Label id="serverLabel" /> -->
+								<TextField id="serverTextField" onChange="onServerTextFieldChange"/>
+							</TableViewRow>
+							<TableViewRow class="row" >
+								<Label id="httpsLabel" />
+								<Switch id="httpsSwitch" onChange="onHttpsSwitchChange"/>
+							</TableViewRow>
+						</TableViewSection>
+						<TableViewSection id="serverAppSection" >
+							<FooterView>
+								<View id="serverDescriptionView">
+									<Label id="serverDescriptionLabel"></Label>
+								</View>
+							</FooterView>
+							<TableViewRow class="row" >
+								<!--<Label id="webAppLabel" /> -->
+								<TextField id="webAppTextField" onChange="onWebAppTextFieldChange" />
+							</TableViewRow>
+						</TableViewSection>
+						<TableViewSection id="touchIdSection" if="Alloy.Globals.canUseTouchId">
+							<TableViewRow class="row" >
+								<Label id="touchIdSwitchLabel" />
+								<Switch id="touchIdSwitch" onChange="onTouchIdSwitchChange"/>
+							</TableViewRow>
+							<TableViewRow class="row" >
+								<!-- <Label id="serverLabel" /> -->
+								<TextField id="touchIdTextField" enabled="false" onChange="onTouchIdTextFieldChange"/>
+							</TableViewRow>
+						</TableViewSection>
+						<TableViewSection id="logSection" if="Alloy.Globals.showLogging" >
+							<TableViewRow class="row" >
+								<Label id="logLabel" />
+								<Switch id="logSwitch" onChange="onLogSwitchChange"/>
+							</TableViewRow>
+							<TableViewRow class="row" >
+								<Button id="logSendButton" onClick="onSendLogButtonClick"/>
+							</TableViewRow>
+						</TableViewSection>
+					</TableView>
+				</Window>
+			</NavigationWindow>
+		</ContentView>
+	</Popover>
+
+</Alloy>

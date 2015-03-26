@@ -1,0 +1,16 @@
+<Alloy>
+	<Popover id="settingsPopover" onHide="onSettingsPopoverHide" platform="ios" formFactor="tablet" />
+	<NavigationWindow id="settingsNavigationWindow" class="windowBackgroundColor barColor navTintColor" platform="ios">
+		<Window id="settingsTableWindow" class="barColor navTintColor windowBackgroundColor">
+			<LeftNavButton platform="ios" formFactor="handheld">
+				<Button id="closeButton" onClick="onCloseButtonClick" formFactor="handheld"/>
+			</LeftNavButton>
+			<TableView id="settingsTable">
+				<TableViewRow id="setupTableViewRow" onClick="onSetupTableViewRowClick" class="tableViewRows tableSelectedColor" />
+				<TableViewRow id="supportTableViewRow" onClick="onSupportTableViewRowClick" class="tableViewRows tableSelectedColor" />
+				<TableViewRow id="aboutTableViewRow" onClick="onAboutTableViewRowClick" class="tableViewRows tableSelectedColor" />
+			</TableView>
+		</Window>
+	</NavigationWindow>
+	<TableViewRow id="logTableViewRow" onClick="onLogTableViewRowClick" class="tableViewRows tableSelectedColor" />
+</Alloy>

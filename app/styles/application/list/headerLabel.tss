@@ -1,0 +1,12 @@
+"#label": {
+	height: 40,
+	color: '#6d6d72',
+	font: {
+		fontSize: 16,
+		fontWeight: 'bold'
+	},
+	touchEnabled: false
+}
+"#label[platform=ios]": {
+//	color: '#6d6d72',
+}

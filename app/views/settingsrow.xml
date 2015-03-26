@@ -1,0 +1,6 @@
+<Alloy>
+	<TableViewRow id="row" class="tableSelectedColor" onClick="onClick">
+		<!-- <ImageView id="image" /> -->
+		<!-- <Label id="label" /> -->
+	</TableViewRow>
+</Alloy>

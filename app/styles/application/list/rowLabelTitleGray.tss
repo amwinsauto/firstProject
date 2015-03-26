@@ -1,0 +1,18 @@
+/* Only used when 2 lines is necessary*/
+"#label":{
+//	height: 46,
+	height: 40,
+	left: 1,
+	right: 0,
+	wordWrap: true,
+	ellipsize: true,
+	verticalAlign: Ti.UI.TEXT_VERTICAL_ALIGNMENT_TOP,
+	font: {
+		fontSize: 15,
+		//textStyle: Ti.UI.TEXT_STYLE_SUBHEADLINE
+	},
+	color: '#8e8e8e'
+}
+"#label[platform=android]": {
+	height: 40
+}

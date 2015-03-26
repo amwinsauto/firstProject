@@ -1,0 +1,22 @@
+"#optionView": {
+	left: '2%',
+	height: 40,
+	width: '31%',
+	layout: 'horizontal',
+	horizontalWrap: false
+}
+"#image": {
+	width: 20,
+	height: 20
+}
+"#title": {
+	left: 5,
+	color: 'gray',
+	egColorUnSelected: 'gray',
+	egColorSelected: '#2e5088',
+	height: 15,
+	font: {
+		fontSize: 11,
+		fontWeight: 'bold'
+	}
+}

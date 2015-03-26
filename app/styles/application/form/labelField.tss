@@ -1,0 +1,27 @@
+"#fieldTableViewRow": {
+	height: 44
+},
+"#fieldTableViewRow[platform=android]": {
+//	height: 52
+},
+"#fieldView[platform=android]": {
+	height: 44 // Always same as fieldTableViewRow
+}
+
+"#fieldLabel":{
+	left: '50%',
+	right: 15,
+//	egColorLink: '#293f75',
+	egColorLink: '#007aff', // default tint color 
+	touchEnabled: false
+},
+"#fieldLabel[platform=android]":{
+	egColorLink: '#909090'
+},
+"#clickImageView": {
+	image: '/images/core/android_arrow_right.png',
+	width: 12,
+	height: 12,
+	right: 10
+}
+

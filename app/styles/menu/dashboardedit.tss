@@ -1,0 +1,36 @@
+"#dashboardeditView":{
+	backgroundColor: 'black',
+	layout: 'vertical',
+	top: 0,
+	left: 0,
+	width: Titanium.UI.FILL,
+	bottom: 0,
+}
+"#dashboardeditView[platform=ios formFactor=tablet]":{
+	width: 250
+}
+
+"#toolbarView":{
+	top: 0,
+	left: 0,
+	right: 0,
+	height: 54
+}
+"#titleLabel":{
+	text: 'Workspace 1',
+	left: 16,
+	color: 'white'
+}
+// "#editButton":{
+	// right: 10,
+	// title: 'Edit',
+	// systemButton: Titanium.UI.iPhone.SystemButton.EDIT
+// }
+"#tableView":{
+	backgroundColor: 'black',
+	separatorColor: '#c7c7cc',
+	moveable: true,
+	moving: true,
+	height: Titanium.UI.FILL,
+	width: Titanium.UI.FILL
+}

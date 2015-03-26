@@ -1,0 +1,9 @@
+"#previous[platform=ios]":{
+	image: '/images/icons/toolbar/back.png'
+}
+"#next[platform=ios]":{
+	image: '/images/icons/toolbar/forward.png'
+}
+"#ok[platform=ios]":{
+	systemButton: Ti.UI.iPhone.SystemButton.DONE
+}

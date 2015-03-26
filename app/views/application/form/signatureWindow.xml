@@ -1,0 +1,18 @@
+<Alloy>
+	<!-- the popup window -->
+	<Window id="fieldEditorWindow">
+		<View id="fieldEditorView">
+			<Label id="fieldEditorTitleLabel"/>
+			<Label id="fieldEditorTextLabel"/>
+			<Button id="fieldEditorClearButton" onClick="onFieldEditorClearButtonClick"/>
+			<Label id="fieldEditorSignerLabel"/>
+			<View id="fieldEditorLineView"/>
+			<Label id="fieldEditorXLabel"/>
+			<Button id="fieldEditorCancelButton" onClick="onFieldEditorCancelButtonClick"/>
+			<Button id="fieldEditorDoneButton" onClick="onFieldEditorDoneButtonClick"/>
+		</View>
+	</Window>
+
+	<!-- Background filler for tablets-->
+	<Window id="fieldEditorFillWindow" formFactor="tablet" />
+</Alloy>

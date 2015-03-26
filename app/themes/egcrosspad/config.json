@@ -1,0 +1,14 @@
+{
+	"global": {
+		"theme": "egcrosspad",
+		"iosAppId": 815569618,
+		"supportUrl": "http://www.aspect4.com/crosspad/%s/support.php?id=egcrosspad",
+		"serverType": "ASPECT4"
+	},
+	"env:development": {},
+	"env:test": {},
+	"env:production": {},
+	"os:ios": {},
+	"os:android": {},
+	"dependencies": {}
+}

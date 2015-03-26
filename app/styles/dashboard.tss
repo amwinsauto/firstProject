@@ -1,0 +1,93 @@
+"#dashboardWindow":{
+	backgroundImage:"/images/bgdashboard_phone.jpg",
+	orientationModes : [Ti.UI.PORTRAIT]
+}
+"#dashboardWindow[platform=ios]":{
+	statusBarStyle: Ti.UI.iPhone.StatusBar.LIGHT_CONTENT
+}
+"#dashboardWindow[platform=ios formFactor=tablet]":{
+	backgroundImage: '/images/bgdashboard_tablet.jpg',
+	orientationModes : [Ti.UI.LANDSCAPE_LEFT, Ti.UI.LANDSCAPE_RIGHT]
+}
+"#dashboardWindow[platform=android]":{
+	exitOnClose: Alloy.Globals.workspaceExitOnClose,
+	titleid:"home_title",
+	navBarHidden :false,
+	backgroundImage:"/images/bgdashboard_phone.jpg"
+}
+"#actionbar": {
+	homeButtonEnabled : true,
+	icon: '/images/core/menubutton.png'
+}
+"#menuButton[platform=ios]": {
+	backgroundImage:"",
+	image:"/images/core/menubutton.png",
+	top: 15,
+	left: 15,
+	width: 44,
+	height: 44
+
+}
+"#title[platform=ios]": {
+	top:20,
+	left:50,
+	right:50,
+	height:30,
+	color:"#ffffff",
+	textAlign:"center",
+	textid:"home_title",
+	font: { fontSize: 20, fontWeight: 'bold' }
+}
+// "#close[platform=ios]": {
+	// backgroundImage: '',
+	// image: '/images/core/lock.png',
+	// top: 28,
+	// height: 30,
+	// width: 30,
+	// right: 15,
+	// borderWidth: 0,
+	// borderRadius: 0
+// }
+// "#refresh[platform=ios]": {
+	// backgroundImage: '',
+	// image: '/images/icons/toolbar/refresh.png',
+	// top: 8,
+	// height: 30,
+	// width: 30,
+	// right: 50,
+	// borderWidth: 0,
+	// borderRadius: 0
+// }
+"#dashboardPages": {
+	showPagingControl: true
+}
+"#dashboardPages[platform=ios]": {
+	top: 85,
+	pagingControlColor: "transparent",
+	pagingControlHeight: 30
+}
+"#dashboardPages[platform=ios formFactor=tablet]": {
+	top: 90
+}
+"#dashboardPages[platform=android]": {
+	showPagingControl: false,
+	top: 45
+}
+//"#refreshMenu":{
+//	title: L('refresh'),
+//	icon: '/images/icons/toolbar/refresh.png',
+//	showAsAction: Ti.Android.SHOW_AS_ACTION_ALWAYS,
+//}
+// "#serverSetupMenu":{
+	// title: L('server_setup'),
+	// showAsAction: Ti.Android.SHOW_AS_ACTION_NEVER,
+//	showAsAction: Ti.Android.SHOW_AS_ACTION_ALWAYS,
+// // }
+// "#supportMenu":{
+	// title: L('support'),
+	// showAsAction: Ti.Android.SHOW_AS_ACTION_NEVER,
+// }
+// "#aboutMenu":{
+	// title: L('about'),
+	// showAsAction: Ti.Android.SHOW_AS_ACTION_NEVER,
+// }

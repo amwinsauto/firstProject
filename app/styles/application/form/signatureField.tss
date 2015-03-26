@@ -1,0 +1,39 @@
+"#fieldTableViewRow": {
+	height: 55
+},
+"#fieldTableViewRow[formFactor=handheld]": {
+	height: 55
+},
+"#fieldView[formFactor=handheld]": {
+	height: 55 // Always same as fieldTableViewRow
+}
+
+"#leaderLabel": {
+//	focusable: false
+	right: 15
+},
+"#fieldView":{
+	height: 55,
+	left: '50%',
+	right: 15,
+//	top: 5,
+//	bottom: 5,
+	touchEnabled: false
+},
+"#fieldImageView":{
+	canScale: false,
+	enableZoomControls: false,
+	left: 0,
+	right: 0
+//	bottom: 3
+},
+"#fieldImageView[platform=android]":{
+	right: 25
+},
+"#clickImageView[platform=android]": {
+	image: '/images/core/android_arrow_right.png',
+	width: 12,
+	height: 12,
+	right: 10
+}
+

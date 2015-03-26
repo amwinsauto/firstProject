@@ -1,0 +1,6 @@
+<Alloy>
+	<ImageView id="image" platform="ios"/>
+	<View id="image" platform="android">
+		<ImageView id="imageView"/>
+	</View>
+</Alloy>

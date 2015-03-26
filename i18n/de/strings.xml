@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <!-- Changed by build.xml script. Fix for Android, allows you to change program's title -->
+    <string name="appname">ASPECT4 Dev</string>
+    <!-- Changed by build script -->
+	<string name="application_name">ASPECT4 Dev</string>
+
+    <!-- General -->
+	<string name="home_title">Startseite</string>
+	<string name="login_title">Anmelden</string>
+    <string name="settings_title">Einstellungen</string>
+    <string name="about_title">Über</string>
+    <string name="search">Suche</string>
+    <string name="search_server">Auf dem Server suchen</string>
+    <string name="search_no_rows">Es wurden keine Resultate gefunden</string>
+    <string name="show_more_rows">Mehr Resultate anzeigen</string>
+    <string name="loading_more_rows">Lädt...</string>
+    <string name="are_you_sure">Sind Sie sicher?</string>
+    <string name="can_not_send_sms">Diese Einheit unterstützt keine SMS</string>
+    <string name="can_not_open_file_type">Diese Einheit kann den Dateityp nicht öffnen: </string>
+    
+    <string name="help">Anleitung</string>
+    <string name="support">Support</string>
+    <string name="busy_loading_label">Lädt</string>
+    <string name="busy_app_close_label">Beendet</string>
+	<string name="busy_init_label">Verbindet</string>
+	<string name="busy_login_label">Meldet an</string>
+    <string name="busy_sending_label">Sendet</string>
+ 
+    <!-- Settings tab-->
+    <string name="server_setup">Einrichtung</string>
+    <string name="about">Über</string>
+    <string name="username">Benutzername</string>
+    <string name="password">Passwort</string>
+   
+    <!-- Server setup -->
+    <string name="label_enter_location">CrossPad Server</string>
+    <string name="label_contact_administrator">Fragen Sie Ihren IT-Administrator nach den oben genannten Angaben.</string>
+    <string name="label_secure_connection">Sichere Verbindung</string>
+    <string name="hint_servername">Server</string>
+    <string name="hint_webapp">Web-Applikation</string>
+    <string name="label_servername">Server</string>
+    <string name="label_webapp">App</string>
+   
+    <!-- Login -->
+    <string name="username_required">Benutzername ist Pflichtfeld</string>
+    <string name="password_required">Passwort ist Pflichtfeld</string>
+    <string name="username_password_required">Benutzername und Passwort sind Pflichtfelder</string>
+    <string name="password_incorrect">Das Passwort ist nicht korrekt</string>
+    <string name="login_error">Fehler bei der Anmeldung</string>
+    <string name="touchid_reason">Anmelden</string>
+ 	<string name="touchid_enable">Touch ID aktivieren</string>
+	<string name="touchid_username">Benutzername</string>
+	<string name="touchid_dialog_header">Touch ID</string>
+	<string name="touchid_dialog_message">Möchten Sie den Touch ID aktivieren für den Benutzernamen: %s</string>
+   
+    <!-- Connection -->
+    <string name="error_contacting_server">Zum Server konnte keine Verbindung aufgebaut werden</string>
+    <string name="check_server_settings">Bitte kontrollieren Sie, dass der Servername in den Einstellungen korrekt eingegeben wurde.\n\nFalls Sie VPN verwenden, kontrollieren Sie, ob Sie immer noch angemeldet sind.\n\nFalls dies zutrifft, wenden Sie sich bitte an Ihren Server-Administrator.</string>
+    <string name="check_internet_connection">Bitte kontrollieren Sie, dass Sie mit dem Internet verbunden sind.</string>
+    <string name="http_error">HTTP Fehler %1</string>
+    <string name="server_not_valid">Der Server schickt keine gültigen Daten zurück.\n\nKontrollieren Sie, dass der Servername/Web-Applikation in den Einstellungen korrekt eingegeben ist.</string>
+
+	<!-- Update Old -->
+    <string name="update_necessary">Eine Aktualisierung ist erforderlich.</string>
+    <string name="update_necessary_android">Ein Update zur Version %1 ist erforderlich.\n\nDie neueste Version kann über Google play heruntergeladen werden.</string>
+    <string name="update_necessary_ios">Ein Update zur Version %1 ist erforderlich.\n\nDie neueste Version kann über App Store heruntergeladen werden.</string>
+    <string name="go_to_app_store">Zum App Store gehen.</string>
+
+	<!-- Update New -->
+    <string name="update_required_title">Eine Aktualisierung ist erforderlich.</string>
+    <string name="update_required_installed">Die jetzige Version %s</string>
+    <string name="update_required_description">Es ist erforderlich, ein Update in Version %s oder höher durchzuführen.</string>
+    <string name="update_required_update_button">Zum %s gehen.</string>
+    <string name="update_required_footer">Klicken Sie auf die Schaltfläche oben, um die neueste Version von %s herunterzuladen.</string>
+    <string name="update_required_store_ios">App Store</string>
+    <string name="update_required_store_android">Google Play</string>
+
+	<!-- About Old -->
+	<string name="copyright_notice">Diese Software, die Dokumentation und alle Medien sind urheberrechtlich geschützt.\n\nAlle Rechte vorbehalten.\n\nCopyright® %d EG A/S, Dänemark.</string>
+	<string name="version">Version: %s</string>
+	<string name="email_about">E-Mail-Info</string>
+
+	<!-- About New -->
+	<string name="about_description">Diese Software, die Dokumentation und alle Medien sind urheberrechtlich geschützt.\n\nAlle Rechte vorbehalten.</string>
+	<string name="about_email">E-Mail-Info</string>
+	<string name="about_copyright">Copyright© %d EG A/S, Dänemark.</string>
+
+	<!-- Loggin setup-->
+	<string name="logging_setup">Einrichtung Log</string>
+	<string name="enable_logging">Log-Aufzeichnung anschalten</string>
+	<string name="email_log">E-Mail-Log</string>
+	<string name="logging">Log-Aufzeichnung</string>
+	
+	<!-- Mail -->
+	<string name="mail_not_available">Die E-Mail ist nicht verfügbar</string>
+	    
+    <!-- General buttons -->
+    <string name="login_button">Anmelden</string>
+    <string name="ok_button">OK</string>
+    <string name="cancel_button">Löschen</string>
+    <string name="back_button">Zurück</string>
+    <string name="close_button">Schließen</string>
+    <string name="start_button">Start</string>
+    <string name="delete_button">Löschen</string>
+    <string name="edit_button">Bearbeiten</string>
+    <string name="done_button">OK</string>
+    <string name="save_button">Speichern</string>
+    <string name="next_button">Weiter</string>
+    <string name="previous_button">Zurück</string>
+    <string name="yes_button">Ja</string>
+    <string name="no_button">Nein</string>
+    <string name="add_button">Hinzufügen</string>
+    <string name="remove_button">Entfernen</string>
+    <string name="retry_button">Erneut versuchen</string>
+    <string name="clear_button">Löschen</string>
+    <string name="reset_button">Rücksetzen</string>
+    <string name="action_button">Aktionen</string>
+    
+    <!--  GeoLocation -->
+    <string name="geolocation_purpose"></string>
+    <string name="geolocation_not_determined">Kann die Platzierung nicht festlegen</string>
+    <string name="geolocation_reactivate_wifi">Versuchen Sie ggf., Wi-Fi zu deaktivieren und erneut zu aktivieren</string>
+    <string name="looking_up_address">Adresse wird gesucht...</string>
+    <string name="unknown_address">Unbekannte Adresse</string>
+    <string name="no_destination_specified">Kein Ziel angegeben</string>
+
+    <!-- Images -->
+    <string name="image_path_prefix">de</string>
+
+    <!-- Camera -->
+    <string name="camera">Kamera</string>
+    <string name="camera_roll">Kamerarolle</string>
+    
+    <!-- Scanner -->
+    <string name="flash_turned_on">Blitz gezündet</string>
+    <string name="flash_turned_off">Blitz gelöscht</string>
+    
+    <!-- TableView refresh -->
+    <string name="refresh">Aktualisieren</string>
+    <string name="pull_to_refresh">Herunterziehen, um zu aktualisieren...</string>
+    <string name="release_to_refresh">Loslassen, um zu aktualisieren...</string>
+    <string name="refreshing">Aktualisiert...</string>
+    
+    <string name="copy">Kopieren</string>
+    <string name="paste">Einfügen</string>
+    <string name="reset">Zurücksetzen</string>
+    <string name="open">Öffnen</string>
+    <string name="delete">Löschen</string>
+
+    <string name="of">von</string>
+
+    <string name="back">Zurück</string>
+    <string name="forward">Vorwärts</string>
+    <string name="dateFormat">TT.MM.JJJJ</string>
+    <string name="timeFormat">HH.mm</string>
+
+    <string name="january">Januar</string>
+    <string name="february">Februar</string>
+    <string name="march">März</string>
+    <string name="april">April</string>
+    <string name="may">Mai</string>
+    <string name="june">Juni</string>
+    <string name="july">Juli</string>
+    <string name="august">August</string>
+    <string name="september">September</string>
+    <string name="october">Oktober</string>
+    <string name="november">November</string>
+    <string name="december">Dezember</string>
+    
+    <!-- Form Hints-->
+    <string name="selectDate">Datum wählen</string>
+    <string name="selectMonth">Monat wählen</string>
+    <string name="selectTime">Uhrzeit wählen</string>
+    <string name="selectDateTime">Datum und Uhrzeit wählen</string>
+    
+    <!-- Form validation -->
+    <string name="fieldIsRequired">: Ist erforderlich</string>
+
+    <string name="dashboardedit_hidden_apps">Verborgene Apps</string>
+    <string name="dashboardedit_change_title">Überschrift bearbeiten</string>
+
+</resources>

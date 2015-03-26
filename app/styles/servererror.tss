@@ -1,0 +1,70 @@
+"#errorView[platform=ios formFactor=tablet]": {
+	top: 140,
+	left: 450,
+	width: 520,
+	height: 400,
+	backgroundImage: '/images/core/error_message_arrow.png',
+	egBackgroundImageNoSettings: '/images/core/error_message_arrow.png'
+},
+"#errorView[formFactor=handheld]": {
+	top: 70,
+	left: 20,
+	right: 10,
+    height:400,
+	// bottom: 20,
+	backgroundImage: '/images/core/error_message_phone.png',
+	egBackgroundImageNoSettings: '/images/core/error_message_phone.png'
+},
+"#titleLabel":{
+	top: 40,
+	height: Ti.UI.SIZE,
+	left: 70,
+	right: 60,
+	color: 'white',
+	textAlign: 'center',
+	font: {
+		fontWeight: 'bold',
+		fontSize: 20
+	}
+},
+"#titleLabel[formFactor=handheld]":{
+	top: 40,
+	left: 50,
+	right: 30,
+	font: {
+		fontWeight: 'bold',
+		fontSize: 18
+	}
+},
+"#descriptionLabel":{
+	top: 100,
+	height: Ti.UI.SIZE,
+	left: 70,
+	right: 60,
+	color: 'white',
+	textAlign: 'center',
+	font: {
+		fontWeight: 'bold',
+		fontSize: 20
+	}
+},
+"#descriptionLabel[formFactor=handheld]":{
+	left: 50,
+	right: 30,
+	font: {
+		fontWeight: 'bold',
+		fontSize: 18
+	}
+},
+"#retryButton": {
+	titleid:"retry_button",
+	bottom: 20,
+	right:20,
+	width:120,
+	height:44,
+	borderRadius:1,
+	backgroundImage:"/images/core/pillbutton.png",
+	backgroundFocusedImage:"/images/core/pillbutton_pressed.png",
+	backgroundSelectedImage:"/images/core/pillbutton_pressed.png", 
+	font: { fontSize: 14, fontWeight: 'bold', fontFamily: 'Arial'}
+}

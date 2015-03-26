@@ -1,0 +1,20 @@
+"#fieldTableViewRow": { 
+	height: 55
+}
+"#fieldLabel":{
+	touchEnabled: false,
+	egHintColor: '#bcbcc2',
+	color: '#717171',
+	height: 21,
+	font: { fontSize: 14}, 
+	left: 15,
+	right: 55,
+	bottom: 5,
+	textAlign: 'left'
+}
+"#image":{
+	height: 25,
+	width: 25,
+	right: 15,
+	image: '/images/core/standardpicker.png'
+}

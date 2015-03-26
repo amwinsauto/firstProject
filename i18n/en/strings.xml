@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <!-- Changed by build.xml script. Fix for Android, allows you to change program's title -->
+    <string name="appname">ASPECT4 Dev</string>
+    <!-- Changed by build script -->
+	<string name="application_name">ASPECT4 Dev</string>
+	
+	<!-- General -->
+	<string name="home_title">Home</string>
+   	<string name="login_title">Login</string>
+    <string name="settings_title">Settings</string>
+    <string name="about_title">About</string>
+    <string name="search">Search</string>
+    <string name="search_server">Search on server</string>
+    <string name="search_no_rows">No results found</string>
+    <string name="show_more_rows">Show more results</string>
+    <string name="loading_more_rows">Loading...</string>
+    <string name="are_you_sure">Are you sure?</string>
+     <string name="can_not_send_sms">This device does not support sms</string>
+    <string name="can_not_open_file_type">This device can't open file with type: </string>
+   
+    <string name="help">Help</string>
+    <string name="support">Support</string>
+	<string name="busy_loading_label">Loading</string>
+    <string name="busy_app_close_label">Ending</string>
+	<string name="busy_init_label">Connecting</string>
+	<string name="busy_login_label">Logging in</string>
+	<string name="busy_sending_label">Sending</string>
+   
+    <!-- Settings tab-->
+    <string name="server_setup">Setup</string>
+    <string name="about">About</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+   
+    <!-- Server setup -->
+    <string name="label_enter_location">CrossPad server</string>
+    <string name="label_contact_administrator">Contact your IT administrator for the above information.</string>
+    <string name="label_secure_connection">Secure connection</string>
+    <string name="hint_servername">Server</string>
+    <string name="hint_webapp">Web Application</string>
+    <string name="label_servername">Server</string>
+    <string name="label_webapp">Application</string>
+   
+    <!-- Login -->
+    <string name="username_required">Username is required</string>
+    <string name="password_required">Password is required</string>
+    <string name="username_password_required">Username and password are required</string>
+    <string name="password_incorrect">The password is incorrect</string>
+    <string name="login_error">Login error</string>
+    <string name="touchid_reason">Login</string>
+	<string name="touchid_enable">Activate Touch ID </string>
+	<string name="touchid_username">User name</string>
+	<string name="touchid_dialog_header">Touch ID</string>
+	<string name="touchid_dialog_message">Do you want to activate Touch ID for user name: %s</string>
+   
+    <!-- Connection -->
+    <string name="error_contacting_server">Error contacting server</string>
+    <string name="check_server_settings">Please check your server name is typed correctly in the settings.\n\nIf you are using VPN check that you are still logged in.\n\n If this is correct, please contact your server administrator.</string>
+    <string name="check_internet_connection">Please check that you are connected to the internet.</string>
+    <string name="http_error">HTTP error %1</string>
+  	<string name="server_not_valid">The server is returning invalid data.\n\nPlease check your server name/web application is typed correctly in settings.</string>
+
+	<!-- Update Old -->
+    <string name="update_necessary">Updating is necessary</string>
+    <string name="update_necessary_android">It is necessary to update to version %1.\n\nThe newest version can be downloaded in Google play.</string>
+    <string name="update_necessary_ios">It is necessary to update to version %1.\n\nThe newest version can be downloaded in App Store.</string>
+    <string name="go_to_app_store">Go to App Store</string>
+
+	<!-- Update New -->
+    <string name="update_required_title">Updating is necessary</string>
+    <string name="update_required_installed">Current version %s</string>
+    <string name="update_required_description">It is necessary to update to version %s or newer.</string>
+    <string name="update_required_update_button">Go to %s</string>
+    <string name="update_required_footer">The latest version can be downloaded from %s by clicking the button above.</string>
+    <string name="update_required_store_ios">App Store</string>
+    <string name="update_required_store_android">Google Play</string>
+
+	<!-- About Old -->
+	<string name="copyright_notice">This software, its documentation and all media are protected by copyright.\n\nAll rights reserved.\n\nCopyright© %d EG A/S, Denmark</string>
+	<string name="version">Version: %s</string>
+	<string name="email_about">E-mail info</string>
+
+	<!-- About New -->
+	<string name="about_description">This software, its documentation and all media are protected by copyright.\n\nAll rights reserved.</string>
+	<string name="about_email">E-mail info</string>
+	<string name="about_copyright">Copyright© %d EG A/S, Denmark.</string>
+
+	<!-- Loggin setup-->
+	<string name="logging_setup">Log setup</string>
+	<string name="enable_logging">Enable logging</string>
+	<string name="email_log">E-mail log</string>
+	<string name="logging">Logging</string>
+	
+
+	<!-- Mail -->
+	<string name="mail_not_available">E-mail is not available</string>
+    
+    <!-- General buttons -->
+    <string name="login_button">Login</string>
+    <string name="ok_button">OK</string>
+    <string name="cancel_button">Cancel</string>
+    <string name="back_button">Back</string>
+    <string name="close_button">Close</string>
+    <string name="start_button">Start</string>
+    <string name="delete_button">Delete</string>
+    <string name="edit_button">Edit</string>
+    <string name="done_button">Done</string>
+    <string name="save_button">Save</string>
+    <string name="next_button">Next</string>
+    <string name="previous_button">Previous</string>
+    <string name="yes_button">Yes</string>
+    <string name="no_button">No</string>
+    <string name="add_button">Add</string>
+    <string name="remove_button">Remove</string>
+    <string name="retry_button">Retry</string>
+    <string name="clear_button">Clear</string>
+    <string name="reset_button">Reset</string>
+    <string name="action_button">Actions</string>
+    
+    <!--  GeoLocation -->
+    <string name="geolocation_purpose"></string>
+    <string name="geolocation_not_determined">Cannot determine location</string>
+    <string name="geolocation_reactivate_wifi">It might help to deactivate and reactivate Wi-Fi</string>
+    <string name="looking_up_address">Looking up address...</string>
+    <string name="unknown_address">Unknown address</string>
+    <string name="no_destination_specified">No destination specified</string>
+    
+    <!-- Images -->
+    <string name="image_path_prefix">en</string>
+
+    <!-- Camera -->
+    <string name="camera">Camera</string>
+    <string name="camera_roll">Camera roll</string>
+    
+    <!-- Scanner -->
+    <string name="flash_turned_on">Flash turned on</string>
+    <string name="flash_turned_off">Flash turned off</string>
+    
+    <!-- TableView refresh -->
+    <string name="refresh">Refresh</string>
+    <string name="pull_to_refresh">Pull down to refesh...</string>
+    <string name="release_to_refresh">Release to refresh...</string>
+    <string name="refreshing">Refreshing...</string>
+    
+    <string name="copy">Copy</string>
+    <string name="paste">Paste</string>
+    <string name="reset">Reset</string>
+    <string name="open">Open</string>
+    <string name="delete">Delete</string>
+
+    <string name="of">of</string>
+
+    <string name="back">Back</string>
+    <string name="forward">Forward</string>
+    <string name="dateFormat">MM/DD/YYYY</string>
+    <string name="timeFormat">HH.mm</string>
+
+    <string name="january">January</string>
+    <string name="february">February</string>
+    <string name="march">March</string>
+    <string name="april">April</string>
+    <string name="may">May</string>
+    <string name="june">June</string>
+    <string name="july">Julu</string>
+    <string name="august">August</string>
+    <string name="september">September</string>
+    <string name="october">October</string>
+    <string name="november">November</string>
+    <string name="december">December</string>
+    
+        <!-- Form Hints-->
+    <string name="selectDate">Select date</string>
+    <string name="selectMonth">Select month</string>
+    <string name="selectTime">Select time</string>
+    <string name="selectDateTime">Select date and time</string>
+
+    <!-- Form validation -->
+    <string name="fieldIsRequired">: is required</string>
+
+    <string name="dashboardedit_hidden_apps">Hidden apps</string>
+    <string name="dashboardedit_change_title">Edit heading</string>
+
+</resources>

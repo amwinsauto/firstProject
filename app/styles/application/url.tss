@@ -1,0 +1,36 @@
+"#urlWebView": {
+},
+"#backButton[platform=ios]": {
+	style : Ti.UI.iPhone.SystemButtonStyle.PLAIN,
+	width : 34,
+	image : '/images/icons/toolbar/back.png'
+},
+"#forwardButton[platform=ios]": {
+	style : Ti.UI.iPhone.SystemButtonStyle.PLAIN,
+	width : 34,
+	image : '/images/icons/toolbar/forward.png'
+},
+"#backButton[platform=android]": {
+//	top:5, 
+	top: 3, 
+	height: 42,
+//	color: '#cecece',
+	color: 'black',
+	selectedColor: '#ffffff',
+	// backgroundImage: '/images/core/android_button_off.png',
+	// backgroundSelectedImage: '/images/core/android_button_on.png',
+	// backgroundDisabledImage: '/images/core/android_button_off.png',
+	titleid: 'back'
+},
+"#forwardButton[platform=android]": {
+//	top:5, 
+	top: 3, 
+	height: 42,
+//	color: '#cecece',
+	color: 'black',
+	selectedColor: '#ffffff',
+	// backgroundImage: '/images/core/android_button_off.png',
+	// backgroundSelectedImage: '/images/core/android_button_on.png',
+	// backgroundDisabledImage: '/images/core/android_button_off.png',
+	titleid : 'forward'
+}

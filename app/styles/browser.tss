@@ -1,0 +1,7 @@
+"#browserWindow": { 
+	backgroundColor: '#ffffff',
+	modal: true
+}
+"#closeButton": { 
+	image: '/images/core/home.png'
+}

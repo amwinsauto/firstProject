@@ -1,0 +1,21 @@
+"#fieldTableViewRow": {
+	height: 44,
+}
+"#fieldTableViewRow[platform=android]": {
+}
+"#fieldTableViewRow[platform=ios]": {
+}
+"#titleLabel": {
+	egTintColorDestructive: '#fc3d39',
+	font: {fontSize: 18},
+	width: Ti.UI.FILL,
+	height: Ti.UI.FILL,
+	egColorReadOnly: '#c9c9c9',
+}
+"#titleLabel[platform=android]": {
+	touchEnabled: false,
+	backgroundColor: 'transparent',
+	color: '#007aff',
+}
+"#titleLabel[platform=ios]": {
+}

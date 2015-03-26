@@ -1,0 +1,29 @@
+"#fieldTableViewRow": {
+	height: Ti.UI.SIZE
+},
+"#fieldView[platform=android]": {
+	height: Ti.UI.SIZE // Always same as fieldTableViewRow
+}
+"#fieldTextArea":{
+	// height for each line
+	height: 20,
+	left: '50%',
+	right: 10,
+	keyboardType: Ti.UI.KEYBOARD_DEFAULT,
+	suppressReturn: false,
+	backgroundColor: 'transparent'
+},
+"#fieldTextArea[platform=android]":{
+//	height: 12
+}
+"#trailerLabel": {
+	touchEnabled: false
+},
+"#clickImageView": {
+	image: '/images/core/android_arrow_right.png',
+	width: 12,
+	height: 12,
+	right: 10
+}
+
+

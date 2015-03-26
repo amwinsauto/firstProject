@@ -1,0 +1,3 @@
+<Alloy>
+	<EmailDialog id="email" onComplete="onEmailComplete" class="barColor"/>
+</Alloy>

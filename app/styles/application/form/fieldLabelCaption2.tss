@@ -1,0 +1,14 @@
+"#label":{
+//	height: 14,
+	height: 18,
+	left: 1,
+	right: 0,
+	font: {
+		fontSize: 12, // Default caption2 Size
+		// textStyle: Ti.UI.TEXT_STYLE_CAPTION2
+	}
+}
+"#label[platform=android]":{
+	color: 'black',
+	height: 16
+}

@@ -1,0 +1,4 @@
+<Alloy>
+	<View id="seperatorView" />
+	<Button id="button" />
+</Alloy>

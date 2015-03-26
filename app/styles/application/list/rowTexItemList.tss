@@ -1,0 +1,73 @@
+"#row": { 
+	backgroundColor: 'transparent',
+	className: 'RowLayouttexItemList',
+	borderColor: '#555555',
+	height: Ti.UI.SIZE
+},
+"#imagePlacer": {
+	top: 5,
+	left: 5,
+	width: 70,
+	height: 70
+}
+"#image":{
+//	top: 5,
+//	left: 5,
+	width: 70,
+//	height: 70
+},
+"#key1":{
+	top: 10,
+	left: 85,
+	height : 20,
+	width : 70,
+	textAlign: 'center',
+	font: { fontSize: 16, fontWeight: 'bold' }
+},
+"#key2":{
+	top: 10,
+	left: 165,
+	height : 20,
+	width : 70,
+	textAlign: 'center',
+	font: { fontSize: 16, fontWeight: 'bold' }
+},
+"#key3":{
+	top: 10,
+	left: 245,
+	height : 20,
+	width : 70,
+	textAlign: 'center',
+	font: { fontSize: 16, fontWeight: 'bold' }
+},
+"#key5":{
+	top: 10,
+	left: 325,
+	height : 20,
+	width : 70,
+	textAlign: 'center',
+	font: { fontSize: 16, fontWeight: 'bold' }
+},
+"#size":{
+	top: 10,
+	left: 405,
+	height : 20,
+	width : Ti.UI.SIZE,
+	font: { fontSize: 16, fontWeight: 'bold' }
+},
+"#price":{
+	top: 10,
+	width: 110,
+	right: 25,
+	height: 20,
+	textAlign: 'right',
+	font: { fontSize: 16, fontWeight: 'bold' }
+},
+"#desc":{
+	color: '#555555',
+	top: 35,
+	width: 390,
+	left: 85,
+	height: 45,
+	font: { fontSize: 14}
+}

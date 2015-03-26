@@ -1,0 +1,37 @@
+"#steppingstoneView":{
+	backgroundColor: 'black',
+	layout: 'vertical',
+	top: 0,
+	left: 0,
+	width: Titanium.UI.FILL,
+	bottom: 0,
+}
+"#steppingstoneView[platform=ios formFactor=tablet]":{
+	width: 240
+}
+"#seperatorLine": {
+	bottom: 0,
+	left: 0,
+	right: 0,
+	height: 0.5,
+	backgroundColor: 'white'
+}
+
+"#toolbarView":{
+	top: 0,
+	left: 0,
+	right: 0,
+	height: 54
+}
+"#titleLabel":{
+	color: 'white'
+}
+"#tableView":{
+	rowHeight: 58,
+	backgroundColor: 'black',
+	separatorColor: '#c7c7cc',
+	//top: 10,
+	//bottom: 10,
+	//height: Titanium.UI.FILL,
+	//width: Titanium.UI.FILL
+}

@@ -1,0 +1,12 @@
+<Alloy>
+	<TableViewRow id="row" class="listRow tableSelectedColor listColors">
+		<View id="deleteView" />
+		<View id="contentView" >
+			<!-- LeftImage added here if any-->
+			<View id="view">
+				<!-- Labels added here -->
+			</View>
+			<!-- OptionsView added here if any-->
+		</View>
+	</TableViewRow>
+</Alloy>

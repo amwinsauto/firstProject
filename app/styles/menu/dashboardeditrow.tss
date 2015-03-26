@@ -1,0 +1,39 @@
+"#tableViewRow":{
+	height: 58,
+	color: 'white'
+}
+"#buttons": {
+	layout: 'horizontal',
+	right: 5,
+	width: Titanium.UI.SIZE,
+	height: Titanium.UI.SIZE
+}
+"#upButton": {
+	backgroundColor: 'transparent',
+	width: 30,
+	height: 30,
+	backgroundImage: '/images/icons/toolbar/arrow_up.png'
+}
+"#downButton": {
+	backgroundColor: 'transparent',
+	left: 5,
+	width: 30,
+	height: 30,
+	backgroundImage: '/images/icons/toolbar/arrow_down.png'
+}
+
+// "#content":{
+// layout: 'vertical',
+// height: Titanium.UI.SIZE,
+// left: 50
+// }
+"#title":{
+	color: 'white',
+	left: 10
+}
+// "#description":{
+// text: 'Description',
+// color: '#c7c7cc',
+// left: 10,
+// right: 10
+// }

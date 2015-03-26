@@ -1,0 +1,10 @@
+<Alloy>
+	<AlertDialog id="errorAlertDialog" formFactor="handheld"/>
+
+	<!--	<View id="errorView" formFactor="tablet"> -->
+	<View id="errorView">
+		<Label id="titleLabel"/>
+		<Label id="descriptionLabel" />
+		<Button id="retryButton" visible="false" onClick="retryButtonClick"/>
+	</View>
+</Alloy>

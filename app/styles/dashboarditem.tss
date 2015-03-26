@@ -1,0 +1,105 @@
+"#tile[formFactor=handheld]": {
+	width: 78,
+	height: 112
+}
+"#tile[formFactor=tablet]": {
+	width: 285,
+	height: 175
+}
+"#button[formFactor=handheld]": {
+	width: 78,
+	height: 112,
+	bottom : 0
+}
+"#button[formFactor=tablet]": {
+	width: 285,
+	height: 175,
+	bottom : 0
+}
+"#overlay[formFactor=handheld]": {
+	touchEnabled: false,
+	visible: false,
+	width: 78,
+	height: 112,
+	top: 0
+}
+"#overlay[formFactor=tablet]": {
+	touchEnabled: false,
+	visible: false,
+	width: 285,
+	height: 175,
+	top: 0
+}
+"#icon[formFactor=handheld]": {
+	touchEnabled: false,
+	width: 72,
+	height: 72,
+	top: 2
+}
+"#icon[formFactor=tablet]": {
+	touchEnabled: false,
+	width: 96,
+	height: 96,
+	top: 50
+}
+"#label[formFactor=handheld]": {
+	touchEnabled: false,
+	color: "white",
+	textAlign: "center",
+	verticalAlign : Ti.UI.TEXT_VERTICAL_ALIGNMENT_TOP,
+    left : 0,
+    right : 0, 
+	top: 80,
+	height: 32,
+	font: { fontSize: 12, fontWeight: 'bold' }
+}
+"#label[formFactor=tablet]": {
+	touchEnabled: false,
+	color: 'white',
+	textAlign: 'left',
+	top: 12,
+	left: 20,
+	right: 20,
+	height: 20,
+	ellipsize: true,
+	font: { fontSize: 16, fontWeight: 'bold' }
+}
+"#badgeView": {
+	visible: false,
+	touchEnabled: false,
+	left : 0,
+	width : 25,
+	height : 30,
+	top : 10,
+}
+"#badgeViewStart": {
+	touchEnabled: false,
+	top: 0,
+	botom: 0,
+	left : 0,
+	right : 15,
+	backgroundColor : '#0d8220' // green as image
+}
+"#badgeViewEnd": {
+	touchEnabled: false,
+	top: 0,
+	botom: 0,
+	right : 0,
+	width: 16,
+	backgroundImage : '/images/core/dashboard/badges/notification_badge_green.png'
+}
+"#badgeView[formFactor=tablet]": {
+	visible: false,
+	touchEnabled: false,
+	top : 45,
+	left: 0
+}
+"#badgeLabel": {
+	touchEnabled: false,
+	color : 'white', 
+	textAlign : 'center',
+	top: 0,
+	bottom: 0,
+	left: 0,
+	right: 0
+}

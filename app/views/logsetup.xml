@@ -1,0 +1,9 @@
+<Alloy>
+	<Window id="logsetupWindow" class="windowBackgroundColor barColor navTintColor" onAndroidback="onAndroidBack">
+		<View id="logsetupView">
+			<Label id="enableLoggingLabel" />
+			<Switch id="enableLoggingSwitch" onChange="onEnableLoggingSwitchChange"/>
+			<Button id="emailButton" onClick="onEmailButtonClick" />
+		</View>
+	</Window>
+</Alloy>

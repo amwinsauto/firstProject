@@ -1,0 +1,10 @@
+"#page" : {
+  
+}
+"#title" : {
+	color: 'white',
+	visible: true,
+	top: 0,
+	height: Titanium.UI.SIZE,
+	width: Titanium.UI.SIZE
+}

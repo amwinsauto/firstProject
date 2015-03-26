@@ -1,0 +1,4 @@
+"#thumbPage": {
+	backgroundColor: 'white',
+	layout: 'horizontal'
+}

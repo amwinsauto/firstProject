@@ -1,0 +1,16 @@
+<Alloy>
+	<!-- IOS -->
+	<TableViewRow id="fieldTableViewRow" class="formFieldRow" hasChild="false" platform="ios">
+		<View id="slider">
+			<Label id="titleLabel" />
+			<View id="button" onTouchstart="onTouchstart" onTouchmove="onTouchmove" onTouchend="onTouchend"></View>
+		</View>
+	</TableViewRow>
+	<!-- Android -->
+	<View id="fieldTableViewRow" class="formFieldRow" platform="android">
+		<View id="slider">
+			<Label id="titleLabel" />
+			<!-- <View id="button" onTouchstart="onTouchstart" onTouchmove="onTouchmove" onTouchend="onTouchend"></View> -->
+		</View>
+	</View>
+</Alloy>

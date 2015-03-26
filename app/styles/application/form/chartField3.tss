@@ -1,0 +1,9 @@
+"#fieldTableViewRow": { 
+	height : 44
+}
+"#fieldTableViewRow[platform=ios]": { 
+	selectionStyle: Ti.UI.iPhone.TableViewCellSelectionStyle.NONE
+}
+"#webView[platform=android]": {
+	borderRadius: 1
+}

@@ -1,0 +1,21 @@
+"#window[platform=ios formFactor=handheld]": {
+},
+"#window[platform=ios formFactor=tablet]": {
+},
+"#window[platform=android]": {
+	//fullscreen : true
+	navBarHidden: false,
+	// barColor: '#0d3f79',
+//	backgroundColor: 'black',
+//	windowSoftInputMode : Ti.UI.Android.SOFT_INPUT_STATE_ALWAYS_VISIBLE
+	windowSoftInputMode : Ti.UI.Android.SOFT_INPUT_STATE_ALWAYS_HIDDEN
+	//softKeyboardOnFocus : Ti.UI.Android.SOFT_KEYBOARD_HIDE_ON_FOCUS
+},
+"#supportMenu":{
+	title: L('support'),
+	showAsAction: Ti.Android.SHOW_AS_ACTION_NEVER
+},
+"#aboutMenu":{
+	title: L('about'),
+	showAsAction: Ti.Android.SHOW_AS_ACTION_NEVER
+}

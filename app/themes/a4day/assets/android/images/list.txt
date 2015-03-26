@@ -1,0 +1,10 @@
+res-long-land-hdpi
+res-long-land-ldpi
+res-long-port-hdpi
+res-long-port-ldpi
+res-notlong-land-hdpi
+res-notlong-land-ldpi
+res-notlong-land-mdpi
+res-notlong-port-hdpi
+res-notlong-port-ldpi
+res-notlong-port-mdpi

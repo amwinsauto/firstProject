@@ -1,0 +1,232 @@
+"#serversetup[platform=ios formFactor=tablet]":{
+	arrowDirection:Ti.UI.iPad.POPOVER_ARROW_DIRECTION_LEFT
+}
+"#serversetupNavigationWindow[platform=ios formFactor=tablet]":{
+	width: 320,
+	height: 320
+}
+"#serversetupNavigationWindow[platform=ios formFactor=tablet if=Alloy.Globals.showLogging]":{
+	height: 378
+}
+"#serversetupWindow": {
+	titleid: 'server_setup',
+}
+"#serversetupWindow[platform=android]": {
+	theme: 'Crosspad',
+	navBarHidden: false
+}
+"#serversetupView[platform=android]": {
+	backgroundColor: '#efeff4',
+	layout: 'vertical'
+}
+"#okMenu":{
+	title: L( 'ok_button'),
+	showAsAction: Titanium.Android.SHOW_AS_ACTION_ALWAYS
+},
+"#cancelMenu":{
+	title: L( 'cancel_button'),
+	showAsAction: Titanium.Android.SHOW_AS_ACTION_ALWAYS
+},
+
+"#cancelButton": {
+	titleid: 'cancel_button'
+}
+"#okButton": {
+	titleid: 'ok_button',
+	style: Titanium.UI.iPhone.SystemButtonStyle.DONE
+}
+"#serversetupTable[platform=ios]":{
+	style: Ti.UI.iPhone.TableViewStyle.GROUPED
+}
+"#serversetupTable[platform=ios formFactor=tablet]":{
+	separatorColor: '#d8d8e0',
+	backgroundColor: '#efeff4'
+}
+"#serverSection":{
+	headerTitle: L( 'label_enter_location')
+}
+"#serverAppSection":{
+	headerTitle: L( 'hint_webapp'),
+	footerTitle: L( 'label_contact_administrator')
+}
+"#touchIdSection":{
+}
+"#logSection": {
+}
+".row": {
+	height: 44,
+	selectionStyle: Ti.UI.iPhone.TableViewCellSelectionStyle.NONE
+}
+".row[platform=ios formFactor=tablet]":{
+	backgroundColor: 'white'
+}
+"#serverLabel[platform=android]": {
+	textid: 'label_enter_location',
+	color: '#6d6d72',
+	left: 15,
+	right: 15,
+	top: 30
+}
+"#serverTextField[platform=android]": {
+	color: '#007aff',
+	top: 5,
+	left: 0,
+	right: 0,
+	height: 40,
+	hintText: L( 'hint_servername'),
+	backgroundColor: '#ffffff',
+	autocapitalization: Ti.UI.TEXT_AUTOCAPITALIZATION_NONE,
+	autocorrect: false,
+	keyboardType: Ti.UI.KEYBOARD_DEFAULT,
+	returnKeyType: Ti.UI.RETURNKEY_DEFAULT,
+	borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
+	clearButtonMode: Ti.UI.INPUT_BUTTONMODE_ONFOCUS
+}
+"#serverTextField[platform=ios]": {
+	//	left: 125,
+	left: 15,
+	right: 15,
+	height: 30,
+	color: '#007aff',
+	font: {
+		fontSize: 18
+		// textStyle: Ti.UI.TEXT_STYLE_BODY
+	},
+	hintText: L( 'hint_servername'),
+	autocapitalization: Ti.UI.TEXT_AUTOCAPITALIZATION_NONE,
+	autocorrect: false,
+	keyboardType: Ti.UI.KEYBOARD_DEFAULT,
+	returnKeyType: Ti.UI.RETURNKEY_DEFAULT,
+	clearButtonMode: Ti.UI.INPUT_BUTTONMODE_ONFOCUS
+}
+"#httpsSwitchView[platform=android]": {
+	backgroundColor: '#ffffff',
+	top: 1,
+	height: 40,
+	left: 0,
+	right: 0
+}
+"#httpsLabel[platform=android]": {
+	top: 0,
+	left: 15,
+	right: 55,
+	height: 40,
+	color: 'black',
+	textid: 'label_secure_connection'
+}
+"#httpsLabel[platform=ios]": {
+	left: 15,
+	font: {
+		fontSize: 18
+		// textStyle: Ti.UI.TEXT_STYLE_BODY
+	},
+	textid: 'label_secure_connection'
+}
+"#httpsSwitch": {
+	right: 15
+}
+"#httpsSwitch[platform=android]": {
+	top: 0,
+	right: 15,
+	style: Ti.UI.Android.SWITCH_STYLE_CHECKBOX
+}
+"#touchIdSwitchLabel": {
+	left: 15,
+	font: {
+		fontSize: 18
+		// textStyle: Ti.UI.TEXT_STYLE_BODY
+	},
+	textid: 'touchid_enable'
+}
+"#touchIdSwitch": {
+	right: 15
+}
+"#touchIdTextField": {
+	left: 15,
+	right: 15,
+	height: 30,
+	color: '#007aff',
+	font: {
+		fontSize: 18
+		// textStyle: Ti.UI.TEXT_STYLE_BODY
+	},
+	hintText: L( 'touchid_username'),
+	autocapitalization: Ti.UI.TEXT_AUTOCAPITALIZATION_NONE,
+	autocorrect: false,
+	keyboardType: Ti.UI.KEYBOARD_DEFAULT,
+	returnKeyType: Ti.UI.RETURNKEY_DEFAULT,
+	clearButtonMode: Ti.UI.INPUT_BUTTONMODE_ONFOCUS
+}
+
+
+"#logLabel[platform=ios]": {
+	left: 15,
+	font: {
+		fontSize: 18
+		// textStyle: Ti.UI.TEXT_STYLE_BODY
+	},
+	textid: 'enable_logging'
+}
+"#logSwitch": {
+	right: 15
+}
+"#logSendButton": {
+	titleid: 'email_log'
+}
+
+"#webAppLabel[platform=android]": {
+	top: 30,
+	left: 15,
+	color: '#6d6d72',
+	textid: 'label_webapp'
+}
+"#webAppTextField[platform=android]": {
+	color: '#007aff',
+	top: 5,
+	left: 0,
+	right: 0,
+	height: 40,
+	hintText: L( 'hint_webapp'),
+	autocapitalization: Ti.UI.TEXT_AUTOCAPITALIZATION_NONE,
+	autocorrect: false,
+	keyboardType: Ti.UI.KEYBOARD_DEFAULT,
+	returnKeyType: Ti.UI.RETURNKEY_DEFAULT,
+	borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
+	clearButtonMode: Ti.UI.INPUT_BUTTONMODE_ONFOCUS,
+	backgroundColor: '#ffffff'
+}
+"#webAppTextField[platform=ios]": {
+	left: 15,
+	right: 15,
+	height: 30,
+	color: '#007aff',
+	font: {
+		fontSize: 18
+		// textStyle: Ti.UI.TEXT_STYLE_BODY
+	},
+	hintText: L( 'label_webapp'),
+	autocapitalization: Ti.UI.TEXT_AUTOCAPITALIZATION_NONE,
+	autocorrect: false,
+	keyboardType: Ti.UI.KEYBOARD_DEFAULT,
+	returnKeyType: Ti.UI.RETURNKEY_DEFAULT,
+	clearButtonMode: Ti.UI.INPUT_BUTTONMODE_ONFOCUS
+}
+
+"#serverDescriptionLabel": {
+	textid: 'label_contact_administrator',
+	left: 15,
+	right: 15,
+	top: 6,
+	color: '#6d6d72',
+	font: {
+		// textStyle: Ti.UI.TEXT_STYLE_FOOTNOTE,
+		fontSize: 12
+	},
+	height: Ti.UI.SIZE
+}
+"#serverDescriptionView": {
+	height: 50
+}
+"#serverDescriptionLabel[platform=ios]": {
+	top: 6
+}

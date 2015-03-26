@@ -1,0 +1,6 @@
+<Alloy>
+	<View id="footerView">
+		<Label id="footerTitle"/>
+		<Label id="footer"/>
+	</View>
+</Alloy>

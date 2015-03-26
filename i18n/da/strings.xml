@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <!-- Changed by build.xml script. Fix for Android, allows you to change program's title -->
+    <string name="appname">ASPECT4 Dev</string>
+    <!-- Changed by build script -->
+	<string name="application_name">ASPECT4 Dev</string>
+
+    <!-- General -->
+	<string name="home_title">Forside</string>
+	<string name="login_title">Log på</string>
+    <string name="settings_title">Indstillinger</string>
+    <string name="about_title">Om</string>
+    <string name="search">Søg</string>
+    <string name="search_server">Søg på server</string>
+    <string name="search_no_rows">Ingen resultater fundet</string>
+    <string name="show_more_rows">Vis flere resultater</string>
+    <string name="loading_more_rows">Indlæser...</string>
+    <string name="are_you_sure">Er du sikker?</string>
+    <string name="can_not_send_sms">Denne enhed understøtter ikke sms</string>
+    <string name="can_not_open_file_type">Denne enhed kan ikke åbne filtypen: </string>
+    
+    <string name="help">Vejledning</string>
+    <string name="support">Support</string>
+    <string name="busy_loading_label">Indlæser</string>
+    <string name="busy_app_close_label">Afslutter</string>
+	<string name="busy_init_label">Forbinder</string>
+	<string name="busy_login_label">Logger på</string>
+    <string name="busy_sending_label">Sender</string>
+ 
+    <!-- Settings tab-->
+    <string name="server_setup">Opsætning</string>
+    <string name="about">Om</string>
+    <string name="username">Brugernavn</string>
+    <string name="password">Kodeord</string>
+   
+    <!-- Server setup -->
+    <string name="label_enter_location">CrossPad server</string>
+    <string name="label_contact_administrator">Kontakt din IT administrator for de ovenstående oplysninger.</string>
+    <string name="label_secure_connection">Sikker forbindelse</string>
+    <string name="hint_servername">Server</string>
+    <string name="hint_webapp">Web Applikation</string>
+    <string name="label_servername">Server</string>
+    <string name="label_webapp">Applikation</string>
+   
+    <!-- Login -->
+    <string name="username_required">Brugernavn er påkrævet</string>
+    <string name="password_required">Kodeord er påkrævet</string>
+    <string name="username_password_required">Brugernavn og kodeord er påkrævede</string>
+    <string name="password_incorrect">Kodeordet er ikke korrekt</string>
+    <string name="login_error">Fejl ved logon</string>
+    <string name="touchid_reason">Log på</string>
+	<string name="touchid_enable">Aktiver Touch ID</string>
+	<string name="touchid_username">Brugernavn</string>
+	<string name="touchid_dialog_header">Touch ID</string>
+	<string name="touchid_dialog_message">Vil du aktivere Touch ID for brugernavn: %s</string>
+    
+    <!-- Connection -->
+    <string name="error_contacting_server">Serveren kunne ikke kontaktes</string>
+    <string name="check_server_settings">Kontroller venligst, at servernavnet er indtastet korrekt i indstillingerne.\n\nHvis du anvender VPN, kontroller at du stadig er logget på.\n\nHvis dette er korrekt, så kontakt venligst din server administrator.</string>
+    <string name="check_internet_connection">Kontroller venligst, at der er forbindelse til internettet.</string>
+    <string name="http_error">HTTP fejl %1</string>
+    <string name="server_not_valid">Serveren returnerer ikke valid data.\n\nKontroller at servernavnet/web applikation er intastet koorekt i indstillinger</string>
+
+	<!-- Update Old -->
+    <string name="update_necessary">Opdatering er nødvendig</string>
+    <string name="update_necessary_android">Det er nødvendigt at opdatere til version %1.\n\nDen nyeste version kan hentes via Google play.</string>
+    <string name="update_necessary_ios">Det er nødvendigt at opdatere til version %1.\n\nDen nyeste version kan hentes via App Store.</string>
+    <string name="go_to_app_store">Gå til App Store</string>
+
+	<!-- Update New -->
+    <string name="update_required_title">Opdatering er nødvendig</string>
+    <string name="update_required_installed">Nuværende version %s</string>
+    <string name="update_required_description">Det er nødvendigt at opdatere til version %s eller højere.</string>
+    <string name="update_required_update_button">Gå til %s</string>
+    <string name="update_required_footer">Den nyeste version kan downloades fra %s ved at klikke på knappen herover.</string>
+    <string name="update_required_store_ios">App Store</string>
+    <string name="update_required_store_android">Google Play</string>
+
+	<!-- About Old -->
+	<string name="copyright_notice">Dette software, dets dokumentation og alle medier er beskyttet af copyright.\n\nAlle rettigheder forbeholdes.\n\nCopyright© %d EG A/S, Danmark.</string>
+	<string name="version">Version: %s</string>
+	<string name="email_about">E-mail info</string>
+
+	<!-- About New -->
+	<string name="about_description">Dette software, dets dokumentation og alle medier er beskyttet af copyright.\n\nAlle rettigheder forbeholdes.</string>
+	<string name="about_email">E-mail info</string>
+	<string name="about_copyright">Copyright© %d EG A/S, Danmark.</string>
+
+	<!-- Login setup-->
+	<string name="logging_setup">Log opsætning</string>
+	<string name="enable_logging">Slå logning til</string>
+	<string name="email_log">E-mail log</string>
+	<string name="logging">Logning</string>
+	
+	<!-- Mail -->
+	<string name="mail_not_available">E-mail er ikke tilgængeligt</string>
+	    
+    <!-- General buttons -->
+    <string name="login_button">Log på</string>
+    <string name="ok_button">OK</string>
+    <string name="cancel_button">Annuller</string>
+    <string name="back_button">Tilbage</string>
+    <string name="close_button">Luk</string>
+    <string name="start_button">Start</string>
+    <string name="delete_button">Slet</string>
+    <string name="edit_button">Rediger</string>
+    <string name="done_button">OK</string>
+    <string name="save_button">Gem</string>
+    <string name="next_button">Næste</string>
+    <string name="previous_button">Forrige</string>
+    <string name="yes_button">Ja</string>
+    <string name="no_button">Nej</string>
+    <string name="add_button">Tilføj</string>
+    <string name="remove_button">Fjern</string>
+    <string name="retry_button">Prøv igen</string>
+    <string name="clear_button">Ryd</string>
+    <string name="reset_button">Nulstil</string>
+    <string name="action_button">Handlinger</string>
+    
+    <!--  GeoLocation -->
+    <string name="geolocation_purpose"></string>
+    <string name="geolocation_not_determined">Kan ikke bestemme placering</string>
+    <string name="geolocation_reactivate_wifi">Prøv evt. at deaktivere og genaktivere Wi-Fi</string>
+    <string name="looking_up_address">Fremfinder adresse...</string>
+    <string name="unknown_address">Ukendt adresse</string>
+    <string name="no_destination_specified">Ingen destination angivet</string>
+
+    <!-- Images -->
+    <string name="image_path_prefix">da</string>
+
+    <!-- Camera -->
+    <string name="camera">Kamera</string>
+    <string name="camera_roll">Kamerarulle</string>
+    
+    <!-- Scanner -->
+    <string name="flash_turned_on">Blitz tændt</string>
+    <string name="flash_turned_off">Blitz slukket</string>
+    
+    <!-- TableView refresh -->
+    <string name="refresh">Opfrisk</string>
+    <string name="pull_to_refresh">Træk ned for at opfriske...</string>
+    <string name="release_to_refresh">Slip for at opfriske...</string>
+    <string name="refreshing">Opfrisker...</string>
+    
+    <string name="copy">Kopiér</string>
+    <string name="paste">Indsæt</string>
+    <string name="reset">Nulstil</string>
+    <string name="open">Åbn</string>
+    <string name="delete">Slet</string>
+
+    <string name="of">af</string>
+
+    <string name="back">Tilbage</string>
+    <string name="forward">Frem</string>
+    <string name="dateFormat">DD.MM.YYYY</string>
+    <string name="timeFormat">HH.mm</string>
+
+    <string name="january">Januar</string>
+    <string name="february">Februar</string>
+    <string name="march">Marts</string>
+    <string name="april">April</string>
+    <string name="may">Maj</string>
+    <string name="june">Juni</string>
+    <string name="july">Juli</string>
+    <string name="august">August</string>
+    <string name="september">September</string>
+    <string name="october">Oktober</string>
+    <string name="november">November</string>
+    <string name="december">December</string>
+    
+    <!-- Form Hints-->
+    <string name="selectDate">Vælg dato</string>
+    <string name="selectMonth">Vælg måned</string>
+    <string name="selectTime">Vælg tidspunkt</string>
+    <string name="selectDateTime">Vælg dato og tid</string>
+    
+    <!-- Form validation -->
+    <string name="fieldIsRequired">: Er påkrævet</string>
+    
+    <string name="dashboardedit_hidden_apps">Skjulte apps</string>
+    <string name="dashboardedit_change_title">Rediger overskrift</string>
+    
+</resources>

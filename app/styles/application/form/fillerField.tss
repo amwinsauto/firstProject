@@ -1,0 +1,6 @@
+"#fieldTableViewRow": {
+	height: 11
+}
+"#fieldTableViewRow[platform=ios]": {
+	selectionStyle: Ti.UI.iPhone.TableViewCellSelectionStyle.NONE
+}

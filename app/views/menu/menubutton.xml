@@ -1,0 +1,6 @@
+<Alloy>
+	<Button id="menubutton" onClick="onButtonClick" platform="ios"/>
+	<View id="menubutton" onClick="onButtonClick" platform="android">
+		<View id="menubuttonImage" />
+	</View>
+</Alloy>

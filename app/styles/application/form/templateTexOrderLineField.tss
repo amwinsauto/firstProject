@@ -1,0 +1,61 @@
+"#fieldTableViewRow": {
+	height: 60
+},
+"#fieldView[platform=android]": {
+	height: 60 // Always same as fieldTableViewRow
+}
+
+"#item": {
+	left: 10,
+	top: 5,
+	height: 20,
+	width: Ti.UI.SIZE
+},
+"#text": {
+	width: 300,
+	left: 10,
+	wordWrap: false,
+	top: 30,
+	height: 20
+},
+"#colorno": {
+	top: 10,
+	width: 15,
+	left: 325,
+	height: 15,
+	borderColor: 'black'
+},
+"#color": {
+	top: 30,
+	height: 20,
+	width: Ti.UI.SIZE,
+	left: 325
+},
+"#count": {
+	right: 195,
+	top: 5,
+	height: 20,
+	width: Ti.UI.SIZE,
+	textAlign: 'right'
+},
+"#price": {
+	right: 110,
+	top: 5,
+	height: 20,
+	width: Ti.UI.SIZE,
+	textAlign: 'right'
+},
+"#totalprice": {
+	right: 15,
+	top: 5,
+	height: 20,
+	width: Ti.UI.SIZE,
+	textAlign: 'right'
+},
+"#clickImageView": {
+	image: '/images/core/android_arrow_right.png',
+	width: 12,
+	height: 12,
+	right: 10
+}
+

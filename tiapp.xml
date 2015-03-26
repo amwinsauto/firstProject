@@ -1,61 +1,172 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ti:app xmlns:ti="http://ti.appcelerator.org">
-    <id>dk.holotest</id>
-    <name>HoloTest</name>
-    <version>1.0</version>
-    <publisher>neerup</publisher>
-    <url>http://</url>
+    <!-- Crosspad Development Keys
+    <sproperty name="acs-api-key-production" type="string">Y4QZPhPTMjyQjt1z8ckm1N9hs46rx1mQ</property>
+    <sproperty name="acs-api-key-development" type="string">4XgJjA31J3rtmoeY0TuNuDOR7oSWGb7M</property>
+    -->
+    
+    <!-- ASPECT4 Day keys
+    <sproperty name="acs-api-key-production" type="string">5JFRpJaxPUVRyGl2f7fgpXEiIQ7lEGYq</property>
+    <sproperty name="acs-api-key-development" type="string">t3Fkc6wIUKMZmBQeoT8jBQ9B9NrroXhL</property>
+	-->
+	
+    <!-- Crosspad Keys
+    <sproperty name="acs-api-key-production" type="string">1LnaxTFGrOzYfNFKRWpQ19XuTSg0dWF5</property>
+    <sproperty name="acs-api-key-development" type="string">NSXEznksMPhUTSO8vh5I2H9iyFqN5p2E</property>
+   -->
+
+    <property name="acs-api-key-production" type="string">Y4QZPhPTMjyQjt1z8ckm1N9hs46rx1mQ</property>
+    <property name="acs-api-key-development" type="string">4XgJjA31J3rtmoeY0TuNuDOR7oSWGb7M</property>
+
+    <id>dk.eg.mobile.crosspad.aspect4.inhouse</id>
+    <name>Crosspaddev</name>
+    <version>1.4.01</version>
+    <publisher>EG</publisher>
+    <url>http://www.eg.dk</url>
     <description>not specified</description>
-    <copyright>2013 by neerup</copyright>
+    <copyright>2015 by EG A/S</copyright>
     <icon>appicon.png</icon>
-    <persistent-wifi>false</persistent-wifi>
-    <prerendered-icon>false</prerendered-icon>
-    <statusbar-style>default</statusbar-style>
-    <statusbar-hidden>false</statusbar-hidden>
     <fullscreen>false</fullscreen>
-    <navbar-hidden>false</navbar-hidden>
-    <analytics>true</analytics>
-    <guid>a68bbf76-a972-4071-a160-d9571177a8c4</guid>
-    <!--	<property name="ti.ui.defaultunit" type="string">system</property> -->
-    <property name="ti.ui.defaultunit" type="string">dip</property>
-    <iphone>
-        <orientations device="iphone">
-            <orientation>Ti.UI.PORTRAIT</orientation>
-            <orientation>Ti.UI.LANDSCAPE_LEFT</orientation>
-            <orientation>Ti.UI.LANDSCAPE_RIGHT</orientation>
-        </orientations>
-        <orientations device="ipad">
-            <orientation>Ti.UI.PORTRAIT</orientation>
-            <orientation>Ti.UI.UPSIDE_PORTRAIT</orientation>
-            <orientation>Ti.UI.LANDSCAPE_LEFT</orientation>
-            <orientation>Ti.UI.LANDSCAPE_RIGHT</orientation>
-        </orientations>
-    </iphone>
+    <navbar-hidden>true</navbar-hidden>
+    <analytics>false</analytics>
+    <guid>8e4218f2-6f8f-47e4-902f-6b471b63bb7e</guid>
+    <property name="ti.ui.defaultunit" type="string">dp</property>
+    <ios>
+        <plist>
+            <dict>
+                <key>UISupportedInterfaceOrientations~iphone</key>
+                <array>
+                    <string>UIInterfaceOrientationPortrait</string>
+                </array>
+                <key>UISupportedInterfaceOrientations~ipad</key>
+                <array>
+                    <string>UIInterfaceOrientationLandscapeLeft</string>
+                    <string>UIInterfaceOrientationLandscapeRight</string>
+                </array>
+                <key>UISupportedExternalAccessoryProtocols</key>
+                <array>
+                    <string>com.datecs.linea.pro.msr</string>
+                    <string>com.datecs.linea.pro.bar</string>
+                </array>
+                <key>UIRequiresPersistentWiFi</key>
+                <false/>
+                <key>UIPrerenderedIcon</key>
+                <false/>
+                <key>UIStatusBarHidden</key>
+                <false/>
+                <key>UIStatusBarStyle</key>
+                <string>UIStatusBarStyleDefault</string>
+                <!-- string>UIStatusBarStyleLightContent</string -->
+                <key>UIBackgroundModes</key>
+                <array>
+                    <string>bluetooth-central</string>
+                    <string>bluetooth-peripheral</string>
+                    <!--string>location</string-->
+                    <string>remote-notification</string>
+                    <string>fetch</string>
+                    <string>external-accessory</string>
+                </array>
+                <key>NSLocationAlwaysUsageDescription</key>
+                <string/>
+                <key>NSLocationWhenInUseUsageDescription</key>
+                <string/>
+                <key>CFBundleURLTypes</key>
+                <array>
+                    <dict>
+                        <key>CFBundleURLName</key>
+                        <!-- same as ti:app/id - replacename is used by ant-->
+                        <string replacename="appNamespace">dk.eg.mobile.crosspad.aspect4.inhouse</string>
+                        <key>CFBundleURLSchemes</key>
+                        <array>
+                            <!-- custom scheme - replacename is used by ant-->
+                            <string replacename="appScheme">aspect4crosspadinhouse</string>
+                        </array>
+                    </dict>
+                </array>
+            </dict>
+        </plist>
+    </ios>
     <android xmlns:android="http://schemas.android.com/apk/res/android">
-        <manifest>
-            <supports-screens android:anyDensity="true"/>
-            <uses-sdk android:targetSdkVersion="17"/>
-            <application android:theme="@android:style/Theme.Holo.Light"/>
+        <manifest android:versionCode="1401" android:versionName="1.4.01">
+            <!--<supports-screens android:largeScreens="true" android:xlargeScreens="true"/> -->
+            <!-- Add android:required="false" to landscape and camera requirement
+            All uses-feature lines should have android:required="false" when building for google play
+			<uses-feature android:name="android.hardware.screen.landscape" android:required="false"/>
+            <uses-feature android:name="android.hardware.camera" android:required="false"/>
+            -->
+            <!-- Not sure this line is necessary	
+            <uses-feature android:name="android.hardware.telephony" android:required="false"/>
+           	-->
+            <!-- Specify OpenGL ES 2.0 as a requirement -->
+            <uses-feature android:glEsVersion="0x00020000" android:required="true"/>
+            <uses-permission android:name="android.permission.READ_CONTACTS"/>
+            <application android:debuggable="false"
+                android:hardwareAccelerated="true"
+                android:icon="@drawable/appicon"
+                android:label="@string/appname"
+                android:name="CrosspaddevApplication"
+                android:theme="@style/Crosspad" android:uiOptions="splitActionBarWhenNarrow">
+                <!-- Replace "PASTE YOUR GOOGLE MAPS API KEY HERE" with the Google API key you obtained -->
+                <meta-data
+                    android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyA0jXOoebZMRO0kJDLFPxEo34Q-UWSuQhs"/>
+                <activity
+                    android:configChanges="keyboardHidden|orientation"
+                    android:label="@string/appname"
+                    android:name=".CrosspaddevActivity"
+                    android:screenOrientation="portrait" android:theme="@style/CrosspadActivity">
+                    <intent-filter>
+                        <action android:name="android.intent.action.MAIN"/>
+                        <category android:name="android.intent.category.LAUNCHER"/>
+                    </intent-filter>
+                    <intent-filter>
+                        <action android:name="android.intent.action.VIEW"/>
+                        <category android:name="android.intent.category.DEFAULT"/>
+                        <category android:name="android.intent.category.BROWSABLE"/>
+                        <category android:name="android.intent.category.LAUNCHER"/>
+                        <data android:scheme="aspect4crosspadinhouse"/>
+                    </intent-filter>
+                </activity>
+                <activity
+                    android:configChanges="keyboardHidden|orientation|screenSize" android:name="org.appcelerator.titanium.TiActivity">
+                    <meta-data android:name="android.support.UI_OPTIONS" android:value="splitActionBarWhenNarrow"/>
+                </activity>
+            </application>
         </manifest>
     </android>
-    <!--
-	<mobileweb>
-	<precache/>
-	<splash>
-	<enabled>true</enabled>
-	<inline-css-images>true</inline-css-images>
-	</splash>
-	<theme>default</theme>
-	</mobileweb>
-	-->
-    <modules/>
+    <mobileweb>
+        <precache/>
+        <splash>
+            <enabled>true</enabled>
+            <inline-css-images>true</inline-css-images>
+        </splash>
+        <theme>default</theme>
+    </mobileweb>
+    <modules>
+        <module platform="commonjs">ti.cloud</module>
+        <module platform="android">ti.cloudpush</module>
+        <module platform="iphone">ti.map</module>
+        <module platform="android">ti.map</module>
+        <module deploy-type="test" platform="iphone">ti.touchid</module>
+        <module deploy-type="production" platform="iphone">ti.touchid</module>
+        <module platform="android" version="2.0.2">ti.paint</module>
+        <module platform="iphone" version="1.4.0">ti.paint</module>
+        <module platform="android" version="2.2.1">ti.imagefactory</module>
+        <module platform="iphone" version="1.2.0">ti.imagefactory</module>
+        <module platform="iphone" version="0.6">dk.eg.crosspad.linea.scanner</module>
+        <module platform="iphone" version="4.3.0">com.mirasense.scanditsdk</module>
+        <module platform="android" version="4.3.0">com.mirasense.scanditsdk</module>
+        <module platform="iphone" version="1.9.1">ti.barcode</module>
+        <module platform="android" version="2.3.5">ti.barcode</module>
+        <module platform="android" version="1.2.3">ti.draggable</module>
+        <module platform="iphone" version="1.2.8">com.logicallabs.bluetoothle</module>
+        <module platform="iphone" version="1.1.2">com.omorandi</module>
+    </modules>
     <deployment-targets>
         <target device="blackberry">false</target>
         <target device="android">true</target>
-        <target device="ipad">false</target>
+        <target device="ipad">true</target>
         <target device="iphone">true</target>
-        <target device="mobileweb">false</target>
-        <target device="tizen">false</target>
+        <target device="mobileweb">true</target>
     </deployment-targets>
     <sdk-version>3.5.1.GA</sdk-version>
     <plugins>

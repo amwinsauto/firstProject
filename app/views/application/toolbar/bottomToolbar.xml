@@ -1,0 +1,4 @@
+<Alloy>
+	<Toolbar id="bottomToolbar" class="windowBottomToolbar tintColor barColor" ns="Ti.UI.iOS" platform="ios" />
+	<View id="bottomToolbar" class="windowBottomToolbar" platform="android" />
+</Alloy>

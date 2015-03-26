@@ -1,0 +1,38 @@
+"#section[platform=android]": {
+	left: 16,
+	right: 16,
+	layout: 'vertical',
+	height: Ti.UI.SIZE,
+}
+"#section[platform=ios]": {
+	// left is set to 0 on iPhone/ios7
+	left: 15.5, // 16 -0.5 because of border
+	// right is set to 0 on iPhone/ios7
+	right: 15.5, // 16 -0.5 because of border
+	style: Ti.UI.iPhone.TableViewStyle.PLAIN,
+	separatorColor: '#d6d6d6', // GPS Spc
+	backgroundColor: 'white',
+
+	borderColor: '#efeff4', // Hides last rows seperator (Hack)
+	borderWidth: 0.5, // Hides last rows seperator (Hack)
+
+	scrollable: false,
+	height: Ti.UI.SIZE
+}
+"#topSeparator": {
+	left: 0,
+	right: 0,
+	height: 0.5,
+//	backgroundColor: '#c8c7cc' // Std sttings
+	backgroundColor: '#d6d6d6', // GPS Spc
+	egDetailBackgroundColor: '#999999'
+}
+"#bottomSeparator": {
+	left: 0,
+	right: 0,
+//	bottom: -1,
+	bottom: 0,
+	height: 0.5,
+//	backgroundColor: '#c8c7cc' // Std sttings
+	backgroundColor: '#d6d6d6' // GPS Spc
+}

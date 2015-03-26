@@ -1,0 +1,14 @@
+"#button[platform=ios]" : { 
+	style: Ti.UI.iPhone.SystemButtonStyle.BORDERED
+
+},
+"#button[platform=android]" : { 
+	top: 3,
+	height: 42,
+//	color: '#cecece',
+	color: 'black',
+	selectedColor: '#ffffff',
+	// backgroundImage:'/images/core/android_button_off.png',
+	// backgroundSelectedImage:'/images/core/android_button_on.png',
+	// backgroundDisabledImage: '/images/core/android_button_off.png'
+}

@@ -1,0 +1,21 @@
+/*
+"#image": {
+	left: 8,
+	width: 40,
+	//height: 40,
+	touchEnabled : false
+},
+*/
+"#image": {
+	left: 15,
+	width: 40,
+	height: 40,
+	touchEnabled : false
+},
+"#imageView": {
+	touchEnabled : false,
+	width: 40
+	// left : 0,
+	// top : 0,
+	//right : 0
+}

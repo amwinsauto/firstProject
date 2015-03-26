@@ -1,0 +1,11 @@
+"#popover": {
+	navBarHidden: true,
+}
+".smallPopover": {
+	height: 360,
+	width: 320
+}
+".mediumPopover": {
+	height: 640,
+	width: 640
+}

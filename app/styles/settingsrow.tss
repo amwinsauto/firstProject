@@ -1,0 +1,8 @@
+"#row[platform=ios]": {
+	font: {
+		textStyle: Ti.UI.TEXT_STYLE_BODY
+	}
+}
+"#row[platform=ios formFactor=tablet]": {
+	backgroundColor: 'white'
+}

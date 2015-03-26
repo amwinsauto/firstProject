@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <!-- Changed by build.xml script. Fix for Android, allows you to change program's title -->
+    <string name="appname">ASPECT4 Dev</string>
+    <!-- Changed by build script -->
+	<string name="application_name">ASPECT4 Dev</string>
+
+    <!-- General -->
+	<string name="home_title">Framsida</string>
+	<string name="login_title">Logga in</string>
+    <string name="settings_title">Inställningar</string>
+    <string name="about_title">Om</string>
+    <string name="search">Sök</string>
+    <string name="search_server">Sök på servern</string>
+    <string name="search_no_rows">Inget resultat hittades</string>
+    <string name="show_more_rows">Visa fler resultat</string>
+    <string name="loading_more_rows">Läser in...</string>
+    <string name="are_you_sure">Är du säker?</string>
+    <string name="can_not_send_sms">SMS stöds inte med enheten</string>
+    <string name="can_not_open_file_type">Filtypen kan inte öppnas med enheten: </string>
+    
+    <string name="help">Hjälp</string>
+    <string name="support">Support</string>
+    <string name="busy_loading_label">Läser in</string>
+    <string name="busy_app_close_label">Avslutar</string>
+	<string name="busy_init_label">Ansluter</string>
+	<string name="busy_login_label">Loggar in</string>
+    <string name="busy_sending_label">Skickar</string>
+ 
+    <!-- Settings tab-->
+    <string name="server_setup">Inställningar</string>
+    <string name="about">Om</string>
+    <string name="username">Användarnamn</string>
+    <string name="password">Lösenord</string>
+   
+    <!-- Server setup -->
+    <string name="label_enter_location">CrossPad-server</string>
+    <string name="label_contact_administrator">Kontakta din IT-administratör för ovanstående uppgifter.</string>
+    <string name="label_secure_connection">Säker anslutning</string>
+    <string name="hint_servername">Server</string>
+    <string name="hint_webapp">Webbprogram</string>
+    <string name="label_servername">Server</string>
+    <string name="label_webapp">Program</string>
+   
+    <!-- Login -->
+    <string name="username_required">Användarnamn är obligatoriskt</string>
+    <string name="password_required">Lösenord är obligatoriskt</string>
+    <string name="username_password_required">Användarnamn och lösenord är obligatoriska</string>
+    <string name="password_incorrect">Fel lösenord</string>
+    <string name="login_error">Fel vid inloggning</string>
+    <string name="touchid_reason">Logga in</string>
+	<string name="touchid_enable">Aktivera Touch ID</string>
+	<string name="touchid_username">Användarnamn</string>
+	<string name="touchid_dialog_header">Touch ID</string>
+	<string name="touchid_dialog_message">Vill du aktivera Touch ID för användarnamn: %s</string>
+    
+    <!-- Connection -->
+    <string name="error_contacting_server">Det gick inte att kontakta servern</string>
+    <string name="check_server_settings">Kontrollera att servernamnet är korrekt angivet i inställningarna.\n\nOm du använder VPN kontrollerar du att du är inloggad.\n\nOm dessa är korrekta kontaktar du serveradministratören.</string>
+    <string name="check_internet_connection">Kontrollera internetanslutningen.</string>
+    <string name="http_error">HTTP-fel %1</string>
+    <string name="server_not_valid">Servern returnerar ogiltiga data.\n\nKontrollera att servernamnet/webbprogrammet är korrekt angivet i inställningarna</string>
+
+	<!-- Update Old -->
+    <string name="update_necessary">Det krävs en uppdatering</string>
+    <string name="update_necessary_android">Du måste uppdatera till version %1.\n\nDen senaste versionen finns på Google play.</string>
+    <string name="update_necessary_ios">Du måste uppdatera till version %1.\n\nDen senaste versionen finns på App Store.</string>
+    <string name="go_to_app_store">Gå till App Store</string>
+
+	<!-- Update New -->
+    <string name="update_required_title">Det krävs en uppdatering</string>
+    <string name="update_required_installed">Nuvarande version %s</string>
+    <string name="update_required_description">Det är nödvändigt att uppdatera till version %s eller högre.</string>
+    <string name="update_required_update_button">Gå till %s</string>
+    <string name="update_required_footer">Den senaste versionen kan laddas ner från %s genom att klicka på knappen här.</string>
+    <string name="update_required_store_ios">App Store</string>
+    <string name="update_required_store_android">Google Play</string>
+
+	<!-- About Old -->
+	<string name="copyright_notice">Programvaran, dokumentationen och alla media är upphovsrättsskyddade.\n\nAlla rättigheter förbehålles.\n\nCopyright© %d EG A/S, Danmark.</string>
+	<string name="version">Version: %s</string>
+	<string name="email_about">E-postinformation</string>
+
+	<!-- About New -->
+	<string name="about_description">Programvaran, dokumentationen och alla media är upphovsrättsskyddade.\n\nAlla rättigheter förbehålles.</string>
+	<string name="about_email">E-postinformation</string>
+	<string name="about_copyright">Copyright© %d EG A/S, Danmark.</string>
+
+	<!-- Loggin setup-->
+	<string name="logging_setup">Logginställningar</string>
+	<string name="enable_logging">Slå på loggning</string>
+	<string name="email_log">E-postloggning</string>
+	<string name="logging">Loggning</string>
+	
+	<!-- Mail -->
+	<string name="mail_not_available">E-post är inte tillgängligt</string>
+	    
+    <!-- General buttons -->
+    <string name="login_button">Logga in</string>
+    <string name="ok_button">OK</string>
+    <string name="cancel_button">Avbryt</string>
+    <string name="back_button">Tillbaka</string>
+    <string name="close_button">Stäng</string>
+    <string name="start_button">Starta</string>
+    <string name="delete_button">Radera</string>
+    <string name="edit_button">Redigera</string>
+    <string name="done_button">OK</string>
+    <string name="save_button">Spara</string>
+    <string name="next_button">Nästa</string>
+    <string name="previous_button">Föregående</string>
+    <string name="yes_button">Ja</string>
+    <string name="no_button">Nej</string>
+    <string name="add_button">Lägg till</string>
+    <string name="remove_button">Ta bort</string>
+    <string name="retry_button">Prova igen</string>
+    <string name="clear_button">Rensa</string>
+    <string name="reset_button">Återställ</string>
+    <string name="action_button">Åtgärder</string>
+    
+    <!--  GeoLocation -->
+    <string name="geolocation_purpose"></string>
+    <string name="geolocation_not_determined">Det går inte att bestämma plats</string>
+    <string name="geolocation_reactivate_wifi">Prova att inaktivera och återaktivera Wi-Fi</string>
+    <string name="looking_up_address">Söker adress...</string>
+    <string name="unknown_address">Okänd adress</string>
+    <string name="no_destination_specified">Inget angivet mål</string>
+
+    <!-- Images -->
+    <string name="image_path_prefix">sv</string>
+
+    <!-- Camera -->
+    <string name="camera">Kamera</string>
+    <string name="camera_roll">Kamerarulle</string>
+    
+    <!-- Scanner -->
+    <string name="flash_turned_on">Blixt på</string>
+    <string name="flash_turned_off">Blixt av</string>
+    
+    <!-- TableView refresh -->
+    <string name="refresh">Uppdatera</string>
+    <string name="pull_to_refresh">Tryck för att uppdatera...</string>
+    <string name="release_to_refresh">Släpp för att uppdatera...</string>
+    <string name="refreshing">Uppdaterar...</string>
+    
+    <string name="copy">Kopiera</string>
+    <string name="paste">Klistra in</string>
+    <string name="reset">Återställ</string>
+    <string name="open">Öppna</string>
+    <string name="delete">Radera</string>
+
+    <string name="of">av</string>
+
+    <string name="back">Tillbaka</string>
+    <string name="forward">Framåt</string>
+    <string name="dateFormat">DD.MM.YYYY</string>
+    <string name="timeFormat">HH.mm</string>
+
+    <string name="january">Januari</string>
+    <string name="february">Februari</string>
+    <string name="march">Mars</string>
+    <string name="april">April</string>
+    <string name="may">Maj</string>
+    <string name="june">Juni</string>
+    <string name="july">Juli</string>
+    <string name="august">Augusti</string>
+    <string name="september">September</string>
+    <string name="october">Oktober</string>
+    <string name="november">November</string>
+    <string name="december">December</string>
+    
+    <!-- Form Hints-->
+    <string name="selectDate">Välj datum</string>
+    <string name="selectMonth">Välj månad</string>
+    <string name="selectTime">Välj tidpunkt</string>
+    <string name="selectDateTime">Välj datum och tid</string>
+
+    <!-- Form validation -->
+    <string name="fieldIsRequired">: Krävs</string>
+   
+	<string name="dashboardedit_hidden_apps">Dolda appar</string>
+    <string name="dashboardedit_change_title">Redigera rubrik</string>
+ 
+    
+</resources>

@@ -1,0 +1,16 @@
+<Alloy>
+	<NavigationWindow id="popupWindow" class="windowBackgroundColor" platform="ios">
+		<Window id="window" class="windowBackgroundColor barColor navTintColor" >
+			<LeftNavButton>
+				<Button id="closeButton" platform="ios" onClick="onCloseButtonClick"/>
+			</LeftNavButton>
+		</Window>
+	</NavigationWindow>
+	<Window id="window" class="windowBackgroundColor barColor navTintColor" platform="android" >
+		<Menu id="menu" platform="android">
+			<!-- Cannot specify node text.  Use attributes only. -->
+			<!--<MenuItem id="supportMenu" onClick="onSupportClick" />-->
+			<MenuItem id="aboutMenu" onClick="onAboutClick" />
+		</Menu>
+	</Window>
+</Alloy>

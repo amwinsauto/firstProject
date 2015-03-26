@@ -1,0 +1,7 @@
+<Alloy>
+	<TableViewRow id="fieldTableViewRow" class="formFieldRow tableSelectedColor formFieldColors" hasChild="false" platform="ios">
+	</TableViewRow>
+	<!-- Android -->
+	<View id="fieldTableViewRow" class="formFieldRow formFieldColors" platform="android">
+	</View>
+</Alloy>

@@ -1,0 +1,18 @@
+<Alloy>
+	<View id="serversetupView" bubbleParent="false">
+		<Label id="serverLabel"/>
+		<View id="line1View" />
+		<ImageView id="serverImageView" onClick="onSetupClick" />
+		<View id="serverView">
+			<View id="serverStatusView"/>
+			<Label id="serverNameLabel"/>
+		</View>
+		<View id="line2View" />
+		<View id="connectorView"/>
+		<ImageView id="deviceImageView"/>
+		<View id="deviceView">
+			<View id="deviceStatusView"/>
+			<Label id="deviceLabel" />
+		</View>
+	</View>
+</Alloy>

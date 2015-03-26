@@ -1,0 +1,178 @@
+"#about":{
+	top: 0,
+	bottom: 0,
+	left: 0,
+	width: Titanium.UI.FILL,
+	layout: 'horizontal'
+}
+"#aboutView": {
+	backgroundColor: 'black',
+	layout: 'vertical',
+	top: 0,
+	left: 0,
+	bottom: 0,
+	width: Titanium.UI.FILL,
+}
+"#aboutView[platform=ios formFactor=tablet]":{
+	width: 250
+}
+"#logoImageView": {
+	width: Titanium.UI.SIZE,
+	height: Titanium.UI.SIZE,
+	top: 58,
+	image: '/images/core/about_icon.png'
+}
+"#nameLabel": {
+	font: {
+		fontSize: 17
+		// textStyle: Ti.UI.TEXT_STYLE_HEADLINE
+	},
+	textid: 'application_name',
+	color: 'white',
+	top: 15,
+	height: 30
+}
+"#line1View":{
+	top: 30,
+	left: 10,
+	right: 10,
+	height: 0.5,
+	backgroundColor: 'white'
+}
+"#versionLabel": {
+	font: {
+		fontSize: 13
+		// textStyle: Ti.UI.TEXT_STYLE_CAPTION1
+	},
+	color: 'white',
+	left: 20,
+	top: 0,
+	right: 15,
+	height: 30
+}
+"#line2View":{
+	top: 0,
+	left: 10,
+	right: 10,
+	height: 0.5,
+	backgroundColor: 'white'
+}
+"#descriptionLabel":{
+	textid: 'about_description',
+	font: {
+		fontSize: 13
+		// textStyle: Ti.UI.TEXT_STYLE_CAPTION1
+	},
+	top: 20,
+	left: 20,
+	right: 20,
+	color: 'white'
+}
+"#bottomView":{
+	width: Titanium.UI.FILL,
+	height: Titanium.UI.FILL
+}
+"#buttonsView": {
+	layout: 'horizontal',
+	horizontalWrap: false,
+	top: 0,
+	width: Titanium.UI.SIZE
+}
+"#buttonsView[formFactor=handheld]": {
+	bottom: 30
+}
+"#buttonsView[formFactor=tablet]": {
+	height: 150
+}
+
+"#supportView": {
+	layout: 'vertical',
+	height: Titanium.UI.SIZE,
+	width: Titanium.UI.SIZE
+}
+"#supportButton": {
+	width: 50,
+	height: 50,
+	borderRadius: 25,
+	backgroundColor: '#007aff',
+	tintColor: 'white'
+}
+"#supportButton[platform=ios]": {
+	image: '/images/icons/navigator/support_white.png'
+}
+"#supportButton[platform=android]": {
+	backgroundImage: '/images/icons/navigator/support_white.png'
+}
+"#supportLabel": {
+	textid: 'support',
+	color: 'white',
+	top: 10,
+	font: {
+		fontSize: 14,
+		fontFamily: 'Arial'
+	}
+}
+
+"#emailView": {
+	layout: 'vertical',
+	left: 20,
+	height: Titanium.UI.SIZE,
+	width: Titanium.UI.SIZE
+}
+"#emailView[platform=ios formFactor=tablet]": {
+	left: 0
+}
+"#emailButton": {
+	width: 90,
+	height: 44,
+	width: 50,
+	height: 50,
+	borderRadius: 25,
+	backgroundColor: '#007aff',
+	tintColor: 'white'
+}
+"#emailButton[platform=ios]": {
+	image: '/images/icons/lists/medium/email.png'
+}
+"#emailButton[platform=android]": {
+	backgroundImage: '/images/icons/lists/medium/email.png'
+}
+"#emailLabel": {
+	textid: 'about_email',
+	color: 'white',
+	top: 10,
+	font: {
+		fontSize: 14,
+		fontFamily: 'Arial'
+	}
+}
+"#copyrightLabel": {
+	bottom: 10,
+	font: {
+		fontSize: 14
+		// textStyle: Ti.UI.TEXT_STYLE_FOOTNOTE
+	},
+	color: 'white'
+}
+"#supportSectionView": {
+	left: 8,
+	top: 0,
+	bottom: 0,
+	width: Titanium.UI.FILL,
+}
+"#supportHeaderView": {
+	top: 0,
+	left: 0,
+	right: 0,
+	height: 44,
+	backgroundColor: '#efeff4'
+}
+"#supportHeaderLabel": {
+	textid: 'support'
+}
+"#supportWebView":{
+	top: 44,
+	left: 0,
+	bottom: 0,
+	right: 0
+}

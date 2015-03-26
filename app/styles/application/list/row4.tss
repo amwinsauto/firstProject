@@ -1,0 +1,80 @@
+"#row": {
+	className: 'RowLayout4'
+}
+"#row[platform=ios formFactor=handheld]": {
+	backgroundGradient : {
+		type : 'linear',
+		colors : [{
+			color : '#ffffff',
+			position : 0.0
+		}, {
+			color : '#fcfcfc',
+			position : 0.50
+		}, {
+			color : '#e0e0e0',
+			position : 1.0
+		}]
+	}
+}
+"#titleLabel": {
+	top: 0,
+	left: 15,
+	height: 30,
+	font: {
+		fontSize: 20,
+		fontWeight: 'bold'
+	}
+}
+"#titleLabel[platform=android]": {
+	color: '#2e2e2e'
+}
+"#titleLabel[platform=ios formFactor=tablet]": {
+	highlightedColor: 'white'
+},
+"#title1Label": {
+	top: 0,
+	height: 30,
+	right: 5,
+	color: '#293f75',
+	textAlign: 'right',
+	font: {
+		fontSize: 15
+	}
+}
+"#title1Label[platform=ios formFactor=tablet]": {
+	highlightedColor: 'white'
+}
+"#title2Label": {
+	top: 25,
+	left: 15,
+	right: 10,
+	height: 20,
+	font: {
+		fontSize: 15
+	}
+}
+"#title2Label[platform=android]": {
+	top: 27,
+	color: '#666666'
+}
+"#title2Label[platform=ios formFactor=tablet]": {
+	highlightedColor: 'white'
+}
+"#title3Label": {
+	top: 45,
+	left: 15,
+	right: 10,
+	bottom: 5,
+	height: 40,
+	color: 'gray',
+	wordWrap: true,
+	font: {
+		fontSize: 15
+	}
+}
+"#title3Label[platform=android]": {
+	color: '#919191'
+}
+"#title3Label[platform=ios formFactor=tablet]": {
+	highlightedColor: 'white'
+}

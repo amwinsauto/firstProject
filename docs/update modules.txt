@@ -1,0 +1,7 @@
+Neerup handles this
+
+Install gittio if nessesary
+http://gitt.io/cli
+
+cd folder/where/your/project/is/located
+gittio update

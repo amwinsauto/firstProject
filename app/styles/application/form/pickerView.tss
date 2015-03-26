@@ -1,0 +1,84 @@
+"#pickerWindow": {
+},
+"#pickerWindow[platform=android]": {
+	navBarHidden: true,
+	barColor: '#0d3f79',
+	backgroundColor: 'white'
+},
+"#pickerFullView": {
+	backgroundColor: "transparent",
+	height: "100%",
+	width: "100%"
+},
+"#pickerSlideView[platform=ios]": {
+//	backgroundColor: "#336699",
+	backgroundColor: "transparent",
+	height: "260",
+	bottom: "-260"
+},
+"#pickerSlideView[platform=android]": {
+//	backgroundColor: "#2e2e2e",
+	backgroundColor: '#f5f5f5',
+	height: "213",
+	bottom: "-213",
+	bubbleParent: false
+},
+"#toolbar[platform=ios]": {
+	top: 0,
+},
+"#toolbar[platform=android]": {
+//	backgroundColor: '#2e2e2e',
+	backgroundColor: '#f5f5f5',
+	top: 0,
+	left: 0,
+	right: 0,
+	height: 52,
+	bubbleParent: false
+},
+"#closeButton[platform=ios]": {
+	style: Ti.UI.iPhone.SystemButtonStyle.BORDERED,
+	titleid : "cancel_button"
+},
+"#cancelButton[platform=ios]": {
+	style: Ti.UI.iPhone.SystemButtonStyle.BORDERED,
+	titleid : "cancel_button"
+},
+"#doneButton[platform=ios]": {
+	style: Ti.UI.iPhone.SystemButtonStyle.DONE,
+//	style: Ti.UI.iPhone.SystemButtonStyle.BORDERED,
+	titleid : "done_button"
+},
+"#cancelButton[platform=android]": {
+	top: 5,
+//	left: 5,
+	left: 0,
+	width : '50%',
+	height: 42,
+//	backgroundColor : 'transparent',
+//	backgroundColor: '#2e2e2e',
+	backgroundColor: '#f5f5f5',
+//	width: 80,
+//	color: '#cecece',
+//	selectedColor: '#ffffff',
+//	backgroundImage:'/images/core/android_button_off.png',
+//	backgroundSelectedImage:'/images/core/android_button_on.png',
+//	backgroundDisabledImage: '/images/core/android_button_off.png',
+	titleid : 'cancel_button'
+},
+"#doneButton[platform=android]": {
+	top: 5,
+//	right : 5,
+	right: 0,
+	width : '50%',
+	height: 42,
+//	backgroundColor : 'transparent',
+//	backgroundColor: '#2e2e2e',
+	backgroundColor: '#f5f5f5',
+//	width: 80,
+//	color: '#cecece',
+//	selectedColor: '#ffffff',
+//	backgroundImage:'/images/core/android_button_off.png',
+//	backgroundSelectedImage:'/images/core/android_button_on.png',
+//	backgroundDisabledImage: '/images/core/android_button_off.png',
+	titleid : 'done_button'
+}

@@ -1,0 +1,9 @@
+<Alloy>
+	<View id="dashboardeditView" bubbleParent="false">
+		<View id="toolbarView">
+			<Label id="titleLabel" />
+			<!--Button id="editButton" /-->
+		</View>
+		<TableView id="tableView" onMove="onMove" />
+	</View>
+</Alloy>

@@ -1,0 +1,7 @@
+<Alloy>
+	<View id="updateView" visible="false">
+		<Label id="titleLabel" />
+		<Label id="descriptionLabel" />
+		<Button id="updateButton" onClick="onUpdateButtonClick"/>
+	</View>
+</Alloy>

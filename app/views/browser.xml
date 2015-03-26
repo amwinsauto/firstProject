@@ -1,0 +1,8 @@
+<Alloy>
+	<Window id="browserWindow" >
+		<LeftNavButton platform="ios">
+			<Button id="closeButton" onClick="onCloseButtonClick" />
+		</LeftNavButton>
+		<WebView id="browserWebView" url="_blank"/>
+	</Window>
+</Alloy>

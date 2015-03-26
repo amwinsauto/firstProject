@@ -1,0 +1,16 @@
+"#applicationswitcher": {
+	backgroundColor: 'black',
+	height: Titanium.UI.FILL,
+	left: 0,
+	width: 130,
+}
+"#scrollView":{
+	width: Titanium.UI.FILL,
+	height: Titanium.UI.FILL,
+	scrollType: 'vertical'
+}
+"#contentView": {
+	height: Titanium.UI.SIZE,
+	width: Titanium.UI.FILL,
+	layout: 'vertical'
+}

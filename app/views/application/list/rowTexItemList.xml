@@ -1,0 +1,14 @@
+<Alloy>
+	<TableViewRow id="row" class="listRow">
+		<View id="imagePlacer">
+			<ImageView id="image" />
+		</View>
+		<Label id="key1" />
+		<Label id="key2" />
+		<Label id="key3" />
+		<Label id="key5" />
+		<Label id="size" />
+		<Label id="price" />
+		<Label id="desc" />
+	</TableViewRow>
+</Alloy>

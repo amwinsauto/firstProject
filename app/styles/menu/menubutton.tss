@@ -1,0 +1,15 @@
+"#menubutton": {
+	tintColor: 'black',
+	top: 20,
+	width: 50,
+	height: 50,
+	borderRadius: 25,
+	backgroundColor: '#6d9fb8',
+	egBackgroundColorSelected: 'white'
+}
+"#menubuttonImage": {
+	left: 10,
+	top: 10,
+	width: 30,
+	height: 30
+}

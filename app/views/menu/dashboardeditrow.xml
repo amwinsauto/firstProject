@@ -1,0 +1,12 @@
+<Alloy>
+	<TableViewRow id="tableViewRow" >
+		<Label id="title" platform="android" />
+		<View id="buttons" platform="android" >
+			<Button id="upButton" onClick="onUpClick" platform="android" />
+			<Button id="downButton" onClick="onDownClick" platform="android" />
+		</View>
+		<!--View id="content">
+		<Label id="description"/>
+		</View-->
+	</TableViewRow>
+</Alloy>

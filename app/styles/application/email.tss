@@ -1,0 +1,6 @@
+"#email[platform=ios]": { 
+//	barColor :'1d5a90'
+},
+"#email[platform=android]": { 
+//	barColor :'#336699'
+}

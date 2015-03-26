@@ -1,0 +1,53 @@
+"#formView": {
+	// Like Search field
+	//backgroundColor: '#c9c9ce'
+	// Like Settings background
+	backgroundColor: '#efeff4'
+}
+"#formView[platform=android]": {
+//	backgroundColor: '#dddddd'
+}
+"#contentScrollView[platform=ios]": {
+	layout: 'vertical',
+	height: Ti.UI.SIZE
+}
+"#contentScrollView[platform=android]": {
+	scrollType: 'vertical',
+	height: Ti.UI.SIZE
+}
+
+"#items": {
+	editable: true,
+	deleteButtonTitle: L('delete_button')
+//	editing: true
+}
+"#items[platform=android]":{
+	backgroundColor: 'white'
+}
+"#itemHeader": {
+	height: 55,
+}
+"#itemsHeaderTitle": {
+	left: 15,
+	right: 15,
+	bottom: 6,
+	color: '#6d6d72' // Std. Settings
+}
+"#clearButton[platform=ios]": {
+	bottom: 6,
+	right: 15,
+	//width: 22,
+	height: 22,
+	titleid: 'clear_button'
+//	image: '/images/core/clear.png',
+//	image: '/images/icons/toolbar/trash.png'
+}
+"#clearButton[platform=android]": {
+	bottom: 0,
+	right: 10,
+	height: 30,
+	//height: 42,
+	font: { fontSize: 14, fontWeight: 'bold'},
+	titleid: 'clear_button',
+	backgroundColor: 'transparent'
+}

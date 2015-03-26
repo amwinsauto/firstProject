@@ -1,0 +1,6 @@
+<Alloy>
+	<Popover id="popover" ns="Ti.UI.iPad" onHide="onPopoverHide"></Popover>
+	<NavigationWindow id="windowController">
+		<Window id="window" class="windowBackgroundColor barColor navTintColor" />
+	</NavigationWindow>
+</Alloy>

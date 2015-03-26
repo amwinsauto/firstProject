@@ -1,0 +1,12 @@
+"#label":{
+	height: 20,
+	left: 1,
+	right: 0,
+	font: { 
+		fontSize: 15,
+//		textStyle: Ti.UI.TEXT_STYLE_SUBHEADLINE
+	}
+}
+"#label[platform=android]":{
+	color: 'black'
+}
